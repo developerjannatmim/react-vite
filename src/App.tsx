@@ -1,28 +1,72 @@
-import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { SideBarData } from './components/SideBarData';
+import SubMenu from './components/SubMenu';
+import { IconContext } from 'react-icons/lib';
 
-const itemObj = {
-  name: "Mim",
-  age: 30,
-  city: "kazipara, jessore",
-}
+const Nav = styled.div`
+  background: #15171c;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
 
-const btnClick = () => {
-  alert('hello world');
-}
+const NavIcon = styled(Link)`
+  margin-left: 2rem;
+  font-size: 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
 
-const App = () => {
+const SidebarNav = styled.nav`
+  background: #15171c;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  transition: 350ms;
+  z-index: 10;
+`;
+
+const SidebarWrap = styled.div`
+  width: 100%;
+`;
+
+const SideBar = () => {
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
+
   return (
-    <div>
-      <Header title="Learn reat" des="in details with mim" />
-      <Hero item={itemObj} btn={btnClick}/>
-      <ContactForm/>
-      <Footer/>
-    </div>
+    <>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <Nav>
+          <NavIcon to='#'>
+            <FaIcons.FaBars onClick={showSidebar} />
+          </NavIcon>
+        </Nav>
+        <SidebarNav sidebar={sidebar}>
+          <SidebarWrap>
+            <NavIcon to='#'>
+              <AiIcons.AiOutlineClose onClick={showSidebar} />
+            </NavIcon>
+            {SideBarData.map((item, index) => {
+              return <SubMenu item={item} key={index} />;
+            })}
+          </SidebarWrap>
+        </SidebarNav>
+      </IconContext.Provider>
+    </>
   );
 };
 
-export default App;
+export default SideBar;
