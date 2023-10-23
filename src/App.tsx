@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import routes from './routes/routes';
 import MasterLayout from './pages/Admin/MasterLayout';
 
 
@@ -10,7 +9,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-        <Route path='/admin' name="Admin" render={(props) => <MasterLayout {...props}/>} />
+        <Route path='/admin' render={(props) => <MasterLayout {...props}/>} />
         </Routes>
       </BrowserRouter>
     </>

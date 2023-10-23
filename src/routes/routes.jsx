@@ -1,5 +1,7 @@
-import Dashboard from '../pages/Admin/Dashboard';
-import Profile from '../pages/Admin/Profile';
+
+import Dashboard from './../pages/Admin/Dashboard';
+import Profile from './../pages/Admin/Profile';
+import Admin from './../pages/Admin/Admin';
 
 const routes = [
     {path: '/admin', exact: true, name: 'Admin'},
