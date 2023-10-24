@@ -181,8 +181,8 @@ const Sidebar = () => {
             >
               <li className="nav-item">
                 <a
-                  className="nav-link text-white"
                   href="/login"
+                  className="nav-link text-white"
                   aria-current="page"
                 >
                   <i className="bi bi-browser-safari icon"></i>

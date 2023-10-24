@@ -5,6 +5,8 @@ import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Classroom from "./components/Classroom";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
@@ -24,8 +26,10 @@ const App = () => {
             <div className="col overflow-auto">
               <Header Toggle={Toggle} />
               <Routes>
-                <Route path="/" element={<Dashboard />}></Route>
+                <Route path="/dashboard" element={<Dashboard />}></Route>
                 <Route path="/class" element={<Classroom />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/register" element={<Register />}></Route>
               </Routes>
             </div>
           </div>
@@ -36,5 +40,4 @@ const App = () => {
       </>
     );
 };
-
 export default App;
