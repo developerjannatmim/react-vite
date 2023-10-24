@@ -5,7 +5,7 @@ const Sidebar = () => {
   const [active, setActive] = useState(1);
 
   return (
-    <div className="py-3 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
+    <div className="sidebar py-3 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
       <div>
         <a
           className="p-3 text-decoration-none ms-4 d-flex align-items-center text-white d-none d-sm-inline"
@@ -20,10 +20,10 @@ const Sidebar = () => {
           <li
             className={
               active === 1
-                ? "active nav nav-pills mt-2 mt-sm-0"
-                : "nav nav-pills mt-2 mt-sm-0"
+                ? 'active nav-item p-2'
+                : 'nav-item p-2'
             }
-            onClick={(e) => setActive(1)}
+            onClick={e => setActive(1)}
           >
             <a
               href="/"
@@ -38,8 +38,8 @@ const Sidebar = () => {
           <li
             className={
               active === 2
-                ? "active nav nav-pills flex-column mt-2 mt-sm-0"
-                : "nav nav-pills flex-column mt-2 mt-sm-0"
+                ? "active nav-item p-2"
+                : "nav-item p-2"
             }
             onClick={(e) => setActive(2)}
           >
@@ -64,8 +64,8 @@ const Sidebar = () => {
               <li
                 className={
                   active === 3
-                    ? "active nav nav-pills flex-column mt-2 mt-sm-0"
-                    : "nav nav-pills flex-column mt-2 mt-sm-0"
+                    ? "active nav-item p-2"
+                    : "nav-item p-2"
                 }
                 onClick={(e) => setActive(3)}
               >
@@ -81,8 +81,8 @@ const Sidebar = () => {
               <li
                 className={
                   active === 4
-                    ? "active nav nav-pills flex-column mt-2 mt-sm-0"
-                    : "nav nav-pills flex-column mt-2 mt-sm-0"
+                    ? "active nav-item p-2"
+                    : "nav-item p-2"
                 }
                 onClick={(e) => setActive(4)}
               >
@@ -94,8 +94,8 @@ const Sidebar = () => {
               <li
                 className={
                   active === 5
-                    ? "active nav nav-pills flex-column mt-2 mt-sm-0"
-                    : "nav nav-pills flex-column mt-2 mt-sm-0"
+                    ? "active nav-item p-2"
+                    : "nav-item p-2"
                 }
                 onClick={(e) => setActive(5)}
               >
@@ -109,8 +109,8 @@ const Sidebar = () => {
           <li
             className={
               active === 6
-                ? "active nav nav-pills flex-column mt-2 mt-sm-0"
-                : "nav nav-pills flex-column mt-2 mt-sm-0"
+                ? "active nav-item p-2"
+                : "nav-item p-2"
             }
             onClick={(e) => setActive(6)}
           >
@@ -126,8 +126,8 @@ const Sidebar = () => {
           <li
             className={
               active === 7
-                ? "active nav nav-pills flex-column mt-2 mt-sm-0"
-                : "nav nav-pills flex-column mt-2 mt-sm-0"
+                ? "active nav-item p-2"
+                : "nav-item p-2"
             }
             onClick={(e) => {
               setActive(7);
@@ -145,10 +145,10 @@ const Sidebar = () => {
           <li
             className={
               active === 8
-                ? "active nav nav-pills flex-column mt-2 mt-sm-0"
-                : "nav nav-pills flex-column mt-2 mt-sm-0"
+                ? 'active nav-item p-2'
+                : 'nav-item p-2'
             }
-            onClick={(e) => setActive(8)}
+            onClick={e => setActive(8)}
           >
             <a
               href="#"

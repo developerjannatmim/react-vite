@@ -1,14 +1,15 @@
 import React from "react";
 import "../assets/css/Header.css";
 
-const Header = () => {
+const Header = ({Toggle}) => {
   return (
     <div>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a className="navbar-brand ps-3" href="index.html">
           React-Bootstrap Dashboard
         </a>
-
+        <a className="navbar-brand d-block d-md-none" onClick={Toggle}><i className="bi bi-justify"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="btnNavbarSearch"><span class="navbar-toggler-icon"></span></button>
         <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
           <div className="input-group">
             <input

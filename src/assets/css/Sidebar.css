@@ -1,8 +1,8 @@
-.active a:hover {
+/* .active a:hover {
   background-color: rgb(131, 131, 131);
   border-radius: 5px;
   color: white;
-}
+} */
 
 .sidenav-menu-heading {
   color: rgb(155, 155, 155);
@@ -15,6 +15,7 @@
   color: rgb(157, 157, 157);
 }
 
-li a:hover {
+.sidebar li a:hover {
   background-color: rgb(131, 131, 131);
+  cursor: pointer;
 }
