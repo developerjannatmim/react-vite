@@ -26,7 +26,7 @@ const Sidebar = () => {
             onClick={e => setActive(1)}
           >
             <a
-              href="/"
+              href="/dashboard"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >

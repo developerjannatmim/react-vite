@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Dashboard from "./components/Dashboard";
-import User from "./components/User";
 import Footer from "./components/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Classroom from "./components/Classroom";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
 
 const App = () => {
   const [toggle, setToggle] = useState(false);
@@ -28,10 +25,7 @@ const App = () => {
               <Header Toggle={Toggle} />
               <Routes>
                 <Route path="/" element={<Dashboard />}></Route>
-                <Route path="/users" element={<User />}></Route>
                 <Route path="/class" element={<Classroom />}></Route>
-                <Route path="/register" element={<Register />}></Route>
-                <Route path="/login" element={<Login />}></Route>
               </Routes>
             </div>
           </div>
@@ -42,4 +36,5 @@ const App = () => {
       </>
     );
 };
+
 export default App;
