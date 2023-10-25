@@ -71,11 +71,11 @@ const Sidebar = () => {
               >
                 <a
                   className="nav-link text-white"
-                  href="/admin"
+                  href="/add-admin"
                   aria-current="page"
                 >
-                  <i class="bi bi-person-circle icon"></i>
-                  <span className="d-none d-sm-inline">Admin</span>
+                  <i className="bi bi-person-circle icon"></i>
+                  <span className="d-none d-sm-inline">Add Admin</span>
                 </a>
               </li>
               <li
@@ -87,7 +87,7 @@ const Sidebar = () => {
                 onClick={(e) => setActive(4)}
               >
                 <a className="nav-link text-white" href="/students">
-                  <i class="bi bi-person-circle icon"></i>
+                  <i className="bi bi-person-circle icon"></i>
                   <span className="d-none d-sm-inline">Student</span>
                 </a>
               </li>
@@ -100,7 +100,7 @@ const Sidebar = () => {
                 onClick={(e) => setActive(5)}
               >
                 <a className="nav-link text-white" href="#">
-                  <i class="bi bi-person-circle icon"></i>
+                  <i className="bi bi-person-circle icon"></i>
                   <span className="d-none d-sm-inline">Teacher</span>
                 </a>
               </li>
@@ -121,6 +121,23 @@ const Sidebar = () => {
             >
               <i className="bi bi-book"></i>
               <span className="ms-2 d-none d-sm-inline">Exam</span>
+            </a>
+          </li>
+          <li
+            className={
+              active === 9
+                ? "active nav-item p-2"
+                : "nav-item p-2"
+            }
+            onClick={(e) => setActive(9)}
+          >
+            <a
+              href="/subject/view"
+              className="nav-link text-white text-center text-sm-start"
+              aria-current="page"
+            >
+              <i className="bi bi-book"></i>
+              <span className="ms-2 d-none d-sm-inline">Subject</span>
             </a>
           </li>
           <li
@@ -169,7 +186,7 @@ const Sidebar = () => {
               aria-expanded="false"
               aria-controls="collapseLayouts1"
             >
-              <i class="bi bi-shop"></i>
+              <i className="bi bi-shop"></i>
               <span className="ms-2 d-none d-sm-inline">Settings</span>
               <i className="bi bi-caret-down arrow ms-0 ms-sm-3"></i>
             </a>

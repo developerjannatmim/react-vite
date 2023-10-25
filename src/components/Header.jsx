@@ -9,7 +9,7 @@ const Header = ({Toggle}) => {
           React-Bootstrap Dashboard
         </a>
         <a className="navbar-brand d-block d-md-none" onClick={Toggle}><i className="bi bi-justify"></i></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="btnNavbarSearch"><span class="navbar-toggler-icon"></span></button>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="btnNavbarSearch"><span className="navbar-toggler-icon"></span></button>
         <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
           <div className="input-group">
             <input
