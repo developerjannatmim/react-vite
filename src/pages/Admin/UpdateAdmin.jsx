@@ -85,7 +85,7 @@ const UpdateAdmin = () => {
                 >
                   <div className="row">
                     <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
+                      <label>Name</label>
                       <input
                         type="text"
                         name="name"
@@ -95,7 +95,7 @@ const UpdateAdmin = () => {
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
+                      <label>Email</label>
                       <input
                         type="text"
                         name="name"
@@ -105,7 +105,7 @@ const UpdateAdmin = () => {
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
+                      <label>Address</label>
                       <input
                         type="text"
                         name="name"
@@ -115,7 +115,7 @@ const UpdateAdmin = () => {
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
+                      <label>Phone</label>
                       <input
                         type="text"
                         name="name"
@@ -125,7 +125,7 @@ const UpdateAdmin = () => {
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
+                      <label>Photo</label>
                       <input
                         type="text"
                         name="name"
@@ -135,7 +135,7 @@ const UpdateAdmin = () => {
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
+                      <label>Gender</label>
                       <input
                         type="text"
                         name="name"
@@ -145,7 +145,7 @@ const UpdateAdmin = () => {
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
+                      <label>Blood Group</label>
                       <input
                         type="text"
                         name="name"
@@ -154,17 +154,6 @@ const UpdateAdmin = () => {
                         className="form-control"
                       />
                     </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        onChange={handleChange}
-                        value={adminInput?.name || ''}
-                        className="form-control"
-                      />
-                    </div>
-
                   </div>
                   <button type="submit" className="btn btn-primary px-4">
                     Update
