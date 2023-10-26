@@ -11,7 +11,7 @@ const UpdateAdmin = () => {
   //console.log(id);
 
   const handleChange = (e) => {
-    setSubjectInput({ ...subjectInput, [e.target.name]: e.target.value });
+    setAdminInput({ ...adminInput, [e.target.name]: e.target.value });
   };
 
   const submitAdmin = (e) => {
@@ -54,11 +54,11 @@ const UpdateAdmin = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setSubjectInput(response.data?.admin);
+        setAdminInput(response.data?.admin);
       })
       .catch((error) => {
         console.error(error);
-        setSubjectInput(null);
+        setAdminInput(null);
       });
   }, [id]);
 
