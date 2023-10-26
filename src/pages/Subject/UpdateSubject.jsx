@@ -1,15 +1,66 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+// import { swal } from "sweetalert";
 
 const UpdateSubject = () => {
+  const navigate = useNavigate();
   const [subjectInput, setSubjectInput] = useState([]);
   const [classes, setClasses] = useState();
+  const { id } = useParams();
+  //console.log(id);
 
   const handleChange = (e) => {
-    e.persist();
     setSubjectInput({ ...subjectInput, [e.target.name]: e.target.value });
   };
+
+  const submitSubject = (e) => {
+    e.preventDefault();
+    console.log(subjectInput);
+    const data = subjectInput;
+    fetch(
+      `http://127.0.0.1:8000/api/subjects/${id}`,
+      {
+        body: JSON.stringify({
+          ...data,
+        }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        method: 'PUT',
+      },
+      data
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.info(response);
+        alert('data update successful.');
+        navigate('/subject/view');
+      })
+      .catch((error) => {
+        console.error(error);
+        document.getElementById('SUBJECT_FORM').reset();
+      });
+  };
+
+  useEffect(() => {
+    fetch(`http://127.0.0.1:8000/api/subjects/${id}`, {
+      headers: {
+        Accept: 'application/json',
+      },
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.info(response);
+        setSubjectInput(response.data?.subject);
+      })
+      .catch((error) => {
+        console.error(error);
+        setSubjectInput(null);
+      });
+  }, [id]);
 
   useEffect(() => {
     console.log({ classes });
@@ -30,24 +81,6 @@ const UpdateSubject = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   fetch(`http://127.0.0.1:8000/api/subjects`, {
-  //     headers: {
-  //       Accept: 'application/json',
-  //     },
-  //     method: 'GET',
-  //   })
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       console.info(response);
-  //       setSubjectInput(response.data?.subject);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //       setSubjectInput(null);
-  //     });
-  // }, []);
-
   return (
     <div className="container px-4">
       <div className="card">
@@ -59,7 +92,7 @@ const UpdateSubject = () => {
         </div>
       </div>
       <div className="card-body">
-        <form>
+        <form onSubmit={submitSubject} id="SUBJECT_FORM">
           <div className="card mt-4">
             <div className="card-body">
               <div className="tab-content" id="myTabContent">
@@ -76,7 +109,7 @@ const UpdateSubject = () => {
                         type="text"
                         name="name"
                         onChange={handleChange}
-                        value={subjectInput.name}
+                        value={subjectInput?.name || ''}
                         className="form-control"
                       />
                     </div>
@@ -86,7 +119,7 @@ const UpdateSubject = () => {
                         name="class_id"
                         className="form-control"
                         onChange={handleChange}
-                        value={subjectInput.class_id}
+                        value={subjectInput?.class_id || ''}
                       >
                         <option>select class</option>
                         {classes?.map((classItem) => {

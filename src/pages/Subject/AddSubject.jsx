@@ -12,13 +12,8 @@ const AddSubject = () => {
   });
 
   const handleChange = (e) => {
-    e.persist();
     setSubjectInput({ ...subjectInput, [e.target.name]: e.target.value });
   };
-
-  // const handleImage  = (e) => {
-  //   setPicture({ image: e.target.files[0]});
-  // }
 
   useEffect(() => {
     console.log({ classes });
@@ -41,7 +36,7 @@ const AddSubject = () => {
 
   const submitSubject = (e) => {
     e.preventDefault();
-    console.log(subjectInput);
+    //console.log(subjectInput);
     const data = {
       name: subjectInput.name,
       class_id: subjectInput.class_id,
@@ -50,27 +45,26 @@ const AddSubject = () => {
       'http://127.0.0.1:8000/api/subjects',
       {
         body: JSON.stringify({
-          ...data
+          ...data,
         }),
         headers: {
-           Accept: 'application/json',
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         method: 'POST',
       },
       data
     )
-    .then((response) => response.json())
+      .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        alert('data store successful.')
+        alert('data store successful.');
         navigate('/subject/view');
       })
       .catch((error) => {
         console.error(error);
         document.getElementById('SUBJECT_FORM').reset();
         alert('somthig is wrong!');
-
       });
   };
 
