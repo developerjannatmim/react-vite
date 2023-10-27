@@ -71,11 +71,11 @@ const Sidebar = () => {
               >
                 <a
                   className="nav-link text-white"
-                  href="/add-admin"
+                  href="/admin"
                   aria-current="page"
                 >
                   <i className="bi bi-person-circle icon"></i>
-                  <span className="d-none d-sm-inline">Add Admin</span>
+                  <span className="d-none d-sm-inline">Admin</span>
                 </a>
               </li>
               <li

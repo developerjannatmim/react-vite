@@ -25,6 +25,11 @@ const ShowAdmin = () => {
       });
   }, [id]);
 
+  let userInformation;
+  try {
+    userInformation = JSON.parse(adminItem?.user_information);
+  } catch (error) { /**/ }
+
   return (
     <div className="container">
       <div className="card">
@@ -50,25 +55,17 @@ const ShowAdmin = () => {
               </tr>
             </thead>
             <tbody>
-            {/* {
-            let userInformation;
-            try {
-              userInformation = JSON.parse(adminItem?.user_information);
-            } catch (error) { /**/ }
-        {/*return ( */}
               <tr>
                 <td>{adminItem?.id}</td>
                 <td>{adminItem?.name}</td>
                 <td>{adminItem?.email}</td>
-                {/* <td>{userInformation?.address}</td>
+                <td>{userInformation?.address}</td>
                 <td>{userInformation?.phone}</td>
                 <td>{userInformation?.photo}</td>
                 <td>{userInformation?.gender}</td>
                 <td>{userInformation?.birthday}</td>
-                <td>{userInformation?.blood_group}</td> */}
+                <td>{userInformation?.blood_group}</td>
               </tr>
-             {/* );
-             } */}
             </tbody>
           </table>
         </div>

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { swal } from 'sweetalert';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { swal } from "sweetalert";
 
 const AddAdmin = () => {
   const navigate = useNavigate();
@@ -13,14 +13,14 @@ const AddAdmin = () => {
   // };
 
   const [adminInput, setAdminInput] = useState({
-    name: '',
-    email: '',
-    password: '',
-    address: '',
-    phone: '',
-    birthday: '',
-    gender: '',
-    blood_group: '',
+    name: "",
+    email: "",
+    password: "",
+    address: "",
+    phone: "",
+    birthday: "",
+    gender: "",
+    blood_group: "",
   });
 
   const handleChange = (e) => {
@@ -47,30 +47,30 @@ const AddAdmin = () => {
     });
 
     fetch(
-      'http://127.0.0.1:8000/api/admin',
+      "http://127.0.0.1:8000/api/admin",
       {
         body: JSON.stringify({
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'POST',
+        method: "POST",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        alert('success');
-        navigate('/admin');
+        alert("success");
+        navigate("/admin");
         // alert('data store successful.');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('ADMIN_FORM').reset();
-        alert('somthig is wrong!');
+        document.getElementById("ADMIN_FORM").reset();
+        alert("somthig is wrong!");
       });
   };
 
@@ -99,9 +99,10 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.name || ''}
+                    value={adminInput.name || ""}
                     name="name"
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -109,9 +110,10 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.email || ''}
+                    value={adminInput.email || ""}
                     name="email"
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -119,9 +121,10 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.password || ''}
+                    value={adminInput.password || ""}
                     name="password"
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -129,9 +132,10 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.address || ''}
+                    value={adminInput.address || ""}
                     name="address"
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -139,9 +143,10 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.phone || ''}
+                    value={adminInput.phone || ""}
                     name="phone"
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -149,9 +154,10 @@ const AddAdmin = () => {
                   <input
                     type="date"
                     onChange={handleChange}
-                    value={adminInput.birthday || ''}
+                    value={adminInput.birthday || ""}
                     name="birthday"
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -159,16 +165,17 @@ const AddAdmin = () => {
                   <input
                     type="file"
                     onChange={handleChange}
-                    value={adminInput.photo || ''}
+                    value={adminInput.photo || ""}
                     name="photo"
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group mb-3">
                   <label>Gender</label>
                   <select
                     onChange={handleChange}
-                    value={adminInput.gender || ''}
+                    value={adminInput.gender || ""}
                     name="gender"
                     className="form-control"
                     required
@@ -183,7 +190,7 @@ const AddAdmin = () => {
                   <label>Blood Group</label>
                   <select
                     onChange={handleChange}
-                    value={adminInput.blood_group || ''}
+                    value={adminInput.blood_group || ""}
                     name="blood_group"
                     className="form-control"
                     required

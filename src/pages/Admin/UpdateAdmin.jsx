@@ -1,12 +1,11 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 // import { swal } from "sweetalert";
 
 const UpdateAdmin = () => {
   const navigate = useNavigate();
   const [adminInput, setAdminInput] = useState([]);
-  const [classes, setClasses] = useState();
   const { id } = useParams();
   //console.log(id);
 
@@ -14,10 +13,11 @@ const UpdateAdmin = () => {
     setAdminInput({ ...adminInput, [e.target.name]: e.target.value });
   };
 
+
   const submitAdmin = (e) => {
     e.preventDefault();
     console.log(adminInput);
-    const data = adminInput;
+    const data = {adminInput};
     fetch(
       `http://127.0.0.1:8000/api/admin/${id}`,
       {
@@ -25,31 +25,31 @@ const UpdateAdmin = () => {
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'PUT',
+        method: "PUT",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        alert('data update successful.');
-        navigate('/subject/view');
+        alert("data update successful.");
+        navigate("/admin");
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('ADMIN_FORM').reset();
+        document.getElementById("ADMIN_FORM").reset();
       });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -61,6 +61,21 @@ const UpdateAdmin = () => {
         setAdminInput(null);
       });
   }, [id]);
+
+// const [userInformation, setUserInfo] = useState([]);
+
+//   const handleInfo = (e) => {
+//     setUserInfo({ ...userInformation, [e.target.name]: e.target.value });
+//   };
+
+let userInformation;
+  try {
+    userInformation = JSON.parse(adminInput?.user_information);
+  } catch (error) {
+    /**/
+  }
+
+
 
   return (
     <div className="container px-4">
@@ -90,17 +105,17 @@ const UpdateAdmin = () => {
                         type="text"
                         name="name"
                         onChange={handleChange}
-                        value={adminInput?.name || ''}
+                        value={adminInput?.name || ""}
                         className="form-control"
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
                       <label>Email</label>
                       <input
-                        type="text"
-                        name="name"
+                        type="email"
+                        name="email"
                         onChange={handleChange}
-                        value={adminInput?.email || ''}
+                        value={adminInput?.email || ""}
                         className="form-control"
                       />
                     </div>
@@ -108,19 +123,19 @@ const UpdateAdmin = () => {
                       <label>Address</label>
                       <input
                         type="text"
-                        name="name"
+                        name="address"
                         onChange={handleChange}
-                        value={adminInput?.address || ''}
+                        value={userInformation?.address || ""}
                         className="form-control"
                       />
                     </div>
-                    <div className="col-md-6 form-group mb-3">
+                    {/* <div className="col-md-6 form-group mb-3">
                       <label>Phone</label>
                       <input
                         type="text"
-                        name="name"
+                        name="phone"
                         onChange={handleChange}
-                        value={adminInput?.name || ''}
+                        value={userInformation?.phone || ""}
                         className="form-control"
                       />
                     </div>
@@ -128,32 +143,48 @@ const UpdateAdmin = () => {
                       <label>Photo</label>
                       <input
                         type="text"
-                        name="name"
+                        name="photo"
                         onChange={handleChange}
-                        value={adminInput?.name || ''}
+                        value={userInformation?.photo || ""}
                         className="form-control"
+                        required
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
                       <label>Gender</label>
-                      <input
-                        type="text"
-                        name="name"
+                      <select
+                        name="gender"
                         onChange={handleChange}
-                        value={adminInput?.name || ''}
+                        value={userInformation?.gender || ""}
                         className="form-control"
-                      />
+                        required
+                      >
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Others</option>
+                      </select>
                     </div>
                     <div className="col-md-6 form-group mb-3">
                       <label>Blood Group</label>
-                      <input
-                        type="text"
-                        name="name"
+                      <select
+                        name="blood_group"
                         onChange={handleChange}
-                        value={adminInput?.name || ''}
+                        value={userInformation?.blood_group || ""}
                         className="form-control"
-                      />
-                    </div>
+                        required
+                      >
+                        <option value="">Select a blood group</option>
+                        <option value="a+">A+</option>
+                        <option value="a-">A-</option>
+                        <option value="b+">B+</option>
+                        <option value="b-">B-</option>
+                        <option value="ab+">AB+</option>
+                        <option value="ab-">AB-</option>
+                        <option value="o+">O+</option>
+                        <option value="o-">O-</option>
+                      </select>
+                    </div> */}
                   </div>
                   <button type="submit" className="btn btn-primary px-4">
                     Update
