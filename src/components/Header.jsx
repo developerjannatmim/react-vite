@@ -1,14 +1,14 @@
 import React from 'react';
 import '../assets/css/Header.css';
 
-const Header = ({ Toggle }) => {
+const Header = () => {
   return (
     <div>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a className="navbar-brand ps-3" href="index.html">
-          React-Bootstrap Dashboard
+          React Bootstrap Dashboard
         </a>
-        <a className="navbar-brand d-block d-md-none" onClick={Toggle}>
+        <a className="navbar-brand d-block d-md-none">
           <i className="bi bi-justify"></i>
         </a>
         <button
@@ -41,10 +41,11 @@ const Header = ({ Toggle }) => {
         <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
           <li className="nav-item dropdown">
             <a
-              className="nav-link dropdown-toggle"
+              className="nav-link dropdown-toggle collapsed"
               data-bs-toggle="collapse"
+              aria-haspopup="true"
               data-bs-target="#navbarDropdown"
-              aria-expanded="false"
+              aria-expanded="collapse"
               aria-controls="navbarDropdown"
               href="#"
             >
@@ -55,7 +56,7 @@ const Header = ({ Toggle }) => {
               id="navbarDropdown"
               aria-labelledby="navbarDropdown"
             >
-              <li>
+              <li className='dropdown-list'>
                 <a className="dropdown-item" href="#!">
                   Account
                 </a>
@@ -63,7 +64,7 @@ const Header = ({ Toggle }) => {
               <li>
                 <hr className="dropdown-divider" />
               </li>
-              <li>
+              <li className='dropdown-list'>
                 <a className="dropdown-item" href="#!">
                   Logout
                 </a>

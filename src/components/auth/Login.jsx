@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,16 +19,20 @@ const Login = () => {
       password: loginInput.password,
     };
 
-    fetch('http://127.0.0.1:8000/api/login', {
-      body: JSON.stringify({
-        ...LoginForm,
-      }),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+    fetch(
+      'http://127.0.0.1:8000/api/login',
+      {
+        body: JSON.stringify({
+          ...LoginForm,
+        }),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
       },
-      method: 'POST',
-    }, LoginForm)
+      LoginForm
+    )
       .then((response) => response.json())
       .then((response) => {
         if (response?.status === 200) {
@@ -37,11 +41,11 @@ const Login = () => {
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
           navigate('/dashboard');
-        } else if(response?.status === 401){
+        } else if(response?.status === 401) {
           Swal.fire('Warning', response?.message, 'warning');
         }
       });
-  }
+  };
 
   return (
     <div className="login">
@@ -64,7 +68,6 @@ const Login = () => {
                             className="form-control"
                             onChange={handleChange}
                             value={loginInput.email}
-                            type="email"
                             name="email"
                             placeholder="name@example.com"
                           />
@@ -75,7 +78,6 @@ const Login = () => {
                             className="form-control"
                             onChange={handleChange}
                             value={loginInput.password}
-                            type="password"
                             name="password"
                             placeholder="Password"
                           />

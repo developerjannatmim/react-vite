@@ -5,7 +5,7 @@ const Sidebar = () => {
   const [active, setActive] = useState(1);
 
   return (
-    <div className="sidebar py-3 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
+    <div className="sidebar py-5 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
       <div>
         <a
           className="p-3 text-decoration-none ms-4 d-flex align-items-center text-white d-none d-sm-inline"
@@ -151,7 +151,7 @@ const Sidebar = () => {
             }}
           >
             <a
-              href="/class"
+              href="/classroom"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >

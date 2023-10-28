@@ -36,7 +36,6 @@ const AddSubject = () => {
 
   const submitSubject = (e) => {
     e.preventDefault();
-    //console.log(subjectInput);
     const data = {
       name: subjectInput.name,
       class_id: subjectInput.class_id,
@@ -58,13 +57,13 @@ const AddSubject = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        alert('data store successful.');
+        Swal.fire('Success', response?.message, 'success');
         navigate('/subject/view');
       })
       .catch((error) => {
         console.error(error);
         document.getElementById('SUBJECT_FORM').reset();
-        alert('somthig is wrong!');
+        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 

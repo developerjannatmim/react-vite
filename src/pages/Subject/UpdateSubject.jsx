@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-// import { swal } from "sweetalert";
+import  Swal  from 'sweetalert2'
 
 const UpdateSubject = () => {
   const navigate = useNavigate();
   const [subjectInput, setSubjectInput] = useState([]);
   const [classes, setClasses] = useState();
   const { id } = useParams();
-  //console.log(id);
+
 
   const handleChange = (e) => {
     setSubjectInput({ ...subjectInput, [e.target.name]: e.target.value });
@@ -35,7 +35,7 @@ const UpdateSubject = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        alert('data update successful.');
+        Swal.fire('Success', response?.message, 'success');
         navigate('/subject/view');
       })
       .catch((error) => {

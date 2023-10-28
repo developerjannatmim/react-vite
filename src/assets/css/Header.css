@@ -13,3 +13,7 @@ background-color: rgb(187, 187, 187);
 .navbar {
   width: 100%;
 }
+
+.dropdown-list{
+  margin-left: 15px;
+}
