@@ -49,7 +49,7 @@ const ShowSyllabus = () => {
             <tbody>
               <tr>
                 <td>{syllabusItem?.id}</td>
-                <td>{syllabusItem?.name}</td>
+                <td>{syllabusItem?.title}</td>
                 <td>{syllabusItem?.class?.name}</td>
                 <td>{syllabusItem?.subject?.name}</td>
                 <td>{syllabusItem?.section?.name}</td>

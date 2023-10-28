@@ -50,11 +50,11 @@ const AddSyllabus = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setClasses(response.data?.sections);
+        setSections(response.data?.sections);
       })
       .catch((error) => {
         console.error(error);
-        setClasses(null);
+        setSections(null);
       });
   }, []);
 
@@ -69,11 +69,11 @@ const AddSyllabus = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setClasses(response.data?.subjects);
+        setSubjects(response.data?.subjects);
       })
       .catch((error) => {
         console.error(error);
-        setClasses(null);
+        setSubjects(null);
       });
   }, []);
 

@@ -121,7 +121,7 @@ const SyllabusList = () => {
                 return (
                   <tr key={syllabus?.id}>
                     <td>{syllabus?.id}</td>
-                    <td>{syllabus?.name}</td>
+                    <td>{syllabus?.title}</td>
                     <td>{syllabus.class?.name}</td>
                     <td>{syllabus.section?.name}</td>
                     <td>{syllabus.subject?.name}</td>

@@ -147,9 +147,9 @@ const UpdateSyllabus = () => {
                       <label>Syllabus</label>
                       <input
                         type="text"
-                        name="name"
+                        name="title"
                         onChange={handleChange}
-                        value={syllabusInput?.name || ''}
+                        value={syllabusInput?.title || ''}
                         className="form-control"
                       />
                     </div>
@@ -213,7 +213,7 @@ const UpdateSyllabus = () => {
                         type="file"
                         name="file"
                         onChange={handleChange}
-                        value={syllabusInput?.file || ''}
+                        //value={syllabusInput?.file || ''}
                         className="form-control"
                       />
                     </div>
