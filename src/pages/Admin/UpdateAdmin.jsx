@@ -64,9 +64,9 @@ const UpdateAdmin = () => {
 
 // const [userInformation, setUserInfo] = useState([]);
 
-//   const handleInfo = (e) => {
-//     setUserInfo({ ...userInformation, [e.target.name]: e.target.value });
-//   };
+  // const handleInfo = (e) => {
+  //   setUserInfo({ ...userInformation, [e.target.name]: e.target.value });
+  // };
 
 let userInformation;
   try {

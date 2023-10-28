@@ -31,7 +31,7 @@ const App = () => {
           <div className={toggle ? "d-none" : "invisible"}>
             <Sidebar />
           </div>
-          <div className="col overflow-auto">
+          <div className="col overflow-hidden">
             <Header Toggle={Toggle} />
             <Routes>
               <Route path="/dashboard" element={<Dashboard />}></Route>

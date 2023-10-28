@@ -1,8 +1,50 @@
-import React from "react";
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [loginInput, setLoginInput] = useState({
+    email: '',
+    password: '',
+  });
+  const handleChange = (e) => {
+    setLoginInput({ ...loginInput, [e.target.name]: e.target.value });
+  };
+
+  const submitLogin = (e) => {
+    e.preventDefault();
+    const LoginForm = {
+      email: loginInput.email,
+      password: loginInput.password,
+    };
+
+    fetch('http://127.0.0.1:8000/api/login', {
+      body: JSON.stringify({
+        ...LoginForm,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    }, LoginForm)
+      .then((response) => response.json())
+      .then((response) => {
+        if (response?.status === 200) {
+          localStorage.setItem('auth_token', response?.token);
+          localStorage.setItem('auth_name', response?.username);
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          navigate('/dashboard');
+        } else if(response?.status === 401){
+          Swal.fire('Warning', response?.message, 'warning');
+        }
+      });
+  }
+
   return (
-    <div classNameName="login">
+    <div className="login">
       <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
           <main>
@@ -16,52 +58,40 @@ const Login = () => {
                       </h3>
                     </div>
                     <div className="card-body">
-                      <form>
+                      <form onSubmit={submitLogin}>
                         <div className="form-floating mb-3">
                           <input
                             className="form-control"
-                            id="inputEmail"
+                            onChange={handleChange}
+                            value={loginInput.email}
                             type="email"
+                            name="email"
                             placeholder="name@example.com"
                           />
-                          <label for="inputEmail">Email address</label>
+                          <label>Email address</label>
                         </div>
                         <div className="form-floating mb-3">
                           <input
                             className="form-control"
-                            id="inputPassword"
+                            onChange={handleChange}
+                            value={loginInput.password}
                             type="password"
+                            name="password"
                             placeholder="Password"
                           />
-                          <label for="inputPassword">Password</label>
+                          <label>Password</label>
                         </div>
-                        <div className="form-check mb-3">
-                          <input
-                            className="form-check-input"
-                            id="inputRememberPassword"
-                            type="checkbox"
-                            value=""
-                          />
-                          <label
-                            className="form-check-label"
-                            for="inputRememberPassword"
-                          >
-                            Remember Password
-                          </label>
-                        </div>
-                        <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
-                          <a className="small" href="password.html">
-                            Forgot Password?
-                          </a>
-                          <a className="btn btn-primary" href="index.html">
-                            Login
-                          </a>
-                        </div>
+                        <button
+                          type="submit"
+                          className="btn btn-primary btn-sm"
+                        >
+                          Login
+                        </button>
                       </form>
                     </div>
                     <div className="card-footer text-center py-3">
                       <div className="small">
-                        <a href="register.html">Need an account? Sign up!</a>
+                        <a href="/register">Need an account? Sign up!</a>
                       </div>
                     </div>
                   </div>

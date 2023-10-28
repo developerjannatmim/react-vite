@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { swal } from "sweetalert";
+import Swal from 'sweetalert2'
 
 const AddAdmin = () => {
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ const AddAdmin = () => {
     password: "",
     address: "",
     phone: "",
+    photo: "",
     birthday: "",
     gender: "",
     blood_group: "",
@@ -60,18 +61,17 @@ const AddAdmin = () => {
       },
       data
     )
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        alert("success");
-        navigate("/admin");
-        // alert('data store successful.');
-      })
-      .catch((error) => {
-        console.error(error);
-        document.getElementById("ADMIN_FORM").reset();
-        alert("somthig is wrong!");
-      });
+    .then((response) => response.json())
+    .then((response) => {
+      console.info(response);
+      Swal.fire('Success', response?.message, 'success');
+      navigate('/admin');
+    })
+    .catch((error) => {
+      console.error(error);
+      Swal.fire('Warning', response?.message, 'warning');
+      //document.getElementById("ADMIN_FORM").reset();
+    });
   };
 
   return (

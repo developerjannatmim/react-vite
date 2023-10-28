@@ -1,103 +1,83 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [registerInput, setRegisterInput] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    setRegisterInput({...registerInput, [e.target.name]: e.target.value });
+  }
+
+  const submitRegister = (e) => {
+    e.preventDefault();
+    const data = {
+      name: registerInput.name,
+      email: registerInput.email,
+      password: registerInput.password,
+    }
+    fetch(
+      "http://127.0.0.1:8000/api/register",
+      {
+        body: JSON.stringify({
+          ...data,
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      },
+      data
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        if(response?.status === 200){
+          localStorage.setItem('auth_token', response?.token);
+          localStorage.setItem('auth_name', response?.username);
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          navigate("/dashboard");
+        }else{
+          Swal.fire('Warning', response?.message, "warning");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   return (
     <div>
-      <div id="layoutAuthentication">
-        <div id="layoutAuthentication_content">
-          <main>
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-7">
-                  <div className="card shadow-lg border-0 rounded-lg mt-5">
-                    <div className="card-header">
-                      <h3 className="text-center font-weight-light my-4">
-                        Create Account
-                      </h3>
-                    </div>
-                    <div className="card-body">
-                      <form>
-                        <div className="row mb-3">
-                          <div className="col-md-6">
-                            <div className="form-floating mb-3 mb-md-0">
-                              <input
-                                className="form-control"
-                                id="inputFirstName"
-                                type="text"
-                                placeholder="Enter your first name"
-                              />
-                              <label for="inputFirstName">First name</label>
-                            </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div className="form-floating">
-                              <input
-                                className="form-control"
-                                id="inputLastName"
-                                type="text"
-                                placeholder="Enter your last name"
-                              />
-                              <label for="inputLastName">Last name</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="form-floating mb-3">
-                          <input
-                            className="form-control"
-                            id="inputEmail"
-                            type="email"
-                            placeholder="name@example.com"
-                          />
-                          <label for="inputEmail">Email address</label>
-                        </div>
-                        <div className="row mb-3">
-                          <div className="col-md-6">
-                            <div className="form-floating mb-3 mb-md-0">
-                              <input
-                                className="form-control"
-                                id="inputPassword"
-                                type="password"
-                                placeholder="Create a password"
-                              />
-                              <label for="inputPassword">Password</label>
-                            </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div className="form-floating mb-3 mb-md-0">
-                              <input
-                                className="form-control"
-                                id="inputPasswordConfirm"
-                                type="password"
-                                placeholder="Confirm password"
-                              />
-                              <label for="inputPasswordConfirm">
-                                Confirm Password
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="mt-4 mb-0">
-                          <div className="d-grid">
-                            <a
-                              className="btn btn-primary btn-block"
-                              href="login.html"
-                            >
-                              Create Account
-                            </a>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                    <div className="card-footer text-center py-3">
-                      <div className="small">
-                        <a href="login.html">Have an account? Go to login</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div className='container py-5'>
+        <div className='col-md-6'>
+          <div className='card'>
+            <div className='card-header'>
+              <h4>Register</h4>
             </div>
-          </main>
+            <div className='card-body'>
+              <form onSubmit={submitRegister}>
+                <div className='form-group mb-3'>
+                  <label>Full Name</label>
+                  <input type='text' onChange={handleChange} value={registerInput.name}  name='name' className='form-control' />
+                </div>
+                <div className='form-group mb-3'>
+                  <label>Email Address</label>
+                  <input type='text' name='email' onChange={handleChange} value={registerInput.email} className='form-control'/>
+                </div>
+                <div className='form-group mb-3'>
+                  <label>Password</label>
+                  <input type='text' name='password' onChange={handleChange} value={registerInput.password} className='form-control'/>
+                </div>
+                <button type="submit" className="btn btn-primary btn-sm">Submit</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>

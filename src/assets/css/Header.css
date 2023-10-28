@@ -5,3 +5,11 @@ background-color: rgb(187, 187, 187);
 .bi-people {
   font-size: large;
 }
+
+#navbarDropdown {
+  margin-left: -90px;
+}
+
+.navbar {
+  width: 100%;
+}

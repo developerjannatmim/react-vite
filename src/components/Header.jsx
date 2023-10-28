@@ -1,15 +1,24 @@
-import React from "react";
-import "../assets/css/Header.css";
+import React from 'react';
+import '../assets/css/Header.css';
 
-const Header = ({Toggle}) => {
+const Header = ({ Toggle }) => {
   return (
     <div>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a className="navbar-brand ps-3" href="index.html">
           React-Bootstrap Dashboard
         </a>
-        <a className="navbar-brand d-block d-md-none" onClick={Toggle}><i className="bi bi-justify"></i></a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="btnNavbarSearch"><span className="navbar-toggler-icon"></span></button>
+        <a className="navbar-brand d-block d-md-none" onClick={Toggle}>
+          <i className="bi bi-justify"></i>
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="btnNavbarSearch"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
         <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
           <div className="input-group">
             <input
@@ -33,16 +42,17 @@ const Header = ({Toggle}) => {
           <li className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"
-              id="navbarDropdown"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarDropdown"
               aria-expanded="false"
+              aria-controls="navbarDropdown"
+              href="#"
             >
-              <i className="bi bi-people text-white"></i>
+              <i className="bi bi-people"></i>
             </a>
             <ul
               className="dropdown-menu dropdown-menu-end"
+              id="navbarDropdown"
               aria-labelledby="navbarDropdown"
             >
               <li>
@@ -50,7 +60,6 @@ const Header = ({Toggle}) => {
                   Account
                 </a>
               </li>
-
               <li>
                 <hr className="dropdown-divider" />
               </li>
