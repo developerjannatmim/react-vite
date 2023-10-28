@@ -2,20 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-import '../../assets/css/style.css';
 
-const AdminList = () => {
-  const [admin, setAdmin] = useState([]);
+const SyllabusList = () => {
+  const [syllabusList, setSyllabusList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
-  const deleteAdminData = (e, id) => {
+  const deleteSyllabus = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
     Clicked.innerText = 'deleting';
 
-    fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
+    fetch(`http://127.0.0.1:8000/api/syllabuses/${id}`, {
       headers: {
         Accept: 'application/json',
       },
@@ -34,7 +33,7 @@ const AdminList = () => {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/admin?', {
+    fetch('http://127.0.0.1:8000/api/syllabuses?', {
       headers: {
         Accept: 'application/json',
       },
@@ -43,28 +42,31 @@ const AdminList = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setAdmin(response.data?.admin);
+        setSyllabusList(response.data?.syllabuses);
       })
       .catch((error) => {
         console.error(error);
-        setAdmin(null);
+        setSyllabusList(null);
         setLoading(false);
       });
   }, [loading]);
 
   const lastIndex = currentPage * dataPerPage;
   const firstIndex = lastIndex - dataPerPage;
-  const records = admin?.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(admin?.length / dataPerPage);
+  const records = syllabusList?.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(syllabusList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
     <div className="container px-4">
       <div className="card">
         <div className="card-header">
-          <h4>Admin List</h4>
-          <Link to="/admin/create" className="btn btn-primary btn-sm float-end">
-            Add Admin
+          <h4>Syllabus List</h4>
+          <Link
+            to="/syllabuses/create"
+            className="btn btn-primary btn-sm float-end"
+          >
+            Add Syllabus
           </Link>
         </div>
         <div className="page-system mt-4">
@@ -99,46 +101,34 @@ const AdminList = () => {
             </ul>
           </nav>
         </div>
-        <div className='card-body'>
+        <div className="card-body">
           <table className="table table-striped">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Address</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Photo</th>
-                <th scope="col">BirthDay</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Blood Group</th>
-                <th scope="col">Show</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
+              <th scope="col">ID</th>
+                  <th scope="col">Syllabus</th>
+                  <th scope="col">Class Name</th>
+                  <th scope="col">Section Name</th>
+                  <th scope="col">Subject Name</th>
+                  <th scope="col">File Name</th>
+                  <th scope="col">Show</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
-              {records?.map((adminData) => {
-                let userInformation;
-                try {
-                  userInformation = JSON.parse(adminData?.user_information);
-                } catch (error) {
-                  /**/
-                }
+              {records?.map((syllabus) => {
                 return (
-                  <tr key={adminData?.id}>
-                    <td>{adminData?.id}</td>
-                    <td>{adminData?.name}</td>
-                    <td>{adminData?.email}</td>
-                    <td>{userInformation?.address}</td>
-                    <td>{userInformation?.phone}</td>
-                    <td>{userInformation?.photo}</td>
-                    <td>{userInformation?.birthday}</td>
-                    <td>{userInformation?.gender}</td>
-                    <td>{userInformation?.blood_group}</td>
+                  <tr key={syllabus?.id}>
+                    <td>{syllabus?.id}</td>
+                    <td>{syllabus?.name}</td>
+                    <td>{syllabus.class?.name}</td>
+                    <td>{syllabus.section?.name}</td>
+                    <td>{syllabus.subject?.name}</td>
+                    <td>{syllabus?.file}</td>
                     <td>
                       <Link
-                        to={`/admin/${adminData.id}/show`}
+                        to={`/syllabuses/${syllabus.id}/show`}
                         className="btn btn-primary btn-sm"
                       >
                         Show
@@ -146,7 +136,7 @@ const AdminList = () => {
                     </td>
                     <td>
                       <Link
-                        to={`/admin/${adminData.id}/edit`}
+                        to={`/syllabuses/${syllabus.id}/edit`}
                         className="btn btn-success btn-sm"
                       >
                         Edit
@@ -154,7 +144,7 @@ const AdminList = () => {
                     </td>
                     <td
                       type="button"
-                      onClick={(e) => deleteAdminData(e, adminData.id)}
+                      onClick={(e) => deleteSyllabus(e, syllabus.id)}
                       className="btn btn-danger btn-sm"
                     >
                       Delete
@@ -186,6 +176,7 @@ const AdminList = () => {
       setCurrentPage(currentPage + 1);
     }
   }
+
 };
 
-export default AdminList;
+export default SyllabusList;

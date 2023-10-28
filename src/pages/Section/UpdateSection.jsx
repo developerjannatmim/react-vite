@@ -3,23 +3,22 @@ import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import  Swal  from 'sweetalert2'
 
-const UpdateSubject = () => {
+const UpdateSection = () => {
   const navigate = useNavigate();
-  const [subjectInput, setSubjectInput] = useState([]);
-  const [classes, setClasses] = useState();
+  const [sectionInput, setSectionInput] = useState([]);
   const { id } = useParams();
 
 
   const handleChange = (e) => {
-    setSubjectInput({ ...subjectInput, [e.target.name]: e.target.value });
+    setSectionInput({ ...sectionInput, [e.target.name]: e.target.value });
   };
 
-  const submitSubject = (e) => {
+  const submitSection = (e) => {
     e.preventDefault();
-    console.log(subjectInput);
-    const data = subjectInput;
+    const data = sectionInput;
+    console.log(sectionInput);
     fetch(
-      `http://127.0.0.1:8000/api/subjects/${id}`,
+      `http://127.0.0.1:8000/api/sections/${id}`,
       {
         body: JSON.stringify({
           ...data,
@@ -36,17 +35,17 @@ const UpdateSubject = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/subject/view');
+        navigate('/sections');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('SUBJECT_FORM').reset();
+        document.getElementById('SECTION_FORM').reset();
         Swal.fire('Warning', response?.message, 'warning');
       });
   };
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/subjects/${id}`, {
+    fetch(`http://127.0.0.1:8000/api/sections/${id}`, {
       headers: {
         Accept: 'application/json',
       },
@@ -55,45 +54,26 @@ const UpdateSubject = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setSubjectInput(response.data?.subject);
+        setSectionInput(response.data?.section);
       })
       .catch((error) => {
         console.error(error);
-        setSubjectInput(null);
+        setSectionInput(null);
       });
   }, [id]);
-
-  useEffect(() => {
-    console.log({ classes });
-    fetch(`http://127.0.0.1:8000/api/classes`, {
-      headers: {
-        Accept: 'application/json',
-      },
-      method: 'GET',
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        setClasses(response.data?.classes);
-      })
-      .catch((error) => {
-        console.error(error);
-        setClasses(null);
-      });
-  }, []);
 
   return (
     <div className="container px-4">
       <div className="card">
         <div className="card-header">
-          <h4>Subject List</h4>
-          <Link to="/subject/view" className="btn btn-primary btn-sm float-end">
-            Subject List
+          <h4>Section List</h4>
+          <Link to="/sections" className="btn btn-primary btn-sm float-end">
+          Section List
           </Link>
         </div>
       </div>
       <div className="card-body">
-        <form onSubmit={submitSubject} id="SUBJECT_FORM">
+        <form onSubmit={submitSection} id="SECTION_FORM">
           <div className="card mt-4">
             <div className="card-body">
               <div className="tab-content" id="myTabContent">
@@ -105,32 +85,14 @@ const UpdateSubject = () => {
                 >
                   <div className="row">
                     <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
+                      <label>Section Name</label>
                       <input
                         type="text"
                         name="name"
                         onChange={handleChange}
-                        value={subjectInput?.name || ''}
+                        value={sectionInput?.name || ''}
                         className="form-control"
                       />
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Class Name</label>
-                      <select
-                        name="class_id"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={subjectInput?.class_id || ''}
-                      >
-                        <option>select class</option>
-                        {classes?.map((classItem) => {
-                          return (
-                            <option key={classItem.id} value={classItem.id}>
-                              {classItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
                     </div>
                   </div>
                   <button type="submit" className="btn btn-primary px-4">
@@ -146,4 +108,4 @@ const UpdateSubject = () => {
   );
 };
 
-export default UpdateSubject;
+export default UpdateSection;

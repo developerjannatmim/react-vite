@@ -115,12 +115,114 @@ const Sidebar = () => {
             onClick={(e) => setActive(6)}
           >
             <a
-              href="/exam"
+              href="/exams"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
               <i className="bi bi-book"></i>
               <span className="ms-2 d-none d-sm-inline">Exam</span>
+            </a>
+          </li>
+          <li
+            className={
+              active === 10
+                ? "active nav-item p-2"
+                : "nav-item p-2"
+            }
+            onClick={(e) => setActive(10)}
+          >
+            <a
+              href="/marks"
+              className="nav-link text-white text-center text-sm-start"
+              aria-current="page"
+            >
+              <i className="bi bi-book"></i>
+              <span className="ms-2 d-none d-sm-inline">Marks</span>
+            </a>
+          </li>
+          <li
+            className={
+              active === 11
+                ? "active nav-item p-2"
+                : "nav-item p-2"
+            }
+            onClick={(e) => setActive(11)}
+          >
+            <a
+              href="/routines"
+              className="nav-link text-white text-center text-sm-start"
+              aria-current="page"
+            >
+              <i className="bi bi-book"></i>
+              <span className="ms-2 d-none d-sm-inline">Routine</span>
+            </a>
+          </li>
+          <li
+            className={
+              active === 12
+                ? "active nav-item p-2"
+                : "nav-item p-2"
+            }
+            onClick={(e) => setActive(12)}
+          >
+            <a
+              href="/sections"
+              className="nav-link text-white text-center text-sm-start"
+              aria-current="page"
+            >
+              <i className="bi bi-book"></i>
+              <span className="ms-2 d-none d-sm-inline">Section</span>
+            </a>
+          </li>
+          <li
+            className={
+              active === 13
+                ? "active nav-item p-2"
+                : "nav-item p-2"
+            }
+            onClick={(e) => setActive(13)}
+          >
+            <a
+              href="/syllabuses"
+              className="nav-link text-white text-center text-sm-start"
+              aria-current="page"
+            >
+              <i className="bi bi-book"></i>
+              <span className="ms-2 d-none d-sm-inline">Syllabus</span>
+            </a>
+          </li>
+          <li
+            className={
+              active === 14
+                ? "active nav-item p-2"
+                : "nav-item p-2"
+            }
+            onClick={(e) => setActive(14)}
+          >
+            <a
+              href="/classes"
+              className="nav-link text-white text-center text-sm-start"
+              aria-current="page"
+            >
+              <i className="bi bi-book"></i>
+              <span className="ms-2 d-none d-sm-inline">Class</span>
+            </a>
+          </li>
+          <li
+            className={
+              active === 15
+                ? "active nav-item p-2"
+                : "nav-item p-2"
+            }
+            onClick={(e) => setActive(15)}
+          >
+            <a
+              href="/grades"
+              className="nav-link text-white text-center text-sm-start"
+              aria-current="page"
+            >
+              <i className="bi bi-book"></i>
+              <span className="ms-2 d-none d-sm-inline">Grade</span>
             </a>
           </li>
           <li
@@ -168,7 +270,7 @@ const Sidebar = () => {
             onClick={e => setActive(8)}
           >
             <a
-              href="#"
+              href="school-info"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >

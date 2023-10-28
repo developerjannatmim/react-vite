@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 const AddSubject = () => {
   const navigate = useNavigate();
   const [classes, setClasses] = useState();
-  //const [picture, setPicture] = useState();
   const [subjectInput, setSubjectInput] = useState({
     name: '',
     class_id: '',

@@ -2,20 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-import '../../assets/css/style.css';
 
-const AdminList = () => {
-  const [admin, setAdmin] = useState([]);
+const ExamList = () => {
+  const [examList, setExamList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
-  const deleteAdminData = (e, id) => {
+  const deleteExam = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
     Clicked.innerText = 'deleting';
 
-    fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
+    fetch(`http://127.0.0.1:8000/api/exams/${id}`, {
       headers: {
         Accept: 'application/json',
       },
@@ -34,7 +33,7 @@ const AdminList = () => {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/admin?', {
+    fetch('http://127.0.0.1:8000/api/exams?', {
       headers: {
         Accept: 'application/json',
       },
@@ -43,28 +42,31 @@ const AdminList = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setAdmin(response.data?.admin);
+        setExamList(response.data?.exams);
       })
       .catch((error) => {
         console.error(error);
-        setAdmin(null);
+        setExamList(null);
         setLoading(false);
       });
   }, [loading]);
 
   const lastIndex = currentPage * dataPerPage;
   const firstIndex = lastIndex - dataPerPage;
-  const records = admin?.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(admin?.length / dataPerPage);
+  const records = examList?.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(examList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
     <div className="container px-4">
       <div className="card">
         <div className="card-header">
-          <h4>Admin List</h4>
-          <Link to="/admin/create" className="btn btn-primary btn-sm float-end">
-            Add Admin
+          <h4>Subject List</h4>
+          <Link
+            to="/exams/create"
+            className="btn btn-primary btn-sm float-end"
+          >
+            Add Exam
           </Link>
         </div>
         <div className="page-system mt-4">
@@ -99,46 +101,40 @@ const AdminList = () => {
             </ul>
           </nav>
         </div>
-        <div className='card-body'>
+        <div className="card-body">
           <table className="table table-striped">
             <thead>
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Address</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Photo</th>
-                <th scope="col">BirthDay</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Blood Group</th>
-                <th scope="col">Show</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
+              <th scope="col">ID</th>
+                  <th scope="col">Exam Name</th>
+                  <th scope="col">Class Name</th>
+                  <th scope="col">Section Name</th>
+                  <th scope="col">Exam Type</th>
+                  <th scope="col">Starting Time</th>
+                  <th scope="col">Ending Time</th>
+                  <th scope="col">Total Marks</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Show</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
-              {records?.map((adminData) => {
-                let userInformation;
-                try {
-                  userInformation = JSON.parse(adminData?.user_information);
-                } catch (error) {
-                  /**/
-                }
+              {records?.map((exam) => {
                 return (
-                  <tr key={adminData?.id}>
-                    <td>{adminData?.id}</td>
-                    <td>{adminData?.name}</td>
-                    <td>{adminData?.email}</td>
-                    <td>{userInformation?.address}</td>
-                    <td>{userInformation?.phone}</td>
-                    <td>{userInformation?.photo}</td>
-                    <td>{userInformation?.birthday}</td>
-                    <td>{userInformation?.gender}</td>
-                    <td>{userInformation?.blood_group}</td>
+                  <tr key={exam.id}>
+                    <td>{exam.id}</td>
+                    <td>{exam.name}</td>
+                    <td>{exam.exam_type}</td>
+                    <td>{exam.starting_time}</td>
+                    <td>{exam.ending_time}</td>
+                    <td>{exam.total_marks}</td>
+                    <td>{exam.status}</td>
+                    <td>{exam.section?.name}</td>
+                    <td>{exam.class?.name}</td>
                     <td>
                       <Link
-                        to={`/admin/${adminData.id}/show`}
+                        to={`/exams/${exam.id}/show`}
                         className="btn btn-primary btn-sm"
                       >
                         Show
@@ -146,7 +142,7 @@ const AdminList = () => {
                     </td>
                     <td>
                       <Link
-                        to={`/admin/${adminData.id}/edit`}
+                        to={`/exams/${exam.id}/edit`}
                         className="btn btn-success btn-sm"
                       >
                         Edit
@@ -154,7 +150,7 @@ const AdminList = () => {
                     </td>
                     <td
                       type="button"
-                      onClick={(e) => deleteAdminData(e, adminData.id)}
+                      onClick={(e) => deleteExam(e, exam.id)}
                       className="btn btn-danger btn-sm"
                     >
                       Delete
@@ -186,6 +182,7 @@ const AdminList = () => {
       setCurrentPage(currentPage + 1);
     }
   }
+
 };
 
-export default AdminList;
+export default ExamList;

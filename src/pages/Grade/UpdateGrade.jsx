@@ -3,23 +3,22 @@ import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import  Swal  from 'sweetalert2'
 
-const UpdateSubject = () => {
+const UpdateGrade = () => {
   const navigate = useNavigate();
-  const [subjectInput, setSubjectInput] = useState([]);
-  const [classes, setClasses] = useState();
+  const [gradeInput, setGradeInput] = useState([]);
   const { id } = useParams();
 
 
   const handleChange = (e) => {
-    setSubjectInput({ ...subjectInput, [e.target.name]: e.target.value });
+    setGradeInput({ ...gradeInput, [e.target.name]: e.target.value });
   };
 
-  const submitSubject = (e) => {
+  const submitGrade = (e) => {
     e.preventDefault();
-    console.log(subjectInput);
-    const data = subjectInput;
+    const data = gradeInput;
+    console.log(gradeInput);
     fetch(
-      `http://127.0.0.1:8000/api/subjects/${id}`,
+      `http://127.0.0.1:8000/api/grades/${id}`,
       {
         body: JSON.stringify({
           ...data,
@@ -36,17 +35,17 @@ const UpdateSubject = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/subject/view');
+        navigate('/grades');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('SUBJECT_FORM').reset();
+        document.getElementById('GRADE_FORM').reset();
         Swal.fire('Warning', response?.message, 'warning');
       });
   };
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/subjects/${id}`, {
+    fetch(`http://127.0.0.1:8000/api/grades/${id}`, {
       headers: {
         Accept: 'application/json',
       },
@@ -55,45 +54,26 @@ const UpdateSubject = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setSubjectInput(response.data?.subject);
+        setGradeInput(response.data?.grade);
       })
       .catch((error) => {
         console.error(error);
-        setSubjectInput(null);
+        setGradeInput(null);
       });
   }, [id]);
-
-  useEffect(() => {
-    console.log({ classes });
-    fetch(`http://127.0.0.1:8000/api/classes`, {
-      headers: {
-        Accept: 'application/json',
-      },
-      method: 'GET',
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        setClasses(response.data?.classes);
-      })
-      .catch((error) => {
-        console.error(error);
-        setClasses(null);
-      });
-  }, []);
 
   return (
     <div className="container px-4">
       <div className="card">
         <div className="card-header">
-          <h4>Subject List</h4>
-          <Link to="/subject/view" className="btn btn-primary btn-sm float-end">
-            Subject List
+          <h4>Grade List</h4>
+          <Link to="/grades" className="btn btn-primary btn-sm float-end">
+          Grade List
           </Link>
         </div>
       </div>
       <div className="card-body">
-        <form onSubmit={submitSubject} id="SUBJECT_FORM">
+        <form onSubmit={submitGrade} id="GRADE_FORM">
           <div className="card mt-4">
             <div className="card-body">
               <div className="tab-content" id="myTabContent">
@@ -105,32 +85,44 @@ const UpdateSubject = () => {
                 >
                   <div className="row">
                     <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
+                      <label>Grade</label>
                       <input
                         type="text"
                         name="name"
                         onChange={handleChange}
-                        value={subjectInput?.name || ''}
+                        value={gradeInput?.name || ''}
                         className="form-control"
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
-                      <label>Class Name</label>
-                      <select
-                        name="class_id"
-                        className="form-control"
+                      <label>Grade</label>
+                      <input
+                        type="text"
+                        name="grade_point"
                         onChange={handleChange}
-                        value={subjectInput?.class_id || ''}
-                      >
-                        <option>select class</option>
-                        {classes?.map((classItem) => {
-                          return (
-                            <option key={classItem.id} value={classItem.id}>
-                              {classItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
+                        value={gradeInput?.grade_point || ''}
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="col-md-6 form-group mb-3">
+                      <label>Grade</label>
+                      <input
+                        type="text"
+                        name="mark_from"
+                        onChange={handleChange}
+                        value={gradeInput?.mark_from || ''}
+                        className="form-control"
+                      />
+                    </div>
+                    <div className="col-md-6 form-group mb-3">
+                      <label>Grade</label>
+                      <input
+                        type="text"
+                        name="mark_upto"
+                        onChange={handleChange}
+                        value={gradeInput?.mark_upto || ''}
+                        className="form-control"
+                      />
                     </div>
                   </div>
                   <button type="submit" className="btn btn-primary px-4">
@@ -146,4 +138,4 @@ const UpdateSubject = () => {
   );
 };
 
-export default UpdateSubject;
+export default UpdateGrade;
