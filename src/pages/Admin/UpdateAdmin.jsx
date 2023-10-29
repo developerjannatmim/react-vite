@@ -130,7 +130,7 @@ let userInformation;
                         className="form-control"
                       />
                     </div>
-                    {/* <div className="col-md-6 form-group mb-3">
+                    <div className="col-md-6 form-group mb-3">
                       <label>Phone</label>
                       <input
                         type="text"
@@ -185,7 +185,7 @@ let userInformation;
                         <option value="o+">O+</option>
                         <option value="o-">O-</option>
                       </select>
-                    </div> */}
+                    </div>
                   </div>
                   <button type="submit" className="btn btn-primary px-4">
                     Update

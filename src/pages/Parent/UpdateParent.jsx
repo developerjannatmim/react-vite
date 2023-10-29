@@ -52,7 +52,7 @@ const UpdateParent = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setParentInput(response.data?.student);
+        setParentInput(response.data?.parent);
       })
       .catch((error) => {
         console.error(error);

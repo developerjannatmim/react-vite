@@ -99,6 +99,19 @@ const Sidebar = () => {
                 }
                 onClick={(e) => setActive(5)}
               >
+                <a className="nav-link text-white" href="/parents">
+                  <i className="bi bi-person-circle icon"></i>
+                  <span className="d-none d-sm-inline">Parent</span>
+                </a>
+              </li>
+              <li
+                className={
+                  active === 5
+                    ? "active nav-item p-2"
+                    : "nav-item p-2"
+                }
+                onClick={(e) => setActive(5)}
+              >
                 <a className="nav-link text-white" href="/teachers">
                   <i className="bi bi-person-circle icon"></i>
                   <span className="d-none d-sm-inline">Teacher</span>

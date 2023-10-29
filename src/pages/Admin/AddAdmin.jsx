@@ -1,27 +1,27 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import Swal from 'sweetalert2'
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const AddAdmin = () => {
   const navigate = useNavigate();
-  //const [picture, setPicture] = useState('');
+  const [picture, setPicture] = useState(null);
 
-  // const handleImage = (e) => {
-  //   console.log(e.target.files);
-  //   setPicture({ photo: e.target.files[0] });
-  // };
+  const handleImage = (e) => {
+    console.log(e.target.files);
+    setPicture({ photo: e.target.files[0] });
+  };
 
   const [adminInput, setAdminInput] = useState({
-    name: "",
-    email: "",
-    password: "",
-    address: "",
-    phone: "",
-    photo: "",
-    birthday: "",
-    gender: "",
-    blood_group: "",
+    name: '',
+    email: '',
+    password: '',
+    //photo: '',
+    address: '',
+    phone: '',
+    birthday: '',
+    gender: '',
+    blood_group: '',
   });
 
   const handleChange = (e) => {
@@ -30,48 +30,62 @@ const AddAdmin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = {
-      //photo: picture.photo,
-      name: adminInput.name,
-      photo: adminInput.photo,
-      email: adminInput.email,
-      password: adminInput.password,
-      address: adminInput.address,
-      phone: adminInput.phone,
-      birthday: adminInput.birthday,
-      gender: adminInput.gender,
-      blood_group: adminInput.blood_group,
-    };
 
-    console.log({
-      data,
-    });
+    const formData = new FormData();
+    formData.append('photo', picture.photo);
+    formData.append('name', adminInput.name);
+    formData.append('email', adminInput.email);
+    formData.append('password', adminInput.password);
+    formData.append('address', adminInput.address);
+    formData.append('phone', adminInput.phone);
+    formData.append('birthday', adminInput.birthday);
+    formData.append('gender', adminInput.gender);
+    formData.append('blood_group', adminInput.blood_group);
+
+      // photo: picture.photo,
+      // name: adminInput.name,
+      // //photo: adminInput.photo,
+      // email: adminInput.email,
+      // password: adminInput.password,
+      // address: adminInput.address,
+      // phone: adminInput.phone,
+      // birthday: adminInput.birthday,
+      // gender: adminInput.gender,
+      // blood_group: adminInput.blood_group,
+
+    console.log({adminInput});
+    console.log({formData});
 
     fetch(
-      "http://127.0.0.1:8000/api/admin",
+      'http://127.0.0.1:8000/api/admin',
       {
         body: JSON.stringify({
-          ...data,
+          ...formData,
         }),
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
-        method: "POST",
+        method: 'POST',
       },
-      data
+      formData
     )
-    .then((response) => response.json())
-    .then((response) => {
-      console.info(response);
-      Swal.fire('Success', response?.message, 'success');
-      navigate('/admin');
-    })
-    .catch((error) => {
-      console.error(error);
-      Swal.fire('Warning', response?.message, 'warning');
-      //document.getElementById("ADMIN_FORM").reset();
-    });
+      .then((response) => response.json())
+      .then((response) => {
+        if(response.data?.status === 200){
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          navigate('/admin');
+        }else{
+          Swal.fire('Warning', 'Unprocessable Content');
+          navigate('/admin/create');
+        }
+      })
+      // .catch((error) => {
+      //   console.error(error);
+      //   Swal.fire('Warning', response?.message, 'warning');
+      //   document.getElementById("ADMIN_FORM").reset();
+      // });
   };
 
   return (
@@ -99,7 +113,7 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.name || ""}
+                    value={adminInput.name || ''}
                     name="name"
                     className="form-control"
                     required
@@ -110,7 +124,7 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.email || ""}
+                    value={adminInput.email || ''}
                     name="email"
                     className="form-control"
                     required
@@ -121,7 +135,7 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.password || ""}
+                    value={adminInput.password || ''}
                     name="password"
                     className="form-control"
                     required
@@ -132,7 +146,7 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.address || ""}
+                    value={adminInput.address || ''}
                     name="address"
                     className="form-control"
                     required
@@ -143,7 +157,7 @@ const AddAdmin = () => {
                   <input
                     type="text"
                     onChange={handleChange}
-                    value={adminInput.phone || ""}
+                    value={adminInput.phone || ''}
                     name="phone"
                     className="form-control"
                     required
@@ -154,7 +168,7 @@ const AddAdmin = () => {
                   <input
                     type="date"
                     onChange={handleChange}
-                    value={adminInput.birthday || ""}
+                    value={adminInput.birthday || ''}
                     name="birthday"
                     className="form-control"
                     required
@@ -164,18 +178,16 @@ const AddAdmin = () => {
                   <label>Photo</label>
                   <input
                     type="file"
-                    onChange={handleChange}
-                    value={adminInput.photo || ""}
+                    onChange={handleImage}
                     name="photo"
                     className="form-control"
-                    required
                   />
                 </div>
                 <div className="form-group mb-3">
                   <label>Gender</label>
                   <select
                     onChange={handleChange}
-                    value={adminInput.gender || ""}
+                    value={adminInput.gender || ''}
                     name="gender"
                     className="form-control"
                     required
@@ -190,7 +202,7 @@ const AddAdmin = () => {
                   <label>Blood Group</label>
                   <select
                     onChange={handleChange}
-                    value={adminInput.blood_group || ""}
+                    value={adminInput.blood_group || ''}
                     name="blood_group"
                     className="form-control"
                     required
