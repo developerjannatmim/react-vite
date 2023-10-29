@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-// import { swal } from "sweetalert";
+import Swal from 'sweetalert2'
 
 const UpdateAdmin = () => {
   const navigate = useNavigate();
@@ -35,12 +35,13 @@ const UpdateAdmin = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        alert("data update successful.");
+        Swal.fire('Success', response?.message, 'success');
         navigate("/admin");
       })
       .catch((error) => {
         console.error(error);
         document.getElementById("ADMIN_FORM").reset();
+        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 

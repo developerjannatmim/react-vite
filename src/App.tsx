@@ -8,12 +8,27 @@ import Footer from "./components/Footer";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 
+//Users start
 import AdminList from "./pages/Admin/AdminList";
 import ShowAdmin from "./pages/Admin/ShowAdmin";
 import AddAdmin from "./pages/Admin/AddAdmin";
 import UpdateAdmin from "./pages/Admin/UpdateAdmin";
 
+import StudentList from "./pages/Student/StudentList";
+import ShowStudent from "./pages/Student/ShowStudent";
+import AddStudent from "./pages/Student/AddStudent";
+import UpdateStudent from "./pages/Student/UpdateStudent";
 
+import ParentList from "./pages/Parent/ParentList";
+import ShowParent from "./pages/Parent/ShowParent";
+import AddParent from "./pages/Parent/AddParent";
+import UpdateParent from "./pages/Parent/UpdateParent";
+
+import TeacherList from "./pages/Teacher/TeacherList";
+import ShowTeacher from "./pages/Teacher/ShowTeacher";
+import AddTeacher from "./pages/Teacher/AddTeacher";
+import UpdateTeacher from "./pages/Teacher/UpdateTeacher";
+//Users end
 
 import MarkList from "./pages/Mark/MarkList";
 import ShowMark from "./pages/Mark/ShowMark";
@@ -132,6 +147,21 @@ const App = () => {
               <Route path="/admin/create" element={<AddAdmin />}></Route>
               <Route path="/admin/:id/show" element={<ShowAdmin />}></Route>
               <Route path="/admin/:id/edit" element={<UpdateAdmin />}></Route>
+
+              <Route path="/students" element={<StudentList />}></Route>
+              <Route path="/students/create" element={<AddStudent />}></Route>
+              <Route path="/students/:id/show" element={<ShowStudent />}></Route>
+              <Route path="/students/:id/edit" element={<UpdateStudent />}></Route>
+
+              <Route path="/parents" element={<ParentList />}></Route>
+              <Route path="/parents/create" element={<AddParent />}></Route>
+              <Route path="/parents/:id/show" element={<ShowParent />}></Route>
+              <Route path="/parents/:id/edit" element={<UpdateParent />}></Route>
+
+              <Route path="/teachers" element={<TeacherList />}></Route>
+              <Route path="/teachers/create" element={<AddTeacher />}></Route>
+              <Route path="/teachers/:id/show" element={<ShowTeacher />}></Route>
+              <Route path="/teachers/:id/edit" element={<UpdateTeacher />}></Route>
 
               <Route path="/login" element={<Login />}></Route>
               <Route path="/register" element={<Register />}></Route>

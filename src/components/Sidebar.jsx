@@ -99,7 +99,7 @@ const Sidebar = () => {
                 }
                 onClick={(e) => setActive(5)}
               >
-                <a className="nav-link text-white" href="#">
+                <a className="nav-link text-white" href="/teachers">
                   <i className="bi bi-person-circle icon"></i>
                   <span className="d-none d-sm-inline">Teacher</span>
                 </a>
