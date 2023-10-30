@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import '../../assets/css/style.css'
 
 const Register = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Register = () => {
           localStorage.setItem('auth_name', response?.username);
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
-          navigate("/dashboard");
+          navigate("/dashboard/home");
         }else{
           Swal.fire('Warning', response?.message, "warning");
         }
@@ -55,7 +56,7 @@ const Register = () => {
   return (
     <div>
       <div className='container py-5'>
-        <div className='col-md-6'>
+        <div className='col-md-6 register'>
           <div className='card'>
             <div className='card-header'>
               <h4>Register</h4>

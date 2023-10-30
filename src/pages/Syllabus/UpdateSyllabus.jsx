@@ -1,7 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import  Swal  from 'sweetalert2'
+import Swal from 'sweetalert2';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const UpdateSyllabus = () => {
   const navigate = useNavigate();
@@ -37,7 +40,7 @@ const UpdateSyllabus = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/syllabuses');
+        navigate('/dashboard/syllabuses');
       })
       .catch((error) => {
         console.error(error);
@@ -122,112 +125,139 @@ const UpdateSyllabus = () => {
   }, []);
 
   return (
-    <div className="container px-4">
-      <div className="card">
-        <div className="card-header">
-          <h4>Syllabus List</h4>
-          <Link to="/syllabuses" className="btn btn-primary btn-sm float-end">
-          Syllabus List
-          </Link>
-        </div>
+    <>
+      <div>
+        <Header />
       </div>
-      <div className="card-body">
-        <form onSubmit={submitSyllabus} id="SYLLABUS_FORM">
-          <div className="card mt-4">
-            <div className="card-body">
-              <div className="tab-content" id="myTabContent">
-                <div
-                  className="tab-pane fade show active card-body border"
-                  id="home"
-                  role="tabpanel"
-                  aria-labelledby="home-tab"
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
+        </div>
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Syllabus List</h4>
+                <Link
+                  to="/dashboard/syllabuses"
+                  className="btn btn-primary btn-sm float-end"
                 >
-                  <div className="row">
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Syllabus</label>
-                      <input
-                        type="text"
-                        name="title"
-                        onChange={handleChange}
-                        value={syllabusInput?.title || ''}
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Class Name</label>
-                      <select
-                        name="class_id"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={syllabusInput?.class_id || ''}
-                      >
-                        <option>select class</option>
-                        {classes?.map((classItem) => {
-                          return (
-                            <option key={classItem.id} value={classItem.id}>
-                              {classItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Section Name</label>
-                      <select
-                        name="section_id"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={syllabusInput?.section_id || ''}
-                      >
-                        <option>select section</option>
-                        {sections?.map((sectionItem) => {
-                          return (
-                            <option key={sectionItem.id} value={sectionItem.id}>
-                              {sectionItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
-                      <select
-                        name="subject_id"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={syllabusInput?.subject_id || ''}
-                      >
-                        <option>select subject</option>
-                        {subjects?.map((subjectItem) => {
-                          return (
-                            <option key={subjectItem.id} value={subjectItem.id}>
-                              {subjectItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Syllabus</label>
-                      <input
-                        type="file"
-                        name="file"
-                        onChange={handleChange}
-                        //value={syllabusInput?.file || ''}
-                        className="form-control"
-                      />
-                    </div>
-                  </div>
-                  <button type="submit" className="btn btn-primary px-4">
-                    Update
-                  </button>
-                </div>
+                  Syllabus List
+                </Link>
               </div>
             </div>
+            <div className="card-body">
+              <form onSubmit={submitSyllabus} id="SYLLABUS_FORM">
+                <div className="card mt-4">
+                  <div className="card-body">
+                    <div className="tab-content" id="myTabContent">
+                      <div
+                        className="tab-pane fade show active card-body border"
+                        id="home"
+                        role="tabpanel"
+                        aria-labelledby="home-tab"
+                      >
+                        <div className="row">
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Syllabus</label>
+                            <input
+                              type="text"
+                              name="title"
+                              onChange={handleChange}
+                              value={syllabusInput?.title || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Class Name</label>
+                            <select
+                              name="class_id"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={syllabusInput?.class_id || ''}
+                            >
+                              <option>select class</option>
+                              {classes?.map((classItem) => {
+                                return (
+                                  <option
+                                    key={classItem.id}
+                                    value={classItem.id}
+                                  >
+                                    {classItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Section Name</label>
+                            <select
+                              name="section_id"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={syllabusInput?.section_id || ''}
+                            >
+                              <option>select section</option>
+                              {sections?.map((sectionItem) => {
+                                return (
+                                  <option
+                                    key={sectionItem.id}
+                                    value={sectionItem.id}
+                                  >
+                                    {sectionItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Subject Name</label>
+                            <select
+                              name="subject_id"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={syllabusInput?.subject_id || ''}
+                            >
+                              <option>select subject</option>
+                              {subjects?.map((subjectItem) => {
+                                return (
+                                  <option
+                                    key={subjectItem.id}
+                                    value={subjectItem.id}
+                                  >
+                                    {subjectItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Syllabus</label>
+                            <input
+                              type="file"
+                              name="file"
+                              onChange={handleChange}
+                              //value={syllabusInput?.file || ''}
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                        <button type="submit" className="btn btn-primary px-4">
+                          Update
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

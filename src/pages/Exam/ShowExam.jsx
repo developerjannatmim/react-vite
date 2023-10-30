@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const ShowExam = () => {
   const [examItem, setExamItem] = useState(null);
@@ -26,46 +29,61 @@ const ShowExam = () => {
   }, [id]);
 
   return (
-    <div className="container">
-      <div className="card">
-        <div className="card-header">
-          <h4>Exam List</h4>
-          <Link to="/exams" className="btn btn-primary btn-sm float-end">
-          Exam List
-          </Link>
+    <>
+      <div>
+        <Header />
+      </div>
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
         </div>
-        <div className="card-body">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Exam Name</th>
-                <th>Exam Type</th>
-                <th>Starting Time</th>
-                <th>Ending Time</th>
-                <th>Total Marks</th>
-                <th>Status</th>
-                <th>Class Name</th>
-                <th>Section No.</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{examItem?.id}</td>
-                <td>{examItem?.name}</td>
-                <td>{examItem?.exam_type}</td>
-                <td>{examItem?.starting_time}</td>
-                <td>{examItem?.ending_time}</td>
-                <td>{examItem?.total_marks}</td>
-                <td>{examItem?.status}</td>
-                <td>{examItem?.class?.name}</td>
-                <td>{examItem?.section?.name}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="col overflow-hidden">
+          <div className="container">
+            <div className="card">
+              <div className="card-header">
+                <h4>Exam List</h4>
+                <Link to="/dashboard/exams" className="btn btn-primary btn-sm float-end">
+                  Exam List
+                </Link>
+              </div>
+              <div className="card-body">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Exam Name</th>
+                      <th>Exam Type</th>
+                      <th>Starting Time</th>
+                      <th>Ending Time</th>
+                      <th>Total Marks</th>
+                      <th>Status</th>
+                      <th>Class Name</th>
+                      <th>Section No.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{examItem?.id}</td>
+                      <td>{examItem?.name}</td>
+                      <td>{examItem?.exam_type}</td>
+                      <td>{examItem?.starting_time}</td>
+                      <td>{examItem?.ending_time}</td>
+                      <td>{examItem?.total_marks}</td>
+                      <td>{examItem?.status}</td>
+                      <td>{examItem?.class?.name}</td>
+                      <td>{examItem?.section?.name}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

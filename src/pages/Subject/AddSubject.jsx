@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const AddSubject = () => {
   const navigate = useNavigate();
@@ -58,7 +61,7 @@ const AddSubject = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/subject/view');
+        navigate('/dashboard//subject/view');
       })
       .catch((error) => {
         console.error(error);
@@ -68,67 +71,82 @@ const AddSubject = () => {
   };
 
   return (
-    <div className="container-fluid px-3">
-      <form onSubmit={submitSubject} id="SUBJECT_FORM">
-        <div className="card mt-4">
-          <div className="card-header">
-            <h4>
-              Subject List
-              <Link
-                to="/subject/view"
-                className="btn btn-primary btn-sm float-end"
-              >
-                View Subject
-              </Link>
-            </h4>
-          </div>
-          <div className="card-body">
-            <div className="tab-content" id="myTabContent">
-              <div
-                className="tab-pane fade show active card-body border"
-                id="home"
-                role="tabpanel"
-                aria-labelledby="home-tab"
-              >
-                <div className="row">
-                  <div className="col-md-6 form-group mb-3">
-                    <label>Subject Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      onChange={handleChange}
-                      value={subjectInput.name}
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col-md-6 form-group mb-3">
-                    <label>Class Name</label>
-                    <select
-                      name="class_id"
-                      className="form-control"
-                      onChange={handleChange}
-                      value={subjectInput.class_id}
+    <>
+      <div>
+        <Header />
+      </div>
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
+        </div>
+        <div className="col overflow-hidden">
+          <div className="container-fluid px-3">
+            <form onSubmit={submitSubject} id="SUBJECT_FORM">
+              <div className="card mt-4">
+                <div className="card-header">
+                  <h4>
+                    Subject List
+                    <Link
+                      to="/dashboard/subject/view"
+                      className="btn btn-primary btn-sm float-end"
                     >
-                      <option>select class</option>
-                      {classes?.map((classItem) => {
-                        return (
-                          <option key={classItem.id} value={classItem.id}>
-                            {classItem.name}
-                          </option>
-                        );
-                      })}
-                    </select>
+                      View Subject
+                    </Link>
+                  </h4>
+                </div>
+                <div className="card-body">
+                  <div className="tab-content" id="myTabContent">
+                    <div
+                      className="tab-pane fade show active card-body border"
+                      id="home"
+                      role="tabpanel"
+                      aria-labelledby="home-tab"
+                    >
+                      <div className="row">
+                        <div className="col-md-6 form-group mb-3">
+                          <label>Subject Name</label>
+                          <input
+                            type="text"
+                            name="name"
+                            onChange={handleChange}
+                            value={subjectInput.name}
+                            className="form-control"
+                          />
+                        </div>
+                        <div className="col-md-6 form-group mb-3">
+                          <label>Class Name</label>
+                          <select
+                            name="class_id"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={subjectInput.class_id}
+                          >
+                            <option>select class</option>
+                            {classes?.map((classItem) => {
+                              return (
+                                <option key={classItem.id} value={classItem.id}>
+                                  {classItem.name}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
+                      </div>
+                      <button type="submit" className="btn btn-primary px-4">
+                        Submit
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <button type="submit" className="btn btn-primary px-4">
-                  Submit
-                </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

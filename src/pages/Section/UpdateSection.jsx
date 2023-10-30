@@ -1,13 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import  Swal  from 'sweetalert2'
+import Swal from 'sweetalert2';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const UpdateSection = () => {
   const navigate = useNavigate();
   const [sectionInput, setSectionInput] = useState([]);
   const { id } = useParams();
-
 
   const handleChange = (e) => {
     setSectionInput({ ...sectionInput, [e.target.name]: e.target.value });
@@ -35,7 +37,7 @@ const UpdateSection = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/sections');
+        navigate('/dashboard/sections');
       })
       .catch((error) => {
         console.error(error);
@@ -63,48 +65,66 @@ const UpdateSection = () => {
   }, [id]);
 
   return (
-    <div className="container px-4">
-      <div className="card">
-        <div className="card-header">
-          <h4>Section List</h4>
-          <Link to="/sections" className="btn btn-primary btn-sm float-end">
-          Section List
-          </Link>
-        </div>
+    <>
+      <div>
+        <Header />
       </div>
-      <div className="card-body">
-        <form onSubmit={submitSection} id="SECTION_FORM">
-          <div className="card mt-4">
-            <div className="card-body">
-              <div className="tab-content" id="myTabContent">
-                <div
-                  className="tab-pane fade show active card-body border"
-                  id="home"
-                  role="tabpanel"
-                  aria-labelledby="home-tab"
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
+        </div>
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Section List</h4>
+                <Link
+                  to="/dashboard/sections"
+                  className="btn btn-primary btn-sm float-end"
                 >
-                  <div className="row">
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Section Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        onChange={handleChange}
-                        value={sectionInput?.name || ''}
-                        className="form-control"
-                      />
-                    </div>
-                  </div>
-                  <button type="submit" className="btn btn-primary px-4">
-                    Update
-                  </button>
-                </div>
+                  Section List
+                </Link>
               </div>
             </div>
+            <div className="card-body">
+              <form onSubmit={submitSection} id="SECTION_FORM">
+                <div className="card mt-4">
+                  <div className="card-body">
+                    <div className="tab-content" id="myTabContent">
+                      <div
+                        className="tab-pane fade show active card-body border"
+                        id="home"
+                        role="tabpanel"
+                        aria-labelledby="home-tab"
+                      >
+                        <div className="row">
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Section Name</label>
+                            <input
+                              type="text"
+                              name="name"
+                              onChange={handleChange}
+                              value={sectionInput?.name || ''}
+                              className="form-control"
+                            />
+                          </div>
+                        </div>
+                        <button type="submit" className="btn btn-primary px-4">
+                          Update
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

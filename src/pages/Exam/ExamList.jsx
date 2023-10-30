@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const ExamList = () => {
   const [examList, setExamList] = useState([]);
@@ -58,111 +61,128 @@ const ExamList = () => {
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
-    <div className="container px-4">
-      <div className="card">
-        <div className="card-header">
-          <h4>Subject List</h4>
-          <Link
-            to="/exams/create"
-            className="btn btn-primary btn-sm float-end"
-          >
-            Add Exam
-          </Link>
+    <>
+      <div>
+        <Header />
+      </div>
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
         </div>
-        <div className="page-system mt-4">
-          <nav>
-            <ul className="pagination">
-              <li className="page-item">
-                <a href="#" className="page-link" onClick={prePage}>
-                  Prev
-                </a>
-              </li>
-              {numbers.map((n, i) => {
-                return (
-                  <li
-                    className={`page-item ${currentPage === n ? 'active' : ''}`}
-                    key={i}
-                  >
-                    <a
-                      href="#"
-                      className="page-link"
-                      onClick={() => changeCurrentPage(n)}
-                    >
-                      {n}
-                    </a>
-                  </li>
-                );
-              })}
-              <li className="page-item">
-                <a href="#" className="page-link" onClick={nextPage}>
-                  Next
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div className="card-body">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-              <th scope="col">ID</th>
-                  <th scope="col">Exam Name</th>
-                  <th scope="col">Class Name</th>
-                  <th scope="col">Section Name</th>
-                  <th scope="col">Exam Type</th>
-                  <th scope="col">Starting Time</th>
-                  <th scope="col">Ending Time</th>
-                  <th scope="col">Total Marks</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Show</th>
-                  <th scope="col">Edit</th>
-                  <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {records?.map((exam) => {
-                return (
-                  <tr key={exam.id}>
-                    <td>{exam.id}</td>
-                    <td>{exam.name}</td>
-                    <td>{exam.exam_type}</td>
-                    <td>{exam.starting_time}</td>
-                    <td>{exam.ending_time}</td>
-                    <td>{exam.total_marks}</td>
-                    <td>{exam.status}</td>
-                    <td>{exam.section?.name}</td>
-                    <td>{exam.class?.name}</td>
-                    <td>
-                      <Link
-                        to={`/exams/${exam.id}/show`}
-                        className="btn btn-primary btn-sm"
-                      >
-                        Show
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to={`/exams/${exam.id}/edit`}
-                        className="btn btn-success btn-sm"
-                      >
-                        Edit
-                      </Link>
-                    </td>
-                    <td
-                      type="button"
-                      onClick={(e) => deleteExam(e, exam.id)}
-                      className="btn btn-danger btn-sm"
-                    >
-                      Delete
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Subject List</h4>
+                <Link
+                  to="/dashboard/exams/create"
+                  className="btn btn-primary btn-sm float-end"
+                >
+                  Add Exam
+                </Link>
+              </div>
+              <div className="page-system mt-4">
+                <nav>
+                  <ul className="pagination">
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={prePage}>
+                        Prev
+                      </a>
+                    </li>
+                    {numbers.map((n, i) => {
+                      return (
+                        <li
+                          className={`page-item ${
+                            currentPage === n ? 'active' : ''
+                          }`}
+                          key={i}
+                        >
+                          <a
+                            href="#"
+                            className="page-link"
+                            onClick={() => changeCurrentPage(n)}
+                          >
+                            {n}
+                          </a>
+                        </li>
+                      );
+                    })}
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={nextPage}>
+                        Next
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div className="card-body">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Exam Name</th>
+                      <th scope="col">Class Name</th>
+                      <th scope="col">Section Name</th>
+                      <th scope="col">Exam Type</th>
+                      <th scope="col">Starting Time</th>
+                      <th scope="col">Ending Time</th>
+                      <th scope="col">Total Marks</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Show</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {records?.map((exam) => {
+                      return (
+                        <tr key={exam.id}>
+                          <td>{exam.id}</td>
+                          <td>{exam.name}</td>
+                          <td>{exam.exam_type}</td>
+                          <td>{exam.starting_time}</td>
+                          <td>{exam.ending_time}</td>
+                          <td>{exam.total_marks}</td>
+                          <td>{exam.status}</td>
+                          <td>{exam.section?.name}</td>
+                          <td>{exam.class?.name}</td>
+                          <td>
+                            <Link
+                              to={`/dashboard/exams/${exam.id}/show`}
+                              className="btn btn-primary btn-sm"
+                            >
+                              Show
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              to={`/dashboard/exams/${exam.id}/edit`}
+                              className="btn btn-success btn-sm"
+                            >
+                              Edit
+                            </Link>
+                          </td>
+                          <td
+                            type="button"
+                            onClick={(e) => deleteExam(e, exam.id)}
+                            className="btn btn-danger btn-sm"
+                          >
+                            Delete
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 
   function prePage(e) {
@@ -182,7 +202,6 @@ const ExamList = () => {
       setCurrentPage(currentPage + 1);
     }
   }
-
 };
 
 export default ExamList;

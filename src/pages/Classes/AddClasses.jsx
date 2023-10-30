@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const AddClasses = () => {
   const navigate = useNavigate();
@@ -58,7 +61,7 @@ const AddClasses = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/classes');
+        navigate('/dashboard/classes');
       })
       .catch((error) => {
         console.error(error);
@@ -67,68 +70,86 @@ const AddClasses = () => {
   };
 
   return (
-    <div className="container-fluid px-3">
-    <form onSubmit={submitClass} >
-      <div className="card mt-4">
-        <div className="card-header">
-          <h4>
-            Class List
-            <Link
-              to="/classes"
-              className="btn btn-primary btn-sm float-end"
-            >
-              View Class
-            </Link>
-          </h4>
+    <>
+      <div>
+        <Header />
+      </div>
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
         </div>
-        <div className="card-body">
-          <div className="tab-content" id="myTabContent">
-            <div
-              className="tab-pane fade show active card-body border"
-              id="home"
-              role="tabpanel"
-              aria-labelledby="home-tab"
-            >
-              <div className="row">
-                <div className="col-md-6 form-group mb-3">
-                  <label>Class Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    onChange={handleChange}
-                    value={classesInput.name}
-                    className="form-control"
-                  />
+        <div className="col overflow-hidden">
+          <div className="container-fluid px-3">
+            <form onSubmit={submitClass}>
+              <div className="card mt-4">
+                <div className="card-header">
+                  <h4>
+                    Class List
+                    <Link
+                      to="/dashboard/classes"
+                      className="btn btn-primary btn-sm float-end"
+                    >
+                      View Class
+                    </Link>
+                  </h4>
                 </div>
-                <div className="col-md-6 form-group mb-3">
-                  <label>Class Name</label>
-                  <select
-                    name="section_id"
-                    className="form-control"
-                    onChange={handleChange}
-                    value={classesInput.section_id}
-                  >
-                    <option>select section</option>
-                    {sections?.map((sectionItem) => {
-                      return (
-                        <option key={sectionItem.id} value={sectionItem.id}>
-                          {sectionItem.name}
-                        </option>
-                      );
-                    })}
-                  </select>
+                <div className="card-body">
+                  <div className="tab-content" id="myTabContent">
+                    <div
+                      className="tab-pane fade show active card-body border"
+                      id="home"
+                      role="tabpanel"
+                      aria-labelledby="home-tab"
+                    >
+                      <div className="row">
+                        <div className="col-md-6 form-group mb-3">
+                          <label>Class Name</label>
+                          <input
+                            type="text"
+                            name="name"
+                            onChange={handleChange}
+                            value={classesInput.name}
+                            className="form-control"
+                          />
+                        </div>
+                        <div className="col-md-6 form-group mb-3">
+                          <label>Class Name</label>
+                          <select
+                            name="section_id"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={classesInput.section_id}
+                          >
+                            <option>select section</option>
+                            {sections?.map((sectionItem) => {
+                              return (
+                                <option
+                                  key={sectionItem.id}
+                                  value={sectionItem.id}
+                                >
+                                  {sectionItem.name}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
+                      </div>
+                      <button type="submit" className="btn btn-primary px-4">
+                        Submit
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary px-4">
-                Submit
-              </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
-    </form>
-  </div>
-  )
-}
+      <div>
+        <Footer />
+      </div>
+    </>
+  );
+};
 
-export default AddClasses
+export default AddClasses;

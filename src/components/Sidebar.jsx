@@ -18,12 +18,12 @@ const Sidebar = () => {
             onClick={e => setActive(1)}
           >
             <a
-              href="/dashboard"
+              href="/dashboard/home"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
               <i className="bi bi-speedometer2"></i>
-              <span className="ms-2 d-none d-sm-inline ">Dashboard</span>
+              <span className="ms-2 d-none d-sm-inline ">Home</span>
             </a>
           </li>
           <span className="sidenav-menu-heading">INTERFACE</span>
@@ -63,7 +63,7 @@ const Sidebar = () => {
               >
                 <a
                   className="nav-link text-white"
-                  href="/admin"
+                  href="/dashboard/admin"
                   aria-current="page"
                 >
                   <i className="bi bi-person-circle icon"></i>
@@ -78,7 +78,7 @@ const Sidebar = () => {
                 }
                 onClick={(e) => setActive(4)}
               >
-                <a className="nav-link text-white" href="/students">
+                <a className="nav-link text-white" href="/dashboard/students">
                   <i className="bi bi-person-circle icon"></i>
                   <span className="d-none d-sm-inline">Student</span>
                 </a>
@@ -91,7 +91,7 @@ const Sidebar = () => {
                 }
                 onClick={(e) => setActive(5)}
               >
-                <a className="nav-link text-white" href="/parents">
+                <a className="nav-link text-white" href="/dashboard/parents">
                   <i className="bi bi-person-circle icon"></i>
                   <span className="d-none d-sm-inline">Parent</span>
                 </a>
@@ -104,7 +104,7 @@ const Sidebar = () => {
                 }
                 onClick={(e) => setActive(5)}
               >
-                <a className="nav-link text-white" href="/teachers">
+                <a className="nav-link text-white" href="/dashboard/teachers">
                   <i className="bi bi-person-circle icon"></i>
                   <span className="d-none d-sm-inline">Teacher</span>
                 </a>
@@ -120,7 +120,7 @@ const Sidebar = () => {
             onClick={(e) => setActive(6)}
           >
             <a
-              href="/exams"
+              href="/dashboard/exams"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -137,7 +137,7 @@ const Sidebar = () => {
             onClick={(e) => setActive(10)}
           >
             <a
-              href="/marks"
+              href="/dashboard/marks"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -154,7 +154,7 @@ const Sidebar = () => {
             onClick={(e) => setActive(11)}
           >
             <a
-              href="/routines"
+              href="/dashboard/routines"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -171,7 +171,7 @@ const Sidebar = () => {
             onClick={(e) => setActive(12)}
           >
             <a
-              href="/sections"
+              href="/dashboard/sections"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -188,7 +188,7 @@ const Sidebar = () => {
             onClick={(e) => setActive(13)}
           >
             <a
-              href="/syllabuses"
+              href="/dashboard/syllabuses"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -205,7 +205,7 @@ const Sidebar = () => {
             onClick={(e) => setActive(14)}
           >
             <a
-              href="/classes"
+              href="/dashboard/classes"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -222,7 +222,7 @@ const Sidebar = () => {
             onClick={(e) => setActive(15)}
           >
             <a
-              href="/grades"
+              href="/dashboard/grades"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -239,7 +239,7 @@ const Sidebar = () => {
             onClick={(e) => setActive(9)}
           >
             <a
-              href="/subject/view"
+              href="/dashboard/subject/view"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -258,7 +258,7 @@ const Sidebar = () => {
             }}
           >
             <a
-              href="/classroom"
+              href="/dashboard/classroom"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -275,7 +275,7 @@ const Sidebar = () => {
             onClick={e => setActive(8)}
           >
             <a
-              href="school-info"
+              href="/dashboard/school-info"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >

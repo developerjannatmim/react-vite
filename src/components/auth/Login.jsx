@@ -40,7 +40,7 @@ const Login = () => {
           localStorage.setItem('auth_name', response?.username);
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
-          navigate('/dashboard');
+          navigate('/dashboard/home');
         } else if(response?.status === 401) {
           Swal.fire('Warning', response?.message, 'warning');
         }

@@ -2,6 +2,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const UpdateTeacher = () => {
   const navigate = useNavigate();
@@ -34,7 +37,7 @@ const UpdateTeacher = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/students');
+        navigate('/dashboard/students');
       })
       .catch((error) => {
         console.error(error);
@@ -75,58 +78,70 @@ const UpdateTeacher = () => {
   }
 
   return (
-    <div className="container px-4">
-      <div className="card">
-        <div className="card-header">
-          <h4>Teacher List</h4>
-          <Link to="/teachers" className="btn btn-primary btn-sm float-end">
-          Teacher List
-          </Link>
-        </div>
+    <>
+      <div>
+        <Header />
       </div>
-      <div className="card-body">
-        <form onSubmit={submitTeacher} id="STUDENT_FORM">
-          <div className="card mt-4">
-            <div className="card-body">
-              <div className="tab-content" id="myTabContent">
-                <div
-                  className="tab-pane fade show active card-body border"
-                  id="home"
-                  role="tabpanel"
-                  aria-labelledby="home-tab"
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
+        </div>
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Teacher List</h4>
+                <Link
+                  to="/dashboard/teachers"
+                  className="btn btn-primary btn-sm float-end"
                 >
-                  <div className="row">
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        onChange={handleChange}
-                        value={teacherInput?.name || ''}
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Email</label>
-                      <input
-                        type="email"
-                        name="email"
-                        onChange={handleChange}
-                        value={teacherInput?.email || ''}
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Address</label>
-                      <input
-                        type="text"
-                        name="address"
-                        onChange={handleChange}
-                        value={userInformation?.address || ''}
-                        className="form-control"
-                      />
-                    </div>
-                    {/* <div className="col-md-6 form-group mb-3">
+                  Teacher List
+                </Link>
+              </div>
+            </div>
+            <div className="card-body">
+              <form onSubmit={submitTeacher} id="STUDENT_FORM">
+                <div className="card mt-4">
+                  <div className="card-body">
+                    <div className="tab-content" id="myTabContent">
+                      <div
+                        className="tab-pane fade show active card-body border"
+                        id="home"
+                        role="tabpanel"
+                        aria-labelledby="home-tab"
+                      >
+                        <div className="row">
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Name</label>
+                            <input
+                              type="text"
+                              name="name"
+                              onChange={handleChange}
+                              value={teacherInput?.name || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Email</label>
+                            <input
+                              type="email"
+                              name="email"
+                              onChange={handleChange}
+                              value={teacherInput?.email || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Address</label>
+                            <input
+                              type="text"
+                              name="address"
+                              onChange={handleChange}
+                              value={userInformation?.address || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          {/* <div className="col-md-6 form-group mb-3">
                       <label>Phone</label>
                       <input
                         type="text"
@@ -182,17 +197,23 @@ const UpdateTeacher = () => {
                         <option value="o-">O-</option>
                       </select>
                     </div> */}
+                        </div>
+                        <button type="submit" className="btn btn-primary px-4">
+                          Update
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <button type="submit" className="btn btn-primary px-4">
-                    Update
-                  </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

@@ -1,7 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const UpdateMark = () => {
   const navigate = useNavigate();
@@ -28,32 +31,32 @@ const UpdateMark = () => {
           ...data,
         }),
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
-        method: "PUT",
+        method: 'PUT',
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/grades");
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/dashboard/grades');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById("MARK_FORM").reset();
-        Swal.fire("Warning", response?.message, "warning");
+        document.getElementById('MARK_FORM').reset();
+        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/marks/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -162,158 +165,182 @@ const UpdateMark = () => {
   }, []);
 
   return (
-    <div className="container px-4">
-      <div className="card">
-        <div className="card-header">
-          <h4>Mark List</h4>
-          <Link to="/marks" className="btn btn-primary btn-sm float-end">
-            Mark List
-          </Link>
-        </div>
+    <>
+      <div>
+        <Header />
       </div>
-      <div className="card-body">
-        <form onSubmit={submitMark} id="MARK_FORM">
-          <div className="card mt-4">
-            <div className="card-body">
-              <div className="tab-content" id="myTabContent">
-                <div
-                  className="tab-pane fade show active card-body border"
-                  id="home"
-                  role="tabpanel"
-                  aria-labelledby="home-tab"
-                >
-                  <div className="row">
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Mark</label>
-                      <input
-                        type="text"
-                        name="marks"
-                        onChange={handleChange}
-                        value={markInput?.marks || ""}
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>grade_point</label>
-                      <input
-                        type="text"
-                        name="grade_point"
-                        onChange={handleChange}
-                        value={markInput?.grade_point || ""}
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>comment</label>
-                      <input
-                        type="text"
-                        name="comment"
-                        onChange={handleChange}
-                        value={markInput?.comment || ""}
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Class Name</label>
-                      <select
-                        name="class_id"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={markInput?.class_id || ""}
-                      >
-                        <option>select class</option>
-                        {classes?.map((classItem) => {
-                          return (
-                            <option key={classItem.id} value={classItem.id}>
-                              {classItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Section Name</label>
-                      <select
-                        name="section_id"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={markInput?.section_id || ""}
-                      >
-                        <option>select section</option>
-                        {sections?.map((sectionItem) => {
-                          return (
-                            <option key={sectionItem.id} value={sectionItem.id}>
-                              {sectionItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Subject Name</label>
-                      <select
-                        name="subject_id"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={markInput?.subject_id || ""}
-                      >
-                        <option>select subject</option>
-                        {subjects?.map((subjectItem) => {
-                          return (
-                            <option key={subjectItem.id} value={subjectItem.id}>
-                              {subjectItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Exam</label>
-                      <select
-                        name="exam_id"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={markInput?.exam_id || ""}
-                      >
-                        <option>select exam</option>
-                        {exams?.map((examItem) => {
-                          return (
-                            <option key={examItem.id} value={examItem.id}>
-                              {examItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Student Name</label>
-                      <select
-                        name="user_id"
-                        className="form-control"
-                        onChange={handleChange}
-                        value={markInput?.user_id || ""}
-                      >
-                        <option>select student</option>
-                        {users?.map((userItem) => {
-                          return (
-                            <option key={userItem.id} value={userItem.id}>
-                              {userItem.name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                  </div>
-                  <button type="submit" className="btn btn-primary px-4">
-                    Update
-                  </button>
-                </div>
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
+        </div>
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Mark List</h4>
+                <Link to="/dashboard/marks" className="btn btn-primary btn-sm float-end">
+                  Mark List
+                </Link>
               </div>
             </div>
+            <div className="card-body">
+              <form onSubmit={submitMark} id="MARK_FORM">
+                <div className="card mt-4">
+                  <div className="card-body">
+                    <div className="tab-content" id="myTabContent">
+                      <div
+                        className="tab-pane fade show active card-body border"
+                        id="home"
+                        role="tabpanel"
+                        aria-labelledby="home-tab"
+                      >
+                        <div className="row">
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Mark</label>
+                            <input
+                              type="text"
+                              name="marks"
+                              onChange={handleChange}
+                              value={markInput?.marks || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>grade_point</label>
+                            <input
+                              type="text"
+                              name="grade_point"
+                              onChange={handleChange}
+                              value={markInput?.grade_point || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>comment</label>
+                            <input
+                              type="text"
+                              name="comment"
+                              onChange={handleChange}
+                              value={markInput?.comment || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Class Name</label>
+                            <select
+                              name="class_id"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={markInput?.class_id || ''}
+                            >
+                              <option>select class</option>
+                              {classes?.map((classItem) => {
+                                return (
+                                  <option
+                                    key={classItem.id}
+                                    value={classItem.id}
+                                  >
+                                    {classItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Section Name</label>
+                            <select
+                              name="section_id"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={markInput?.section_id || ''}
+                            >
+                              <option>select section</option>
+                              {sections?.map((sectionItem) => {
+                                return (
+                                  <option
+                                    key={sectionItem.id}
+                                    value={sectionItem.id}
+                                  >
+                                    {sectionItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Subject Name</label>
+                            <select
+                              name="subject_id"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={markInput?.subject_id || ''}
+                            >
+                              <option>select subject</option>
+                              {subjects?.map((subjectItem) => {
+                                return (
+                                  <option
+                                    key={subjectItem.id}
+                                    value={subjectItem.id}
+                                  >
+                                    {subjectItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Exam</label>
+                            <select
+                              name="exam_id"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={markInput?.exam_id || ''}
+                            >
+                              <option>select exam</option>
+                              {exams?.map((examItem) => {
+                                return (
+                                  <option key={examItem.id} value={examItem.id}>
+                                    {examItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Student Name</label>
+                            <select
+                              name="user_id"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={markInput?.user_id || ''}
+                            >
+                              <option>select student</option>
+                              {users?.map((userItem) => {
+                                return (
+                                  <option key={userItem.id} value={userItem.id}>
+                                    {userItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </div>
+                        </div>
+                        <button type="submit" className="btn btn-primary px-4">
+                          Update
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

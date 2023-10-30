@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Home from "./components/Dashboard";
+// import Sidebar from "./components/Sidebar";
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
 
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
@@ -76,103 +76,90 @@ import ClassRoomList from './pages/ClassRoom/ClassRoomList';
 import ShowClassRoom from './pages/ClassRoom/ShowClassRoom';
 import AddClassRoom from './pages/ClassRoom/AddClassRoom';
 import UpdateClassRoom from './pages/ClassRoom/UpdateClassRoom';
+import Privateroute from './components/Privateroute';
 
 const App = () => {
+    return (
+      <>
+        <BrowserRouter>
+          <Routes>
+            {/* Private Routes start */}
+            <Route path="/dashboard" element={<Privateroute/>} >
+              <Route path="home" element={<Home />} />
 
-  return (
-    <>
-      <BrowserRouter>
-      <div>
-      <Header />
-      </div>
-        <div className="d-flex">
-          <div className="w-auto position-sticky">
-            <Sidebar />
-          </div>
-          <div className="col overflow-hidden">
-            <Routes>
-              <Route path="/dashboard" element={<Dashboard />}></Route>
+              <Route path="admin" element={<AdminList />} />
+              <Route path="admin/create" element={<AddAdmin />}></Route>
+              <Route path="admin/:id/show" element={<ShowAdmin />}></Route>
+              <Route path="admin/:id/edit" element={<UpdateAdmin />}></Route>
 
-              <Route path="/subject/view" element={<SubjectList />}></Route>
-              <Route path="/subject/create" element={<AddSubject />}></Route>
-              <Route
-                path="/subjects/:id/show"
-                element={<ShowSubject />}
-              ></Route>
-              <Route
-                path="/subjects/:id/edit"
-                element={<UpdateSubject />}
-              ></Route>
-              <Route path="/marks" element={<MarkList />}></Route>
-              <Route path="/marks/create" element={<AddMark />}></Route>
-              <Route path="/marks/:id/show" element={<ShowMark />}></Route>
-              <Route path="/marks/:id/edit" element={<UpdateMark />}></Route>
+              <Route path="exams" element={<ExamList />} />
+              <Route path="exams/create" element={<AddExam />}></Route>
+              <Route path="exams/:id/show" element={<ShowExam />}></Route>
+              <Route path="exams/:id/edit" element={<UpdateExam />}></Route>
 
-              <Route path="/routines" element={<RoutineList />}></Route>
-              <Route path="/routines/create" element={<AddRoutine />}></Route>
-              <Route path="/routines/:id/show" element={<ShowRoutine />}></Route>
-              <Route path="/routines/:id/edit" element={<UpdateRoutine />}></Route>
+              <Route path="subject/view" element={<SubjectList />} />
+              <Route path="subject/create" element={<AddSubject />} />
+              <Route path="subjects/:id/show" element={<ShowSubject />}></Route>
+              <Route path="subjects/:id/edit" element={<UpdateSubject />}></Route>
 
-              <Route path="/syllabuses" element={<SyllabusList />}></Route>
-              <Route path="/syllabuses/create" element={<AddSyllabus />}></Route>
-              <Route path="/syllabuses/:id/show" element={<ShowSyllabus />}></Route>
-              <Route path="/syllabuses/:id/edit" element={<UpdateSyllabus />}></Route>
+              <Route path="students" element={<StudentList />}></Route>
+              <Route path="students/create" element={<AddStudent />}></Route>
+              <Route path="students/:id/show" element={<ShowStudent />}></Route>
+              <Route path="students/:id/edit" element={<UpdateStudent />}></Route>
 
-              <Route path="/sections" element={<SectionList />}></Route>
-              <Route path="/sections/create" element={<AddSection />}></Route>
-              <Route path="/sections/:id/show" element={<ShowSection />}></Route>
-              <Route path="/sections/:id/edit" element={<UpdateSection />}></Route>
+              <Route path="teachers" element={<TeacherList />}></Route>
+              <Route path="teachers/create" element={<AddTeacher />}></Route>
+              <Route path="teachers/:id/show" element={<ShowTeacher />}></Route>
+              <Route path="teachers/:id/edit" element={<UpdateTeacher />}></Route>
 
-              <Route path="/grades" element={<GradeList />}></Route>
-              <Route path="/grades/create" element={<AddGrade />}></Route>
-              <Route path="/grades/:id/show" element={<ShowGrade />}></Route>
-              <Route path="/grades/:id/edit" element={<UpdateGrade />}></Route>
+              <Route path="parents" element={<ParentList />}></Route>
+              <Route path="parents/create" element={<AddParent />}></Route>
+              <Route path="parents/:id/show" element={<ShowParent />}></Route>
+              <Route path="parents/:id/edit" element={<UpdateParent />}></Route>
 
-              <Route path="/exams" element={<ExamList />}></Route>
-              <Route path="/exams/create" element={<AddExam />}></Route>
-              <Route path="/exams/:id/show" element={<ShowExam />}></Route>
-              <Route path="/exams/:id/edit" element={<UpdateExam />}></Route>
+              <Route path="sections" element={<SectionList />}></Route>
+              <Route path="sections/create" element={<AddSection />}></Route>
+              <Route path="sections/:id/show" element={<ShowSection />}></Route>
+              <Route path="sections/:id/edit" element={<UpdateSection />}></Route>
 
-              <Route path="/classes" element={<ClassesList />}></Route>
-              <Route path="/classes/create" element={<AddClasses />}></Route>
-              <Route path="/classes/:id/show" element={<ShowClasses />}></Route>
-              <Route path="/classes/:id/edit" element={<UpdateClasses />}></Route>
+              <Route path="grades" element={<GradeList />}></Route>
+              <Route path="grades/create" element={<AddGrade />}></Route>
+              <Route path="grades/:id/show" element={<ShowGrade />}></Route>
+              <Route path="grades/:id/edit" element={<UpdateGrade />}></Route>
 
-              <Route path="/classroom" element={<ClassRoomList />}></Route>
-              <Route path="/classroom/create" element={<AddClassRoom />}></Route>
-              <Route path="/classroom/:id/show" element={<ShowClassRoom />}></Route>
-              <Route path="/classroom/:id/edit" element={<UpdateClassRoom />}></Route>
+              <Route path="syllabuses" element={<SyllabusList />}></Route>
+              <Route path="syllabuses/create" element={<AddSyllabus />}></Route>
+              <Route path="syllabuses/:id/show" element={<ShowSyllabus />}></Route>
+              <Route path="syllabuses/:id/edit" element={<UpdateSyllabus />}></Route>
 
-              <Route path="/admin" element={<AdminList />}></Route>
-              <Route path="/admin/create" element={<AddAdmin />}></Route>
-              <Route path="/admin/:id/show" element={<ShowAdmin />}></Route>
-              <Route path="/admin/:id/edit" element={<UpdateAdmin />}></Route>
+              <Route path="routines" element={<RoutineList />}></Route>
+              <Route path="routines/create" element={<AddRoutine />}></Route>
+              <Route path="routines/:id/show" element={<ShowRoutine />}></Route>
+              <Route path="routines/:id/edit" element={<UpdateRoutine />}></Route>
 
-              <Route path="/students" element={<StudentList />}></Route>
-              <Route path="/students/create" element={<AddStudent />}></Route>
-              <Route path="/students/:id/show" element={<ShowStudent />}></Route>
-              <Route path="/students/:id/edit" element={<UpdateStudent />}></Route>
+              <Route path="marks" element={<MarkList />}></Route>
+              <Route path="marks/create" element={<AddMark />}></Route>
+              <Route path="marks/:id/show" element={<ShowMark />}></Route>
+              <Route path="marks/:id/edit" element={<UpdateMark />}></Route>
 
-              <Route path="/parents" element={<ParentList />}></Route>
-              <Route path="/parents/create" element={<AddParent />}></Route>
-              <Route path="/parents/:id/show" element={<ShowParent />}></Route>
-              <Route path="/parents/:id/edit" element={<UpdateParent />}></Route>
+              <Route path="classes" element={<ClassesList />}></Route>
+              <Route path="classes/create" element={<AddClasses />}></Route>
+              <Route path="classes/:id/show" element={<ShowClasses />}></Route>
+              <Route path="classes/:id/edit" element={<UpdateClasses />}></Route>
 
-              <Route path="/teachers" element={<TeacherList />}></Route>
-              <Route path="/teachers/create" element={<AddTeacher />}></Route>
-              <Route path="/teachers/:id/show" element={<ShowTeacher />}></Route>
-              <Route path="/teachers/:id/edit" element={<UpdateTeacher />}></Route>
+              <Route path="classroom" element={<ClassRoomList />}></Route>
+              <Route path="classroom/create" element={<AddClassRoom />}></Route>
+              <Route path="classroom/:id/show" element={<ShowClassRoom />}></Route>
+              <Route path="classroom/:id/edit" element={<UpdateClassRoom />}></Route>
+            </Route>
+            {/* Private Routes end */}
 
-              <Route path="/login" element={<Login />}></Route>
-              <Route path="/register" element={<Register />}></Route>
-            </Routes>
-          </div>
-        </div>
-        <div>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </>
-  );
+            {/* Public Routes */}
+            <Route path="/login" element={<Login/>}></Route>
+            <Route path="/register" element={<Register/>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </>
+    );
 };
 export default App;

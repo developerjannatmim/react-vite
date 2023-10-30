@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const GradeList = () => {
   const [gradeList, setGradeList] = useState([]);
@@ -58,105 +61,122 @@ const GradeList = () => {
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
-    <div className="container px-4">
-    <div className="card">
-      <div className="card-header">
-        <h4>Grade List</h4>
-        <Link
-          to="/grades/create"
-          className="btn btn-primary btn-sm float-end"
-        >
-          Add Grade
-        </Link>
+    <>
+      <div>
+        <Header />
       </div>
-      <div className="page-system mt-4">
-        <nav>
-          <ul className="pagination">
-            <li className="page-item">
-              <a href="#" className="page-link" onClick={prePage}>
-                Prev
-              </a>
-            </li>
-            {numbers.map((n, i) => {
-              return (
-                <li
-                  className={`page-item ${currentPage === n ? 'active' : ''}`}
-                  key={i}
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
+        </div>
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Grade List</h4>
+                <Link
+                  to="/dashboard/grades/create"
+                  className="btn btn-primary btn-sm float-end"
                 >
-                  <a
-                    href="#"
-                    className="page-link"
-                    onClick={() => changeCurrentPage(n)}
-                  >
-                    {n}
-                  </a>
-                </li>
-              );
-            })}
-            <li className="page-item">
-              <a href="#" className="page-link" onClick={nextPage}>
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav>
+                  Add Grade
+                </Link>
+              </div>
+              <div className="page-system mt-4">
+                <nav>
+                  <ul className="pagination">
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={prePage}>
+                        Prev
+                      </a>
+                    </li>
+                    {numbers.map((n, i) => {
+                      return (
+                        <li
+                          className={`page-item ${
+                            currentPage === n ? 'active' : ''
+                          }`}
+                          key={i}
+                        >
+                          <a
+                            href="#"
+                            className="page-link"
+                            onClick={() => changeCurrentPage(n)}
+                          >
+                            {n}
+                          </a>
+                        </li>
+                      );
+                    })}
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={nextPage}>
+                        Next
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div className="card-body">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Grade</th>
+                      <th scope="col">Grade Point</th>
+                      <th scope="col">Mark From</th>
+                      <th scope="col">Mark Upto</th>
+                      <th scope="col">Show</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {records?.map((grade) => {
+                      return (
+                        <tr key={grade.id}>
+                          <td>{grade.id}</td>
+                          <td>{grade.name}</td>
+                          <td>{grade.grade_point}</td>
+                          <td>{grade.mark_from}</td>
+                          <td>{grade.mark_upto}</td>
+                          <td>
+                            <Link
+                              to={`/dashboard/grades/${grade.id}/show`}
+                              className="btn btn-primary btn-sm"
+                            >
+                              Show
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              to={`/dashboard/grades/${grade.id}/edit`}
+                              className="btn btn-success btn-sm"
+                            >
+                              Edit
+                            </Link>
+                          </td>
+                          <td
+                            type="button"
+                            onClick={(e) => deleteGrade(e, grade.id)}
+                            className="btn btn-danger btn-sm"
+                          >
+                            Delete
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="card-body">
-        <table className="table table-striped">
-          <thead>
-            <tr>
-            <th scope="col">ID</th>
-                <th scope="col">Grade</th>
-                <th scope="col">Grade Point</th>
-                <th scope="col">Mark From</th>
-                <th scope="col">Mark Upto</th>
-                <th scope="col">Show</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {records?.map((grade) => {
-              return (
-                <tr key={grade.id}>
-                  <td>{grade.id}</td>
-                  <td>{grade.name}</td>
-                  <td>{grade.grade_point}</td>
-                  <td>{grade.mark_from}</td>
-                  <td>{grade.mark_upto}</td>
-                  <td>
-                    <Link
-                      to={`/grades/${grade.id}/show`}
-                      className="btn btn-primary btn-sm"
-                    >
-                      Show
-                    </Link>
-                  </td>
-                  <td>
-                    <Link
-                      to={`/grades/${grade.id}/edit`}
-                      className="btn btn-success btn-sm"
-                    >
-                      Edit
-                    </Link>
-                  </td>
-                  <td
-                    type="button"
-                    onClick={(e) => deleteGrade(e, grade.id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    Delete
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      <div>
+        <Footer />
       </div>
-    </div>
-  </div>
+    </>
   );
-  
+
   function prePage(e) {
     e.preventDefault();
     if (currentPage !== 1) {
@@ -174,6 +194,6 @@ const GradeList = () => {
       setCurrentPage(currentPage + 1);
     }
   }
-}
+};
 
-export default GradeList
+export default GradeList;

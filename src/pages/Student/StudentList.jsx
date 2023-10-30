@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import '../../assets/css/style.css';
+import Header from './../../components/Header';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
@@ -59,114 +62,138 @@ const StudentList = () => {
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
-    <div className="container px-4">
-      <div className="card">
-        <div className="card-header">
-          <h4>Student List</h4>
-          <Link to="/students/create" className="btn btn-primary btn-sm float-end">
-            Add Student
-          </Link>
+    <>
+      <div>
+        <Header />
+      </div>
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
         </div>
-        <div className="page-system mt-4">
-          <nav>
-            <ul className="pagination">
-              <li className="page-item">
-                <a href="#" className="page-link" onClick={prePage}>
-                  Prev
-                </a>
-              </li>
-              {numbers.map((n, i) => {
-                return (
-                  <li
-                    className={`page-item ${currentPage === n ? 'active' : ''}`}
-                    key={i}
-                  >
-                    <a
-                      href="#"
-                      className="page-link"
-                      onClick={() => changeCurrentPage(n)}
-                    >
-                      {n}
-                    </a>
-                  </li>
-                );
-              })}
-              <li className="page-item">
-                <a href="#" className="page-link" onClick={nextPage}>
-                  Next
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div className='card-body'>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Address</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Photo</th>
-                <th scope="col">BirthDay</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Blood Group</th>
-                <th scope="col">Show</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {records?.map((studentData) => {
-                let userInformation;
-                try {
-                  userInformation = JSON.parse(studentData?.user_information);
-                } catch (error) {
-                  /**/
-                }
-                return (
-                  <tr key={studentData?.id}>
-                    <td>{studentData?.id}</td>
-                    <td>{studentData?.name}</td>
-                    <td>{studentData?.email}</td>
-                    <td>{userInformation?.address}</td>
-                    <td>{userInformation?.phone}</td>
-                    <td>{userInformation?.photo}</td>
-                    <td>{userInformation?.birthday}</td>
-                    <td>{userInformation?.gender}</td>
-                    <td>{userInformation?.blood_group}</td>
-                    <td>
-                      <Link
-                        to={`/students/${studentData.id}/show`}
-                        className="btn btn-primary btn-sm"
-                      >
-                        Show
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to={`/students/${studentData.id}/edit`}
-                        className="btn btn-success btn-sm"
-                      >
-                        Edit
-                      </Link>
-                    </td>
-                    <td
-                      type="button"
-                      onClick={(e) => deleteStudentData(e, studentData.id)}
-                      className="btn btn-danger btn-sm"
-                    >
-                      Delete
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Student List</h4>
+                <Link
+                  to="/dashboard/students/create"
+                  className="btn btn-primary btn-sm float-end"
+                >
+                  Add Student
+                </Link>
+              </div>
+              <div className="page-system mt-4">
+                <nav>
+                  <ul className="pagination">
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={prePage}>
+                        Prev
+                      </a>
+                    </li>
+                    {numbers.map((n, i) => {
+                      return (
+                        <li
+                          className={`page-item ${
+                            currentPage === n ? 'active' : ''
+                          }`}
+                          key={i}
+                        >
+                          <a
+                            href="#"
+                            className="page-link"
+                            onClick={() => changeCurrentPage(n)}
+                          >
+                            {n}
+                          </a>
+                        </li>
+                      );
+                    })}
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={nextPage}>
+                        Next
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div className="card-body">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Address</th>
+                      <th scope="col">Phone</th>
+                      <th scope="col">Photo</th>
+                      <th scope="col">BirthDay</th>
+                      <th scope="col">Gender</th>
+                      <th scope="col">Blood Group</th>
+                      <th scope="col">Show</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {records?.map((studentData) => {
+                      let userInformation;
+                      try {
+                        userInformation = JSON.parse(
+                          studentData?.user_information
+                        );
+                      } catch (error) {
+                        /**/
+                      }
+                      return (
+                        <tr key={studentData?.id}>
+                          <td>{studentData?.id}</td>
+                          <td>{studentData?.name}</td>
+                          <td>{studentData?.email}</td>
+                          <td>{userInformation?.address}</td>
+                          <td>{userInformation?.phone}</td>
+                          <td>{userInformation?.photo}</td>
+                          <td>{userInformation?.birthday}</td>
+                          <td>{userInformation?.gender}</td>
+                          <td>{userInformation?.blood_group}</td>
+                          <td>
+                            <Link
+                              to={`/dashboard/students/${studentData.id}/show`}
+                              className="btn btn-primary btn-sm"
+                            >
+                              Show
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              to={`/dashboard/students/${studentData.id}/edit`}
+                              className="btn btn-success btn-sm"
+                            >
+                              Edit
+                            </Link>
+                          </td>
+                          <td
+                            type="button"
+                            onClick={(e) =>
+                              deleteStudentData(e, studentData.id)
+                            }
+                            className="btn btn-danger btn-sm"
+                          >
+                            Delete
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 
   function prePage(e) {
