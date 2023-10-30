@@ -8,7 +8,7 @@ import "../assets/css/Footer.css";
 const Footer = () => {
   return (
     <div className="container-fluid footer">
-      <div className="sb__footer section__padding">
+      {/* <div className="sb__footer section__padding">
         <div className="sb__footer-links">
           <div className="sb__footer-links_div">
             <h4>For Business</h4>
@@ -76,7 +76,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <hr></hr>
       <div className="sb__footer-below">
         <div className="sb__footer-copyright">

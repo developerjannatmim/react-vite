@@ -52,7 +52,7 @@ const AddGrade = () => {
   };
   return (
     <div className="container-fluid px-3">
-    <form onSubmit={submitSubject} id="SUBJECT_FORM">
+    <form onSubmit={submitGrade} id="SUBJECT_FORM">
       <div className="card mt-4">
         <div className="card-header">
           <h4>

@@ -7,14 +7,6 @@ const Sidebar = () => {
   return (
     <div className="sidebar py-5 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
       <div>
-        <a
-          className="p-3 text-decoration-none ms-4 d-flex align-items-center text-white d-none d-sm-inline"
-          role="button"
-          href="#"
-        >
-          <span className="f5-4">Side Menu</span>
-        </a>
-        <hr className="text-white d-none d-sm-block"></hr>
         <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
           <span className="sidenav-menu-heading">CORE</span>
           <li

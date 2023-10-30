@@ -1,7 +1,7 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateAdmin = () => {
   const navigate = useNavigate();
@@ -9,15 +9,30 @@ const UpdateAdmin = () => {
   const { id } = useParams();
   //console.log(id);
 
+  let userInformation;
+  try {
+    userInformation = JSON.parse(adminInput?.user_information);
+  } catch (error) {
+    /**/
+  }
+
   const handleChange = (e) => {
-    setAdminInput({ ...adminInput, [e.target.name]: e.target.value });
+    setAdminInput({
+      ...adminInput,
+      user_information: {
+        ...adminInput?.user_information,
+        [e.target.name]: e.target.value,
+      },
+      [e.target.name]: e.target.value,
+    });
   };
 
+  console.log(setAdminInput);
 
   const submitAdmin = (e) => {
     e.preventDefault();
     console.log(adminInput);
-    const data = {adminInput};
+    const data = { adminInput };
     fetch(
       `http://127.0.0.1:8000/api/admin/${id}`,
       {
@@ -25,32 +40,37 @@ const UpdateAdmin = () => {
           ...data,
         }),
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
-        method: "PUT",
+        method: 'PUT',
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate("/admin");
+        if(response === 200) {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          navigate('/admin');
+        }else{
+          //document.getElementById("ADMIN_FORM").reset();
+          Swal.fire('Warning', 'Unprocessable Content');
+          navigate(`/admin/${id}/edit`);
+        }
+
       })
-      .catch((error) => {
-        console.error(error);
-        document.getElementById("ADMIN_FORM").reset();
-        Swal.fire('Warning', response?.message, 'warning');
-      });
+      // .catch((error) => {
+      //   console.error(error);
+      // });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -63,26 +83,11 @@ const UpdateAdmin = () => {
       });
   }, [id]);
 
-// const [userInformation, setUserInfo] = useState([]);
-
-  // const handleInfo = (e) => {
-  //   setUserInfo({ ...userInformation, [e.target.name]: e.target.value });
-  // };
-
-let userInformation;
-  try {
-    userInformation = JSON.parse(adminInput?.user_information);
-  } catch (error) {
-    /**/
-  }
-
-
-
   return (
     <div className="container px-4">
       <div className="card">
         <div className="card-header">
-          <h4>Subject List</h4>
+          <h4>Admin List</h4>
           <Link to="/admin" className="btn btn-primary btn-sm float-end">
             Admin List
           </Link>
@@ -106,7 +111,7 @@ let userInformation;
                         type="text"
                         name="name"
                         onChange={handleChange}
-                        value={adminInput?.name || ""}
+                        value={adminInput?.name || ''}
                         className="form-control"
                       />
                     </div>
@@ -116,7 +121,7 @@ let userInformation;
                         type="email"
                         name="email"
                         onChange={handleChange}
-                        value={adminInput?.email || ""}
+                        value={adminInput?.email || ''}
                         className="form-control"
                       />
                     </div>
@@ -126,11 +131,11 @@ let userInformation;
                         type="text"
                         name="address"
                         onChange={handleChange}
-                        value={userInformation?.address || ""}
+                        value={userInformation?.address || ''}
                         className="form-control"
                       />
                     </div>
-                    <div className="col-md-6 form-group mb-3">
+                    {/* <div className="col-md-6 form-group mb-3">
                       <label>Phone</label>
                       <input
                         type="text"
@@ -185,7 +190,7 @@ let userInformation;
                         <option value="o+">O+</option>
                         <option value="o-">O-</option>
                       </select>
-                    </div>
+                    </div> */}
                   </div>
                   <button type="submit" className="btn btn-primary px-4">
                     Update
