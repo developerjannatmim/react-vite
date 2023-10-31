@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "../assets/css/Sidebar.css";
+import { useNavigate } from "react-router";
 
 const Sidebar = () => {
   const [active, setActive] = useState(1);
   const [userRole, setUserRole] = useState('');
+  const navigate = useNavigate();
+  const handleData =() => {
+    localStorage.clear();
+    navigate('/login');
+  }
   
   useEffect(() => {
     let role = localStorage.getItem("role");
@@ -292,14 +298,14 @@ const Sidebar = () => {
                   data-bs-parent="#sidenavAccordion"
                 >
                   <li className="nav-item">
-                    <a
-                      href="/login"
+                    <button
+                      onClick={handleData}
                       className="nav-link text-white"
                       aria-current="page"
                     >
                       <i className="bi bi-browser-safari icon"></i>
                       <span className="d-none d-sm-inline">Login</span>
-                    </a>
+                    </button>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link text-white" href="/register">
@@ -531,14 +537,14 @@ const Sidebar = () => {
               data-bs-parent="#sidenavAccordion"
             >
               <li className="nav-item">
-                <a
-                  href="/login"
+                <button
+                  onClick={() => handleData()}
                   className="nav-link text-white"
                   aria-current="page"
                 >
                   <i className="bi bi-browser-safari icon"></i>
                   <span className="d-none d-sm-inline">Login</span>
-                </a>
+                </button>
               </li>
               <li className="nav-item">
                 <a className="nav-link text-white" href="/register">
@@ -758,14 +764,14 @@ const Sidebar = () => {
                 data-bs-parent="#sidenavAccordion"
               >
                 <li className="nav-item">
-                  <a
-                    href="/login"
+                  <button
+                    onClick={() => handleData()}
                     className="nav-link text-white"
                     aria-current="page"
                   >
                     <i className="bi bi-browser-safari icon"></i>
                     <span className="d-none d-sm-inline">Login</span>
-                  </a>
+                  </button>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link text-white" href="/register">

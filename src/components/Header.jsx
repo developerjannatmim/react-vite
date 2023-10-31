@@ -1,8 +1,15 @@
 import React from 'react';
 import '../assets/css/Header.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    localStorage.clear();
+    window.location.reload();
+    navigate('/login');
+  };
+
   return (
     <div>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -66,9 +73,9 @@ const Header = () => {
                 <hr className="dropdown-divider" />
               </li>
               <li className='dropdown-list'>
-                <Link to={'/login'} className="dropdown-item" href="#!">
+                <button onClick={() => handleClick()} className="dropdown-item">
                   Logout
-                </Link>
+                </button>
               </li>
             </ul>
           </li>

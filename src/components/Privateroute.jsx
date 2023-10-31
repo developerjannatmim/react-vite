@@ -1,10 +1,12 @@
 import React from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const Privateroute = () => {
-    return (
+    return(
       <Outlet />
+      
     );
+
 };
 
 export default Privateroute;

@@ -80,7 +80,7 @@ const App = () => {
   const [userRole, setUserRole] = useState('');
 
   useEffect(() => {
-    let role = localStorage.getItem('role');
+    const role = localStorage.getItem('role');
       setUserRole(role);
   })
 
@@ -162,6 +162,7 @@ const App = () => {
             </Route>
             {/* Private Routes end */}
           </Routes>
+
         </>
       )
     }

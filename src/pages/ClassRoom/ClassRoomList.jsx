@@ -61,6 +61,12 @@ const ClassRoomList = () => {
       });
   }, [loading]);
 
+  const lastIndex = currentPage * dataPerPage;
+  const firstIndex = lastIndex - dataPerPage;
+  const records = classRoomList?.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(classRoomList?.length / dataPerPage);
+  const numbers = [...Array(npage + 1).keys()].slice(1);
+
   if (userRole === "1") {
     return (
       <>
@@ -129,7 +135,7 @@ const ClassRoomList = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {classRoomList?.map((classRoom) => {
+                      {records?.map((classRoom) => {
                         return (
                           <tr key={classRoom.id}>
                             <td>{classRoom.id}</td>
@@ -250,7 +256,7 @@ const ClassRoomList = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {classRoomList?.map((classRoom) => {
+                      {records?.map((classRoom) => {
                         return (
                           <tr key={classRoom.id}>
                             <td>{classRoom.id}</td>

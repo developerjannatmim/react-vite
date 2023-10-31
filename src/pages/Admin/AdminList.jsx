@@ -180,14 +180,6 @@ const AdminList = () => {
                             >
                               Delete
                             </td>
-                              <td>
-                              <Link
-                                to={`/dashboard/admin/${adminData.id}/show`}
-                                className="btn btn-primary btn-sm"
-                              >
-                                Show
-                              </Link>
-                            </td>
                         </tr>
                       );
                     })}
