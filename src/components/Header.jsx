@@ -1,5 +1,6 @@
 import React from 'react';
 import '../assets/css/Header.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -65,9 +66,9 @@ const Header = () => {
                 <hr className="dropdown-divider" />
               </li>
               <li className='dropdown-list'>
-                <a className="dropdown-item" href="#!">
+                <Link to={'/login'} className="dropdown-item" href="#!">
                   Logout
-                </a>
+                </Link>
               </li>
             </ul>
           </li>

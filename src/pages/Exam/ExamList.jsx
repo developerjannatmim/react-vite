@@ -8,15 +8,22 @@ import Footer from './../../components/Footer';
 
 const ExamList = () => {
   const [examList, setExamList] = useState([]);
+  const [userRole, setUserRole] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
+
+  useEffect(() => {
+    let role = localStorage.getItem('role');
+    setUserRole(role);
+  })
 
   const deleteExam = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
     Clicked.innerText = 'deleting';
 
+    if(confirm(`Are you sure you want to delete exam id ${id}?`)){
     fetch(`http://127.0.0.1:8000/api/exams/${id}`, {
       headers: {
         Accept: 'application/json',
@@ -33,6 +40,7 @@ const ExamList = () => {
         console.error(error);
         Swal.fire('Warning', response?.message, 'warning');
       });
+    }
   };
 
   useEffect(() => {
@@ -60,6 +68,7 @@ const ExamList = () => {
   const npage = Math.ceil(examList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
+  if (userRole === "1") {
   return (
     <>
       <div>
@@ -73,7 +82,7 @@ const ExamList = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Subject List</h4>
+                <h4>Exam List</h4>
                 <Link
                   to="/dashboard/exams/create"
                   className="btn btn-primary btn-sm float-end"
@@ -202,6 +211,128 @@ const ExamList = () => {
       setCurrentPage(currentPage + 1);
     }
   }
+}else if(userRole === '2' || userRole === '3' || userRole === '4') {
+  return (
+    <>
+      <div>
+        <Header />
+      </div>
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
+        </div>
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Exam List</h4>
+              </div>
+              <div className="page-system mt-4">
+                <nav>
+                  <ul className="pagination">
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={prePage}>
+                        Prev
+                      </a>
+                    </li>
+                    {numbers.map((n, i) => {
+                      return (
+                        <li
+                          className={`page-item ${
+                            currentPage === n ? 'active' : ''
+                          }`}
+                          key={i}
+                        >
+                          <a
+                            href="#"
+                            className="page-link"
+                            onClick={() => changeCurrentPage(n)}
+                          >
+                            {n}
+                          </a>
+                        </li>
+                      );
+                    })}
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={nextPage}>
+                        Next
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div className="card-body">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Exam Name</th>
+                      <th scope="col">Class Name</th>
+                      <th scope="col">Section Name</th>
+                      <th scope="col">Exam Type</th>
+                      <th scope="col">Starting Time</th>
+                      <th scope="col">Ending Time</th>
+                      <th scope="col">Total Marks</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Show</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {records?.map((exam) => {
+                      return (
+                        <tr key={exam.id}>
+                          <td>{exam.id}</td>
+                          <td>{exam.name}</td>
+                          <td>{exam.exam_type}</td>
+                          <td>{exam.starting_time}</td>
+                          <td>{exam.ending_time}</td>
+                          <td>{exam.total_marks}</td>
+                          <td>{exam.status}</td>
+                          <td>{exam.section?.name}</td>
+                          <td>{exam.class?.name}</td>
+                          <td>
+                            <Link
+                              to={`/dashboard/exams/${exam.id}/show`}
+                              className="btn btn-primary btn-sm"
+                            >
+                              Show
+                            </Link>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </>
+  );
+
+  function prePage(e) {
+    e.preventDefault();
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+
+  function changeCurrentPage(id) {
+    setCurrentPage(id);
+  }
+
+  function nextPage(e) {
+    if (currentPage !== npage) {
+      e.preventDefault();
+      setCurrentPage(currentPage + 1);
+    }
+  }
+}
+
 };
 
 export default ExamList;

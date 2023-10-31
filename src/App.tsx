@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Home from "./components/Dashboard";
+import Publicroute from "./components/Publicroute";
 
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
@@ -76,9 +77,16 @@ import SchoolList from './pages/School/SchoolList';
 import UpdateSchool from './pages/School/UpdateSchool';
 
 const App = () => {
-    return (
-      <>
-        <BrowserRouter>
+  const [userRole, setUserRole] = useState('');
+
+  useEffect(() => {
+    let role = localStorage.getItem('role');
+      setUserRole(role);
+  })
+
+    if( userRole === '1') {
+      return (
+        <>
           <Routes>
             {/* Private Routes start */}
             <Route path="/dashboard" element={<Privateroute/>} >
@@ -153,13 +161,83 @@ const App = () => {
               <Route path="settings/school-info/:id/edit" element={<UpdateSchool/>}></Route>
             </Route>
             {/* Private Routes end */}
-
-            {/* Public Routes */}
-            <Route path="/login" element={<Login/>}></Route>
-            <Route path="/register" element={<Register/>}></Route>
           </Routes>
-        </BrowserRouter>
+        </>
+      )
+    }
+    else if(userRole === '2' || userRole === '3' || userRole === '4'){
+      return(
+        <>
+          <Routes>
+            <Route path="/dashboard" element={<Privateroute/>} >
+              <Route path="home" element={<Home />} />
+
+              <Route path="admin" element={<AdminList />} />
+              <Route path="admin/:id/show" element={<ShowAdmin />}></Route>
+
+              <Route path="exams" element={<ExamList />} />
+              <Route path="exams/:id/show" element={<ShowExam />}></Route>
+
+              <Route path="subject/view" element={<SubjectList />} />
+              <Route path="subjects/:id/show" element={<ShowSubject />}></Route>
+
+              <Route path="students" element={<StudentList />}></Route>
+              <Route path="students/:id/show" element={<ShowStudent />}></Route>
+
+              <Route path="teachers" element={<TeacherList />}></Route>
+              <Route path="teachers/:id/show" element={<ShowTeacher />}></Route>
+
+              <Route path="parents" element={<ParentList />}></Route>
+              <Route path="parents/:id/show" element={<ShowParent />}></Route>
+
+              <Route path="sections" element={<SectionList />}></Route>
+              <Route path="sections/:id/show" element={<ShowSection />}></Route>
+
+              <Route path="grades" element={<GradeList />}></Route>
+              <Route path="grades/:id/show" element={<ShowGrade />}></Route>
+
+              <Route path="syllabuses" element={<SyllabusList />}></Route>
+              <Route path="syllabuses/:id/show" element={<ShowSyllabus />}></Route>
+
+              <Route path="routines" element={<RoutineList />}></Route>
+              <Route path="routines/:id/show" element={<ShowRoutine />}></Route>
+
+              <Route path="marks" element={<MarkList />}></Route>
+              <Route path="marks/:id/show" element={<ShowMark />}></Route>
+
+              <Route path="classes" element={<ClassesList />}></Route>
+              <Route path="classes/:id/show" element={<ShowClasses />}></Route>
+
+              <Route path="classroom" element={<ClassRoomList />}></Route>
+              <Route path="classroom/:id/show" element={<ShowClassRoom />}></Route>
+            </Route>
+            {/* Private Routes end */}
+          </Routes>
+        </>
+      );
+    }
+    else if(userRole === '' || userRole === null){
+      return(
+      <>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/register" element={<Register/>}></Route>
+        </Routes>
       </>
-    );
+      );
+    }
+    else{
+      return(
+      <>
+        <Routes>
+          <Route path="*" element={<Publicroute/>}></Route>
+        </Routes>
+      </>
+      )
+    }
+
 };
 export default App;
+
+

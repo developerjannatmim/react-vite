@@ -2,9 +2,25 @@ import React from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
+import './../assets/css/style.css';
 
 
 const Dashboard = () => {
+  const [displayUserName, setDisplayUserName] = useState();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let userName = localStorage.getItem('auth_name');
+    if(userName === '' || userName === null) {
+      navigate('/login');
+    }else{
+      setDisplayUserName(userName);
+      navigate('/dashboard/home');
+    }
+  })
   return (
     <>
       <div>
@@ -19,9 +35,10 @@ const Dashboard = () => {
             <div className="container-fluid px-4">
               <h1 className="mt-4">Dashboard</h1>
               <ol className="breadcrumb mb-4">
-                <li className="breadcrumb-item active">Dashboard</li>
+                <li className="breadcrumb-item active">Welcome to Dashboard</li> 
               </ol>
-              <div className="row">
+              <span className="auth_user">User Name: <b>{displayUserName}</b></span>
+              <div className="row mt-4">
                 <div className="col-xl-3 col-md-6">
                   <div className="card bg-primary text-white mb-4">
                     <div className="card-body">Primary Card</div>

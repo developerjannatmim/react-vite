@@ -8,15 +8,22 @@ import Footer from './../../components/Footer';
 
 const SubjectList = () => {
   const [subjectList, setSubjectList] = useState([]);
+  const [userRole, setUserRole] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
+
+  useEffect(() => {
+    let role = localStorage.getItem('role');
+    setUserRole(role);
+  })
 
   const deleteSubject = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
     Clicked.innerText = 'deleting';
 
+    if(confirm(`Are you sure you want to delete subject id ${id}?`)){
     fetch(`http://127.0.0.1:8000/api/subjects/${id}`, {
       headers: {
         Accept: 'application/json',
@@ -33,6 +40,7 @@ const SubjectList = () => {
         console.error(error);
         Swal.fire('Warning', response?.message, 'warning');
       });
+    }
   };
 
   useEffect(() => {
@@ -60,6 +68,7 @@ const SubjectList = () => {
   const npage = Math.ceil(subjectList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
+  if (userRole === "1") {
   return (
     <>
       <div>
@@ -190,6 +199,115 @@ const SubjectList = () => {
       setCurrentPage(currentPage + 1);
     }
   }
+}else if (userRole === '2' || userRole === '3' || userRole === '4') {
+  return (
+    <>
+      <div>
+        <Header />
+      </div>
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
+        </div>
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Subject List</h4>
+              </div>
+              <div className="page-system mt-4">
+                <nav>
+                  <ul className="pagination">
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={prePage}>
+                        Prev
+                      </a>
+                    </li>
+                    {numbers.map((n, i) => {
+                      return (
+                        <li
+                          className={`page-item ${
+                            currentPage === n ? 'active' : ''
+                          }`}
+                          key={i}
+                        >
+                          <a
+                            href="#"
+                            className="page-link"
+                            onClick={() => changeCurrentPage(n)}
+                          >
+                            {n}
+                          </a>
+                        </li>
+                      );
+                    })}
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={nextPage}>
+                        Next
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div className="card-body">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Subject Name</th>
+                      <th scope="col">Class Name</th>
+                      <th scope="col">Show</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {records?.map((subject) => {
+                      return (
+                        <tr key={subject.id}>
+                          <td>{subject.id}</td>
+                          <td>{subject.name}</td>
+                          <td>{subject.class?.name}</td>
+                          <td>
+                            <Link
+                              to={`/dashboard/subjects/${subject.id}/show`}
+                              className="btn btn-primary btn-sm"
+                            >
+                              Show
+                            </Link>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </>
+  );
+
+  function prePage(e) {
+    e.preventDefault();
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+
+  function changeCurrentPage(id) {
+    setCurrentPage(id);
+  }
+
+  function nextPage(e) {
+    if (currentPage !== npage) {
+      e.preventDefault();
+      setCurrentPage(currentPage + 1);
+    }
+  }
+}
 };
 
 export default SubjectList;

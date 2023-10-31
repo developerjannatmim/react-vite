@@ -18,6 +18,7 @@ const AdminList = () => {
     const Clicked = e.currentTarget;
     Clicked.innerText = 'deleting';
 
+    if(confirm(`Are you sure you want to delete admin id ${id}?`)){
     fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
       headers: {
         Accept: 'application/json',
@@ -34,6 +35,7 @@ const AdminList = () => {
         console.error(error);
         Swal.fire('Warning', response?.message, 'warning');
       });
+    }
   };
 
   useEffect(() => {
@@ -155,29 +157,37 @@ const AdminList = () => {
                           <td>{userInformation?.birthday}</td>
                           <td>{userInformation?.gender}</td>
                           <td>{userInformation?.blood_group}</td>
-                          <td>
-                            <Link
-                              to={`/dashboard/admin/${adminData.id}/show`}
-                              className="btn btn-primary btn-sm"
+                              <td>
+                              <Link
+                                to={`/dashboard/admin/${adminData.id}/show`}
+                                className="btn btn-primary btn-sm"
+                              >
+                                Show
+                              </Link>
+                            </td>
+                            <td>
+                              <Link
+                                to={`/dashboard/admin/${adminData.id}/edit`}
+                                className="btn btn-success btn-sm"
+                              >
+                                Edit
+                              </Link>
+                            </td>
+                            <td
+                              type="button"
+                              onClick={(e) => deleteAdminData(e, adminData.id)}
+                              className="btn btn-danger btn-sm"
                             >
-                              Show
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              to={`/dashboard/admin/${adminData.id}/edit`}
-                              className="btn btn-success btn-sm"
-                            >
-                              Edit
-                            </Link>
-                          </td>
-                          <td
-                            type="button"
-                            onClick={(e) => deleteAdminData(e, adminData.id)}
-                            className="btn btn-danger btn-sm"
-                          >
-                            Delete
-                          </td>
+                              Delete
+                            </td>
+                              <td>
+                              <Link
+                                to={`/dashboard/admin/${adminData.id}/show`}
+                                className="btn btn-primary btn-sm"
+                              >
+                                Show
+                              </Link>
+                            </td>
                         </tr>
                       );
                     })}
