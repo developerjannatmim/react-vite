@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Dashboard";
-// import Sidebar from "./components/Sidebar";
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
 
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 
-//Users start
+//Users components start
 import AdminList from "./pages/Admin/AdminList";
 import ShowAdmin from "./pages/Admin/ShowAdmin";
 import AddAdmin from "./pages/Admin/AddAdmin";
@@ -28,7 +25,7 @@ import TeacherList from "./pages/Teacher/TeacherList";
 import ShowTeacher from "./pages/Teacher/ShowTeacher";
 import AddTeacher from "./pages/Teacher/AddTeacher";
 import UpdateTeacher from "./pages/Teacher/UpdateTeacher";
-//Users end
+//Users components end
 
 import MarkList from "./pages/Mark/MarkList";
 import ShowMark from "./pages/Mark/ShowMark";
@@ -49,8 +46,6 @@ import SectionList from "./pages/Section/SectionList";
 import ShowSection from "./pages/Section/ShowSection";
 import AddSection from "./pages/Section/AddSection";
 import UpdateSection from "./pages/Section/UpdateSection";
-
-
 
 import GradeList from "./pages/Grade/GradeList";
 import ShowGrade from "./pages/Grade/ShowGrade";
@@ -77,6 +72,8 @@ import ShowClassRoom from './pages/ClassRoom/ShowClassRoom';
 import AddClassRoom from './pages/ClassRoom/AddClassRoom';
 import UpdateClassRoom from './pages/ClassRoom/UpdateClassRoom';
 import Privateroute from './components/Privateroute';
+import SchoolList from './pages/School/SchoolList';
+import UpdateSchool from './pages/School/UpdateSchool';
 
 const App = () => {
     return (
@@ -151,6 +148,9 @@ const App = () => {
               <Route path="classroom/create" element={<AddClassRoom />}></Route>
               <Route path="classroom/:id/show" element={<ShowClassRoom />}></Route>
               <Route path="classroom/:id/edit" element={<UpdateClassRoom />}></Route>
+
+              <Route path="settings/school-info" element={<SchoolList/>}></Route>
+              <Route path="settings/school-info/:id/edit" element={<UpdateSchool/>}></Route>
             </Route>
             {/* Private Routes end */}
 

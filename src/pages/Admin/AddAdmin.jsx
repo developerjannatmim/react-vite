@@ -8,18 +8,15 @@ import Footer from './../../components/Footer';
 
 const AddAdmin = () => {
   const navigate = useNavigate();
-  const [picture, setPicture] = useState(null);
-
-  const handleImage = (e) => {
-    console.log(e.target.files);
-    setPicture({ photo: e.target.files[0] });
-  };
+  const [picture, setPicture] = useState({
+    photo: '',
+  });
+  const [errors, setErrors] = useState([]);
 
   const [adminInput, setAdminInput] = useState({
     name: '',
     email: '',
     password: '',
-    //photo: '',
     address: '',
     phone: '',
     birthday: '',
@@ -31,8 +28,27 @@ const AddAdmin = () => {
     setAdminInput({ ...adminInput, [e.target.name]: e.target.value });
   };
 
+  const handleImage = (e) => {
+    console.log(e.target.files);
+    setPicture({ photo: e.target.files[0] });
+  };
+
+  const [records, setRecords] = useState([]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setRecords([...records, setAdminInput, setPicture]);
+    setAdminInput({
+      name: '',
+      email: '',
+      password: '',
+      address: '',
+      phone: '',
+      birthday: '',
+      gender: '',
+      blood_group: '',
+    });
+    setPicture({ photo: '' });
 
     const formData = new FormData();
     formData.append('photo', picture.photo);
@@ -47,7 +63,6 @@ const AddAdmin = () => {
 
     // photo: picture.photo,
     // name: adminInput.name,
-    // //photo: adminInput.photo,
     // email: adminInput.email,
     // password: adminInput.password,
     // address: adminInput.address,
@@ -73,21 +88,20 @@ const AddAdmin = () => {
       },
       formData
     )
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.data?.status === 200) {
-          console.info(response);
-          Swal.fire('Success', response?.message, 'success');
-          navigate('/dashboard/admin');
-        } else {
-          Swal.fire('Warning', 'Unprocessable Content');
-          navigate('/dashboard/admin/create');
-        }
-      });
+    .then((response) => response.json())
+    .then((response) => {
+      if(response?.status === 200){
+        console.info(response);
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/dashboard/admin');
+        setErrors([]);
+      }else{
+        Swal.fire('Warning', response?.message, 'warning');
+        setErrors(response?.message);
+      }
+    })
     // .catch((error) => {
     //   console.error(error);
-    //   Swal.fire('Warning', response?.message, 'warning');
-    //   document.getElementById("ADMIN_FORM").reset();
     // });
   };
 
@@ -102,7 +116,7 @@ const AddAdmin = () => {
         </div>
         <div className="col overflow-hidden">
           <div className="container-fluid px-4">
-            <form onSubmit={handleSubmit} id="ADMIN_FORM">
+            <form onSubmit={handleSubmit} encType="multipart/form-data" >
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
@@ -131,8 +145,8 @@ const AddAdmin = () => {
                           value={adminInput.name || ''}
                           name="name"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.name}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Email</label>
@@ -142,8 +156,8 @@ const AddAdmin = () => {
                           value={adminInput.email || ''}
                           name="email"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.email}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Password</label>
@@ -153,8 +167,8 @@ const AddAdmin = () => {
                           value={adminInput.password || ''}
                           name="password"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.password}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Address</label>
@@ -164,8 +178,8 @@ const AddAdmin = () => {
                           value={adminInput.address || ''}
                           name="address"
                           className="form-control"
-                          required
                         />
+                         <small className="text-danger">{errors.address}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Phone</label>
@@ -175,8 +189,8 @@ const AddAdmin = () => {
                           value={adminInput.phone || ''}
                           name="phone"
                           className="form-control"
-                          required
                         />
+                         <small className="text-danger">{errors.phone}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>BirthDay</label>
@@ -186,8 +200,8 @@ const AddAdmin = () => {
                           value={adminInput.birthday || ''}
                           name="birthday"
                           className="form-control"
-                          required
                         />
+                         <small className="text-danger">{errors.birthday}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Photo</label>
@@ -197,6 +211,7 @@ const AddAdmin = () => {
                           name="photo"
                           className="form-control"
                         />
+                         <small className="text-danger">{errors.photo}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Gender</label>
@@ -205,13 +220,13 @@ const AddAdmin = () => {
                           value={adminInput.gender || ''}
                           name="gender"
                           className="form-control"
-                          required
                         >
                           <option value="">Select gender</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
                           <option value="Others">Others</option>
                         </select>
+                        <small className="text-danger">{errors.gender}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Blood Group</label>
@@ -220,7 +235,6 @@ const AddAdmin = () => {
                           value={adminInput.blood_group || ''}
                           name="blood_group"
                           className="form-control"
-                          required
                         >
                           <option value="">Select a blood group</option>
                           <option value="a+">A+</option>
@@ -232,6 +246,7 @@ const AddAdmin = () => {
                           <option value="o+">O+</option>
                           <option value="o-">O-</option>
                         </select>
+                        <small className="text-danger">{errors.blood_group}</small>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">
                         Submit

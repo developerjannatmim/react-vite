@@ -266,6 +266,7 @@ const Sidebar = () => {
               <span className="ms-2 d-none d-sm-inline">Class Room</span>
             </a>
           </li>
+          <span className="sidenav-menu-heading">SETTINGS</span>
           <li
             className={
               active === 8
@@ -275,7 +276,7 @@ const Sidebar = () => {
             onClick={e => setActive(8)}
           >
             <a
-              href="/dashboard/school-info"
+              href="/dashboard/settings/school-info"
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
@@ -283,7 +284,7 @@ const Sidebar = () => {
               <span className="ms-2 d-none d-sm-inline">School</span>
             </a>
           </li>
-          <span className="sidenav-menu-heading">SETTINGS</span>
+          <span className="sidenav-menu-heading">AUTHENTICATION</span>
           <li className="nav-item my-1 py-2 py-sm-0">
             <a
               href="#"
@@ -294,7 +295,7 @@ const Sidebar = () => {
               aria-controls="collapseLayouts1"
             >
               <i className="bi bi-shop"></i>
-              <span className="ms-2 d-none d-sm-inline">Settings</span>
+              <span className="ms-2 d-none d-sm-inline">Authentication</span>
               <i className="bi bi-caret-down arrow ms-0 ms-sm-3"></i>
             </a>
             <ul

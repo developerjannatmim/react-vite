@@ -38,11 +38,13 @@ const Login = () => {
         if (response?.status === 200) {
           localStorage.setItem('auth_token', response?.token);
           localStorage.setItem('auth_name', response?.username);
+          localStorage.setItem('role', response?.role_id);
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
           navigate('/dashboard/home');
         } else if(response?.status === 401) {
           Swal.fire('Warning', response?.message, 'warning');
+          navigate('/login');
         }
       });
   };
