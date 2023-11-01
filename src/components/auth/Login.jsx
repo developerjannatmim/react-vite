@@ -41,7 +41,17 @@ const Login = () => {
           localStorage.setItem('role', response?.role_id);
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
-          navigate('/dashboard/home');
+          const userRole = localStorage.getItem("role");
+
+          if(userRole === '1'){
+            navigate('/admin/home');
+          }else if(userRole === '2') {
+            navigate('/teacher/home');
+          }else if(userRole === '3') {
+            navigate('/student/home');
+          }else if(userRole === '4') {
+            navigate('/parent/home');
+          }
         } else if(response?.status === 401) {
           Swal.fire('Warning', response?.message, 'warning');
           navigate('/login');

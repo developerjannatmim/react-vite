@@ -6,7 +6,7 @@ const Header = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     localStorage.clear();
-    window.location.reload();
+    //window.location.reload();
     navigate('/login');
   };
 
@@ -73,7 +73,7 @@ const Header = () => {
                 <hr className="dropdown-divider" />
               </li>
               <li className='dropdown-list'>
-                <button onClick={() => handleClick()} className="dropdown-item">
+                <button onClick={handleClick} className="dropdown-item">
                   Logout
                 </button>
               </li>
