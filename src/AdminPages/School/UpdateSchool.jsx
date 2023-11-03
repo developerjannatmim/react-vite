@@ -1,12 +1,13 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Switch from "react-switch";
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
-import './../../assets/css/style.css';
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import "./../../assets/css/style.css";
+import AdminHeader from "../../components/AdminHeader";
 
 const UpdateSchool = () => {
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ const UpdateSchool = () => {
   const handleChecked = () => {
     setChecked(checked);
   };
-
 
   const handleChange = (e) => {
     setSchoolInput({ ...schoolInput, [e.target.name]: e.target.value });
@@ -35,18 +35,18 @@ const UpdateSchool = () => {
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'PUT',
+        method: "PUT",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/settings/school-info');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/settings/school-info");
       })
       .catch((error) => {
         console.error(error);
@@ -56,9 +56,9 @@ const UpdateSchool = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/schools/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -74,7 +74,7 @@ const UpdateSchool = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -111,7 +111,7 @@ const UpdateSchool = () => {
                               type="text"
                               name="title"
                               onChange={handleChange}
-                              value={schoolInput?.title || ''}
+                              value={schoolInput?.title || ""}
                               className="form-control"
                             />
                           </div>
@@ -121,7 +121,7 @@ const UpdateSchool = () => {
                               type="text"
                               name="email"
                               onChange={handleChange}
-                              value={schoolInput?.email || ''}
+                              value={schoolInput?.email || ""}
                               className="form-control"
                             />
                           </div>
@@ -131,7 +131,7 @@ const UpdateSchool = () => {
                               type="text"
                               name="phone"
                               onChange={handleChange}
-                              value={schoolInput?.phone || ''}
+                              value={schoolInput?.phone || ""}
                               className="form-control"
                             />
                           </div>
@@ -141,7 +141,7 @@ const UpdateSchool = () => {
                               type="text"
                               name="address"
                               onChange={handleChange}
-                              value={schoolInput?.address || ''}
+                              value={schoolInput?.address || ""}
                               className="form-control"
                             />
                           </div>
@@ -151,13 +151,16 @@ const UpdateSchool = () => {
                               type="text"
                               name="school_info"
                               onChange={handleChange}
-                              value={schoolInput?.school_info || ''}
+                              value={schoolInput?.school_info || ""}
                               className="form-control"
                             />
                           </div>
                           <label>Status</label>
                           <div className="col-md-6 form-group mb-3">
-                            <Switch onChange={handleChecked} checked={checked}/>
+                            <Switch
+                              onChange={handleChecked}
+                              checked={checked}
+                            />
                           </div>
                         </div>
                         <button type="submit" className="btn btn-primary px-4">

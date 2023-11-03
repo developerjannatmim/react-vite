@@ -1,11 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
-import '../../assets/css/style.css';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+import "../../assets/css/style.css";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
@@ -16,34 +17,34 @@ const StudentList = () => {
   const deleteStudentData = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
+    Clicked.innerText = "deleting";
 
-    if(confirm(`Are you sure you want to delete student id ${id}?`)){
-    fetch(`http://127.0.0.1:8000/api/students/${id}`, {
-      headers: {
-        Accept: 'application/json',
-      },
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        Clicked.closest('tr').remove();
+    if (confirm(`Are you sure you want to delete student id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/students/${id}`, {
+        headers: {
+          Accept: "application/json",
+        },
+        method: "DELETE",
       })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire('Warning', response?.message, 'warning');
-      });
+        .then((response) => response.json())
+        .then((response) => {
+          console.info(response);
+          Swal.fire("Success", response?.message, "success");
+          Clicked.closest("tr").remove();
+        })
+        .catch((error) => {
+          console.error(error);
+          Swal.fire("Warning", response?.message, "warning");
+        });
     }
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/students?', {
+    fetch("http://127.0.0.1:8000/api/students?", {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -66,7 +67,7 @@ const StudentList = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -96,7 +97,7 @@ const StudentList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? 'active' : ''
+                            currentPage === n ? "active" : ""
                           }`}
                           key={i}
                         >
@@ -215,7 +216,6 @@ const StudentList = () => {
       setCurrentPage(currentPage + 1);
     }
   }
-
 };
 
 export default StudentList;

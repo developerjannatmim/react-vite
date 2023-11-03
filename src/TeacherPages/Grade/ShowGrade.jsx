@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import TeacherHeader from "../../components/TeacherHeader";
 
 const ShowGrade = () => {
   const [gradeItem, setGradeItem] = useState(null);
@@ -13,9 +14,9 @@ const ShowGrade = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/grades/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -31,7 +32,7 @@ const ShowGrade = () => {
   return (
     <>
       <div>
-        <Header />
+        <TeacherHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -42,7 +43,10 @@ const ShowGrade = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Grade List</h4>
-                <Link to="/teacher/grades" className="btn btn-primary btn-sm float-end">
+                <Link
+                  to="/teacher/grades"
+                  className="btn btn-primary btn-sm float-end"
+                >
                   Grade List
                 </Link>
               </div>

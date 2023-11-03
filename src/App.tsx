@@ -67,12 +67,12 @@ import ShowClasses from "./AdminPages/Classes/ShowClasses";
 import AddClasses from "./AdminPages/Classes/AddClasses";
 import UpdateClasses from "./AdminPages/Classes/UpdateClasses";
 
-import ClassRoomList from './AdminPages/ClassRoom/ClassRoomList';
-import ShowClassRoom from './AdminPages/ClassRoom/ShowClassRoom';
-import AddClassRoom from './AdminPages/ClassRoom/AddClassRoom';
-import UpdateClassRoom from './AdminPages/ClassRoom/UpdateClassRoom';
-import SchoolList from './AdminPages/School/SchoolList';
-import UpdateSchool from './AdminPages/School/UpdateSchool';
+import ClassRoomList from "./AdminPages/ClassRoom/ClassRoomList";
+import ShowClassRoom from "./AdminPages/ClassRoom/ShowClassRoom";
+import AddClassRoom from "./AdminPages/ClassRoom/AddClassRoom";
+import UpdateClassRoom from "./AdminPages/ClassRoom/UpdateClassRoom";
+import SchoolList from "./AdminPages/School/SchoolList";
+import UpdateSchool from "./AdminPages/School/UpdateSchool";
 //Admin components end
 
 //Teacher components start
@@ -87,7 +87,6 @@ import TShowTeacher from "./TeacherPages/Teacher/ShowTeacher";
 
 import TMarkList from "./TeacherPages/Mark/MarkList";
 import TShowMark from "./TeacherPages/Mark/ShowMark";
-
 
 import TRoutineList from "./TeacherPages/Routine/RoutineList";
 import TShowRoutine from "./TeacherPages/Routine/ShowRoutine";
@@ -110,8 +109,8 @@ import TShowSubject from "./TeacherPages/Subject/ShowSubject";
 import TClassesList from "./TeacherPages/Classes/ClassesList";
 import TShowClasses from "./TeacherPages/Classes/ShowClasses";
 
-import TClassRoomList from './TeacherPages/ClassRoom/ClassRoomList';
-import TShowClassRoom from './TeacherPages/ClassRoom/ShowClassRoom';
+import TClassRoomList from "./TeacherPages/ClassRoom/ClassRoomList";
+import TShowClassRoom from "./TeacherPages/ClassRoom/ShowClassRoom";
 //Teacher components end
 
 //Student components start
@@ -145,8 +144,8 @@ import SShowSubject from "./StudentPages/Subject/ShowSubject";
 import SClassesList from "./StudentPages/Classes/ClassesList";
 import SShowClasses from "./StudentPages/Classes/ShowClasses";
 
-import SClassRoomList from './StudentPages/ClassRoom/ClassRoomList';
-import SShowClassRoom from './StudentPages/ClassRoom/ShowClassRoom';
+import SClassRoomList from "./StudentPages/ClassRoom/ClassRoomList";
+import SShowClassRoom from "./StudentPages/ClassRoom/ShowClassRoom";
 //Student components end
 
 //Parent components start
@@ -183,224 +182,234 @@ import PShowSubject from "./ParentPages/Subject/ShowSubject";
 import PClassesList from "./ParentPages/Classes/ClassesList";
 import PShowClasses from "./ParentPages/Classes/ShowClasses";
 
-import PClassRoomList from './ParentPages/ClassRoom/ClassRoomList';
-import PShowClassRoom from './ParentPages/ClassRoom/ShowClassRoom';
+import PClassRoomList from "./ParentPages/ClassRoom/ClassRoomList";
+import PShowClassRoom from "./ParentPages/ClassRoom/ShowClassRoom";
 //Parent components end
 
 //User Route componets
-import AdminRoute from './components/AdminRoute';
-import TeacherRoute from './components/TeacherRoute';
-import ParentRoute from './components/ParentRoute';
-import StudentRoute from './components/StudentRoute';
-import AdminDashboard from './components/AdminDashboard';
-import TeacherDashboard from './components/TeacherDashboard';
-import StudentDashboard from './components/StudentDashboard';
-import ParentDashboard from './components/ParentDashboard';
+import AdminDashboard from "./components/AdminDashboard";
+import AdminRoute from "./components/AdminRoute";
+import AdminProfile from "./AdminPages/AdminProfile/AdminProfile";
+
+import TeacherDashboard from "./components/TeacherDashboard";
+import TeacherRoute from "./components/TeacherRoute";
+import TeacherProfile from "./TeacherPages/TeacherProfile/TeacherProfile";
+
+import StudentDashboard from "./components/StudentDashboard";
+import StudentRoute from "./components/StudentRoute";
+import StudentProfile from "./StudentPages/StudentProfile/StudentProfile";
+
+import ParentDashboard from "./components/ParentDashboard";
+import ParentRoute from "./components/ParentRoute";
+import ParentProfile from "./ParentPages/ParentProfile/ParentProfile";
 
 const App = () => {
-      return (
-        <>
-          <Routes>
-                <Route path="/login" element={<Login/>}></Route>
-                <Route path="/register" element={<Register/>}></Route>
-                <Route path="*" element={<Publicroute/>}></Route>
+  return (
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="*" element={<Publicroute />}></Route>
 
-                {/* Private Routes start */}
-                <Route path="/admin" element={<AdminRoute />} >
-                  <Route path="home" element={<AdminDashboard />} />
+        {/* Private Routes start */}
+        <Route path="/admin" element={<AdminRoute />}>
+          <Route path="home" element={<AdminDashboard />} />
+          <Route path="profile" element={<AdminProfile />} />
 
-                  <Route path="admin" element={<AdminList />} />
-                  <Route path="admin/create" element={<AddAdmin />} />
-                  <Route path="admin/:id/show" element={<ShowAdmin />} />
-                  <Route path="admin/:id/edit" element={<UpdateAdmin />} />
+          <Route path="admin" element={<AdminList />} />
+          <Route path="admin/create" element={<AddAdmin />} />
+          <Route path="admin/:id/show" element={<ShowAdmin />} />
+          <Route path="admin/:id/edit" element={<UpdateAdmin />} />
 
-                  <Route path="exams" element={<ExamList />} />
-                  <Route path="exams/create" element={<AddExam />} />
-                  <Route path="exams/:id/show" element={<ShowExam />} />
-                  <Route path="exams/:id/edit" element={<UpdateExam />} />
+          <Route path="exams" element={<ExamList />} />
+          <Route path="exams/create" element={<AddExam />} />
+          <Route path="exams/:id/show" element={<ShowExam />} />
+          <Route path="exams/:id/edit" element={<UpdateExam />} />
 
-                  <Route path="subject/view" element={<SubjectList />} />
-                  <Route path="subject/create" element={<AddSubject />} />
-                  <Route path="subjects/:id/show" element={<ShowSubject />} />
-                  <Route path="subjects/:id/edit" element={<UpdateSubject />} />
+          <Route path="subject/view" element={<SubjectList />} />
+          <Route path="subject/create" element={<AddSubject />} />
+          <Route path="subjects/:id/show" element={<ShowSubject />} />
+          <Route path="subjects/:id/edit" element={<UpdateSubject />} />
 
-                  <Route path="students" element={<StudentList />} />
-                  <Route path="students/create" element={<AddStudent />} />
-                  <Route path="students/:id/show" element={<ShowStudent />} />
-                  <Route path="students/:id/edit" element={<UpdateStudent />} />
+          <Route path="students" element={<StudentList />} />
+          <Route path="students/create" element={<AddStudent />} />
+          <Route path="students/:id/show" element={<ShowStudent />} />
+          <Route path="students/:id/edit" element={<UpdateStudent />} />
 
-                  <Route path="teachers" element={<TeacherList />} />
-                  <Route path="teachers/create" element={<AddTeacher />} />
-                  <Route path="teachers/:id/show" element={<ShowTeacher />} />
-                  <Route path="teachers/:id/edit" element={<UpdateTeacher />} />
+          <Route path="teachers" element={<TeacherList />} />
+          <Route path="teachers/create" element={<AddTeacher />} />
+          <Route path="teachers/:id/show" element={<ShowTeacher />} />
+          <Route path="teachers/:id/edit" element={<UpdateTeacher />} />
 
-                  <Route path="parents" element={<ParentList />} />
-                  <Route path="parents/create" element={<AddParent />} />
-                  <Route path="parents/:id/show" element={<ShowParent />} />
-                  <Route path="parents/:id/edit" element={<UpdateParent />} />
+          <Route path="parents" element={<ParentList />} />
+          <Route path="parents/create" element={<AddParent />} />
+          <Route path="parents/:id/show" element={<ShowParent />} />
+          <Route path="parents/:id/edit" element={<UpdateParent />} />
 
-                  <Route path="sections" element={<SectionList />} />
-                  <Route path="sections/create" element={<AddSection />} />
-                  <Route path="sections/:id/show" element={<ShowSection />} />
-                  <Route path="sections/:id/edit" element={<UpdateSection />} />
+          <Route path="sections" element={<SectionList />} />
+          <Route path="sections/create" element={<AddSection />} />
+          <Route path="sections/:id/show" element={<ShowSection />} />
+          <Route path="sections/:id/edit" element={<UpdateSection />} />
 
-                  <Route path="grades" element={<GradeList />} />
-                  <Route path="grades/create" element={<AddGrade />} />
-                  <Route path="grades/:id/show" element={<ShowGrade />} />
-                  <Route path="grades/:id/edit" element={<UpdateGrade />} />
+          <Route path="grades" element={<GradeList />} />
+          <Route path="grades/create" element={<AddGrade />} />
+          <Route path="grades/:id/show" element={<ShowGrade />} />
+          <Route path="grades/:id/edit" element={<UpdateGrade />} />
 
-                  <Route path="syllabuses" element={<SyllabusList />} />
-                  <Route path="syllabuses/create" element={<AddSyllabus />} />
-                  <Route path="syllabuses/:id/show" element={<ShowSyllabus />} />
-                  <Route path="syllabuses/:id/edit" element={<UpdateSyllabus />} />
+          <Route path="syllabuses" element={<SyllabusList />} />
+          <Route path="syllabuses/create" element={<AddSyllabus />} />
+          <Route path="syllabuses/:id/show" element={<ShowSyllabus />} />
+          <Route path="syllabuses/:id/edit" element={<UpdateSyllabus />} />
 
-                  <Route path="routines" element={<RoutineList />} />
-                  <Route path="routines/create" element={<AddRoutine />} />
-                  <Route path="routines/:id/show" element={<ShowRoutine />} />
-                  <Route path="routines/:id/edit" element={<UpdateRoutine />} />
+          <Route path="routines" element={<RoutineList />} />
+          <Route path="routines/create" element={<AddRoutine />} />
+          <Route path="routines/:id/show" element={<ShowRoutine />} />
+          <Route path="routines/:id/edit" element={<UpdateRoutine />} />
 
-                  <Route path="marks" element={<MarkList />} />
-                  <Route path="marks/create" element={<AddMark />} />
-                  <Route path="marks/:id/show" element={<ShowMark />} />
-                  <Route path="marks/:id/edit" element={<UpdateMark />} />
+          <Route path="marks" element={<MarkList />} />
+          <Route path="marks/create" element={<AddMark />} />
+          <Route path="marks/:id/show" element={<ShowMark />} />
+          <Route path="marks/:id/edit" element={<UpdateMark />} />
 
-                  <Route path="classes" element={<ClassesList />} />
-                  <Route path="classes/create" element={<AddClasses />} />
-                  <Route path="classes/:id/show" element={<ShowClasses />} />
-                  <Route path="classes/:id/edit" element={<UpdateClasses />} />
+          <Route path="classes" element={<ClassesList />} />
+          <Route path="classes/create" element={<AddClasses />} />
+          <Route path="classes/:id/show" element={<ShowClasses />} />
+          <Route path="classes/:id/edit" element={<UpdateClasses />} />
 
-                  <Route path="classroom" element={<ClassRoomList />} />
-                  <Route path="classroom/create" element={<AddClassRoom />} />
-                  <Route path="classroom/:id/show" element={<ShowClassRoom />} />
-                  <Route path="classroom/:id/edit" element={<UpdateClassRoom />} />
+          <Route path="classroom" element={<ClassRoomList />} />
+          <Route path="classroom/create" element={<AddClassRoom />} />
+          <Route path="classroom/:id/show" element={<ShowClassRoom />} />
+          <Route path="classroom/:id/edit" element={<UpdateClassRoom />} />
 
-                  <Route path="settings/school-info" element={<SchoolList/>} />
-                  <Route path="settings/school-info/:id/edit" element={<UpdateSchool/>} />
-                </Route>
+          <Route path="settings/school-info" element={<SchoolList />} />
+          <Route
+            path="settings/school-info/:id/edit"
+            element={<UpdateSchool />}
+          />
+        </Route>
 
-                <Route path="/teacher" element={<TeacherRoute />} >
-                  <Route path="home" element={<TeacherDashboard />} />
+        <Route path="/teacher" element={<TeacherRoute />}>
+          <Route path="home" element={<TeacherDashboard />} />
+          <Route path="profile" element={<TeacherProfile />} />
 
-                  <Route path="exams" element={<TExamList />} />
-                  <Route path="exams/:id/show" element={<TShowExam />} />
+          <Route path="exams" element={<TExamList />} />
+          <Route path="exams/:id/show" element={<TShowExam />} />
 
-                  <Route path="subject/view" element={<TSubjectList />} />
-                  <Route path="subjects/:id/show" element={<TShowSubject />} />
+          <Route path="subject/view" element={<TSubjectList />} />
+          <Route path="subjects/:id/show" element={<TShowSubject />} />
 
-                  <Route path="students" element={<TStudentList />} />
-                  <Route path="students/:id/show" element={<TShowStudent />} />
+          <Route path="students" element={<TStudentList />} />
+          <Route path="students/:id/show" element={<TShowStudent />} />
 
-                  <Route path="teachers" element={<TTeacherList />} />
-                  <Route path="teachers/:id/show" element={<TShowTeacher />} />
+          <Route path="teachers" element={<TTeacherList />} />
+          <Route path="teachers/:id/show" element={<TShowTeacher />} />
 
-                  <Route path="parents" element={<TParentList />} />
-                  <Route path="parents/:id/show" element={<TShowParent />} />
+          <Route path="parents" element={<TParentList />} />
+          <Route path="parents/:id/show" element={<TShowParent />} />
 
-                  <Route path="sections" element={<TSectionList />} />
-                  <Route path="sections/:id/show" element={<TShowSection />} />
+          <Route path="sections" element={<TSectionList />} />
+          <Route path="sections/:id/show" element={<TShowSection />} />
 
-                  <Route path="grades" element={<TGradeList />} />
-                  <Route path="grades/:id/show" element={<TShowGrade />} />
+          <Route path="grades" element={<TGradeList />} />
+          <Route path="grades/:id/show" element={<TShowGrade />} />
 
-                  <Route path="syllabuses" element={<TSyllabusList />} />
-                  <Route path="syllabuses/:id/show" element={<TShowSyllabus />} />
+          <Route path="syllabuses" element={<TSyllabusList />} />
+          <Route path="syllabuses/:id/show" element={<TShowSyllabus />} />
 
-                  <Route path="routines" element={<TRoutineList />} />
-                  <Route path="routines/:id/show" element={<TShowRoutine />} />
+          <Route path="routines" element={<TRoutineList />} />
+          <Route path="routines/:id/show" element={<TShowRoutine />} />
 
-                  <Route path="marks" element={<TMarkList />} />
-                  <Route path="marks/:id/show" element={<TShowMark />} />
+          <Route path="marks" element={<TMarkList />} />
+          <Route path="marks/:id/show" element={<TShowMark />} />
 
-                  <Route path="classes" element={<TClassesList />} />
-                  <Route path="classes/:id/show" element={<TShowClasses />} />
+          <Route path="classes" element={<TClassesList />} />
+          <Route path="classes/:id/show" element={<TShowClasses />} />
 
-                  <Route path="classroom" element={<TClassRoomList />} />
-                  <Route path="classroom/:id/show" element={<TShowClassRoom />} />
-                </Route>
+          <Route path="classroom" element={<TClassRoomList />} />
+          <Route path="classroom/:id/show" element={<TShowClassRoom />} />
+        </Route>
 
-                <Route path="/student" element={<StudentRoute />} >
-                  <Route path="home" element={<StudentDashboard />} />
+        <Route path="/student" element={<StudentRoute />}>
+          <Route path="home" element={<StudentDashboard />} />
+          <Route path="profile" element={<StudentProfile />} />
 
-                  <Route path="exams" element={<SExamList />} />
-                  <Route path="exams/:id/show" element={<SShowExam />} />
+          <Route path="exams" element={<SExamList />} />
+          <Route path="exams/:id/show" element={<SShowExam />} />
 
-                  <Route path="subject/view" element={<SSubjectList />} />
-                  <Route path="subjects/:id/show" element={<SShowSubject />} />
+          <Route path="subject/view" element={<SSubjectList />} />
+          <Route path="subjects/:id/show" element={<SShowSubject />} />
 
-                  <Route path="students" element={<SStudentList />} />
-                  <Route path="students/:id/show" element={<SShowStudent />} />
+          <Route path="students" element={<SStudentList />} />
+          <Route path="students/:id/show" element={<SShowStudent />} />
 
-                  <Route path="teachers" element={<STeacherList />} />
-                  <Route path="teachers/:id/show" element={<SShowTeacher />} />
+          <Route path="teachers" element={<STeacherList />} />
+          <Route path="teachers/:id/show" element={<SShowTeacher />} />
 
-                  <Route path="sections" element={<SSectionList />} />
-                  <Route path="sections/:id/show" element={<SShowSection />} />
+          <Route path="sections" element={<SSectionList />} />
+          <Route path="sections/:id/show" element={<SShowSection />} />
 
-                  <Route path="grades" element={<SGradeList />} />
-                  <Route path="grades/:id/show" element={<SShowGrade />} />
+          <Route path="grades" element={<SGradeList />} />
+          <Route path="grades/:id/show" element={<SShowGrade />} />
 
-                  <Route path="syllabuses" element={<SSyllabusList />} />
-                  <Route path="syllabuses/:id/show" element={<SShowSyllabus />} />
+          <Route path="syllabuses" element={<SSyllabusList />} />
+          <Route path="syllabuses/:id/show" element={<SShowSyllabus />} />
 
-                  <Route path="routines" element={<SRoutineList />} />
-                  <Route path="routines/:id/show" element={<SShowRoutine />} />
+          <Route path="routines" element={<SRoutineList />} />
+          <Route path="routines/:id/show" element={<SShowRoutine />} />
 
-                  <Route path="marks" element={<SMarkList />} />
-                  <Route path="marks/:id/show" element={<SShowMark />} />
+          <Route path="marks" element={<SMarkList />} />
+          <Route path="marks/:id/show" element={<SShowMark />} />
 
-                  <Route path="classes" element={<SClassesList />} />
-                  <Route path="classes/:id/show" element={<SShowClasses />} />
+          <Route path="classes" element={<SClassesList />} />
+          <Route path="classes/:id/show" element={<SShowClasses />} />
 
-                  <Route path="classroom" element={<SClassRoomList />} />
-                  <Route path="classroom/:id/show" element={<SShowClassRoom />} />
-                </Route>
+          <Route path="classroom" element={<SClassRoomList />} />
+          <Route path="classroom/:id/show" element={<SShowClassRoom />} />
+        </Route>
 
-                <Route path="/parent" element={<ParentRoute />} >
-                  <Route path="home" element={<ParentDashboard />} />
+        <Route path="/parent" element={<ParentRoute />}>
+          <Route path="home" element={<ParentDashboard />} />
+          <Route path="profile" element={<ParentProfile />} />
 
-                  <Route path="exams" element={<PExamList />} />
-                  <Route path="exams/:id/show" element={<PShowExam />} />
+          <Route path="exams" element={<PExamList />} />
+          <Route path="exams/:id/show" element={<PShowExam />} />
 
-                  <Route path="subject/view" element={<PSubjectList />} />
-                  <Route path="subjects/:id/show" element={<PShowSubject />} />
+          <Route path="subject/view" element={<PSubjectList />} />
+          <Route path="subjects/:id/show" element={<PShowSubject />} />
 
-                  <Route path="students" element={<PStudentList />} />
-                  <Route path="students/:id/show" element={<PShowStudent />} />
+          <Route path="students" element={<PStudentList />} />
+          <Route path="students/:id/show" element={<PShowStudent />} />
 
-                  <Route path="teachers" element={<PTeacherList />} />
-                  <Route path="teachers/:id/show" element={<PShowTeacher />} />
+          <Route path="teachers" element={<PTeacherList />} />
+          <Route path="teachers/:id/show" element={<PShowTeacher />} />
 
-                  <Route path="parents" element={<PParentList />} />
-                  <Route path="parents/:id/show" element={<PShowParent />} />
+          <Route path="parents" element={<PParentList />} />
+          <Route path="parents/:id/show" element={<PShowParent />} />
 
-                  <Route path="sections" element={<PSectionList />} />
-                  <Route path="sections/:id/show" element={<PShowSection />} />
+          <Route path="sections" element={<PSectionList />} />
+          <Route path="sections/:id/show" element={<PShowSection />} />
 
-                  <Route path="grades" element={<PGradeList />} />
-                  <Route path="grades/:id/show" element={<PShowGrade />} />
+          <Route path="grades" element={<PGradeList />} />
+          <Route path="grades/:id/show" element={<PShowGrade />} />
 
-                  <Route path="syllabuses" element={<PSyllabusList />} />
-                  <Route path="syllabuses/:id/show" element={<PShowSyllabus />} />
+          <Route path="syllabuses" element={<PSyllabusList />} />
+          <Route path="syllabuses/:id/show" element={<PShowSyllabus />} />
 
-                  <Route path="routines" element={<PRoutineList />} />
-                  <Route path="routines/:id/show" element={<PShowRoutine />} />
+          <Route path="routines" element={<PRoutineList />} />
+          <Route path="routines/:id/show" element={<PShowRoutine />} />
 
-                  <Route path="marks" element={<PMarkList />} />
-                  <Route path="marks/:id/show" element={<PShowMark />} />
+          <Route path="marks" element={<PMarkList />} />
+          <Route path="marks/:id/show" element={<PShowMark />} />
 
-                  <Route path="classes" element={<PClassesList />} />
-                  <Route path="classes/:id/show" element={<PShowClasses />} />
+          <Route path="classes" element={<PClassesList />} />
+          <Route path="classes/:id/show" element={<PShowClasses />} />
 
-                  <Route path="classroom" element={<PClassRoomList />} />
-                  <Route path="classroom/:id/show" element={<PShowClassRoom />} />
-                </Route>
-                {/* Private Routes end */}
-          </Routes>
-
-        </>
-      )
-
+          <Route path="classroom" element={<PClassRoomList />} />
+          <Route path="classroom/:id/show" element={<PShowClassRoom />} />
+        </Route>
+        {/* Private Routes end */}
+      </Routes>
+    </>
+  );
 };
 export default App;
-
-

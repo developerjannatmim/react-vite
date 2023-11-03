@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const AddParent = () => {
   const navigate = useNavigate();
@@ -16,15 +17,15 @@ const AddParent = () => {
   // };
 
   const [parentInput, setParentInput] = useState({
-    name: '',
-    email: '',
-    password: '',
-    address: '',
-    phone: '',
-    photo: '',
-    birthday: '',
-    gender: '',
-    blood_group: '',
+    name: "",
+    email: "",
+    password: "",
+    address: "",
+    phone: "",
+    photo: "",
+    birthday: "",
+    gender: "",
+    blood_group: "",
   });
 
   const handleChange = (e) => {
@@ -51,35 +52,35 @@ const AddParent = () => {
     });
 
     fetch(
-      'http://127.0.0.1:8000/api/parents',
+      "http://127.0.0.1:8000/api/parents",
       {
         body: JSON.stringify({
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'POST',
+        method: "POST",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/parents');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/parents");
       })
       .catch((error) => {
         console.error(error);
-        Swal.fire('Warning', response?.message, 'warning');
+        Swal.fire("Warning", response?.message, "warning");
       });
   };
 
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -113,7 +114,7 @@ const AddParent = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.name || ''}
+                          value={parentInput.name || ""}
                           name="name"
                           className="form-control"
                           required
@@ -124,7 +125,7 @@ const AddParent = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.email || ''}
+                          value={parentInput.email || ""}
                           name="email"
                           className="form-control"
                           required
@@ -135,7 +136,7 @@ const AddParent = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.password || ''}
+                          value={parentInput.password || ""}
                           name="password"
                           className="form-control"
                           required
@@ -146,7 +147,7 @@ const AddParent = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.address || ''}
+                          value={parentInput.address || ""}
                           name="address"
                           className="form-control"
                           required
@@ -157,7 +158,7 @@ const AddParent = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.phone || ''}
+                          value={parentInput.phone || ""}
                           name="phone"
                           className="form-control"
                           required
@@ -168,7 +169,7 @@ const AddParent = () => {
                         <input
                           type="date"
                           onChange={handleChange}
-                          value={parentInput.birthday || ''}
+                          value={parentInput.birthday || ""}
                           name="birthday"
                           className="form-control"
                           required
@@ -179,7 +180,7 @@ const AddParent = () => {
                         <input
                           type="file"
                           onChange={handleChange}
-                          value={parentInput.photo || ''}
+                          value={parentInput.photo || ""}
                           name="photo"
                           className="form-control"
                           required
@@ -189,7 +190,7 @@ const AddParent = () => {
                         <label>Gender</label>
                         <select
                           onChange={handleChange}
-                          value={parentInput.gender || ''}
+                          value={parentInput.gender || ""}
                           name="gender"
                           className="form-control"
                           required
@@ -204,7 +205,7 @@ const AddParent = () => {
                         <label>Blood Group</label>
                         <select
                           onChange={handleChange}
-                          value={parentInput.blood_group || ''}
+                          value={parentInput.blood_group || ""}
                           name="blood_group"
                           className="form-control"
                           required

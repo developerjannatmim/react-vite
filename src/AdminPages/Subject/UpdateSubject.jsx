@@ -1,10 +1,11 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const UpdateSubject = () => {
   const navigate = useNavigate();
@@ -27,32 +28,32 @@ const UpdateSubject = () => {
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'PUT',
+        method: "PUT",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/subject/view');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/subject/view");
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('SUBJECT_FORM').reset();
-        Swal.fire('Warning', response?.message, 'warning');
+        document.getElementById("SUBJECT_FORM").reset();
+        Swal.fire("Warning", response?.message, "warning");
       });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/subjects/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -69,9 +70,9 @@ const UpdateSubject = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -87,7 +88,7 @@ const UpdateSubject = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -124,7 +125,7 @@ const UpdateSubject = () => {
                               type="text"
                               name="name"
                               onChange={handleChange}
-                              value={subjectInput?.name || ''}
+                              value={subjectInput?.name || ""}
                               className="form-control"
                             />
                           </div>
@@ -134,7 +135,7 @@ const UpdateSubject = () => {
                               name="class_id"
                               className="form-control"
                               onChange={handleChange}
-                              value={subjectInput?.class_id || ''}
+                              value={subjectInput?.class_id || ""}
                             >
                               <option>select class</option>
                               {classes?.map((classItem) => {

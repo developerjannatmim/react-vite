@@ -1,10 +1,11 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const UpdateClassRoom = () => {
   const navigate = useNavigate();
@@ -27,18 +28,18 @@ const UpdateClassRoom = () => {
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'PUT',
+        method: "PUT",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/classroom');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/classroom");
       })
       .catch((error) => {
         console.error(error);
@@ -48,9 +49,9 @@ const UpdateClassRoom = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/classRooms/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -66,7 +67,7 @@ const UpdateClassRoom = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -103,7 +104,7 @@ const UpdateClassRoom = () => {
                               type="text"
                               name="name"
                               onChange={handleChange}
-                              value={classRoomInput?.name || ''}
+                              value={classRoomInput?.name || ""}
                               className="form-control"
                             />
                           </div>

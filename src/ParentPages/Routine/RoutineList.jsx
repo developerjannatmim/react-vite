@@ -1,41 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
-import Header from "./../../components/Header";
 import Sidebar from "./../../components/Sidebar";
 import Footer from "./../../components/Footer";
+import ParentHeader from "../../components/ParentHeader";
 
 const RoutineList = () => {
   const [routineList, setRoutineList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
-
-  const deleteRoutine = (e, id) => {
-    e.preventDefault();
-    const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
-
-    if (confirm(`Are you sure you want to delete routine id ${id}?`)) {
-      fetch(`http://127.0.0.1:8000/api/routines/${id}`, {
-        headers: {
-          Accept: "application/json",
-        },
-        method: "DELETE",
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
-        })
-        .catch((error) => {
-          console.error(error);
-          Swal.fire("Warning", response?.message, "warning");
-        });
-    }
-  };
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/routines?", {
@@ -65,7 +39,7 @@ const RoutineList = () => {
     return (
       <>
         <div>
-          <Header />
+          <ParentHeader />
         </div>
         <div className="d-flex">
           <div className="w-auto position-sticky">

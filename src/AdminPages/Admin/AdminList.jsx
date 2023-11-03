@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import '../../assets/css/style.css';
-import Header from './../../components/Header';
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const AdminList = () => {
   const [admin, setAdmin] = useState([]);
@@ -66,7 +66,7 @@ const AdminList = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

@@ -2,9 +2,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import Header from './../../components/Header';
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const UpdateAdmin = () => {
   const navigate = useNavigate();
@@ -86,7 +86,7 @@ const UpdateAdmin = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
