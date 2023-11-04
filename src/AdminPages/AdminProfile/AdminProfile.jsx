@@ -1,6 +1,5 @@
 import React from "react";
 import "./../../assets/css/profile.css";
-import Header from "../../components/TeacherHeader";
 import Sidebar from "./../../components/Sidebar";
 import Footer from "./../../components/Footer";
 import AdminHeader from "../../components/AdminHeader";
@@ -13,6 +12,7 @@ const AdminProfile = () => {
   const userBlood = localStorage.getItem("blood");
   const userGender = localStorage.getItem("gender");
   const userBirthday = localStorage.getItem("birthday");
+  const userPhoto = localStorage.getItem("photo");
   //let userDesignation = localStorage.getItem('designation');
 
   return (
@@ -34,7 +34,7 @@ const AdminProfile = () => {
                       <div className="user-profile">
                         <div className="user-avatar">
                           <img
-                            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                            src={userPhoto}
                             alt="Maxwell Admin"
                           />
                         </div>

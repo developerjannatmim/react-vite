@@ -141,8 +141,7 @@ const AddMark = () => {
           "Content-Type": "application/json",
         },
         method: "POST",
-      },
-      data
+      }
     )
       .then((response) => response.json())
       .then((response) => {

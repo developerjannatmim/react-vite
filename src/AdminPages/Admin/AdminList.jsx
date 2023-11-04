@@ -153,7 +153,7 @@ const AdminList = () => {
                           <td>{adminData?.email}</td>
                           <td>{userInformation?.address}</td>
                           <td>{userInformation?.phone}</td>
-                          <td>{userInformation?.photo}</td>
+                          <td><img src={`http://127.0.0.1:8000/admin-images/${userInformation?.photo}`} width='40' height='40' alt="admin-image"/></td>
                           <td>{userInformation?.birthday}</td>
                           <td>{userInformation?.gender}</td>
                           <td>{userInformation?.blood_group}</td>

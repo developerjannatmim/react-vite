@@ -80,7 +80,7 @@ const Sidebar = () => {
                   >
                     <a
                       className="nav-link text-white"
-                      href="/dashboard/students"
+                      href="/admin/students"
                     >
                       <i className="bi bi-person-circle icon"></i>
                       <span className="d-none d-sm-inline">Student</span>

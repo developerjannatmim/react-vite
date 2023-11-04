@@ -32,8 +32,7 @@ const UpdateSubject = () => {
           "Content-Type": "application/json",
         },
         method: "PUT",
-      },
-      data
+      }
     )
       .then((response) => response.json())
       .then((response) => {
