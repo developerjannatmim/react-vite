@@ -46,6 +46,7 @@ const ShowParent = () => {
                 <Link
                   to="/parent/parents"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Parent List
                 </Link>
@@ -89,9 +90,7 @@ const ShowParent = () => {
                             </div>
                             <div className="media">
                               <label>Blood Group</label>
-                              <p style={{ marginTop: "15px" }}>
-                                {parentItem?.user_information?.blood_group}
-                              </p>
+                              <p>{parentItem?.user_information?.blood_group}</p>
                             </div>
                           </div>
                         </div>

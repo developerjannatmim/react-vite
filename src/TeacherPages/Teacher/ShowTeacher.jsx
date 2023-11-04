@@ -46,6 +46,7 @@ const ShowTeacher = () => {
                 <Link
                   to="/teacher/teachers"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Teacher List
                 </Link>
@@ -91,7 +92,7 @@ const ShowTeacher = () => {
                             </div>
                             <div className="media">
                               <label>Blood Group</label>
-                              <p style={{ marginTop: "15px" }}>
+                              <p>
                                 {teacherItem?.user_information?.blood_group}
                               </p>
                             </div>

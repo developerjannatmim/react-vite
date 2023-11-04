@@ -1,8 +1,7 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import StudentHeader from '../../components/StudentHeader';
-
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import StudentHeader from "../../components/StudentHeader";
 
 const ShowStudent = () => {
   const [studentItem, setStudentItem] = useState(null);
@@ -12,9 +11,9 @@ const ShowStudent = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/students/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -44,6 +43,7 @@ const ShowStudent = () => {
                 <Link
                   to="/student/students"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Student List
                 </Link>
@@ -57,7 +57,9 @@ const ShowStudent = () => {
                     <div className="col-lg-8">
                       <div className="about-text go-to">
                         <h3 className="dark-color">Student Details</h3>
-                        <h6 className="theme-color lead">{studentItem?.name}</h6>
+                        <h6 className="theme-color lead">
+                          {studentItem?.name}
+                        </h6>
                         <div className="row about-list">
                           <div className="col-md-6">
                             <div className="media">
@@ -87,7 +89,7 @@ const ShowStudent = () => {
                             </div>
                             <div className="media">
                               <label>Blood Group</label>
-                              <p style={{ marginTop: "15px" }}>
+                              <p>
                                 {studentItem?.user_information?.blood_group}
                               </p>
                             </div>

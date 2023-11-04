@@ -46,6 +46,7 @@ const ShowTeacher = () => {
                 <Link
                   to="/parent/teachers"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Teacher List
                 </Link>
@@ -59,7 +60,9 @@ const ShowTeacher = () => {
                     <div className="col-lg-8">
                       <div className="about-text go-to">
                         <h3 className="dark-color">Teacher Details</h3>
-                        <h6 className="theme-color lead">{teacherItem?.name}</h6>
+                        <h6 className="theme-color lead">
+                          {teacherItem?.name}
+                        </h6>
                         <div className="row about-list">
                           <div className="col-md-6">
                             <div className="media">
@@ -89,7 +92,7 @@ const ShowTeacher = () => {
                             </div>
                             <div className="media">
                               <label>Blood Group</label>
-                              <p style={{ marginTop: "15px" }}>
+                              <p>
                                 {teacherItem?.user_information?.blood_group}
                               </p>
                             </div>

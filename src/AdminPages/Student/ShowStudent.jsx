@@ -46,6 +46,7 @@ const ShowStudent = () => {
                 <Link
                   to="/admin/students"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Student List
                 </Link>
@@ -89,7 +90,7 @@ const ShowStudent = () => {
                             </div>
                             <div className="media">
                               <label>Blood Group</label>
-                              <p style={{ marginTop: "15px" }}>
+                              <p>
                                 {studentItem?.user_information?.blood_group}
                               </p>
                             </div>
