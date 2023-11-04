@@ -45,6 +45,7 @@ const Login = () => {
           localStorage.setItem('blood', response?.blood);
           localStorage.setItem('birthday', response?.birthday);
           localStorage.setItem('phone', response?.phone);
+          localStorage.setItem('photo', response?.photo);
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
           const userRole = localStorage.getItem("role");

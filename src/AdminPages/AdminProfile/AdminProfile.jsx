@@ -33,10 +33,13 @@ const AdminProfile = () => {
                     <div className="account-settings">
                       <div className="user-profile">
                         <div className="user-avatar">
-                          <img
-                            src={userPhoto}
-                            alt="Maxwell Admin"
-                          />
+                        <img
+                          src={`http://127.0.0.1:8000/admin-images/${userPhoto}`}
+                          width="200"
+                          height="200"
+                          style={{ borderRadius: "100px" }}
+                          alt="admin-image"
+                        />
                         </div>
                         <h5 className="user-name">{userName}</h5>
                         <h6 className="user-email">

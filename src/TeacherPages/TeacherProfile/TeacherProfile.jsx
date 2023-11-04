@@ -13,6 +13,7 @@ const TeacherProfile = () => {
   const userBlood = localStorage.getItem("blood");
   const userGender = localStorage.getItem("gender");
   const userBirthday = localStorage.getItem("birthday");
+  const userPhoto = localStorage.getItem("photo");
   //let userDesignation = localStorage.getItem('designation');
 
   return (
@@ -34,8 +35,11 @@ const TeacherProfile = () => {
                       <div className="user-profile">
                         <div className="user-avatar">
                           <img
-                            src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                            alt="Maxwell Admin"
+                            src={`http://127.0.0.1:8000/teacher-images/${userPhoto}`}
+                            width="200"
+                            height="200"
+                            style={{ borderRadius: "100px" }}
+                            alt="teacher-image"
                           />
                         </div>
                         <h5 className="user-name">{userName}</h5>
