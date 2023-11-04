@@ -8,45 +8,53 @@ import AdminHeader from '../../components/AdminHeader';
 
 const UpdateAdmin = () => {
   const navigate = useNavigate();
-  const [adminInput, setAdminInput] = useState([]);
+  const [adminInput, setAdminInput] = useState(null);
   const { id } = useParams();
-  //console.log(id);
-
-  let userInformation;
-  try {
-    userInformation = JSON.parse(adminInput?.user_information);
-  } catch (error) {
-    /**/
-  }
 
   const handleChange = (e) => {
-    setAdminInput({
-      ...adminInput,
+    setAdminInput( values => ({
+      ...values,
       user_information: {
-        ...userInformation,
+        ...values.user_information,
         [e.target.name]: e.target.value,
+
       },
       [e.target.name]: e.target.value,
-    });
+    }));
+  };
+
+  const handleImage = (e) => {
+    setAdminInput( values => ({ user_information: {
+      ...values.user_information,
+      [e.target.name]: e.target.files[0],
+    },}));
   };
 
   const submitAdmin = (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', adminInput.name);
+    formData.append('email', adminInput.email);
+    formData.append('photo', adminInput.user_information.photo);
+    formData.append('address', adminInput.user_information.address);
+    formData.append('phone', adminInput.user_information.phone);
+    formData.append('birthday', adminInput.user_information.birthday);
+    formData.append('gender', adminInput.user_information.gender);
+    formData.append('blood_group', adminInput.user_information.blood_group);
+
     console.log(adminInput);
-    const data = { adminInput };
+     console.log(formData);
     fetch(
       `http://127.0.0.1:8000/api/admin/${id}`,
       {
-        body: JSON.stringify({
-          ...data,
-        }),
+        body: formData,
         headers: {
           Accept: 'application/json',
-          'Content-Type': 'application/json',
+          //'Content-Type': 'application/json',
         },
         method: 'PUT',
-      },
-      data
+      }
     )
       .then((response) => response.json())
       .then((response) => {
@@ -55,14 +63,10 @@ const UpdateAdmin = () => {
           Swal.fire('Success', response?.message, 'success');
           navigate('/admin/admin');
         } else {
-          //document.getElementById("ADMIN_FORM").reset();
-          Swal.fire('Warning', 'Unprocessable Content');
+          Swal.fire('Warning', response?.message, 'warning');
           navigate(`/admin/admin/${id}/edit`);
         }
       });
-    // .catch((error) => {
-    //   console.error(error);
-    // });
   };
 
   useEffect(() => {
@@ -103,7 +107,7 @@ const UpdateAdmin = () => {
               </div>
             </div>
             <div className="card-body">
-              <form onSubmit={submitAdmin} id="ADMIN_FORM">
+              <form onSubmit={submitAdmin} >
                 <div className="card mt-4">
                   <div className="card-body">
                     <div className="tab-content" id="myTabContent">
@@ -140,29 +144,28 @@ const UpdateAdmin = () => {
                               type="text"
                               name="address"
                               onChange={handleChange}
-                              value={userInformation?.address || ''}
+                              value={adminInput?.user_information?.address || ''}
                               className="form-control"
                             />
                           </div>
-                          {/* <div className="col-md-6 form-group mb-3">
+                          <div className="col-md-6 form-group mb-3">
                       <label>Phone</label>
                       <input
                         type="text"
                         name="phone"
                         onChange={handleChange}
-                        value={userInformation?.phone || ""}
+                        value={adminInput?.user_information?.phone || ""}
                         className="form-control"
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
                       <label>Photo</label>
                       <input
-                        type="text"
+                        type="file"
                         name="photo"
-                        onChange={handleChange}
-                        value={userInformation?.photo || ""}
+                        onChange={handleImage}
                         className="form-control"
-                        required
+
                       />
                     </div>
                     <div className="col-md-6 form-group mb-3">
@@ -170,9 +173,9 @@ const UpdateAdmin = () => {
                       <select
                         name="gender"
                         onChange={handleChange}
-                        value={userInformation?.gender || ""}
+                        value={adminInput?.user_information?.gender || ""}
                         className="form-control"
-                        required
+
                       >
                         <option value="">Select gender</option>
                         <option value="Male">Male</option>
@@ -185,9 +188,9 @@ const UpdateAdmin = () => {
                       <select
                         name="blood_group"
                         onChange={handleChange}
-                        value={userInformation?.blood_group || ""}
+                        value={adminInput?.user_information?.blood_group || ""}
                         className="form-control"
-                        required
+
                       >
                         <option value="">Select a blood group</option>
                         <option value="a+">A+</option>
@@ -199,7 +202,7 @@ const UpdateAdmin = () => {
                         <option value="o+">O+</option>
                         <option value="o-">O-</option>
                       </select>
-                    </div> */}
+                    </div>
                         </div>
                         <button type="submit" className="btn btn-primary px-4">
                           Update

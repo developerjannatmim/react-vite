@@ -13,7 +13,7 @@ const UpdateParent = () => {
   const { id } = useParams();
 
   const handleChange = (e) => {
-    setParentInput({ ...parentInput, [e.target.name]: e.target.value });
+    setParentInput(values => ({ ...values, [e.target.name]: e.target.value }));
   };
 
   const submitParent = (e) => {
@@ -31,8 +31,7 @@ const UpdateParent = () => {
           "Content-Type": "application/json",
         },
         method: "PUT",
-      },
-      data
+      }
     )
       .then((response) => response.json())
       .then((response) => {

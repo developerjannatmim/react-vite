@@ -13,7 +13,7 @@ const UpdateTeacher = () => {
   const { id } = useParams();
 
   const handleChange = (e) => {
-    setTeacherInput({ ...teacherInput, [e.target.name]: e.target.value });
+    setTeacherInput(values => ({ ...values, [e.target.name]: e.target.value }));
   };
 
   const submitTeacher = (e) => {
@@ -31,8 +31,7 @@ const UpdateTeacher = () => {
           "Content-Type": "application/json",
         },
         method: "PUT",
-      },
-      data
+      }
     )
       .then((response) => response.json())
       .then((response) => {

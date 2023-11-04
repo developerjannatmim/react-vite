@@ -13,7 +13,7 @@ const UpdateStudent = () => {
   const { id } = useParams();
 
   const handleChange = (e) => {
-    setStudentInput({ ...studentInput, [e.target.name]: e.target.value });
+    setStudentInput(values => ({ ...values, [e.target.name]: e.target.value }));
   };
 
   const submitStudent = (e) => {
@@ -31,8 +31,7 @@ const UpdateStudent = () => {
           "Content-Type": "application/json",
         },
         method: "PUT",
-      },
-      data
+      }
     )
       .then((response) => response.json())
       .then((response) => {

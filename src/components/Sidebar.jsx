@@ -127,7 +127,7 @@ const Sidebar = () => {
                   className="nav-link text-white text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="bi bi-newspaper"></i>
+                  <i className="bi bi-newspaper"></i>
                   <span className="ms-2 d-none d-sm-inline">Exam</span>
                 </a>
               </li>
@@ -142,7 +142,7 @@ const Sidebar = () => {
                   className="nav-link text-white text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="bi bi-file-earmark-medical-fill"></i>
+                  <i className="bi bi-file-earmark-medical-fill"></i>
                   <span className="ms-2 d-none d-sm-inline">Marks</span>
                 </a>
               </li>
@@ -157,7 +157,7 @@ const Sidebar = () => {
                   className="nav-link text-white text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="bi bi-bookmark-check"></i>
+                  <i className="bi bi-bookmark-check"></i>
                   <span className="ms-2 d-none d-sm-inline">Routine</span>
                 </a>
               </li>
@@ -172,7 +172,7 @@ const Sidebar = () => {
                   className="nav-link text-white text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="bi bi-bar-chart-steps"></i>
+                  <i className="bi bi-bar-chart-steps"></i>
                   <span className="ms-2 d-none d-sm-inline">Section</span>
                 </a>
               </li>
@@ -187,7 +187,7 @@ const Sidebar = () => {
                   className="nav-link text-white text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="bi bi-card-checklist"></i>
+                  <i className="bi bi-card-checklist"></i>
                   <span className="ms-2 d-none d-sm-inline">Syllabus</span>
                 </a>
               </li>
@@ -202,7 +202,7 @@ const Sidebar = () => {
                   className="nav-link text-white text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="bi bi-book-half"></i>
+                  <i className="bi bi-book-half"></i>
                   <span className="ms-2 d-none d-sm-inline">Class</span>
                 </a>
               </li>
@@ -217,7 +217,7 @@ const Sidebar = () => {
                   className="nav-link text-white text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="bi bi-list-stars"></i>
+                  <i className="bi bi-list-stars"></i>
                   <span className="ms-2 d-none d-sm-inline">Grade</span>
                 </a>
               </li>
@@ -249,7 +249,7 @@ const Sidebar = () => {
                   className="nav-link text-white text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="bi bi-house-door"></i>
+                  <i className="bi bi-house-door"></i>
                   <span className="ms-2 d-none d-sm-inline">Class Room</span>
                 </a>
               </li>
@@ -400,7 +400,7 @@ const Sidebar = () => {
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
-              <i class="bi bi-newspaper"></i>
+              <i className="bi bi-newspaper"></i>
               <span className="ms-2 d-none d-sm-inline">Exam</span>
             </a>
           </li>
@@ -413,7 +413,7 @@ const Sidebar = () => {
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
-              <i class="bi bi-file-earmark-medical-fill"></i>
+              <i className="bi bi-file-earmark-medical-fill"></i>
               <span className="ms-2 d-none d-sm-inline">Marks</span>
             </a>
           </li>
@@ -426,7 +426,7 @@ const Sidebar = () => {
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
-              <i class="bi bi-bookmark-check"></i>
+              <i className="bi bi-bookmark-check"></i>
               <span className="ms-2 d-none d-sm-inline">Routine</span>
             </a>
           </li>
@@ -439,7 +439,7 @@ const Sidebar = () => {
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
-              <i class="bi bi-bar-chart-steps"></i>
+              <i className="bi bi-bar-chart-steps"></i>
               <span className="ms-2 d-none d-sm-inline">Section</span>
             </a>
           </li>
@@ -452,7 +452,7 @@ const Sidebar = () => {
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
-              <i class="bi bi-card-checklist"></i>
+              <i className="bi bi-card-checklist"></i>
               <span className="ms-2 d-none d-sm-inline">Syllabus</span>
             </a>
           </li>
@@ -465,7 +465,7 @@ const Sidebar = () => {
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
-              <i class="bi bi-book-half"></i>
+              <i className="bi bi-book-half"></i>
               <span className="ms-2 d-none d-sm-inline">Class</span>
             </a>
           </li>
@@ -478,7 +478,7 @@ const Sidebar = () => {
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
-              <i class="bi bi-list-stars"></i>
+              <i className="bi bi-list-stars"></i>
               <span className="ms-2 d-none d-sm-inline">Grade</span>
             </a>
           </li>
@@ -506,7 +506,7 @@ const Sidebar = () => {
               className="nav-link text-white text-center text-sm-start"
               aria-current="page"
             >
-              <i class="bi bi-house-door"></i>
+              <i className="bi bi-house-door"></i>
               <span className="ms-2 d-none d-sm-inline">Class Room</span>
             </a>
           </li>
@@ -638,7 +638,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-newspaper"></i>
+                <i className="bi bi-newspaper"></i>
                 <span className="ms-2 d-none d-sm-inline">Exam</span>
               </a>
             </li>
@@ -651,7 +651,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-file-earmark-medical-fill"></i>
+                <i className="bi bi-file-earmark-medical-fill"></i>
                 <span className="ms-2 d-none d-sm-inline">Marks</span>
               </a>
             </li>
@@ -664,7 +664,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-bookmark-check"></i>
+                <i className="bi bi-bookmark-check"></i>
                 <span className="ms-2 d-none d-sm-inline">Routine</span>
               </a>
             </li>
@@ -677,7 +677,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-bar-chart-steps"></i>
+                <i className="bi bi-bar-chart-steps"></i>
                 <span className="ms-2 d-none d-sm-inline">Section</span>
               </a>
             </li>
@@ -690,7 +690,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-card-checklist"></i>
+                <i className="bi bi-card-checklist"></i>
                 <span className="ms-2 d-none d-sm-inline">Syllabus</span>
               </a>
             </li>
@@ -703,7 +703,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-book-half"></i>
+                <i className="bi bi-book-half"></i>
                 <span className="ms-2 d-none d-sm-inline">Class</span>
               </a>
             </li>
@@ -716,7 +716,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-list-stars"></i>
+                <i className="bi bi-list-stars"></i>
                 <span className="ms-2 d-none d-sm-inline">Grade</span>
               </a>
             </li>
@@ -744,7 +744,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-house-door"></i>
+                <i className="bi bi-house-door"></i>
                 <span className="ms-2 d-none d-sm-inline">Class Room</span>
               </a>
             </li>
@@ -865,7 +865,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-newspaper"></i>
+                <i className="bi bi-newspaper"></i>
                 <span className="ms-2 d-none d-sm-inline">Exam</span>
               </a>
             </li>
@@ -878,7 +878,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-file-earmark-medical-fill"></i>
+                <i className="bi bi-file-earmark-medical-fill"></i>
                 <span className="ms-2 d-none d-sm-inline">Marks</span>
               </a>
             </li>
@@ -891,7 +891,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-bookmark-check"></i>
+                <i className="bi bi-bookmark-check"></i>
                 <span className="ms-2 d-none d-sm-inline">Routine</span>
               </a>
             </li>
@@ -904,7 +904,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-bar-chart-steps"></i>
+                <i className="bi bi-bar-chart-steps"></i>
                 <span className="ms-2 d-none d-sm-inline">Section</span>
               </a>
             </li>
@@ -917,7 +917,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-card-checklist"></i>
+                <i className="bi bi-card-checklist"></i>
                 <span className="ms-2 d-none d-sm-inline">Syllabus</span>
               </a>
             </li>
@@ -930,7 +930,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-book-half"></i>
+                <i className="bi bi-book-half"></i>
                 <span className="ms-2 d-none d-sm-inline">Class</span>
               </a>
             </li>
@@ -943,7 +943,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-list-stars"></i>
+                <i className="bi bi-list-stars"></i>
                 <span className="ms-2 d-none d-sm-inline">Grade</span>
               </a>
             </li>
@@ -971,7 +971,7 @@ const Sidebar = () => {
                 className="nav-link text-white text-center text-sm-start"
                 aria-current="page"
               >
-                <i class="bi bi-house-door"></i>
+                <i className="bi bi-house-door"></i>
                 <span className="ms-2 d-none d-sm-inline">Class Room</span>
               </a>
             </li>

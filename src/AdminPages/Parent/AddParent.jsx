@@ -1,79 +1,76 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const AddParent = () => {
   const navigate = useNavigate();
-  //const [picture, setPicture] = useState('');
-
-  // const handleImage = (e) => {
-  //   console.log(e.target.files);
-  //   setPicture({ photo: e.target.files[0] });
-  // };
+  const [errors, setErrors] = useState({});
 
   const [parentInput, setParentInput] = useState({
-    name: "",
-    email: "",
-    password: "",
-    address: "",
-    phone: "",
-    photo: "",
-    birthday: "",
-    gender: "",
-    blood_group: "",
+    name: '',
+    email: '',
+    password: '',
+    address: '',
+    phone: '',
+    photo: '',
+    birthday: '',
+    gender: '',
+    blood_group: '',
   });
 
   const handleChange = (e) => {
-    setParentInput({ ...parentInput, [e.target.name]: e.target.value });
+    setParentInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleImage = (e) => {
+    setParentInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.files[0],
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = {
-      //photo: picture.photo,
-      name: parentInput.name,
-      photo: parentInput.photo,
-      email: parentInput.email,
-      password: parentInput.password,
-      address: parentInput.address,
-      phone: parentInput.phone,
-      birthday: parentInput.birthday,
-      gender: parentInput.gender,
-      blood_group: parentInput.blood_group,
-    };
 
-    console.log({
-      data,
-    });
+    const formData = new FormData();
+    formData.append('photo', parentInput.photo);
+    formData.append('name', parentInput.name);
+    formData.append('email', parentInput.email);
+    formData.append('password', parentInput.password);
+    formData.append('address', parentInput.address);
+    formData.append('phone', parentInput.phone);
+    formData.append('birthday', parentInput.birthday);
+    formData.append('gender', parentInput.gender);
+    formData.append('blood_group', parentInput.blood_group);
 
-    fetch(
-      "http://127.0.0.1:8000/api/parents",
-      {
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
+    console.log(parentInput);
+
+    fetch('http://127.0.0.1:8000/api/parents', {
+      body: formData,
+      headers: {
+        Accept: 'application/json',
       },
-      data
-    )
+      method: 'POST',
+    })
       .then((response) => response.json())
       .then((response) => {
-        console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/admin/parents");
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire("Warning", response?.message, "warning");
+        if (response?.status === 200) {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          navigate('/admin/parents');
+          setErrors({});
+        } else {
+          Swal.fire('Warning', response?.message, 'warning');
+          setErrors(response?.errors);
+        }
       });
   };
 
@@ -114,101 +111,99 @@ const AddParent = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.name || ""}
+                          value={parentInput.name || ''}
                           name="name"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.name}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Email</label>
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.email || ""}
+                          value={parentInput.email || ''}
                           name="email"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.email}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Password</label>
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.password || ""}
+                          value={parentInput.password || ''}
                           name="password"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.password}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Address</label>
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.address || ""}
+                          value={parentInput.address || ''}
                           name="address"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.address}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Phone</label>
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={parentInput.phone || ""}
+                          value={parentInput.phone || ''}
                           name="phone"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.phone}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>BirthDay</label>
                         <input
                           type="date"
                           onChange={handleChange}
-                          value={parentInput.birthday || ""}
+                          value={parentInput.birthday || ''}
                           name="birthday"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.birthday}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Photo</label>
                         <input
                           type="file"
-                          onChange={handleChange}
-                          value={parentInput.photo || ""}
+                          onChange={handleImage}
                           name="photo"
                           className="form-control"
-                          required
                         />
+                        <small className="text-danger">{errors.photo}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Gender</label>
                         <select
                           onChange={handleChange}
-                          value={parentInput.gender || ""}
+                          value={parentInput.gender || ''}
                           name="gender"
                           className="form-control"
-                          required
                         >
                           <option value="">Select gender</option>
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
                           <option value="Others">Others</option>
                         </select>
+                        <small className="text-danger">{errors.gender}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Blood Group</label>
                         <select
                           onChange={handleChange}
-                          value={parentInput.blood_group || ""}
+                          value={parentInput.blood_group || ''}
                           name="blood_group"
                           className="form-control"
-                          required
                         >
                           <option value="">Select a blood group</option>
                           <option value="a+">A+</option>
@@ -220,6 +215,9 @@ const AddParent = () => {
                           <option value="o+">O+</option>
                           <option value="o-">O-</option>
                         </select>
+                        <small className="text-danger">
+                          {errors.blood_group}
+                        </small>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">
                         Submit

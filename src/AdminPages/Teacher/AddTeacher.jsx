@@ -1,80 +1,75 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const AddTeacher = () => {
   const navigate = useNavigate();
-  //const [picture, setPicture] = useState('');
-
-  // const handleImage = (e) => {
-  //   console.log(e.target.files);
-  //   setPicture({ photo: e.target.files[0] });
-  // };
-
+  const [errors, setErrors] = useState({});
   const [teacherInput, setTeacherInput] = useState({
-    name: "",
-    email: "",
-    password: "",
-    address: "",
-    phone: "",
-    photo: "",
-    birthday: "",
-    gender: "",
-    blood_group: "",
+    name: '',
+    email: '',
+    password: '',
+    address: '',
+    phone: '',
+    photo: '',
+    birthday: '',
+    gender: '',
+    blood_group: '',
   });
 
   const handleChange = (e) => {
-    setTeacherInput({ ...teacherInput, [e.target.name]: e.target.value });
+    setTeacherInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleImage = (e) => {
+    setTeacherInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.files[0],
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = {
-      //photo: picture.photo,
-      name: teacherInput.name,
-      photo: teacherInput.photo,
-      email: teacherInput.email,
-      password: teacherInput.password,
-      address: teacherInput.address,
-      phone: teacherInput.phone,
-      birthday: teacherInput.birthday,
-      gender: teacherInput.gender,
-      blood_group: teacherInput.blood_group,
-    };
 
-    console.log({
-      data,
-    });
+    const formData = new FormData();
+    formData.append('photo', teacherInput.photo);
+    formData.append('name', teacherInput.name);
+    formData.append('email', teacherInput.email);
+    formData.append('password', teacherInput.password);
+    formData.append('address', teacherInput.address);
+    formData.append('phone', teacherInput.phone);
+    formData.append('birthday', teacherInput.birthday);
+    formData.append('gender', teacherInput.gender);
+    formData.append('blood_group', teacherInput.blood_group);
 
-    fetch(
-      "http://127.0.0.1:8000/api/teachers",
-      {
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
+    console.log(teacherInput);
+
+    fetch('http://127.0.0.1:8000/api/teachers', {
+      body: formData,
+      headers: {
+        Accept: 'application/json',
       },
-      data
-    )
+      method: 'POST',
+    })
       .then((response) => response.json())
       .then((response) => {
-        console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/admin/teachers");
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire("Warning", response?.message, "warning");
-        //document.getElementById("ADMIN_FORM").reset();
+        if (response?.status === 200) {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          navigate('/admin/teachers');
+          setErrors({});
+        } else {
+          Swal.fire('Warning', response?.message, 'warning');
+          setErrors(response?.errors);
+        }
       });
   };
 
@@ -89,7 +84,7 @@ const AddTeacher = () => {
         </div>
         <div className="col overflow-hidden">
           <div className="container-fluid px-4">
-            <form onSubmit={handleSubmit} id="ADMIN_FORM">
+            <form onSubmit={handleSubmit}>
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
@@ -115,83 +110,90 @@ const AddTeacher = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.name || ""}
+                          value={teacherInput.name || ''}
                           name="name"
                           className="form-control"
                           required
                         />
+                        <small className="text-danger">{errors.name}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Email</label>
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.email || ""}
+                          value={teacherInput.email || ''}
                           name="email"
                           className="form-control"
                           required
                         />
+                        <small className="text-danger">{errors.email}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Password</label>
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.password || ""}
+                          value={teacherInput.password || ''}
                           name="password"
                           className="form-control"
                           required
                         />
+                        <small className="text-danger">{errors.password}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Address</label>
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.address || ""}
+                          value={teacherInput.address || ''}
                           name="address"
                           className="form-control"
                           required
                         />
+                        <small className="text-danger">{errors.address}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Phone</label>
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.phone || ""}
+                          value={teacherInput.phone || ''}
                           name="phone"
                           className="form-control"
                           required
                         />
+                        <small className="text-danger">{errors.phone}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>BirthDay</label>
                         <input
                           type="date"
                           onChange={handleChange}
-                          value={teacherInput.birthday || ""}
+                          value={teacherInput.birthday || ''}
                           name="birthday"
                           className="form-control"
                           required
                         />
+                        <small className="text-danger">{errors.birthday}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Photo</label>
                         <input
                           type="file"
                           onChange={handleChange}
-                          value={teacherInput.photo || ""}
+                          value={teacherInput.photo || ''}
                           name="photo"
                           className="form-control"
                           required
                         />
+                        <small className="text-danger">{errors.photo}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Gender</label>
                         <select
                           onChange={handleChange}
-                          value={teacherInput.gender || ""}
+                          value={teacherInput.gender || ''}
                           name="gender"
                           className="form-control"
                           required
@@ -201,12 +203,13 @@ const AddTeacher = () => {
                           <option value="Female">Female</option>
                           <option value="Others">Others</option>
                         </select>
+                        <small className="text-danger">{errors.gender}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Blood Group</label>
                         <select
                           onChange={handleChange}
-                          value={teacherInput.blood_group || ""}
+                          value={teacherInput.blood_group || ''}
                           name="blood_group"
                           className="form-control"
                           required
@@ -221,6 +224,9 @@ const AddTeacher = () => {
                           <option value="o+">O+</option>
                           <option value="o-">O-</option>
                         </select>
+                        <small className="text-danger">
+                          {errors.blood_group}
+                        </small>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">
                         Submit
