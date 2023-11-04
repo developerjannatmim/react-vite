@@ -122,7 +122,7 @@ const AddAdmin = () => {
                   <h4>
                     Admin List
                     <Link
-                      to="/dashboard/admin"
+                      to="/admin/admin"
                       className="btn btn-primary btn-sm float-end"
                     >
                       View Admin
