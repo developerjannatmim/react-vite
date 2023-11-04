@@ -1,10 +1,11 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const UpdateGrade = () => {
   const navigate = useNavigate();
@@ -26,32 +27,32 @@ const UpdateGrade = () => {
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'PUT',
+        method: "PUT",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/grades');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/grades");
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('GRADE_FORM').reset();
-        Swal.fire('Warning', response?.message, 'warning');
+        document.getElementById("GRADE_FORM").reset();
+        Swal.fire("Warning", response?.message, "warning");
       });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/grades/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -67,7 +68,7 @@ const UpdateGrade = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -78,7 +79,10 @@ const UpdateGrade = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Grade List</h4>
-                <Link to="/admin/grades" className="btn btn-primary btn-sm float-end">
+                <Link
+                  to="/admin/grades"
+                  className="btn btn-primary btn-sm float-end"
+                >
                   Grade List
                 </Link>
               </div>
@@ -101,7 +105,7 @@ const UpdateGrade = () => {
                               type="text"
                               name="name"
                               onChange={handleChange}
-                              value={gradeInput?.name || ''}
+                              value={gradeInput?.name || ""}
                               className="form-control"
                             />
                           </div>
@@ -111,7 +115,7 @@ const UpdateGrade = () => {
                               type="text"
                               name="grade_point"
                               onChange={handleChange}
-                              value={gradeInput?.grade_point || ''}
+                              value={gradeInput?.grade_point || ""}
                               className="form-control"
                             />
                           </div>
@@ -121,7 +125,7 @@ const UpdateGrade = () => {
                               type="text"
                               name="mark_from"
                               onChange={handleChange}
-                              value={gradeInput?.mark_from || ''}
+                              value={gradeInput?.mark_from || ""}
                               className="form-control"
                             />
                           </div>
@@ -131,7 +135,7 @@ const UpdateGrade = () => {
                               type="text"
                               name="mark_upto"
                               onChange={handleChange}
-                              value={gradeInput?.mark_upto || ''}
+                              value={gradeInput?.mark_upto || ""}
                               className="form-control"
                             />
                           </div>

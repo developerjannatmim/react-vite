@@ -37,8 +37,14 @@ const Login = () => {
       .then((response) => {
         if (response?.status === 200) {
           localStorage.setItem('auth_token', response?.token);
-          localStorage.setItem('auth_name', response?.username);
           localStorage.setItem('role', response?.role_id);
+          localStorage.setItem('auth_name', response?.username);
+          localStorage.setItem('email', response?.userEmail);
+          localStorage.setItem('gender', response?.gender);
+          localStorage.setItem('address', response?.address);
+          localStorage.setItem('blood', response?.blood);
+          localStorage.setItem('birthday', response?.birthday);
+          localStorage.setItem('phone', response?.phone);
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
           const userRole = localStorage.getItem("role");

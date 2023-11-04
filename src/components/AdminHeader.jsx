@@ -2,11 +2,10 @@ import React from 'react';
 import '../assets/css/Header.css';
 import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const AdminHeader = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     localStorage.clear();
-    //window.location.reload();
     navigate('/login');
   };
 
@@ -65,7 +64,7 @@ const Header = () => {
               aria-labelledby="navbarDropdown"
             >
               <li className='dropdown-list'>
-                <a className="dropdown-item" href="#!">
+                <a className="dropdown-item" href="/admin/profile">
                   Account
                 </a>
               </li>
@@ -85,4 +84,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AdminHeader;

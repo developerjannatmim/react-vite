@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import TeacherHeader from "../../components/TeacherHeader";
 
 const ExamList = () => {
   const [examList, setExamList] = useState([]);
@@ -12,37 +13,12 @@ const ExamList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
-  const deleteExam = (e, id) => {
-    e.preventDefault();
-    const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
-
-    if(confirm(`Are you sure you want to delete exam id ${id}?`)){
-    fetch(`http://127.0.0.1:8000/api/exams/${id}`, {
-      headers: {
-        Accept: 'application/json',
-      },
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        Clicked.closest('tr').remove();
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire('Warning', response?.message, 'warning');
-      });
-    }
-  };
-
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/exams?', {
+    fetch("http://127.0.0.1:8000/api/exams?", {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -65,7 +41,7 @@ const ExamList = () => {
   return (
     <>
       <div>
-        <Header />
+        <TeacherHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -89,7 +65,7 @@ const ExamList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? 'active' : ''
+                            currentPage === n ? "active" : ""
                           }`}
                           key={i}
                         >
@@ -181,7 +157,6 @@ const ExamList = () => {
       setCurrentPage(currentPage + 1);
     }
   }
-
 };
 
 export default ExamList;

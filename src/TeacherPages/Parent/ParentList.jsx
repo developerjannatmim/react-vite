@@ -1,42 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
 import '../../assets/css/style.css';
-import Header from './../../components/Header';
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
+import TeacherHeader from '../../components/TeacherHeader';
 
 const ParentList = () => {
   const [parents, setParents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
-
-  const deleteParentData = (e, id) => {
-    e.preventDefault();
-    const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
-
-    if (confirm(`Are you sure you want to delete parent id ${id}?`)) {
-      fetch(`http://127.0.0.1:8000/api/parents/${id}`, {
-        headers: {
-          Accept: 'application/json',
-        },
-        method: 'DELETE',
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          console.info(response);
-          Swal.fire('Success', response?.message, 'success');
-          Clicked.closest('tr').remove();
-        })
-        .catch((error) => {
-          console.error(error);
-          Swal.fire('Warning', response?.message, 'warning');
-        });
-    }
-  };
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/parents?', {
@@ -66,7 +40,7 @@ const ParentList = () => {
   return (
     <>
       <div>
-        <Header />
+        <TeacherHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

@@ -1,18 +1,19 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const AddGrade = () => {
   const navigate = useNavigate();
   const [gradeInput, setGradeInput] = useState({
-    name: '',
-    grade_point: '',
-    mark_from: '',
-    mark_upto: '',
+    name: "",
+    grade_point: "",
+    mark_from: "",
+    mark_upto: "",
   });
 
   const handleChange = (e) => {
@@ -28,35 +29,35 @@ const AddGrade = () => {
       mark_upto: gradeInput.mark_upto,
     };
     fetch(
-      'http://127.0.0.1:8000/api/grades',
+      "http://127.0.0.1:8000/api/grades",
       {
         body: JSON.stringify({
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'POST',
+        method: "POST",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/grades');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/grades");
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('SUBJECT_FORM').reset();
-        Swal.fire('Warning', response?.message, 'warning');
+        document.getElementById("SUBJECT_FORM").reset();
+        Swal.fire("Warning", response?.message, "warning");
       });
   };
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

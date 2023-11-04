@@ -1,10 +1,11 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const UpdateSection = () => {
   const navigate = useNavigate();
@@ -26,32 +27,32 @@ const UpdateSection = () => {
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'PUT',
+        method: "PUT",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/sections');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/sections");
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('SECTION_FORM').reset();
-        Swal.fire('Warning', response?.message, 'warning');
+        document.getElementById("SECTION_FORM").reset();
+        Swal.fire("Warning", response?.message, "warning");
       });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/sections/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -67,7 +68,7 @@ const UpdateSection = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -104,7 +105,7 @@ const UpdateSection = () => {
                               type="text"
                               name="name"
                               onChange={handleChange}
-                              value={sectionInput?.name || ''}
+                              value={sectionInput?.name || ""}
                               className="form-control"
                             />
                           </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import StudentHeader from '../../components/StudentHeader';
 
 
 const ShowStudent = () => {
@@ -36,7 +37,7 @@ const ShowStudent = () => {
   return (
     <>
       <div>
-        <Header />
+        <StudentHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

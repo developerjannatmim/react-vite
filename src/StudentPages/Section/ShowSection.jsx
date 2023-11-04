@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import StudentHeader from "../../components/StudentHeader";
 
 const ShowSection = () => {
   const [sectionItem, setSectionItem] = useState(null);
@@ -13,9 +14,9 @@ const ShowSection = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/sections/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -31,7 +32,7 @@ const ShowSection = () => {
   return (
     <>
       <div>
-        <Header />
+        <StudentHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

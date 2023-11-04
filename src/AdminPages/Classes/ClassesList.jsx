@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Header from './../../components/Header';
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const ClassesList = () => {
   const [classList, setClassList] = useState([]);
@@ -64,7 +64,7 @@ const ClassesList = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

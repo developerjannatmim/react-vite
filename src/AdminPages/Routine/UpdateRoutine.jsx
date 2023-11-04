@@ -1,10 +1,11 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const UpdateRoutine = () => {
   const navigate = useNavigate();
@@ -31,32 +32,32 @@ const UpdateRoutine = () => {
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'PUT',
+        method: "PUT",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/routines');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/routines");
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('ROUTINE_FORM').reset();
-        Swal.fire('Warning', response?.message, 'warning');
+        document.getElementById("ROUTINE_FORM").reset();
+        Swal.fire("Warning", response?.message, "warning");
       });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/routines/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -73,9 +74,9 @@ const UpdateRoutine = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -92,9 +93,9 @@ const UpdateRoutine = () => {
     console.log({ rooms });
     fetch(`http://127.0.0.1:8000/api/classRooms`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -111,9 +112,9 @@ const UpdateRoutine = () => {
     console.log({ routineCreator });
     fetch(`http://127.0.0.1:8000/api/teachers`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -130,9 +131,9 @@ const UpdateRoutine = () => {
     console.log({ subjects });
     fetch(`http://127.0.0.1:8000/api/subjects`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -149,9 +150,9 @@ const UpdateRoutine = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -167,7 +168,7 @@ const UpdateRoutine = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -204,7 +205,7 @@ const UpdateRoutine = () => {
                               type="text"
                               name="day"
                               onChange={handleChange}
-                              value={routineInput?.day || ''}
+                              value={routineInput?.day || ""}
                               className="form-control"
                             />
                           </div>
@@ -214,7 +215,7 @@ const UpdateRoutine = () => {
                               type="text"
                               name="starting_hour"
                               onChange={handleChange}
-                              value={routineInput?.starting_hour || ''}
+                              value={routineInput?.starting_hour || ""}
                               className="form-control"
                             />
                           </div>
@@ -224,7 +225,7 @@ const UpdateRoutine = () => {
                               type="text"
                               name="starting_minute"
                               onChange={handleChange}
-                              value={routineInput?.starting_minute || ''}
+                              value={routineInput?.starting_minute || ""}
                               className="form-control"
                             />
                           </div>
@@ -234,7 +235,7 @@ const UpdateRoutine = () => {
                               type="text"
                               name="ending_hour"
                               onChange={handleChange}
-                              value={routineInput?.ending_hour || ''}
+                              value={routineInput?.ending_hour || ""}
                               className="form-control"
                             />
                           </div>
@@ -244,7 +245,7 @@ const UpdateRoutine = () => {
                               type="text"
                               name="ending_minute"
                               onChange={handleChange}
-                              value={routineInput?.ending_minute || ''}
+                              value={routineInput?.ending_minute || ""}
                               className="form-control"
                             />
                           </div>
@@ -254,7 +255,7 @@ const UpdateRoutine = () => {
                               name="routine_creator"
                               className="form-control"
                               onChange={handleChange}
-                              value={routineInput?.routine_creator || ''}
+                              value={routineInput?.routine_creator || ""}
                             >
                               <option>select creator name</option>
                               {routineCreator?.map((creatorName) => {
@@ -275,7 +276,7 @@ const UpdateRoutine = () => {
                               name="class_id"
                               className="form-control"
                               onChange={handleChange}
-                              value={routineInput?.class_id || ''}
+                              value={routineInput?.class_id || ""}
                             >
                               <option>select class</option>
                               {classes?.map((classItem) => {
@@ -296,7 +297,7 @@ const UpdateRoutine = () => {
                               name="section_id"
                               className="form-control"
                               onChange={handleChange}
-                              value={routineInput?.section_id || ''}
+                              value={routineInput?.section_id || ""}
                             >
                               <option>select section</option>
                               {sections?.map((sectionItem) => {
@@ -317,7 +318,7 @@ const UpdateRoutine = () => {
                               name="subject_id"
                               className="form-control"
                               onChange={handleChange}
-                              value={routineInput?.subject_id || ''}
+                              value={routineInput?.subject_id || ""}
                             >
                               <option>select subject</option>
                               {subjects?.map((subjectItem) => {
@@ -338,7 +339,7 @@ const UpdateRoutine = () => {
                               name="room_id"
                               className="form-control"
                               onChange={handleChange}
-                              value={routineInput?.room_id || ''}
+                              value={routineInput?.room_id || ""}
                             >
                               <option>select room</option>
                               {rooms?.map((roomItem) => {

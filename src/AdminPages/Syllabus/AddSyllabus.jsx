@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const AddSyllabus = () => {
   const navigate = useNavigate();
@@ -12,11 +13,11 @@ const AddSyllabus = () => {
   const [sections, setSections] = useState();
   const [subjects, setSubjects] = useState();
   const [syllabusInput, setSyllabusInput] = useState({
-    title: '',
-    class_id: '',
-    subject_id: '',
-    section_id: '',
-    file: '',
+    title: "",
+    class_id: "",
+    subject_id: "",
+    section_id: "",
+    file: "",
   });
 
   const handleChange = (e) => {
@@ -27,9 +28,9 @@ const AddSyllabus = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -46,9 +47,9 @@ const AddSyllabus = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -65,9 +66,9 @@ const AddSyllabus = () => {
     console.log({ subjects });
     fetch(`http://127.0.0.1:8000/api/subjects`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -90,36 +91,36 @@ const AddSyllabus = () => {
       file: syllabusInput.file,
     };
     fetch(
-      'http://127.0.0.1:8000/api/syllabuses',
+      "http://127.0.0.1:8000/api/syllabuses",
       {
         body: JSON.stringify({
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'POST',
+        method: "POST",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/syllabuses');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/syllabuses");
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('SYLLABUS_FORM').reset();
-        Swal.fire('Warning', response?.message, 'warning');
+        document.getElementById("SYLLABUS_FORM").reset();
+        Swal.fire("Warning", response?.message, "warning");
       });
   };
 
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

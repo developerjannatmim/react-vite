@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-import Header from './../../components/Header';
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const AddClasses = () => {
   const navigate = useNavigate();
@@ -72,7 +72,7 @@ const AddClasses = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Header from './../../components/Header';
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const ShowAdmin = () => {
   const [adminItem, setAdminItem] = useState(null);
@@ -38,7 +38,7 @@ const ShowAdmin = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

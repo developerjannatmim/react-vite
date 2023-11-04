@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const SchoolList = () => {
   const navigate = useNavigate();
@@ -14,33 +15,33 @@ const SchoolList = () => {
   const deleteSchool = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
+    Clicked.innerText = "deleting";
 
-    if(confirm(`Are you sure you want to delete school id ${id}?`)){
-    fetch(`http://127.0.0.1:8000/api/schools/${id}`, {
-      headers: {
-        Accept: 'application/json',
-      },
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        Clicked.closest('tr').remove();
+    if (confirm(`Are you sure you want to delete school id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/schools/${id}`, {
+        headers: {
+          Accept: "application/json",
+        },
+        method: "DELETE",
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then((response) => response.json())
+        .then((response) => {
+          console.info(response);
+          Swal.fire("Success", response?.message, "success");
+          Clicked.closest("tr").remove();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/schools?', {
+    fetch("http://127.0.0.1:8000/api/schools?", {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -57,7 +58,7 @@ const SchoolList = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

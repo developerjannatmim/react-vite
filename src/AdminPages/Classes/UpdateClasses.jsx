@@ -1,10 +1,11 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const UpdateClasses = () => {
   const navigate = useNavigate();
@@ -27,18 +28,18 @@ const UpdateClasses = () => {
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'PUT',
+        method: "PUT",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/classes');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/classes");
       })
       .catch((error) => {
         console.error(error);
@@ -48,9 +49,9 @@ const UpdateClasses = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/classes/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -67,9 +68,9 @@ const UpdateClasses = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -84,7 +85,7 @@ const UpdateClasses = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -121,7 +122,7 @@ const UpdateClasses = () => {
                               type="text"
                               name="name"
                               onChange={handleChange}
-                              value={classInput?.name || ''}
+                              value={classInput?.name || ""}
                               className="form-control"
                             />
                           </div>
@@ -131,7 +132,7 @@ const UpdateClasses = () => {
                               name="section_id"
                               className="form-control"
                               onChange={handleChange}
-                              value={classInput?.section_id || ''}
+                              value={classInput?.section_id || ""}
                             >
                               <option>select class</option>
                               {sections?.map((sectionItem) => {

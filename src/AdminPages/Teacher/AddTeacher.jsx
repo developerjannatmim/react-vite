@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import Swal from 'sweetalert2';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Swal from "sweetalert2";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const AddTeacher = () => {
   const navigate = useNavigate();
@@ -16,15 +17,15 @@ const AddTeacher = () => {
   // };
 
   const [teacherInput, setTeacherInput] = useState({
-    name: '',
-    email: '',
-    password: '',
-    address: '',
-    phone: '',
-    photo: '',
-    birthday: '',
-    gender: '',
-    blood_group: '',
+    name: "",
+    email: "",
+    password: "",
+    address: "",
+    phone: "",
+    photo: "",
+    birthday: "",
+    gender: "",
+    blood_group: "",
   });
 
   const handleChange = (e) => {
@@ -51,28 +52,28 @@ const AddTeacher = () => {
     });
 
     fetch(
-      'http://127.0.0.1:8000/api/teachers',
+      "http://127.0.0.1:8000/api/teachers",
       {
         body: JSON.stringify({
           ...data,
         }),
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        method: 'POST',
+        method: "POST",
       },
       data
     )
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/teachers');
+        Swal.fire("Success", response?.message, "success");
+        navigate("/admin/teachers");
       })
       .catch((error) => {
         console.error(error);
-        Swal.fire('Warning', response?.message, 'warning');
+        Swal.fire("Warning", response?.message, "warning");
         //document.getElementById("ADMIN_FORM").reset();
       });
   };
@@ -80,7 +81,7 @@ const AddTeacher = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -114,7 +115,7 @@ const AddTeacher = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.name || ''}
+                          value={teacherInput.name || ""}
                           name="name"
                           className="form-control"
                           required
@@ -125,7 +126,7 @@ const AddTeacher = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.email || ''}
+                          value={teacherInput.email || ""}
                           name="email"
                           className="form-control"
                           required
@@ -136,7 +137,7 @@ const AddTeacher = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.password || ''}
+                          value={teacherInput.password || ""}
                           name="password"
                           className="form-control"
                           required
@@ -147,7 +148,7 @@ const AddTeacher = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.address || ''}
+                          value={teacherInput.address || ""}
                           name="address"
                           className="form-control"
                           required
@@ -158,7 +159,7 @@ const AddTeacher = () => {
                         <input
                           type="text"
                           onChange={handleChange}
-                          value={teacherInput.phone || ''}
+                          value={teacherInput.phone || ""}
                           name="phone"
                           className="form-control"
                           required
@@ -169,7 +170,7 @@ const AddTeacher = () => {
                         <input
                           type="date"
                           onChange={handleChange}
-                          value={teacherInput.birthday || ''}
+                          value={teacherInput.birthday || ""}
                           name="birthday"
                           className="form-control"
                           required
@@ -180,7 +181,7 @@ const AddTeacher = () => {
                         <input
                           type="file"
                           onChange={handleChange}
-                          value={teacherInput.photo || ''}
+                          value={teacherInput.photo || ""}
                           name="photo"
                           className="form-control"
                           required
@@ -190,7 +191,7 @@ const AddTeacher = () => {
                         <label>Gender</label>
                         <select
                           onChange={handleChange}
-                          value={teacherInput.gender || ''}
+                          value={teacherInput.gender || ""}
                           name="gender"
                           className="form-control"
                           required
@@ -205,7 +206,7 @@ const AddTeacher = () => {
                         <label>Blood Group</label>
                         <select
                           onChange={handleChange}
-                          value={teacherInput.blood_group || ''}
+                          value={teacherInput.blood_group || ""}
                           name="blood_group"
                           className="form-control"
                           required

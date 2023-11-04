@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const ShowSubject = () => {
   const [subjectItem, setSubjectItem] = useState(null);
@@ -13,9 +14,9 @@ const ShowSubject = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/subjects/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -31,7 +32,7 @@ const ShowSubject = () => {
   return (
     <>
       <div>
-        <Header />
+        <AdminHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

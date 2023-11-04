@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
-import Header from "./../../components/Header";
+
 import Sidebar from "./../../components/Sidebar";
 import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const RoutineList = () => {
   const [routineList, setRoutineList] = useState([]);
@@ -62,153 +62,152 @@ const RoutineList = () => {
   const npage = Math.ceil(routineList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
-    return (
-      <>
-        <div>
-          <Header />
+  return (
+    <>
+      <div>
+        <AdminHeader />
+      </div>
+      <div className="d-flex">
+        <div className="w-auto position-sticky">
+          <Sidebar />
         </div>
-        <div className="d-flex">
-          <div className="w-auto position-sticky">
-            <Sidebar />
-          </div>
-          <div className="col overflow-hidden">
-            <div className="container px-4">
-              <div className="card">
-                <div className="card-header">
-                  <h4>Routine List</h4>
-                  <Link
-                    to="/admin/routines/create"
-                    className="btn btn-primary btn-sm float-end"
-                  >
-                    Add Routine
-                  </Link>
-                </div>
-                <div className="page-system mt-4">
-                  <nav>
-                    <ul className="pagination">
-                      <li className="page-item">
-                        <a href="#" className="page-link" onClick={prePage}>
-                          Prev
-                        </a>
-                      </li>
-                      {numbers.map((n, i) => {
-                        return (
-                          <li
-                            className={`page-item ${
-                              currentPage === n ? "active" : ""
-                            }`}
-                            key={i}
+        <div className="col overflow-hidden">
+          <div className="container px-4">
+            <div className="card">
+              <div className="card-header">
+                <h4>Routine List</h4>
+                <Link
+                  to="/admin/routines/create"
+                  className="btn btn-primary btn-sm float-end"
+                >
+                  Add Routine
+                </Link>
+              </div>
+              <div className="page-system mt-4">
+                <nav>
+                  <ul className="pagination">
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={prePage}>
+                        Prev
+                      </a>
+                    </li>
+                    {numbers.map((n, i) => {
+                      return (
+                        <li
+                          className={`page-item ${
+                            currentPage === n ? "active" : ""
+                          }`}
+                          key={i}
+                        >
+                          <a
+                            href="#"
+                            className="page-link"
+                            onClick={() => changeCurrentPage(n)}
                           >
-                            <a
-                              href="#"
-                              className="page-link"
-                              onClick={() => changeCurrentPage(n)}
+                            {n}
+                          </a>
+                        </li>
+                      );
+                    })}
+                    <li className="page-item">
+                      <a href="#" className="page-link" onClick={nextPage}>
+                        Next
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+              <div className="card-body">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">day</th>
+                      <th scope="col">s_h</th>
+                      <th scope="col">s_m</th>
+                      <th scope="col">e_h</th>
+                      <th scope="col">e_m</th>
+                      <th scope="col">r_c</th>
+                      <th scope="col">C</th>
+                      <th scope="col">Section</th>
+                      <th scope="col">Subject</th>
+                      <th scope="col">Class Room</th>
+                      <th scope="col">Show</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {records?.map((routineItem) => {
+                      return (
+                        <tr key={routineItem.id}>
+                          <td>{routineItem.id}</td>
+                          <td>{routineItem.day}</td>
+                          <td>{routineItem.starting_hour}</td>
+                          <td>{routineItem.starting_minute}</td>
+                          <td>{routineItem.ending_hour}</td>
+                          <td>{routineItem.ending_minute}</td>
+                          <td>{routineItem.creator?.name}</td>
+                          <td>{routineItem.class?.name}</td>
+                          <td>{routineItem.section?.name}</td>
+                          <td>{routineItem.subject?.name}</td>
+                          <td>{routineItem.room?.name}</td>
+                          <td>
+                            <Link
+                              to={`/admin/routines/${routineItem.id}/show`}
+                              className="btn btn-primary btn-sm"
                             >
-                              {n}
-                            </a>
-                          </li>
-                        );
-                      })}
-                      <li className="page-item">
-                        <a href="#" className="page-link" onClick={nextPage}>
-                          Next
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-                <div className="card-body">
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">day</th>
-                        <th scope="col">s_h</th>
-                        <th scope="col">s_m</th>
-                        <th scope="col">e_h</th>
-                        <th scope="col">e_m</th>
-                        <th scope="col">r_c</th>
-                        <th scope="col">C</th>
-                        <th scope="col">Section</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col">Class Room</th>
-                        <th scope="col">Show</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {records?.map((routineItem) => {
-                        return (
-                          <tr key={routineItem.id}>
-                            <td>{routineItem.id}</td>
-                            <td>{routineItem.day}</td>
-                            <td>{routineItem.starting_hour}</td>
-                            <td>{routineItem.starting_minute}</td>
-                            <td>{routineItem.ending_hour}</td>
-                            <td>{routineItem.ending_minute}</td>
-                            <td>{routineItem.creator?.name}</td>
-                            <td>{routineItem.class?.name}</td>
-                            <td>{routineItem.section?.name}</td>
-                            <td>{routineItem.subject?.name}</td>
-                            <td>{routineItem.room?.name}</td>
-                            <td>
-                              <Link
-                                to={`/admin/routines/${routineItem.id}/show`}
-                                className="btn btn-primary btn-sm"
-                              >
-                                Show
-                              </Link>
-                            </td>
-                            <td>
-                              <Link
-                                to={`/admin/routines/${routineItem.id}/edit`}
-                                className="btn btn-success btn-sm"
-                              >
-                                Edit
-                              </Link>
-                            </td>
-                            <td
-                              type="button"
-                              onClick={(e) => deleteRoutine(e, routineItem.id)}
-                              className="btn btn-danger btn-sm"
+                              Show
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              to={`/admin/routines/${routineItem.id}/edit`}
+                              className="btn btn-success btn-sm"
                             >
-                              Delete
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
+                              Edit
+                            </Link>
+                          </td>
+                          <td
+                            type="button"
+                            onClick={(e) => deleteRoutine(e, routineItem.id)}
+                            className="btn btn-danger btn-sm"
+                          >
+                            Delete
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
-        <div>
-          <Footer />
-        </div>
-      </>
-    );
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </>
+  );
 
-    function prePage(e) {
+  function prePage(e) {
+    e.preventDefault();
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+
+  function changeCurrentPage(id) {
+    setCurrentPage(id);
+  }
+
+  function nextPage(e) {
+    if (currentPage !== npage) {
       e.preventDefault();
-      if (currentPage !== 1) {
-        setCurrentPage(currentPage - 1);
-      }
+      setCurrentPage(currentPage + 1);
     }
-
-    function changeCurrentPage(id) {
-      setCurrentPage(id);
-    }
-
-    function nextPage(e) {
-      if (currentPage !== npage) {
-        e.preventDefault();
-        setCurrentPage(currentPage + 1);
-      }
-    }
-
+  }
 };
 
 export default RoutineList;

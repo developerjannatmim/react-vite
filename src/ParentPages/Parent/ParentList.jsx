@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
-import '../../assets/css/style.css';
-import Header from './../../components/Header';
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+import "../../assets/css/style.css";
+
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
 
 const ParentList = () => {
   const [parents, setParents] = useState([]);
@@ -13,37 +13,12 @@ const ParentList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
-  const deleteParentData = (e, id) => {
-    e.preventDefault();
-    const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
-
-    if (confirm(`Are you sure you want to delete parent id ${id}?`)) {
-      fetch(`http://127.0.0.1:8000/api/parents/${id}`, {
-        headers: {
-          Accept: 'application/json',
-        },
-        method: 'DELETE',
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          console.info(response);
-          Swal.fire('Success', response?.message, 'success');
-          Clicked.closest('tr').remove();
-        })
-        .catch((error) => {
-          console.error(error);
-          Swal.fire('Warning', response?.message, 'warning');
-        });
-    }
-  };
-
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/parents?', {
+    fetch("http://127.0.0.1:8000/api/parents?", {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -66,7 +41,7 @@ const ParentList = () => {
   return (
     <>
       <div>
-        <Header />
+        <ParentList />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
@@ -90,7 +65,7 @@ const ParentList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? 'active' : ''
+                            currentPage === n ? "active" : ""
                           }`}
                           key={i}
                         >
