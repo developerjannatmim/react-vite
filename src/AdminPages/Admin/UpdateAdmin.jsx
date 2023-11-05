@@ -12,28 +12,37 @@ const UpdateAdmin = () => {
   const { id } = useParams();
 
   const handleChange = (e) => {
-    setAdminInput( values => ({
+    setAdminInput((values) => ({
       ...values,
-      user_information: {
-        ...values.user_information,
-        [e.target.name]: e.target.value,
-
-      },
       [e.target.name]: e.target.value,
     }));
   };
 
+  const handleUserInformationChange = (e) => {
+    setAdminInput((values) => ({
+      ...values,
+      user_information: {
+        ...values.user_information,
+        [e.target.name]: e.target.value,
+      },
+    }));
+  };
+
   const handleImage = (e) => {
-    setAdminInput( values => ({ user_information: {
-      ...values.user_information,
-      [e.target.name]: e.target.files[0],
-    },}));
+    setAdminInput((values) => ({
+      ...values,
+      user_information: {
+        ...values.user_information,
+        [e.target.name]: e.target.files[0],
+      },
+    }));
   };
 
   const submitAdmin = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
+    formData.append('_method', 'PUT');
     formData.append('name', adminInput.name);
     formData.append('email', adminInput.email);
     formData.append('photo', adminInput.user_information.photo);
@@ -44,21 +53,19 @@ const UpdateAdmin = () => {
     formData.append('blood_group', adminInput.user_information.blood_group);
 
     console.log(adminInput);
-     console.log(formData);
-    fetch(
-      `http://127.0.0.1:8000/api/admin/${id}`,
-      {
-        body: formData,
-        headers: {
-          Accept: 'application/json',
-          //'Content-Type': 'application/json',
-        },
-        method: 'PUT',
-      }
-    )
+    console.log(formData);
+
+    fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
+      body: formData,
+      headers: {
+        Accept: 'application/json',
+        //'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
       .then((response) => response.json())
       .then((response) => {
-        if (response === 200) {
+        if (response?.status === 200) {
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
           navigate('/admin/admin');
@@ -101,13 +108,16 @@ const UpdateAdmin = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Admin List</h4>
-                <Link to="/admin/admin" className="btn btn-primary btn-sm float-end">
+                <Link
+                  to="/admin/admin"
+                  className="btn btn-primary btn-sm float-end"
+                >
                   Admin List
                 </Link>
               </div>
             </div>
             <div className="card-body">
-              <form onSubmit={submitAdmin} >
+              <form onSubmit={submitAdmin}>
                 <div className="card mt-4">
                   <div className="card-body">
                     <div className="tab-content" id="myTabContent">
@@ -143,66 +153,73 @@ const UpdateAdmin = () => {
                             <input
                               type="text"
                               name="address"
-                              onChange={handleChange}
+                              onChange={handleUserInformationChange}
                               value={adminInput?.user_information?.address || ''}
                               className="form-control"
                             />
                           </div>
                           <div className="col-md-6 form-group mb-3">
-                      <label>Phone</label>
-                      <input
-                        type="text"
-                        name="phone"
-                        onChange={handleChange}
-                        value={adminInput?.user_information?.phone || ""}
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Photo</label>
-                      <input
-                        type="file"
-                        name="photo"
-                        onChange={handleImage}
-                        className="form-control"
-
-                      />
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Gender</label>
-                      <select
-                        name="gender"
-                        onChange={handleChange}
-                        value={adminInput?.user_information?.gender || ""}
-                        className="form-control"
-
-                      >
-                        <option value="">Select gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Others">Others</option>
-                      </select>
-                    </div>
-                    <div className="col-md-6 form-group mb-3">
-                      <label>Blood Group</label>
-                      <select
-                        name="blood_group"
-                        onChange={handleChange}
-                        value={adminInput?.user_information?.blood_group || ""}
-                        className="form-control"
-
-                      >
-                        <option value="">Select a blood group</option>
-                        <option value="a+">A+</option>
-                        <option value="a-">A-</option>
-                        <option value="b+">B+</option>
-                        <option value="b-">B-</option>
-                        <option value="ab+">AB+</option>
-                        <option value="ab-">AB-</option>
-                        <option value="o+">O+</option>
-                        <option value="o-">O-</option>
-                      </select>
-                    </div>
+                            <label>Phone</label>
+                            <input
+                              type="text"
+                              name="phone"
+                              onChange={handleUserInformationChange}
+                              value={adminInput?.user_information?.phone || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Birthday</label>
+                            <input
+                              type="date"
+                              name="birthday"
+                              onChange={handleUserInformationChange}
+                              value={adminInput?.user_information?.birthday || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Photo</label>
+                            <input
+                              type="file"
+                              name="photo"
+                              onChange={handleImage}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Gender</label>
+                            <select
+                              name="gender"
+                              onChange={handleUserInformationChange}
+                              value={adminInput?.user_information?.gender || ''}
+                              className="form-control"
+                            >
+                              <option value="">Select gender</option>
+                              <option value="Male">Male</option>
+                              <option value="Female">Female</option>
+                              <option value="Others">Others</option>
+                            </select>
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Blood Group</label>
+                            <select
+                              name="blood_group"
+                              onChange={handleUserInformationChange}
+                              value={adminInput?.user_information?.blood_group || ''}
+                              className="form-control"
+                            >
+                              <option value="">Select a blood group</option>
+                              <option value="a+">A+</option>
+                              <option value="a-">A-</option>
+                              <option value="b+">B+</option>
+                              <option value="b-">B-</option>
+                              <option value="ab+">AB+</option>
+                              <option value="ab-">AB-</option>
+                              <option value="o+">O+</option>
+                              <option value="o-">O-</option>
+                            </select>
+                          </div>
                         </div>
                         <button type="submit" className="btn btn-primary px-4">
                           Update

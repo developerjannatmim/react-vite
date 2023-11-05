@@ -114,7 +114,7 @@ const AddStudent = () => {
                           value={studentInput.name || ''}
                           name="name"
                           className="form-control"
-                          required
+
                         />
                         <small className="text-danger">{errors.name}</small>
                       </div>
@@ -126,7 +126,7 @@ const AddStudent = () => {
                           value={studentInput.email || ''}
                           name="email"
                           className="form-control"
-                          required
+
                         />
                         <small className="text-danger">{errors.email}</small>
                       </div>
@@ -138,7 +138,7 @@ const AddStudent = () => {
                           value={studentInput.password || ''}
                           name="password"
                           className="form-control"
-                          required
+
                         />
                         <small className="text-danger">{errors.password}</small>
                       </div>
@@ -150,7 +150,7 @@ const AddStudent = () => {
                           value={studentInput.address || ''}
                           name="address"
                           className="form-control"
-                          required
+
                         />
                         <small className="text-danger">{errors.address}</small>
                       </div>
@@ -162,7 +162,7 @@ const AddStudent = () => {
                           value={studentInput.phone || ''}
                           name="phone"
                           className="form-control"
-                          required
+
                         />
                         <small className="text-danger">{errors.phone}</small>
                       </div>
@@ -174,7 +174,7 @@ const AddStudent = () => {
                           value={studentInput.birthday || ''}
                           name="birthday"
                           className="form-control"
-                          required
+
                         />
                         <small className="text-danger">{errors.birthday}</small>
                       </div>
@@ -182,11 +182,11 @@ const AddStudent = () => {
                         <label>Photo</label>
                         <input
                           type="file"
-                          onChange={handleChange}
-                          value={studentInput.photo || ''}
+                          onChange={handleImage}
+                          //value={studentInput.photo || ''}
                           name="photo"
                           className="form-control"
-                          required
+
                         />
                         <small className="text-danger">{errors.photo}</small>
                       </div>
@@ -197,7 +197,7 @@ const AddStudent = () => {
                           value={studentInput.gender || ''}
                           name="gender"
                           className="form-control"
-                          required
+
                         >
                           <option value="">Select gender</option>
                           <option value="Male">Male</option>
@@ -213,7 +213,7 @@ const AddStudent = () => {
                           value={studentInput.blood_group || ''}
                           name="blood_group"
                           className="form-control"
-                          required
+
                         >
                           <option value="">Select a blood group</option>
                           <option value="a+">A+</option>
