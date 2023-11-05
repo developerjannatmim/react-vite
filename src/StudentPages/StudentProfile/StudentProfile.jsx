@@ -1,20 +1,11 @@
 import React from "react";
 import "./../../assets/css/profile.css";
-import Header from "../../components/TeacherHeader";
 import Sidebar from "./../../components/Sidebar";
 import Footer from "./../../components/Footer";
 import StudentHeader from "../../components/StudentHeader";
 
 const StudentProfile = () => {
-  const userName = localStorage.getItem("auth_name");
-  const userEmail = localStorage.getItem("email");
-  const userPhone = localStorage.getItem("phone");
-  const userAddress = localStorage.getItem("address");
-  const userBlood = localStorage.getItem("blood");
-  const userGender = localStorage.getItem("gender");
-  const userBirthday = localStorage.getItem("birthday");
-  const userPhoto = localStorage.getItem("photo");
-  //let userDesignation = localStorage.getItem('designation');
+  const authUserInfo = JSON.parse(localStorage.getItem("auth_info"));
 
   return (
     <>
@@ -35,21 +26,21 @@ const StudentProfile = () => {
                       <div className="user-profile">
                         <div className="user-avatar">
                           <img
-                            src={`http://127.0.0.1:8000/student-images/${userPhoto}`}
+                            src={`http://127.0.0.1:8000/student-images/${authUserInfo.photo}`}
                             width="200"
                             height="200"
                             style={{ borderRadius: "100px" }}
                             alt="student-image"
                           />
                         </div>
-                        <h5 className="user-name">{userName}</h5>
+                        <h5 className="user-name">{authUserInfo.auth_name}</h5>
                         <h6 className="user-email">
                           <a
                             href="/cdn-cgi/l/email-protection"
                             className="__cf_email__"
                             data-cfemail="344d415f5d7479554c435158581a575b59"
                           >
-                            {userEmail}
+                            {authUserInfo.email}
                             {/* [email&#160;protected] */}
                           </a>
                         </h6>
@@ -77,9 +68,10 @@ const StudentProfile = () => {
                           <label>Full Name</label>
                           <input
                             type="text"
+                            readOnly
                             className="form-control"
                             id="fullName"
-                            value={userName}
+                            value={authUserInfo.auth_name}
                             placeholder="Enter full name"
                           />
                         </div>
@@ -89,9 +81,10 @@ const StudentProfile = () => {
                           <label>Email</label>
                           <input
                             type="email"
+                            readOnly
                             className="form-control"
                             id="eMail"
-                            value={userEmail}
+                            value={authUserInfo.email}
                             placeholder="Enter email ID"
                           />
                         </div>
@@ -101,9 +94,10 @@ const StudentProfile = () => {
                           <label>Phone</label>
                           <input
                             type="text"
+                            readOnly
                             className="form-control"
                             id="phone"
-                            value={userPhone}
+                            value={authUserInfo.phone}
                             placeholder="Enter phone number"
                           />
                         </div>
@@ -113,9 +107,10 @@ const StudentProfile = () => {
                           <label>Address</label>
                           <input
                             type="url"
+                            readOnly
                             className="form-control"
                             id="address"
-                            value={userAddress}
+                            value={authUserInfo.address}
                             placeholder="Enter address"
                           />
                         </div>
@@ -124,7 +119,7 @@ const StudentProfile = () => {
                     <div className="row gutters">
                       <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <h6 className="mt-3 mb-2 text-primary">
-                          Extra Information
+                          Additional Information
                         </h6>
                       </div>
                       <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -132,9 +127,10 @@ const StudentProfile = () => {
                           <label>Blood Group</label>
                           <input
                             type="name"
+                            readOnly
                             className="form-control"
                             id="blood group"
-                            value={userBlood}
+                            value={authUserInfo.blood}
                             placeholder="Enter blood group"
                           />
                         </div>
@@ -144,9 +140,10 @@ const StudentProfile = () => {
                           <label>Gender</label>
                           <input
                             type="name"
+                            readOnly
                             className="form-control"
                             id="gender"
-                            value={userGender}
+                            value={authUserInfo.gender}
                             placeholder="Enter gender"
                           />
                         </div>
@@ -156,9 +153,10 @@ const StudentProfile = () => {
                           <label>Birthday</label>
                           <input
                             type="text"
+                            readOnly
                             className="form-control"
                             id="birthday"
-                            value={userBirthday}
+                            value={authUserInfo.birthday}
                             placeholder="Enter birthday"
                           />
                         </div>
@@ -168,6 +166,7 @@ const StudentProfile = () => {
                           <label>Designation</label>
                           <input
                             type="text"
+                            readOnly
                             className="form-control"
                             id="designation"
                             // value={userDesignation}

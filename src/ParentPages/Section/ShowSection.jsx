@@ -46,25 +46,37 @@ const ShowSection = () => {
                 <Link
                   to="/parent/sections"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Section List
                 </Link>
               </div>
-              <div className="card-body">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Section</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{sectionItem?.id}</td>
-                      <td>{sectionItem?.name}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="col-md-8 p-4">
+                <div class="tab-content profile-tab" id="myTabContent" >
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Id</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{sectionItem?.id}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Section</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{sectionItem?.name}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

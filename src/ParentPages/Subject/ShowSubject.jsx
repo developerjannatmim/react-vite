@@ -46,27 +46,45 @@ const ShowSubject = () => {
                 <Link
                   to="/parent/subject/view"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Subject List
                 </Link>
               </div>
-              <div className="card-body">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Subject Name</th>
-                      <th>Class Name</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{subjectItem?.id}</td>
-                      <td>{subjectItem?.name}</td>
-                      <td>{subjectItem?.class?.name}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="col-md-8 p-4">
+                <div class="tab-content profile-tab" id="myTabContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Id</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{subjectItem?.id}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Class</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{subjectItem?.name}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Subject</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{subjectItem?.class?.name}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -1,26 +1,13 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import { useState } from "react";
-import { useNavigate } from "react-router";
-import { useEffect } from "react";
 import "./../assets/css/style.css";
 import TeacherHeader from "./TeacherHeader";
 
 const TeacherDashboard = () => {
-  const [displayUserName, setDisplayUserName] = useState();
-  const navigate = useNavigate();
+  const authUserInfo = JSON.parse(localStorage.getItem("auth_info"));
+  const userName = authUserInfo.auth_name;
 
-  useEffect(() => {
-    let userName = localStorage.getItem("auth_name");
-    let userRole = localStorage.getItem("role");
-    if (userRole === "2") {
-      setDisplayUserName(userName);
-      navigate("/teacher/home");
-    } else {
-      navigate("/login");
-    }
-  });
   return (
     <>
       <div>
@@ -42,7 +29,7 @@ const TeacherDashboard = () => {
               </span>
               <br></br>
               <span className="auth_user">
-                User Name: <b>{displayUserName}</b>
+                User Name: <b>{userName}</b>
               </span>
               <div className="row mt-4">
                 <div className="col-xl-3 col-md-6">

@@ -46,27 +46,45 @@ const ShowClasses = () => {
                 <Link
                   to="/student/classes"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Class List
                 </Link>
               </div>
-              <div className="card-body">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Class Name</th>
-                      <th>Section Name</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{classItem?.id}</td>
-                      <td>{classItem?.name}</td>
-                      <td>{classItem?.section?.name}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="col-md-8 p-4">
+                <div class="tab-content profile-tab" id="myTabContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Class Id</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{classItem?.id}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Class Name</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{classItem?.name}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Section Name</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{classItem?.section?.name}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

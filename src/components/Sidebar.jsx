@@ -3,14 +3,9 @@ import "../assets/css/Sidebar.css";
 
 const Sidebar = () => {
   const [active, setActive] = useState(1);
-  const [userRole, setUserRole] = useState('');
+  let role = localStorage.getItem("role");
 
-  useEffect(() => {
-    let role = localStorage.getItem("role");
-    setUserRole(role);
-  });
-
-  if (userRole === '1') {
+  if (role === '1') {
     return (
       <>
         <div className="sidebar py-5 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
@@ -314,7 +309,7 @@ const Sidebar = () => {
         </div>
       </>
     );
-  }else if(userRole === '2'){
+  }else if(role === '2'){
   return (
     <div className="sidebar py-5 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
       <div>
@@ -552,7 +547,7 @@ const Sidebar = () => {
       </div>
     </div>
   );
-  }else if(userRole === '4'){
+  }else if(role === '4'){
     return (
       <div className="sidebar py-5 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
         <div>
@@ -790,7 +785,7 @@ const Sidebar = () => {
         </div>
       </div>
     );
-  }else if(userRole === '3'){
+  }else if(role === '3'){
     return (
       <div className="sidebar py-5 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
         <div>

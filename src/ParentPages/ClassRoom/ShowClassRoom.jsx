@@ -46,25 +46,37 @@ const ShowClassRoom = () => {
                 <Link
                   to="/parent/classroom"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Class Room List
                 </Link>
               </div>
-              <div className="card-body">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Class Room No.</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{classRoomItem?.id}</td>
-                      <td>{classRoomItem?.name}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="col-md-8 p-4">
+                <div class="tab-content profile-tab" id="myTabContent" >
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Class Room Id</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{classRoomItem?.id}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Class Room No.</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{classRoomItem?.name}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

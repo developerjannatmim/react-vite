@@ -46,43 +46,109 @@ const ShowRoutine = () => {
                 <Link
                   to="/student/routines"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Routine List
                 </Link>
               </div>
-              <div className="card-body">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Day</th>
-                      <th>s_h</th>
-                      <th>s_m</th>
-                      <th>e_h</th>
-                      <th>e_m</th>
-                      <th>r_c</th>
-                      <th>C</th>
-                      <th>Section</th>
-                      <th>Subject</th>
-                      <th>Class Room</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{routineItem?.id}</td>
-                      <td>{routineItem?.day}</td>
-                      <td>{routineItem?.starting_hour}</td>
-                      <td>{routineItem?.starting_minute}</td>
-                      <td>{routineItem?.ending_hour}</td>
-                      <td>{routineItem?.ending_minute}</td>
-                      <td>{routineItem?.creator?.name}</td>
-                      <td>{routineItem?.class?.name}</td>
-                      <td>{routineItem?.subject?.name}</td>
-                      <td>{routineItem?.section?.name}</td>
-                      <td>{routineItem?.room?.name}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="col-md-8 p-4">
+                <div class="tab-content profile-tab" id="myTabContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Id</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.id}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Day</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.day}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Starting Hour</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.starting_hour}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Starting Minute</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.starting_minute}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Ending Hour</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.ending_hour}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Ending Minute</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.ending_minute}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Routine Creator</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.creator?.name}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Class</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.class?.name}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Section</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.section?.name}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Subject</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.subject?.name}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Class Room</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{routineItem?.room?.name}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

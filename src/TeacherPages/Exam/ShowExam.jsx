@@ -46,39 +46,93 @@ const ShowExam = () => {
                 <Link
                   to="/teacher/exams"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Exam List
                 </Link>
               </div>
-              <div className="card-body">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Exam Name</th>
-                      <th>Exam Type</th>
-                      <th>Starting Time</th>
-                      <th>Ending Time</th>
-                      <th>Total Marks</th>
-                      <th>Status</th>
-                      <th>Class Name</th>
-                      <th>Section No.</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{examItem?.id}</td>
-                      <td>{examItem?.name}</td>
-                      <td>{examItem?.exam_type}</td>
-                      <td>{examItem?.starting_time}</td>
-                      <td>{examItem?.ending_time}</td>
-                      <td>{examItem?.total_marks}</td>
-                      <td>{examItem?.status}</td>
-                      <td>{examItem?.class?.name}</td>
-                      <td>{examItem?.section?.name}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="col-md-8 p-4">
+                <div class="tab-content profile-tab" id="myTabContent" >
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Exam Id</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{examItem?.id}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Exam Name</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{examItem?.name}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Exam Type</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{examItem?.exam_type}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Starting Time</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{examItem?.starting_time}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Ending Time</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{examItem?.ending_time}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Total Marks</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{examItem?.total_marks}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Status</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{examItem?.status}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Class Name</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{examItem?.class?.name}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Section No.</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{examItem?.section?.name}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

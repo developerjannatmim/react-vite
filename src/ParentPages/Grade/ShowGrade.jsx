@@ -46,31 +46,61 @@ const ShowGrade = () => {
                 <Link
                   to="/dashboard/grades"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: "-30px" }}
                 >
                   Grade List
                 </Link>
               </div>
-              <div className="card-body">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th>Id</th>
-                      <th>Grade</th>
-                      <th>Grade Point</th>
-                      <th>Mark From</th>
-                      <th>Mark Upto</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{gradeItem?.id}</td>
-                      <td>{gradeItem?.name}</td>
-                      <td>{gradeItem?.grade_point}</td>
-                      <td>{gradeItem?.mark_from}</td>
-                      <td>{gradeItem?.mark_upto}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="col-md-8 p-4">
+                <div class="tab-content profile-tab" id="myTabContent" >
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Grade Id</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{gradeItem?.id}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Grade Name</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{gradeItem?.name}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Grade Point</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{gradeItem?.grade_point}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Mark From</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{gradeItem?.mark_from}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Mark Upto</label>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{gradeItem?.mark_upto}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
