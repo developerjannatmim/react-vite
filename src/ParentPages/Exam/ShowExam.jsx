@@ -42,7 +42,7 @@ const ShowExam = () => {
           <div className="container">
             <div className="card">
               <div className="card-header">
-                <h4>Exam List</h4>
+                <h4>Exam Details</h4>
                 <Link
                   to="/parent/exams"
                   className="btn btn-primary btn-sm float-end"

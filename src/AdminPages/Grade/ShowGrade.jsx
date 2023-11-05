@@ -42,7 +42,7 @@ const ShowGrade = () => {
           <div className="container">
             <div className="card">
               <div className="card-header">
-                <h4>Grade List</h4>
+                <h4>Grade Details</h4>
                 <Link
                   to="/admin/grades"
                   className="btn btn-primary btn-sm float-end"

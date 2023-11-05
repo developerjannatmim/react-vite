@@ -177,7 +177,7 @@ const UpdateRoutine = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Routine List</h4>
+                <h4>Routine Edit</h4>
                 <Link
                   to="/admin/routines"
                   className="btn btn-primary btn-sm float-end"

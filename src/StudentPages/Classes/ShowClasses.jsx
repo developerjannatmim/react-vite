@@ -42,7 +42,7 @@ const ShowClasses = () => {
           <div className="container">
             <div className="card">
               <div className="card-header">
-                <h4>Class List</h4>
+                <h4>Class Details</h4>
                 <Link
                   to="/student/classes"
                   className="btn btn-primary btn-sm float-end"

@@ -42,7 +42,7 @@ const ShowSubject = () => {
           <div className="container">
             <div className="card">
               <div className="card-header">
-                <h4>Subject List</h4>
+                <h4>Subject Details</h4>
                 <Link
                   to="/student/subject/view"
                   className="btn btn-primary btn-sm float-end"

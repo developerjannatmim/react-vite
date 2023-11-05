@@ -50,7 +50,7 @@ const ClassRoomList = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Class Room List</h4>
+                <h4>Class Room Details</h4>
               </div>
               <div className="page-system mt-4">
                 <nav>

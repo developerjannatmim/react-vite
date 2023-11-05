@@ -42,7 +42,7 @@ const ShowSection = () => {
           <div className="container">
             <div className="card">
               <div className="card-header">
-                <h4>Section List</h4>
+                <h4>Section Details</h4>
                 <Link
                   to="/admin/sections"
                   className="btn btn-primary btn-sm float-end"

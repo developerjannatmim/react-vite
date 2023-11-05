@@ -97,7 +97,7 @@ const UpdateSubject = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Subject List</h4>
+                <h4>Subject Edit</h4>
                 <Link
                   to="/admin/subject/view"
                   className="btn btn-primary btn-sm float-end"

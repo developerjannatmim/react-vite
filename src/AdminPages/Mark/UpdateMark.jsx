@@ -177,7 +177,7 @@ const UpdateMark = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Mark List</h4>
+                <h4>Mark Edit</h4>
                 <Link
                   to="/admin/marks"
                   className="btn btn-primary btn-sm float-end"

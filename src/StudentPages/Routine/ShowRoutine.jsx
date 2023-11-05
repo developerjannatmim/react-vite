@@ -42,7 +42,7 @@ const ShowRoutine = () => {
           <div className="container">
             <div className="card">
               <div className="card-header">
-                <h4>Routine List</h4>
+                <h4>Routine Details</h4>
                 <Link
                   to="/student/routines"
                   className="btn btn-primary btn-sm float-end"

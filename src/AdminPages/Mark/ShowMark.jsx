@@ -42,7 +42,7 @@ const ShowMark = () => {
           <div className="container">
             <div className="card">
               <div className="card-header">
-                <h4>Mark List</h4>
+                <h4>Mark Details</h4>
                 <Link
                   to="/admin/marks"
                   className="btn btn-primary btn-sm float-end"

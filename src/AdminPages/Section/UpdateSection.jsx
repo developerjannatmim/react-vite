@@ -77,7 +77,7 @@ const UpdateSection = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Section List</h4>
+                <h4>Section Edit</h4>
                 <Link
                   to="/admin/sections"
                   className="btn btn-primary btn-sm float-end"

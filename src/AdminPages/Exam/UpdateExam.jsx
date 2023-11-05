@@ -117,12 +117,12 @@ const UpdateExam = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Subject List</h4>
+                <h4>Exam Edit</h4>
                 <Link
                   to="/admin/exams"
                   className="btn btn-primary btn-sm float-end"
                 >
-                  Subject List
+                  Exam List
                 </Link>
               </div>
             </div>
