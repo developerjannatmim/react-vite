@@ -1,38 +1,38 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const AddExam = () => {
   const navigate = useNavigate();
   const [classes, setClasses] = useState();
   const [sections, setSections] = useState();
   const [examInput, setExamInput] = useState({
-    name: "",
-    exam_type: "",
-    starting_time: "",
-    ending_time: "",
-    total_marks: "",
-    status: "",
-    class_id: "",
-    section_id: "",
+    name: '',
+    exam_type: '',
+    starting_time: '',
+    ending_time: '',
+    total_marks: '',
+    status: '',
+    class_id: '',
+    section_id: '',
   });
 
   const handleChange = (e) => {
-    setExamInput({ ...examInput, [e.target.name]: e.target.value });
+    setExamInput((values) => ({ ...values, [e.target.name]: e.target.value }));
   };
 
   useEffect(() => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -49,9 +49,9 @@ const AddExam = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -76,29 +76,26 @@ const AddExam = () => {
       class_id: examInput.class_id,
       section_id: examInput.section_id,
     };
-    fetch(
-      "http://127.0.0.1:8000/api/exams",
-      {
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      }
-    )
+    fetch('http://127.0.0.1:8000/api/exams', {
+      body: JSON.stringify({
+        ...data,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/admin/exams");
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/admin/exams');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById("EXAM_FORM").reset();
-        Swal.fire("Warning", response?.message, "warning");
+        document.getElementById('EXAM_FORM').reset();
+        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 

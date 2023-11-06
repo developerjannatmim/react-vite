@@ -1,20 +1,23 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const AddClassRoom = () => {
   const navigate = useNavigate();
   const [classroomInput, setClassroomInput] = useState({
-    name: "",
+    name: '',
   });
 
   const handleChange = (e) => {
-    setClassroomInput({ ...classroomInput, [e.target.name]: e.target.value });
+    setClassroomInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const submitClassRoom = (e) => {
@@ -22,29 +25,26 @@ const AddClassRoom = () => {
     const data = {
       name: classroomInput.name,
     };
-    fetch(
-      "http://127.0.0.1:8000/api/classRooms",
-      {
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      }
-    )
+    fetch('http://127.0.0.1:8000/api/classRooms', {
+      body: JSON.stringify({
+        ...data,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/admin/classroom");
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/admin/classroom');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById("CLASSROOM_FORM").reset();
-        Swal.fire("Warning", response?.message, "warning");
+        document.getElementById('CLASSROOM_FORM').reset();
+        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 

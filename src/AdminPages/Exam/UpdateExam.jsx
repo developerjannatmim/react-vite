@@ -1,11 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const UpdateExam = () => {
   const navigate = useNavigate();
@@ -15,45 +15,42 @@ const UpdateExam = () => {
   const { id } = useParams();
 
   const handleChange = (e) => {
-    setExamInput({ ...examInput, [e.target.name]: e.target.value });
+    setExamInput((values) => ({ ...values, [e.target.name]: e.target.value }));
   };
 
   const submitExam = (e) => {
     e.preventDefault();
     console.log(examInput);
     const data = examInput;
-    fetch(
-      `http://127.0.0.1:8000/api/exams/${id}`,
-      {
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "PUT",
-      }
-    )
+    fetch(`http://127.0.0.1:8000/api/exams/${id}`, {
+      body: JSON.stringify({
+        ...data,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'PUT',
+    })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/admin/exams");
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/admin/exams');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById("SUBJECT_FORM").reset();
-        Swal.fire("Warning", response?.message, "warning");
+        document.getElementById('SUBJECT_FORM').reset();
+        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/exams/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -70,9 +67,9 @@ const UpdateExam = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -89,9 +86,9 @@ const UpdateExam = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -144,7 +141,7 @@ const UpdateExam = () => {
                               type="text"
                               name="name"
                               onChange={handleChange}
-                              value={examInput?.name || ""}
+                              value={examInput?.name || ''}
                               className="form-control"
                             />
                           </div>
@@ -154,7 +151,7 @@ const UpdateExam = () => {
                               type="text"
                               name="exam_type"
                               onChange={handleChange}
-                              value={examInput?.exam_type || ""}
+                              value={examInput?.exam_type || ''}
                               className="form-control"
                             />
                           </div>
@@ -164,7 +161,7 @@ const UpdateExam = () => {
                               type="text"
                               name="starting_time"
                               onChange={handleChange}
-                              value={examInput?.starting_time || ""}
+                              value={examInput?.starting_time || ''}
                               className="form-control"
                             />
                           </div>
@@ -174,7 +171,7 @@ const UpdateExam = () => {
                               type="text"
                               name="ending_time"
                               onChange={handleChange}
-                              value={examInput?.ending_time || ""}
+                              value={examInput?.ending_time || ''}
                               className="form-control"
                             />
                           </div>
@@ -184,7 +181,7 @@ const UpdateExam = () => {
                               type="text"
                               name="total_marks"
                               onChange={handleChange}
-                              value={examInput?.total_marks || ""}
+                              value={examInput?.total_marks || ''}
                               className="form-control"
                             />
                           </div>
@@ -194,7 +191,7 @@ const UpdateExam = () => {
                               type="text"
                               name="status"
                               onChange={handleChange}
-                              value={examInput?.status || ""}
+                              value={examInput?.status || ''}
                               className="form-control"
                             />
                           </div>
@@ -204,7 +201,7 @@ const UpdateExam = () => {
                               name="class_id"
                               className="form-control"
                               onChange={handleChange}
-                              value={examInput?.class_id || ""}
+                              value={examInput?.class_id || ''}
                             >
                               <option>select class</option>
                               {classes?.map((classItem) => {
@@ -225,7 +222,7 @@ const UpdateExam = () => {
                               name="section_id"
                               className="form-control"
                               onChange={handleChange}
-                              value={examInput?.section_id || ""}
+                              value={examInput?.section_id || ''}
                             >
                               <option>select section</option>
                               {sections?.map((sectionItem) => {

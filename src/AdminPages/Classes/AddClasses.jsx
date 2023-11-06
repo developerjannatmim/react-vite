@@ -15,7 +15,10 @@ const AddClasses = () => {
   });
 
   const handleChange = (e) => {
-    setClassesInput({ ...classesInput, [e.target.name]: e.target.value });
+    setClassesInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   useEffect(() => {
@@ -43,19 +46,16 @@ const AddClasses = () => {
       name: classesInput.name,
       section_id: classesInput.section_id,
     };
-    fetch(
-      'http://127.0.0.1:8000/api/classes',
-      {
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-      }
-    )
+    fetch('http://127.0.0.1:8000/api/classes', {
+      body: JSON.stringify({
+        ...data,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);

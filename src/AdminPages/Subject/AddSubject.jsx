@@ -1,31 +1,34 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const AddSubject = () => {
   const navigate = useNavigate();
   const [classes, setClasses] = useState();
   const [subjectInput, setSubjectInput] = useState({
-    name: "",
-    class_id: "",
+    name: '',
+    class_id: '',
   });
 
   const handleChange = (e) => {
-    setSubjectInput({ ...subjectInput, [e.target.name]: e.target.value });
+    setSubjectInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   useEffect(() => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -44,29 +47,26 @@ const AddSubject = () => {
       name: subjectInput.name,
       class_id: subjectInput.class_id,
     };
-    fetch(
-      "http://127.0.0.1:8000/api/subjects",
-      {
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      }
-    )
+    fetch('http://127.0.0.1:8000/api/subjects', {
+      body: JSON.stringify({
+        ...data,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/admin//subject/view");
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/admin//subject/view');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById("SUBJECT_FORM").reset();
-        Swal.fire("Warning", response?.message, "warning");
+        document.getElementById('SUBJECT_FORM').reset();
+        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 

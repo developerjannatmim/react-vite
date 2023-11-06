@@ -1,11 +1,11 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const AddMark = () => {
   const navigate = useNavigate();
@@ -15,27 +15,27 @@ const AddMark = () => {
   const [subjects, setSubjects] = useState();
   const [users, setUsers] = useState();
   const [markInput, setMarkInput] = useState({
-    marks: "",
-    grade_point: "",
-    comment: "",
-    class_id: "",
-    exam_id: "",
-    section_id: "",
-    subject_id: "",
-    user_id: "",
+    marks: '',
+    grade_point: '',
+    comment: '',
+    class_id: '',
+    exam_id: '',
+    section_id: '',
+    subject_id: '',
+    user_id: '',
   });
 
   const handleChange = (e) => {
-    setMarkInput({ ...markInput, [e.target.name]: e.target.value });
+    setMarkInput((values) => ({ ...values, [e.target.name]: e.target.value }));
   };
 
   useEffect(() => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -52,9 +52,9 @@ const AddMark = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -71,9 +71,9 @@ const AddMark = () => {
     console.log({ subjects });
     fetch(`http://127.0.0.1:8000/api/subjects`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -90,9 +90,9 @@ const AddMark = () => {
     console.log({ users });
     fetch(`http://127.0.0.1:8000/api/students`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -109,9 +109,9 @@ const AddMark = () => {
     console.log({ exams });
     fetch(`http://127.0.0.1:8000/api/exams`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -130,29 +130,26 @@ const AddMark = () => {
       name: markInput.name,
       class_id: markInput.class_id,
     };
-    fetch(
-      "http://127.0.0.1:8000/api/marks",
-      {
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      }
-    )
+    fetch('http://127.0.0.1:8000/api/marks', {
+      body: JSON.stringify({
+        ...data,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/admin/marks");
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/admin/marks');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById("MARK_FORM").reset();
-        Swal.fire("Warning", response?.message, "warning");
+        document.getElementById('MARK_FORM').reset();
+        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 

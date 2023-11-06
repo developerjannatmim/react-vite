@@ -1,11 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const UpdateClassRoom = () => {
   const navigate = useNavigate();
@@ -14,31 +14,31 @@ const UpdateClassRoom = () => {
   const { id } = useParams();
 
   const handleChange = (e) => {
-    setClassRoomInput({ ...classRoomInput, [e.target.name]: e.target.value });
+    setClassRoomInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const submitClassRoom = (e) => {
     e.preventDefault();
     console.log(classRoomInput);
     const data = classRoomInput;
-    fetch(
-      `http://127.0.0.1:8000/api/classRooms/${id}`,
-      {
-        body: JSON.stringify({
-          ...data,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "PUT",
-      }
-    )
+    fetch(`http://127.0.0.1:8000/api/classRooms/${id}`, {
+      body: JSON.stringify({
+        ...data,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'PUT',
+    })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/admin/classroom");
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/admin/classroom');
       })
       .catch((error) => {
         console.error(error);
@@ -48,9 +48,9 @@ const UpdateClassRoom = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/classRooms/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -103,7 +103,7 @@ const UpdateClassRoom = () => {
                               type="text"
                               name="name"
                               onChange={handleChange}
-                              value={classRoomInput?.name || ""}
+                              value={classRoomInput?.name || ''}
                               className="form-control"
                             />
                           </div>
