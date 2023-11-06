@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const navigate = useNavigate();
   const [loginInput, setLoginInput] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const handleChange = (e) => {
-    setLoginInput({ ...loginInput, [e.target.name]: e.target.value });
+    setLoginInput((values) => ({ ...values, [e.target.name]: e.target.value }));
   };
 
   const submitLogin = (e) => {
@@ -19,26 +19,21 @@ const Login = () => {
       password: loginInput.password,
     };
 
-    fetch(
-      "http://127.0.0.1:8000/api/login",
-      {
-        body: JSON.stringify({
-          ...LoginForm,
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "POST",
+    fetch('http://127.0.0.1:8000/api/login', {
+      body: JSON.stringify({
+        ...LoginForm,
+      }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
-      LoginForm
-    )
+      method: 'POST',
+    })
       .then((response) => response.json())
       .then((response) => {
         if (response?.status === 200) {
           const ObjData = {
             auth_name: response?.username,
-            role: response?.role_id,
             email: response?.userEmail,
             gender: response?.gender,
             address: response?.address,
@@ -47,26 +42,26 @@ const Login = () => {
             phone: response?.phone,
             photo: response?.photo,
           };
-          localStorage.setItem("auth_token", response?.token);
-          localStorage.setItem("role", response?.role_id);
-          localStorage.setItem("auth_info", JSON.stringify(ObjData));
-          console.info(response);
+          localStorage.setItem('auth_token', response?.token);
+          localStorage.setItem('role', response?.role_id);
+          localStorage.setItem('auth_info', JSON.stringify(ObjData));
+
           const userRole = localStorage.getItem('role');
           console.log(userRole);
-
-          Swal.fire("Success", response?.message, "success");
           if (userRole === '1') {
-            navigate("/admin/home");
+            navigate('/admin/home');
           } else if (userRole === '2') {
-            navigate("/teacher/home");
+            navigate('/teacher/home');
           } else if (userRole === '3') {
-            navigate("/student/home");
+            navigate('/student/home');
           } else if (userRole === '4') {
-            navigate("/parent/home");
+            navigate('/parent/home');
           }
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
         } else if (response?.status === 401) {
-          Swal.fire("Warning", response?.message, "warning");
-          navigate("/login");
+          Swal.fire('Warning', response?.message, 'warning');
+          navigate('/login');
         }
       });
   };

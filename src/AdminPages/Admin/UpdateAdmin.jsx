@@ -59,7 +59,6 @@ const UpdateAdmin = () => {
       body: formData,
       headers: {
         Accept: 'application/json',
-        //'Content-Type': 'application/json',
       },
       method: 'POST',
     })
