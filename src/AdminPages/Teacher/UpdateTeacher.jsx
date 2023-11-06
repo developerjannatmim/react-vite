@@ -84,7 +84,7 @@ const UpdateTeacher = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Teacher List</h4>
+                <h4>Teacher Edit</h4>
                 <Link
                   to="/admin/teachers"
                   className="btn btn-primary btn-sm float-end"

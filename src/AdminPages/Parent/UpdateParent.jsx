@@ -89,7 +89,7 @@ const UpdateParent = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Parent List</h4>
+                <h4>Parent Edit</h4>
                 <Link
                   to="/admin/parents"
                   className="btn btn-primary btn-sm float-end"

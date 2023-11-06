@@ -53,9 +53,7 @@ const Login = () => {
           console.info(response);
           const userRole = localStorage.getItem('role');
           console.log(userRole);
-          // const userRole = JSON.parse(localStorage.getItem('auth_info'));
-          // const io = userRole.role;
-          
+
           Swal.fire("Success", response?.message, "success");
           if (userRole === '1') {
             navigate("/admin/home");

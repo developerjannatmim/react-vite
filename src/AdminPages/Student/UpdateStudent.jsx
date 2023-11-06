@@ -90,7 +90,7 @@ const UpdateStudent = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Student List</h4>
+                <h4>Student Edit</h4>
                 <Link
                   to="/admin/students"
                   className="btn btn-primary btn-sm float-end"

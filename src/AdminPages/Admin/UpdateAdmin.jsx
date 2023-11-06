@@ -107,7 +107,7 @@ const UpdateAdmin = () => {
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Admin List</h4>
+                <h4>Admin Edit</h4>
                 <Link
                   to="/admin/admin"
                   className="btn btn-primary btn-sm float-end"
