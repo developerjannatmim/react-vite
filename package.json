@@ -20,8 +20,7 @@
     "react-router-dom": "^6.17.0",
     "react-sweetalert2": "^0.6.0",
     "react-switch": "^7.0.0",
-    "styled-components": "^6.1.0",
-    "sweetalert": "^2.1.2"
+    "styled-components": "^6.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
