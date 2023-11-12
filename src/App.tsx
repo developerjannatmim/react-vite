@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Publicroute from "./components/Publicroute";
@@ -186,7 +186,7 @@ import PClassRoomList from "./ParentPages/ClassRoom/ClassRoomList";
 import PShowClassRoom from "./ParentPages/ClassRoom/ShowClassRoom";
 //Parent components end
 
-//User Route componets
+//User Route components
 import AdminDashboard from "./components/AdminDashboard";
 import AdminRoute from "./components/AdminRoute";
 import AdminProfile from "./AdminPages/AdminProfile/AdminProfile";

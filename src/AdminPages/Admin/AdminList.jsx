@@ -159,7 +159,7 @@ const AdminList = () => {
                           <td>{userInformation?.blood_group}</td>
                               <td>
                               <Link
-                                to={`/admin/admin/${adminData.id}/show`}
+                                to={`/admin/admin/${adminData?.id}/show`}
                                 className="btn btn-primary btn-sm"
                               >
                                 Show
@@ -167,7 +167,7 @@ const AdminList = () => {
                             </td>
                             <td>
                               <Link
-                                to={`/admin/admin/${adminData.id}/edit`}
+                                to={`/admin/admin/${adminData?.id}/edit`}
                                 className="btn btn-success btn-sm"
                               >
                                 Edit
@@ -175,7 +175,7 @@ const AdminList = () => {
                             </td>
                             <td
                               type="button"
-                              onClick={(e) => deleteAdminData(e, adminData.id)}
+                              onClick={(e) => deleteAdminData(e, adminData?.id)}
                               className="btn btn-danger btn-sm"
                             >
                               Delete
