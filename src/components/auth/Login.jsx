@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Login = () => {
@@ -112,7 +112,7 @@ const Login = () => {
                     </div>
                     <div className="card-footer text-center py-3">
                       <div className="small">
-                        <a href="/register">Need an account? Sign up!</a>
+                        <Link to="/register">Need an account? Sign up!</Link>
                       </div>
                     </div>
                   </div>
