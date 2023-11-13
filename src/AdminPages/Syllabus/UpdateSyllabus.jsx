@@ -22,19 +22,31 @@ const UpdateSyllabus = () => {
     }));
   };
 
+  const handleImage = (e) => {
+    setSyllabusInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.files[0],
+    }));
+  };
+
   const submitSyllabus = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('_method', 'PUT');
+    formData.append('title', syllabusInput.title);
+    formData.append('class_id', syllabusInput.class_id);
+    formData.append('subject_id', syllabusInput.subject_id);
+    formData.append('section_id', syllabusInput.section_id);
+    formData.append('file', syllabusInput.file);
+
     console.log(syllabusInput);
-    const data = syllabusInput;
+
     fetch(`http://127.0.0.1:8000/api/syllabuses/${id}`, {
-      body: JSON.stringify({
-        ...data,
-      }),
+      body: formData,
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
       },
-      method: 'PUT',
+      method: 'POST',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -236,8 +248,7 @@ const UpdateSyllabus = () => {
                             <input
                               type="file"
                               name="file"
-                              onChange={handleChange}
-                              //value={syllabusInput?.file || ''}
+                              onChange={handleImage}
                               className="form-control"
                             />
                           </div>

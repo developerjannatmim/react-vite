@@ -142,7 +142,7 @@ const SyllabusList = () => {
                           <td>{syllabus.class?.name}</td>
                           <td>{syllabus.section?.name}</td>
                           <td>{syllabus.subject?.name}</td>
-                          <td>{syllabus?.file}</td>
+                          <td><img src={`http://127.0.0.1:8000/syllabus-images/${syllabus?.file}`} width='40'/></td>
                           <td>
                             <Link
                               to={`/admin/syllabuses/${syllabus.id}/show`}

@@ -27,6 +27,13 @@ const AddSyllabus = () => {
     }));
   };
 
+  const handleImage = (e) => {
+    setSyllabusInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.files[0],
+    }));
+  };
+
   useEffect(() => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
@@ -86,34 +93,34 @@ const AddSyllabus = () => {
 
   const submitSyllabus = (e) => {
     e.preventDefault();
-    const data = {
-      title: syllabusInput.title,
-      class_id: syllabusInput.class_id,
-      subject_id: syllabusInput.subject_id,
-      section_id: syllabusInput.section_id,
-      file: syllabusInput.file,
-    };
+
+    const formData = new FormData();
+    formData.append('title', syllabusInput.title);
+    formData.append('class_id', syllabusInput.class_id);
+    formData.append('subject_id', syllabusInput.subject_id);
+    formData.append('section_id', syllabusInput.section_id);
+    formData.append('file', syllabusInput.file);
+
+    console.log(syllabusInput);
+
     fetch('http://127.0.0.1:8000/api/syllabuses', {
-      body: JSON.stringify({
-        ...data,
-      }),
+      body: formData,
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
       },
       method: 'POST',
     })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/syllabuses');
-      })
-      .catch((error) => {
-        console.error(error);
-        document.getElementById('SYLLABUS_FORM').reset();
-        Swal.fire('Warning', response?.message, 'warning');
-      });
+    .then((response) => response.json())
+    .then((response) => {
+      console.info(response);
+      Swal.fire('Success', response?.message, 'success');
+      navigate('/admin/syllabuses');
+    })
+    .catch((error) => {
+      console.error(error);
+      document.getElementById('SYLLABUS_FORM').reset();
+      Swal.fire('Warning', response?.message, 'warning');
+    });
   };
 
   return (
@@ -224,8 +231,7 @@ const AddSyllabus = () => {
                           <input
                             type="file"
                             name="file"
-                            onChange={handleChange}
-                            value={syllabusInput.file}
+                            onChange={handleImage}
                             className="form-control"
                           />
                         </div>

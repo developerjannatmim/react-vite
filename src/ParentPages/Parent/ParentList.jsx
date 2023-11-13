@@ -6,6 +6,7 @@ import "../../assets/css/style.css";
 
 import Sidebar from "./../../components/Sidebar";
 import Footer from "./../../components/Footer";
+import ParentHeader from './../../components/ParentHeader';
 
 const ParentList = () => {
   const [parents, setParents] = useState([]);
@@ -41,7 +42,7 @@ const ParentList = () => {
   return (
     <>
       <div>
-        <ParentList />
+        <ParentHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">

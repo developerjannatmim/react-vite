@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ParentHeader from "../../components/ParentHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const ShowStudent = () => {
   const [studentItem, setStudentItem] = useState(null);

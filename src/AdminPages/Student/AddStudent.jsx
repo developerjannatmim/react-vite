@@ -183,7 +183,6 @@ const AddStudent = () => {
                         <input
                           type="file"
                           onChange={handleImage}
-                          //value={studentInput.photo || ''}
                           name="photo"
                           className="form-control"
 
