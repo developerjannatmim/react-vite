@@ -59,15 +59,15 @@ const UpdateSchool = () => {
       },
       method: 'GET',
     })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        setSchoolInput(response.data?.school);
-      })
-      .catch((error) => {
-        console.error(error);
-        setSchoolInput(null);
-      });
+    .then((response) => response.json())
+    .then((response) => {
+      console.info(response);
+      setSchoolInput(response.data?.school);
+    })
+    .catch((error) => {
+      console.error(error);
+      setSchoolInput(null);
+    });
   }, [id]);
 
   return (

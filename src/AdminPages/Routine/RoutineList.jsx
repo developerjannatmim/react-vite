@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 import Sidebar from "./../../components/Sidebar";
 import Footer from "./../../components/Footer";

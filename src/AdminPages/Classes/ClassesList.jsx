@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Swal from "sweetalert2";
+
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
@@ -14,7 +16,7 @@ const ClassesList = () => {
   const deleteClass = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
+    Clicked.innerText = "deleting";
 
     if (confirm(`Are you sure you want to delete class id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/classes/${id}`, {
@@ -27,7 +29,7 @@ const ClassesList = () => {
         .then((response) => {
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
-          Clicked.closest('tr').remove();
+          Clicked.closest("tr").remove();
         })
         .catch((error) => {
           console.error(error);
