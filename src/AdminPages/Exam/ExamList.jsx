@@ -123,9 +123,9 @@ const ExamList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">Exam Name</th>
-                      <th scope="col">Class Name</th>
-                      <th scope="col">Section Name</th>
+                      <th scope="col">Exam</th>
+                      <th scope="col">Class</th>
+                      <th scope="col">Section</th>
                       <th scope="col">Exam Type</th>
                       <th scope="col">Starting Time</th>
                       <th scope="col">Ending Time</th>
@@ -142,13 +142,13 @@ const ExamList = () => {
                         <tr key={exam.id}>
                           <td>{exam.id}</td>
                           <td>{exam.name}</td>
+                          <td>{exam.class?.name}</td>
+                          <td>{exam.section?.name}</td>
                           <td>{exam.exam_type}</td>
                           <td>{exam.starting_time}</td>
                           <td>{exam.ending_time}</td>
                           <td>{exam.total_marks}</td>
                           <td>{exam.status}</td>
-                          <td>{exam.section?.name}</td>
-                          <td>{exam.class?.name}</td>
                           <td>
                             <Link
                               to={`/admin/exams/${exam.id}/show`}
