@@ -8,6 +8,7 @@ import AdminHeader from '../../components/AdminHeader';
 
 const AddClasses = () => {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
   const [sections, setSections] = useState();
   const [classesInput, setClassesInput] = useState({
     name: '',
@@ -29,15 +30,15 @@ const AddClasses = () => {
       },
       method: 'GET',
     })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        setSections(response.data?.sections);
-      })
-      .catch((error) => {
-        console.error(error);
-        setSections(null);
-      });
+    .then((response) => response.json())
+    .then((response) => {
+      console.info(response);
+      setSections(response.data?.sections);
+    })
+    .catch((error) => {
+      console.error(error);
+      setSections(null);
+    });
   }, []);
 
   const submitClass = (e) => {
@@ -56,16 +57,19 @@ const AddClasses = () => {
       },
       method: 'POST',
     })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/classes');
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire('Warning', response?.message, 'warning');
-      });
+    .then((response) => response.json())
+    .then((response) => {
+      console.info(response);
+      Swal.fire('Success', response?.message, 'success');
+      navigate('/admin/classes');
+      setErrors({});
+    })
+    .catch((error) => {
+      console.error(error);
+      Swal.fire('Warning', response?.message, 'warning');
+      navigate('/admin/classes/create');
+      setErrors(response?.errors);
+    });
   };
 
   return (
@@ -110,6 +114,7 @@ const AddClasses = () => {
                             value={classesInput.name}
                             className="form-control"
                           />
+                          <small className="text-danger">{errors.name}</small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
                           <label>Class Name</label>
@@ -131,6 +136,7 @@ const AddClasses = () => {
                               );
                             })}
                           </select>
+                          <small className="text-danger">{errors.section_id}</small>
                         </div>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">

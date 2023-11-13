@@ -104,7 +104,7 @@ const ShowSyllabus = () => {
                         <label>File</label>
                       </div>
                       <div class="col-md-6">
-                        <p>{syllabusItem?.file}</p>
+                        <img src={`http://127.0.0.1:8000/syllabus-images/${syllabusItem?.file}`} width='40'/>
                       </div>
                     </div>
                   </div>

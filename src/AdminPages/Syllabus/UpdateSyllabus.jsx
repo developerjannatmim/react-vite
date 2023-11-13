@@ -9,7 +9,7 @@ import AdminHeader from '../../components/AdminHeader';
 
 const UpdateSyllabus = () => {
   const navigate = useNavigate();
-  const [syllabusInput, setSyllabusInput] = useState([]);
+  const [syllabusInput, setSyllabusInput] = useState();
   const [classes, setClasses] = useState();
   const [sections, setSections] = useState();
   const [subjects, setSubjects] = useState();
@@ -48,17 +48,16 @@ const UpdateSyllabus = () => {
       },
       method: 'POST',
     })
-      .then((response) => response.json())
-      .then((response) => {
+    .then((response) => response.json())
+    .then((response) => {
+      if(response?.status === 200){
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
         navigate('/admin/syllabuses');
-      })
-      .catch((error) => {
-        console.error(error);
-        document.getElementById('SYLLABUS_FORM').reset();
+      }else{
         Swal.fire('Warning', response?.message, 'warning');
-      });
+      }
+    })
   };
 
   useEffect(() => {
@@ -68,15 +67,15 @@ const UpdateSyllabus = () => {
       },
       method: 'GET',
     })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        setSyllabusInput(response.data?.syllabus);
-      })
-      .catch((error) => {
-        console.error(error);
-        setSyllabusInput(null);
-      });
+    .then((response) => response.json())
+    .then((response) => {
+      console.info(response);
+      setSyllabusInput(response.data?.syllabus);
+    })
+    .catch((error) => {
+      console.error(error);
+      setSyllabusInput(null);
+    });
   }, [id]);
 
   useEffect(() => {

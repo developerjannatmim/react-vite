@@ -9,6 +9,7 @@ import AdminHeader from '../../components/AdminHeader';
 
 const AddSyllabus = () => {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
   const [classes, setClasses] = useState();
   const [sections, setSections] = useState();
   const [subjects, setSubjects] = useState();
@@ -112,15 +113,16 @@ const AddSyllabus = () => {
     })
     .then((response) => response.json())
     .then((response) => {
-      console.info(response);
-      Swal.fire('Success', response?.message, 'success');
-      navigate('/admin/syllabuses');
+      if(response?.status === 200){
+        console.info(response);
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/admin/syllabuses');
+        setErrors({});
+      }else{
+        Swal.fire('Warning', response?.message, 'warning');
+        setErrors(response?.errors);
+      }
     })
-    .catch((error) => {
-      console.error(error);
-      document.getElementById('SYLLABUS_FORM').reset();
-      Swal.fire('Warning', response?.message, 'warning');
-    });
   };
 
   return (
@@ -165,6 +167,7 @@ const AddSyllabus = () => {
                             value={syllabusInput.title}
                             className="form-control"
                           />
+                           <small className="text-danger">{errors.title}</small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
                           <label>Class Name</label>
@@ -183,6 +186,7 @@ const AddSyllabus = () => {
                               );
                             })}
                           </select>
+                          <small className="text-danger">{errors.class_id}</small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
                           <label>Section Name</label>
@@ -204,6 +208,7 @@ const AddSyllabus = () => {
                               );
                             })}
                           </select>
+                          <small className="text-danger">{errors.section_id}</small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
                           <label>Subject Name</label>
@@ -225,6 +230,7 @@ const AddSyllabus = () => {
                               );
                             })}
                           </select>
+                          <small className="text-danger">{errors.subject_id}</small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
                           <label>File Name</label>
@@ -234,6 +240,7 @@ const AddSyllabus = () => {
                             onChange={handleImage}
                             className="form-control"
                           />
+                           <small className="text-danger">{errors.file}</small>
                         </div>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">
