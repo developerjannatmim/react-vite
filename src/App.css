@@ -1,0 +1,23 @@
+.login {
+  display: grid;
+  height: 875px;
+  width: 100%;
+  background: #f2f2f2;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../src/assets/images/img2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.image {
+  display: grid;
+  height: 855px;
+  width: 100%;
+  background: #f2f2f2;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../src/assets/images/img3.jpg');
+  background-size: cover;
+  background-position: center;
+}
