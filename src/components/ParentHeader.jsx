@@ -1,6 +1,6 @@
 import React from 'react';
 import '../assets/css/Header.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const ParentHeader = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const ParentHeader = () => {
     <div>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a className="navbar-brand ps-3" href="index.html">
-          React Bootstrap Dashboard
+          Paramount Secondary School
         </a>
         <a className="navbar-brand d-block d-md-none">
           <i className="bi bi-justify"></i>
@@ -64,9 +64,9 @@ const ParentHeader = () => {
               aria-labelledby="navbarDropdown"
             >
               <li className='dropdown-list'>
-                <a className="dropdown-item" href="/parent/profile">
+                <Link className="dropdown-item" href="/parent/profile">
                   Account
-                </a>
+                </Link>
               </li>
               <li>
                 <hr className="dropdown-divider" />

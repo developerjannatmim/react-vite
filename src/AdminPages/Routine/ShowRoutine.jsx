@@ -77,34 +77,18 @@ const ShowRoutine = () => {
                     </div>
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Starting Hour</label>
+                        <label>Starting Time</label>
                       </div>
                       <div class="col-md-6">
-                        <p>{routineItem?.starting_hour}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Starting Minute</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.starting_minute}</p>
+                        <p>{`${routineItem?.starting_hour}:${routineItem?.starting_minute} AM`}</p>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Ending Hour</label>
+                        <label>Ending Time</label>
                       </div>
                       <div class="col-md-6">
-                        <p>{routineItem?.ending_hour}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Ending Minute</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.ending_minute}</p>
+                        <p>{`${routineItem?.ending_hour}:${routineItem?.ending_minute} PM`}</p>
                       </div>
                     </div>
                     <div class="row">

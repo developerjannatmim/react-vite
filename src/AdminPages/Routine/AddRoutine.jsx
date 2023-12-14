@@ -180,7 +180,7 @@ const AddRoutine = () => {
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Routine List
+                    Routine Create
                     <Link
                       to="/admin/routines"
                       className="btn btn-primary btn-sm float-end"
@@ -199,7 +199,7 @@ const AddRoutine = () => {
                     >
                       <div className="row">
                         <div className="col-md-6 form-group mb-3">
-                          <label>Day</label>
+                          <label>Week Day</label>
                           <input
                             type="text"
                             name="day"
@@ -209,7 +209,7 @@ const AddRoutine = () => {
                           />
                         </div>
                         <div className="col-md-6 form-group mb-3">
-                          <label>starting_hour</label>
+                          <label>Starting Hour</label>
                           <input
                             type="text"
                             name="starting_hour"
@@ -219,7 +219,7 @@ const AddRoutine = () => {
                           />
                         </div>
                         <div className="col-md-6 form-group mb-3">
-                          <label>Starting Time</label>
+                          <label>Starting Minute</label>
                           <input
                             type="text"
                             name="starting_minute"
@@ -229,7 +229,7 @@ const AddRoutine = () => {
                           />
                         </div>
                         <div className="col-md-6 form-group mb-3">
-                          <label>Ending Time</label>
+                          <label>Ending Hour</label>
                           <input
                             type="text"
                             name="ending_hour"
@@ -239,7 +239,7 @@ const AddRoutine = () => {
                           />
                         </div>
                         <div className="col-md-6 form-group mb-3">
-                          <label>ending_minute</label>
+                          <label>Ending Minute</label>
                           <input
                             type="text"
                             name="ending_minute"

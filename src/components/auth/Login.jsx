@@ -99,6 +99,7 @@ const Login = () => {
                             onChange={handleChange}
                             value={loginInput.password}
                             name="password"
+                            type="password"
                             placeholder="Password"
                           />
                           <label>Password</label>

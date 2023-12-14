@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 import Swal from "sweetalert2";
 
 import Sidebar from "./../../components/Sidebar";
@@ -63,6 +64,39 @@ const RoutineList = () => {
   const npage = Math.ceil(routineList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
+
+  const styles = StyleSheet.create({
+    page: {
+      flexDirection: 'row',
+      backgroundColor: '#E4E4E4'
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1
+    }
+  });
+  
+  const MyDoc = () => (
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+        <Text>Section #1</Text>
+        </View>
+      </Page>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+          <Text>Section #2</Text>
+        </View>
+      </Page>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+          <Text>Section #3</Text>
+        </View>
+      </Page>
+    </Document>
+  );
+
   return (
     <>
       <div>
@@ -123,16 +157,15 @@ const RoutineList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">day</th>
-                      <th scope="col">s_h</th>
-                      <th scope="col">s_m</th>
-                      <th scope="col">e_h</th>
-                      <th scope="col">e_m</th>
-                      <th scope="col">r_c</th>
-                      <th scope="col">C</th>
+                      <th scope="col">Week Day</th>
+                      <th scope="col">Starting Time</th>
+                      <th scope="col">Ending Time</th>
+                      <th scope="col">Routine Creator</th>
+                      <th scope="col">Class</th>
                       <th scope="col">Section</th>
                       <th scope="col">Subject</th>
                       <th scope="col">Class Room</th>
+                      <th scope="col">PDF</th>
                       <th scope="col">Show</th>
                       <th scope="col">Edit</th>
                       <th scope="col">Delete</th>
@@ -144,15 +177,20 @@ const RoutineList = () => {
                         <tr key={routineItem.id}>
                           <td>{routineItem.id}</td>
                           <td>{routineItem.day}</td>
-                          <td>{routineItem.starting_hour}</td>
-                          <td>{routineItem.starting_minute}</td>
-                          <td>{routineItem.ending_hour}</td>
-                          <td>{routineItem.ending_minute}</td>
+                          <td>{`${routineItem.starting_hour}:${routineItem.starting_minute} AM`}</td>
+                          <td>{`${routineItem.ending_hour}:${routineItem.ending_minute} PM`}</td>
                           <td>{routineItem.creator?.name}</td>
                           <td>{routineItem.class?.name}</td>
                           <td>{routineItem.section?.name}</td>
                           <td>{routineItem.subject?.name}</td>
                           <td>{routineItem.room?.name}</td>
+                          <td>
+                            <div className="App">
+                              <PDFDownloadLink document={<MyDoc />} fileName='routine.pdf'>
+                              {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download!')}
+                              </PDFDownloadLink>
+                            </div>
+                          </td>
                           <td>
                             <Link
                               to={`/admin/routines/${routineItem.id}/show`}
@@ -186,6 +224,7 @@ const RoutineList = () => {
           </div>
         </div>
       </div>
+
       <div>
         <Footer />
       </div>

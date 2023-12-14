@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 import Swal from "sweetalert2";
 
 import Sidebar from "./../../components/Sidebar";
@@ -37,6 +38,38 @@ const SyllabusList = () => {
   const records = syllabusList?.slice(firstIndex, lastIndex);
   const npage = Math.ceil(syllabusList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
+
+  const styles = StyleSheet.create({
+    page: {
+      flexDirection: 'row',
+      backgroundColor: '#E4E4E4'
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1
+    }
+  });
+  
+  const MyDoc = () => (
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+        <Text>Section #1</Text>
+        </View>
+      </Page>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+          <Text>Section #2</Text>
+        </View>
+      </Page>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+          <Text>Section #3</Text>
+        </View>
+      </Page>
+    </Document>
+  );
 
   return (
     <>
@@ -96,7 +129,7 @@ const SyllabusList = () => {
                       <th scope="col">Class Name</th>
                       <th scope="col">Section Name</th>
                       <th scope="col">Subject Name</th>
-                      <th scope="col">File Name</th>
+                      <th scope="col">PDF</th>
                       <th scope="col">Show</th>
                     </tr>
                   </thead>
@@ -109,7 +142,14 @@ const SyllabusList = () => {
                           <td>{syllabus.class?.name}</td>
                           <td>{syllabus.section?.name}</td>
                           <td>{syllabus.subject?.name}</td>
-                          <td><img src={`http://127.0.0.1:8000/syllabus-images/${syllabus?.file}`} width='40'/></td>
+                          {/* <td><img src={`http://127.0.0.1:8000/syllabus-images/${syllabus?.file}`} width='40'/></td> */}
+                          <td>
+                            <div className="App">
+                                <PDFDownloadLink document={<MyDoc />} fileName='syllabus.pdf'>
+                                {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download!')}
+                                </PDFDownloadLink>
+                            </div>
+                          </td>
                           <td>
                             <Link
                               to={`/parent/syllabuses/${syllabus.id}/show`}

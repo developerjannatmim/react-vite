@@ -22,7 +22,7 @@ const StudentDashboard = () => {
             <div className="container-fluid px-4">
               <h1 className="mt-4">Dashboard</h1>
               <ol className="breadcrumb mb-4">
-                <li className="breadcrumb-item active">Welcome to Dashboard</li>
+                <li className="breadcrumb-item active">Welcome to Student Dashboard</li>
               </ol>
               <span className="user_role">
                 <b>Student</b>
