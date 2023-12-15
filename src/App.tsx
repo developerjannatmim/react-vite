@@ -204,6 +204,8 @@ import ParentDashboard from "./components/ParentDashboard";
 import ParentRoute from "./components/ParentRoute";
 import ParentProfile from "./ParentPages/ParentProfile/ParentProfile";
 
+import HomePage from "./PublicPages/HomePage/HomePage.jsx";
+
 const App = () => {
   return (
     <>
@@ -211,10 +213,12 @@ const App = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="*" element={<Publicroute />}></Route>
+        <Route path="/home" element={<HomePage />}></Route>
+        
 
         {/* Private Routes start */}
         <Route path="/admin" element={<AdminRoute />}>
-          <Route path="home" element={<AdminDashboard />} />
+          <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="profile" element={<AdminProfile />} />
 
           <Route path="admin" element={<AdminList />} />
@@ -290,7 +294,7 @@ const App = () => {
         </Route>
 
         <Route path="/teacher" element={<TeacherRoute />}>
-          <Route path="home" element={<TeacherDashboard />} />
+          <Route path="dashboard" element={<TeacherDashboard />} />
           <Route path="profile" element={<TeacherProfile />} />
 
           <Route path="exams" element={<TExamList />} />
@@ -331,7 +335,7 @@ const App = () => {
         </Route>
 
         <Route path="/student" element={<StudentRoute />}>
-          <Route path="home" element={<StudentDashboard />} />
+          <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="profile" element={<StudentProfile />} />
 
           <Route path="exams" element={<SExamList />} />
@@ -369,7 +373,7 @@ const App = () => {
         </Route>
 
         <Route path="/parent" element={<ParentRoute />}>
-          <Route path="home" element={<ParentDashboard />} />
+          <Route path="dashboard" element={<ParentDashboard />} />
           <Route path="profile" element={<ParentProfile />} />
 
           <Route path="exams" element={<PExamList />} />
