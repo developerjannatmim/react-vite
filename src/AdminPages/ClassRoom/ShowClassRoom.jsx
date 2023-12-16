@@ -51,27 +51,27 @@ const ShowClassRoom = () => {
                   Class Room List
                 </Link>
               </div>
-              <div class="col-md-8 p-4">
-                <div class="tab-content profile-tab" id="myTabContent" >
+              <div className="col-md-8 p-4">
+                <div className="tab-content profile-tab" id="myTabContent" >
                   <div
-                    class="tab-pane fade show active"
+                    className="tab-pane fade show active"
                     id="home"
                     role="tabpanel"
                     aria-labelledby="home-tab"
                   >
-                    <div class="row">
-                      <div class="col-md-6">
+                    <div className="row">
+                      <div className="col-md-6">
                         <label>Class Room Id</label>
                       </div>
-                      <div class="col-md-6">
+                      <div className="col-md-6">
                         <p>{classRoomItem?.id}</p>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
+                    <div className="row">
+                      <div className="col-md-6">
                         <label>Class Room No.</label>
                       </div>
-                      <div class="col-md-6">
+                      <div className="col-md-6">
                         <p>{classRoomItem?.name}</p>
                       </div>
                     </div>

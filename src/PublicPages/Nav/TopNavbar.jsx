@@ -40,37 +40,37 @@ export default function TopNavbar() {
           </BurderWrapper>
           <UlWrapper className="flexNullCenter">
             <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="home" spy={true} smooth={true} offset={-80}>
+              <Link activeClass="active01" style={{ padding: "10px 15px" }} to="home" spy={true} smooth={true} offset={-80}>
                 Home
               </Link>
             </li>
             <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="services" spy={true} smooth={true} offset={-80}>
+              <Link activeClass="active01" style={{ padding: "10px 15px" }} to="services" spy={true} smooth={true} offset={-80}>
                 About Us
               </Link>
             </li>
             <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="projects" spy={true} smooth={true} offset={-80}>
+              <Link activeClass="active01" style={{ padding: "10px 15px" }} to="projects" spy={true} smooth={true} offset={-80}>
                 Programmes
               </Link>
             </li>
             <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="blog" spy={true} smooth={true} offset={-80}>
+              <Link activeClass="active01" style={{ padding: "10px 15px" }} to="blog" spy={true} smooth={true} offset={-80}>
                 Classes
               </Link>
             </li>
             <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="teacher" spy={true} smooth={true} offset={-80}>
+              <Link activeClass="active01" style={{ padding: "10px 15px" }} to="teacher" spy={true} smooth={true} offset={-80}>
                 Teachers
               </Link>
             </li>
             <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="pricing" spy={true} smooth={true} offset={-80}>
+              <Link activeClass="active01" style={{ padding: "10px 15px" }} to="pricing" spy={true} smooth={true} offset={-80}>
                 FAQ
               </Link>
             </li>
             <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="contact" spy={true} smooth={true} offset={-80}>
+              <Link activeClass="active01" style={{ padding: "10px 15px" }} to="contact" spy={true} smooth={true} offset={-80}>
                 Contact
               </Link>
             </li>
