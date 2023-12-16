@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 // Components
 import BlogBox from "../Elements/BlogBox";
@@ -8,6 +9,11 @@ import TestimonialSlider from "../Elements/TestimonialSlider";
 import ClassOne from '../../assets/img/class/class-1.jpg';
 import ClassTwo from '../../assets/img/class/class-2.jpg';
 import ClassThree from '../../assets/img/class/class-3.jpg';
+
+import teacherOne from '../../assets/img/teacher/team-1.jpg';
+import teacherTwo from '../../assets/img/teacher/team-2.jpg';
+import teacherThree from '../../assets/img/teacher/team-3.jpg';
+import teacherFour from '../../assets/img/teacher/team-4.jpg';
 
 export default function Blog() {
   return (
@@ -103,13 +109,13 @@ export default function Blog() {
     // </Wrapper>
     <>
       {/* <!-- className Start --> */}
-    <div className="container-fluid pt-5">
+    <div id="blog" className="container-fluid pt-5">
       <div className="container">
         <div className="text-center pb-2">
           <p className="section-title px-5">
-            <span className="px-2">Popular classNamees</span>
+            <span className="px-2">Popular className</span>
           </p>
-          <h1 className="mb-4">classNamees for Your Kids</h1>
+          <h1 className="mb-4">className for Your Kids</h1>
         </div>
         <div className="row">
           <div className="col-lg-4 mb-5">
@@ -231,7 +237,291 @@ export default function Blog() {
           </div>
         </div>
       </div>
+    </div>   
+    {/* <!-- Teacher Start --> */}
+    <div id="teacher" className="container-fluid pt-5">
+      <div className="container">
+        <div className="text-center pb-2">
+          <p className="section-title px-5">
+            <span className="px-2">Our Teachers</span>
+          </p>
+          <h1 className="mb-4">Meet Our Teachers</h1>
+        </div>
+        <div className="row">
+          <div className="col-md-6 col-lg-3 text-center team mb-5">
+            <div
+              className="position-relative overflow-hidden mb-4"
+              style={{borderRadius: "100%"}}
+            >
+              <img className="img-fluid w-50" src={teacherOne} alt="" />
+              <div
+                className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
+              >
+                <a
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px'
+                  height='38px'
+                  href="#"
+                  ><i className="fab fa-twitter"></i
+                ></a>
+                <a
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' 
+                  height="38px"
+                  href="#"
+                  ><i className="fab fa-facebook-f"></i
+                ></a>
+                <a
+                  className="btn btn-outline-light text-center px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+            <h4>Julia Smith</h4>
+            <i>Music Teacher</i>
+          </div>
+          <div className="col-md-6 col-lg-3 text-center team mb-5">
+            <div
+              className="position-relative overflow-hidden mb-4"
+              style={{borderRadius: '100%'}}
+            >
+              <img className="img-fluid w-50" src={teacherTwo} alt="" />
+              <div
+                className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
+              >
+                <a
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-twitter"></i
+                ></a>
+                <a
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-facebook-f"></i
+                ></a>
+                <a
+                  className="btn btn-outline-light text-center px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+            <h4>Jhon Doe</h4>
+            <i>Language Teacher</i>
+          </div>
+          <div className="col-md-6 col-lg-3 text-center team mb-5">
+            <div
+              className="position-relative overflow-hidden mb-4"
+              style={{borderRadius: "100%"}}
+            >
+              <img className="img-fluid w-50" src={teacherThree} alt="" />
+              <div
+                className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
+              >
+                <Link
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px'
+                  height='38px'
+                  href="#"
+                  ><i className="fab fa-twitter"></i
+                ></Link>
+                <Link
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' 
+                  height='38px'
+                  href="#"
+                  ><i className="fab fa-facebook-f"></i
+                ></Link>
+                <Link
+                  className="btn btn-outline-light text-center px-0"
+                  width='38px'
+                  height='38px'
+                  href="#"
+                  ><i className="fab fa-linkedin-in"></i
+                ></Link>
+              </div>
+            </div>
+            <h4>Mollie Ross</h4>
+            <i>Dance Teacher</i>
+          </div>
+          <div className="col-md-6 col-lg-3 text-center team mb-5">
+            <div
+              className="position-relative overflow-hidden mb-4"
+              style={{borderRadius: "100%"}}
+            >
+              <img className="img-fluid w-50" src={teacherFour} alt="" />
+              <div
+                className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
+              >
+                <Link
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-twitter"></i
+                ></Link>
+                <Link
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-facebook-f"></i
+                ></Link>
+                <Link
+                  className="btn btn-outline-light text-center px-0"
+                  width='38px'
+                  height="38px"
+                  href="#"
+                  ><i className="fab fa-linkedin-in"></i
+                ></Link>
+              </div>
+            </div>
+            <h4>Donald John</h4>
+            <i>Art Teacher</i>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-6 col-lg-3 text-center team mb-5">
+            <div
+              className="position-relative overflow-hidden mb-4"
+              style={{borderRadius: "100%"}}
+            >
+              <img className="img-fluid w-50" src={teacherOne} alt="" />
+              <div
+                className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
+              >
+                <a
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px'
+                  height='38px'
+                  href="#"
+                  ><i className="fab fa-twitter"></i
+                ></a>
+                <a
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' 
+                  height="38px"
+                  href="#"
+                  ><i className="fab fa-facebook-f"></i
+                ></a>
+                <a
+                  className="btn btn-outline-light text-center px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+            <h4>Julia Smith</h4>
+            <i>Math Teacher</i>
+          </div>
+          <div className="col-md-6 col-lg-3 text-center team mb-5">
+            <div
+              className="position-relative overflow-hidden mb-4"
+              style={{borderRadius: '100%'}}
+            >
+              <img className="img-fluid w-50" src={teacherTwo} alt="" />
+              <div
+                className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
+              >
+                <a
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-twitter"></i
+                ></a>
+                <a
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-facebook-f"></i
+                ></a>
+                <a
+                  className="btn btn-outline-light text-center px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+            <h4>Jhon Doe</h4>
+            <i>Bangla Teacher</i>
+          </div>
+          <div className="col-md-6 col-lg-3 text-center team mb-5">
+            <div
+              className="position-relative overflow-hidden mb-4"
+              style={{borderRadius: "100%"}}
+            >
+              <img className="img-fluid w-50" src={teacherThree} alt="" />
+              <div
+                className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
+              >
+                <Link
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px'
+                  height='38px'
+                  href="#"
+                  ><i className="fab fa-twitter"></i
+                ></Link>
+                <Link
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' 
+                  height='38px'
+                  href="#"
+                  ><i className="fab fa-facebook-f"></i
+                ></Link>
+                <Link
+                  className="btn btn-outline-light text-center px-0"
+                  width='38px'
+                  height='38px'
+                  href="#"
+                  ><i className="fab fa-linkedin-in"></i
+                ></Link>
+              </div>
+            </div>
+            <h4>Mollie Ross</h4>
+            <i>English Teacher</i>
+          </div>
+          <div className="col-md-6 col-lg-3 text-center team mb-5">
+            <div
+              className="position-relative overflow-hidden mb-4"
+              style={{borderRadius: "100%"}}
+            >
+              <img className="img-fluid w-50" src={teacherFour} alt="" />
+              <div
+                className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
+              >
+                <Link
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-twitter"></i
+                ></Link>
+                <Link
+                  className="btn btn-outline-light text-center mr-2 px-0"
+                  width='38px' height='38px'
+                  href="#"
+                  ><i className="fab fa-facebook-f"></i
+                ></Link>
+                <Link
+                  className="btn btn-outline-light text-center px-0"
+                  width='38px'
+                  height="38px"
+                  href="#"
+                  ><i className="fab fa-linkedin-in"></i
+                ></Link>
+              </div>
+            </div>
+            <h4>Donald John</h4>
+            <i>Chemistry Teacher</i>
+          </div>
+        </div>
+      </div>
     </div>
+    {/* <!-- Teacher End --> */}
     <div className="lightBg" style={{padding: '30px 0'}}>
         <div className="container">
           <HeaderInfo>

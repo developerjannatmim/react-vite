@@ -7,7 +7,8 @@ import Projects from "../Sections/Projects";
 import Blog from "../Sections/Blog";
 import Pricing from "../Sections/Pricing";
 import Contact from "../Sections/Contact";
-import Footer from "../Sections/Footer"
+import Footer from "../Sections/Footer";
+import Faq from "../Sections/FAQ/Faq";
 
 export default function Landing() {
   return (
@@ -17,6 +18,7 @@ export default function Landing() {
       <Services />
       <Projects />
       <Blog />
+      <Faq/>
       <Pricing />
       <Contact />
       <Footer />
