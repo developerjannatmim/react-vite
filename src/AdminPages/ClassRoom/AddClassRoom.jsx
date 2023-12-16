@@ -57,7 +57,7 @@ const AddClassRoom = () => {
         <div className="w-auto position-sticky">
           <Sidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="mt-5 col overflow-hidden">
           <div className="container-fluid px-3">
             <form onSubmit={submitClassRoom} id="CLASSROOM_FORM">
               <div className="card mt-4">

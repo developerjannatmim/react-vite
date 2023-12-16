@@ -100,6 +100,7 @@ export default function Contact() {
                 </div>
               </div>
             </div>
+            <div id="home">
             <div className="sb__footer-links_div">
               <strong className="footer-text">Quick Links</strong>
               <div className="d-flex flex-column justify-content-start">
@@ -125,6 +126,7 @@ export default function Contact() {
                   <i className="bi bi-chevron-right"></i> Contact Us
                 </Link>
               </div>
+            </div>
             </div>
             <div className="sb__footer-links_div">
               <strong class="footer-news mb-3">Newsletter</strong>

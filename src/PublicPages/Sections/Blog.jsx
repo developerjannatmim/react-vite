@@ -15,6 +15,11 @@ import teacherTwo from '../../assets/img/teacher/team-2.jpg';
 import teacherThree from '../../assets/img/teacher/team-3.jpg';
 import teacherFour from '../../assets/img/teacher/team-4.jpg';
 
+import teacherFive from '../../assets/img/teacher/p-1.jpg';
+import teacherSix from '../../assets/img/teacher/p-2.jpg';
+import teacherSeven from '../../assets/img/teacher/p-3.jpg';
+import teacherEight from '../../assets/img/teacher/p-4.jpg';
+
 export default function Blog() {
   return (
     <>
@@ -53,15 +58,9 @@ export default function Blog() {
                 </div>
                 <div className="row border-bottom">
                   <div className="col-6 py-1 text-right border-right">
-                    <strong>className Time</strong>
+                    <strong>Class Time</strong>
                   </div>
                   <div className="col-6 py-1">08:00 - 10:00</div>
-                </div>
-                <div className="row">
-                  <div className="col-6 py-1 text-right border-right">
-                    <strong>Tution Fee</strong>
-                  </div>
-                  <div className="col-6 py-1">$290 / Month</div>
                 </div>
               </div>
               <Link href="/login" className="join btn px-4 mx-auto mb-4">Join Now</Link>
@@ -92,15 +91,9 @@ export default function Blog() {
                 </div>
                 <div className="row border-bottom">
                   <div className="col-6 py-1 text-right border-right">
-                    <strong>className Time</strong>
+                    <strong>Class Time</strong>
                   </div>
                   <div className="col-6 py-1">08:00 - 10:00</div>
-                </div>
-                <div className="row">
-                  <div className="col-6 py-1 text-right border-right">
-                    <strong>Tution Fee</strong>
-                  </div>
-                  <div className="col-6 py-1">$290 / Month</div>
                 </div>
               </div>
               <Link href="/login" className="join btn px-4 mx-auto mb-4">Join Now</Link>
@@ -131,15 +124,9 @@ export default function Blog() {
                 </div>
                 <div className="row border-bottom">
                   <div className="col-6 py-1 text-right border-right">
-                    <strong>className Time</strong>
+                    <strong>Class Time</strong>
                   </div>
                   <div className="col-6 py-1">08:00 - 10:00</div>
-                </div>
-                <div className="row">
-                  <div className="col-6 py-1 text-right border-right">
-                    <strong>Tution Fee</strong>
-                  </div>
-                  <div className="col-6 py-1">$290 / Month</div>
                 </div>
               </div>
               <Link href="/login" className="join btn px-4 mx-auto mb-4">Join Now</Link>
@@ -191,7 +178,7 @@ export default function Blog() {
                 ></Link>
               </div>
             </div>
-            <h4>Julia Smith</h4>
+            <h4>Rukaiya</h4>
             <i>Music Teacher</i>
           </div>
           <div className="col-md-6 col-lg-3 text-center team mb-5">
@@ -223,7 +210,7 @@ export default function Blog() {
                 ></Link>
               </div>
             </div>
-            <h4>Jhon Doe</h4>
+            <h4>Ashraf</h4>
             <i>Language Teacher</i>
           </div>
           <div className="col-md-6 col-lg-3 text-center team mb-5">
@@ -258,7 +245,7 @@ export default function Blog() {
                 ></Link>
               </div>
             </div>
-            <h4>Mollie Ross</h4>
+            <h4>Mollie</h4>
             <i>Dance Teacher</i>
           </div>
           <div className="col-md-6 col-lg-3 text-center team mb-5">
@@ -291,7 +278,7 @@ export default function Blog() {
                 ></Link>
               </div>
             </div>
-            <h4>Donald John</h4>
+            <h4>Oshim Das</h4>
             <i>Art Teacher</i>
           </div>
         </div>
@@ -301,7 +288,7 @@ export default function Blog() {
               className="position-relative overflow-hidden mb-4"
               style={{borderRadius: "100%"}}
             >
-              <img className="img-fluid w-50" src={teacherOne} alt="" />
+              <img className="img-fluid w-50" src={teacherFive} alt="" />
               <div
                 className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
@@ -327,7 +314,7 @@ export default function Blog() {
                 ></Link>
               </div>
             </div>
-            <h4>Julia Smith</h4>
+            <h4>Romana Khan</h4>
             <i>Math Teacher</i>
           </div>
           <div className="col-md-6 col-lg-3 text-center team mb-5">
@@ -335,7 +322,7 @@ export default function Blog() {
               className="position-relative overflow-hidden mb-4"
               style={{borderRadius: '100%'}}
             >
-              <img className="img-fluid w-50" src={teacherTwo} alt="" />
+              <img className="img-fluid w-50" src={teacherSix} alt="" />
               <div
                 className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
@@ -359,7 +346,7 @@ export default function Blog() {
                 ></Link>
               </div>
             </div>
-            <h4>Jhon Doe</h4>
+            <h4>Nabila</h4>
             <i>Bangla Teacher</i>
           </div>
           <div className="col-md-6 col-lg-3 text-center team mb-5">
@@ -367,7 +354,7 @@ export default function Blog() {
               className="position-relative overflow-hidden mb-4"
               style={{borderRadius: "100%"}}
             >
-              <img className="img-fluid w-50" src={teacherThree} alt="" />
+              <img className="img-fluid w-50" src={teacherSeven} alt="" />
               <div
                 className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
@@ -394,7 +381,7 @@ export default function Blog() {
                 ></Link>
               </div>
             </div>
-            <h4>Mollie Ross</h4>
+            <h4>Mahmud</h4>
             <i>English Teacher</i>
           </div>
           <div className="col-md-6 col-lg-3 text-center team mb-5">
@@ -402,7 +389,7 @@ export default function Blog() {
               className="position-relative overflow-hidden mb-4"
               style={{borderRadius: "100%"}}
             >
-              <img className="img-fluid w-50" src={teacherFour} alt="" />
+              <img className="img-fluid w-50" src={teacherEight} alt="" />
               <div
                 className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
@@ -427,7 +414,7 @@ export default function Blog() {
                 ></Link>
               </div>
             </div>
-            <h4>Donald John</h4>
+            <h4>Delwar</h4>
             <i>Chemistry Teacher</i>
           </div>
         </div>

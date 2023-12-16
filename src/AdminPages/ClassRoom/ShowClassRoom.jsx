@@ -38,7 +38,7 @@ const ShowClassRoom = () => {
         <div className="w-auto position-sticky">
           <Sidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="mt-5 col overflow-hidden">
           <div className="container">
             <div className="card">
               <div className="card-header">

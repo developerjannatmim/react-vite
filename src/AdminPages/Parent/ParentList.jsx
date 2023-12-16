@@ -75,7 +75,7 @@ const ParentList = () => {
         </div>
         <div className="col overflow-hidden">
           <div className="container px-4">
-            <div className="card">
+            <div className="card mt-5">
               <div className="card-header">
                 <h4>Parent List</h4>
                 <Link
@@ -148,7 +148,7 @@ const ParentList = () => {
                         /**/
                       }
                       return (
-                        <tr key={parentData?.id}>
+                        <tr key={parentData?.id} className="mt-5">
                           <td>{parentData?.id}</td>
                           <td>{parentData?.name}</td>
                           <td>{parentData?.email}</td>
@@ -177,7 +177,7 @@ const ParentList = () => {
                           <td
                             type="button"
                             onClick={(e) => deleteParentData(e, parentData.id)}
-                            className="btn btn-danger btn-sm"
+                            className="btn btn-danger btn-sm mt-2"
                           >
                             Delete
                           </td>

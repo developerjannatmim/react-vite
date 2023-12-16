@@ -49,13 +49,13 @@ const Login = () => {
           const userRole = localStorage.getItem('role');
           console.log(userRole);
           if (userRole === '1') {
-            navigate('/admin/home');
+            navigate('/admin/dashboard');
           } else if (userRole === '2') {
-            navigate('/teacher/home');
+            navigate('/teacher/dashboard');
           } else if (userRole === '3') {
-            navigate('/student/home');
+            navigate('/student/dashboard');
           } else if (userRole === '4') {
-            navigate('/parent/home');
+            navigate('/parent/dashboard');
           }
           console.info(response);
           Swal.fire('Success', response?.message, 'success');

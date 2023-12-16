@@ -30,7 +30,7 @@ const Accordian = () => {
                   data-parent="#faqExample"
                 >
                   <div className="card-body">
-                    <b>Answer:</b> Our goal has always been to find, hire and retain the finest educators possible. We take great pride in the fact that we have a veteran staff and there is very little turnover at LVDS. We have a faculty and staff of 135 with 33 staff members that have been with us for over five years, 9 for over ten years, 16 over fifteen years, 6 over twenty years, and 5 over thirty years. In regard to administration, the school Director is in his 45th year at the school.
+                    <b>Answer:</b> Our goal has always been to find, hire and retain the finest educators possible. We take great pride in the fact that we have a veteran staff and there is very little turnover at Cantoment Primary School. We have a faculty and staff of 135 with 33 staff members that have been with us for over five years, 9 for over ten years, 16 over fifteen years, 6 over twenty years, and 5 over thirty years. In regard to administration, the school Director is in his 45th year at the school.
                   </div>
                 </div>
               </div>

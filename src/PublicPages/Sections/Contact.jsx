@@ -26,6 +26,14 @@ export default function Contact() {
                 <form>
                   <div className="form-group">
                     <input
+                      type="email"
+                      className="form-control border-0 p-4"
+                      placeholder="Your Email"
+                      required="required"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
                       type="text"
                       className="form-control border-0 p-4"
                       placeholder="Your Name"
@@ -34,9 +42,9 @@ export default function Contact() {
                   </div>
                   <div className="form-group">
                     <input
-                      type="email"
+                      type="number"
                       className="form-control border-0 p-4"
-                      placeholder="Your Email"
+                      placeholder="Your Phone Number"
                       required="required"
                     />
                   </div>

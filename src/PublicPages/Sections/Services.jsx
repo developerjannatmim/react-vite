@@ -9,7 +9,7 @@ import AddImage1 from "../../assets/img/about/img-003.jpg";
 import AddImage2 from "../../assets/img/about/img-002.jpg";
 import AddImage3 from "../../assets/img/about/img-001.jpg";
 import AddImage4 from "../../assets/img/about/img-004.jpg";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 
 export default function Services() {
   return (

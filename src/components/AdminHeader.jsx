@@ -13,7 +13,7 @@ const AdminHeader = () => {
     <div>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a className="navbar-brand ps-3" href="index.html">
-          Paramount Secondary School
+          Cantoment Primary School
         </a>
         <a className="navbar-brand d-block d-md-none">
           <i className="bi bi-justify"></i>
@@ -64,7 +64,7 @@ const AdminHeader = () => {
               aria-labelledby="navbarDropdown"
             >
               <li className='dropdown-list'>
-                <Link className="dropdown-item" href="/admin/profile">
+                <Link className="dropdown-item" to="/admin/profile">
                   Account
                 </Link>
               </li>

@@ -160,7 +160,7 @@ video {
 
 .book-now:hover {
   background: #00394f;
-  color: #ffffff;
+  color: #000000;
   font-family: "Handlee", cursive;
 }
 
@@ -208,6 +208,7 @@ h1,
   font-weight: '600';
   font-family: "Handlee", cursive;
 }
+
 .pic {
   font-family: "Handlee", cursive;
 }
@@ -354,7 +355,7 @@ body {
   font-size: 0.688rem;
 }
 .font12 {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
 .font13 {
   font-size: 0.813rem;

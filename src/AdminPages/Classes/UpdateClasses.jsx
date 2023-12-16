@@ -87,7 +87,7 @@ const UpdateClasses = () => {
         <div className="w-auto position-sticky">
           <Sidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="mt-5 col overflow-hidden">
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
