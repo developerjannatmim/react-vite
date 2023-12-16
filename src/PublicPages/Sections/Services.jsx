@@ -20,20 +20,30 @@ export default function Services() {
         </div>
       </div>
       <div className="whiteBg" style={{ padding: "60px 0" }}>
-      <div className="lightBg">
+        <div className="lightBg">
           <div className="container">
             <Advertising className="flexSpaceCenter">
               <AddLeft>
-                <h4 className="font15 semiBold">A few words about cantoment primary school</h4>
+                <h4 className="font15 semiBold">
+                  A few words about cantoment primary school
+                </h4>
                 <h1 className="font40 extraBold">ABOUT US</h1>
                 <p className="font12">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-                  diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                  diam nonumy eirmod tempor invidunt ut labore et dolore magna
+                  aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                  justo duo dolores et ea rebum.
                 </p>
-                <ButtonsRow className="flexNullCenter" style={{ margin: "30px 0"}}>
-                  <div style={{ width: "190px" }}>
-                    <Link to="services"><FullButton title="Learn More" /></Link>
-                  </div>
+                <ButtonsRow
+                  className="flexNullCenter"
+                  style={{ margin: "30px 0", color: 'white'}}
+                >
+                  <Link
+                    to="/login"
+                    className="learn btn mt-4 py-2 px-4"
+                  >
+                    Learn More
+                  </Link>
                   {/* <div style={{ width: "190px", marginLeft: "15px" }}>
                     <Link to="contact" spy={true} smooth={true} offset={-80}>
                       <FullButton title="Contact Us" border />
@@ -45,7 +55,7 @@ export default function Services() {
                 <AddRightInner>
                   <div className="flexNullCenter">
                     <AddImgWrapp1 className="flexCenter">
-                      <img src={AddImage1} alt="office"/>
+                      <img src={AddImage1} alt="office" />
                     </AddImgWrapp1>
                     <AddImgWrapp2>
                       <img src={AddImage2} alt="office" />
@@ -64,7 +74,7 @@ export default function Services() {
             </Advertising>
           </div>
         </div>
-        <div className="container">
+        {/* <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Service</h1>
             <h3 className="mb-4">Best School For Your Kids</h3>
@@ -100,7 +110,7 @@ export default function Services() {
               <ServiceBox icon="printer" title="Print" subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." />
             </ServiceBoxWrapper>
           </ServiceBoxRow>
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   );

@@ -12,12 +12,80 @@ import ProjectImg5 from "../../assets/img/events/img-05.jpeg";
 import ProjectImg6 from "../../assets/img/events/img-07.png";
 import AddImage2 from "../../assets/img/add/add2.png";
 import { Link } from "react-scroll";
+import About1 from '../../assets/img/about/about-1.jpg';
+import About2 from '../../assets/img/about/about-2.jpg';
+import { useNavigate } from "react-router";
 
 export default function Projects() {
+  const navigate = useNavigate();
+
   return (
+    <>
+        {/* <!-- About Start --> */}
+    <div className="container-fluid">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-lg-5">
+            <img
+              className="img-fluid rounded mb-5 mb-lg-0"
+              src={About1}
+              alt=""
+            />
+          </div>
+          <div className="col-lg-7">
+            <p className="section-title pr-5">
+              <span className="pr-2">Learn About Us</span>
+            </p>
+            <h1 className="mb-4">Best School For Your Kids</h1>
+            <p>
+              Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo
+              dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
+              Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+              dolor
+            </p>
+            <div className="row pt-2 pb-4">
+              <div className="col-6 col-md-4">
+                <img className="img-fluid rounded" src={About2} alt="" />
+              </div>
+              <div className="col-6 col-md-8">
+                <ul className="list-inline m-0">
+                  <li className="py-2 border-top border-bottom">
+                    <i className="fa fa-check text-primary mr-3"></i>Labore eos amet
+                    dolor amet diam
+                  </li>
+                  <li className="py-2 border-bottom">
+                    <i className="fa fa-check text-primary mr-3"></i>Etsea et sit
+                    dolor amet ipsum
+                  </li>
+                  <li className="py-2 border-bottom">
+                    <i className="fa fa-check text-primary mr-3"></i>Diam dolor diam
+                    elitripsum vero.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <ButtonsRow className="flexNullCenter" style={{ margin: "30px 0", color: 'white'}}>
+              <Link
+                to="/login"
+                className="learn btn mt-4 py-2 px-4"
+              >
+                Learn More
+              </Link>
+              {/* <div style={{ width: "190px", marginLeft: "15px" }}>
+                <Link to="contact" spy={true} smooth={true} offset={-80}>
+                  <FullButton title="Contact Us" border />
+                </Link>
+              </div> */}
+            </ButtonsRow>
+          </div>
+        </div>
+      </div>
+    </div>
+    {/* <!-- About End --> */}
+    <div className="extra">
     <Wrapper id="projects">
       <div className="whiteBg">
-        <div className="container">
+        <div className="extra container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Extracurricular Activities</h1>
             <p className="font13">
@@ -26,7 +94,7 @@ export default function Projects() {
               labore et dolore magna aliquyam erat, sed diam voluptua.
             </p>
           </HeaderInfo>
-          <div className="row textCenter">
+          <div className="pic row textCenter">
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <ProjectBox
                 img={ProjectImg1}
@@ -79,11 +147,13 @@ export default function Projects() {
               />
             </div>
           </div>
-          <div className="row flexCenter">
-            <div style={{ margin: "50px 0", width: "200px" }}>
-              <FullButton title="Load More" action={() => alert("clicked")} />
-            </div>
-          </div>
+          <Link
+            to="/login"
+            className="load-more btn mt-4 py-2 px-4"
+            style={{color: 'white'}}
+          >
+            Load More
+          </Link>
         </div>
       </div>
       {/* <div className="lightBg">
@@ -118,6 +188,8 @@ export default function Projects() {
         </div>
       </div> */}
     </Wrapper>
+    </div>
+    </>
   );
 }
 

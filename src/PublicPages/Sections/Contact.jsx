@@ -1,57 +1,71 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-// Assets
-import ContactImg1 from "../../assets/img/contact-1.png";
-import ContactImg2 from "../../assets/img/contact-2.png";
-import ContactImg3 from "../../assets/img/contact-3.png";
 
 export default function Contact() {
   return (
-    <Wrapper id="contact">
-      <div className="lightBg">
-        <div className="container">
-          <HeaderInfo>
-            <h1 className="font40 extraBold">Let's get in touch</h1>
-            <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
+    <div id="contact" className="container-fluid py-5 mb-5">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-lg-7 mb-5 mb-lg-0">
+            <p className="section-title pr-5">
+              <span className="pr-2">Book A Seat</span>
             </p>
-          </HeaderInfo>
-          <div className="row" style={{ paddingBottom: "30px" }}>
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-              <Form>
-                <label className="font13">First name:</label>
-                <input type="text" id="fname" name="fname" className="font20 extraBold" />
-                <label className="font13">Email:</label>
-                <input type="text" id="email" name="email" className="font20 extraBold" />
-                <label className="font13">Subject:</label>
-                <input type="text" id="subject" name="subject" className="font20 extraBold" />
-                <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" />
-              </Form>
-              <SumbitWrapper className="flex">
-                <ButtonInput type="submit" value="Send Message" className="pointer animate radius8" style={{ maxWidth: "220px" }} />
-              </SumbitWrapper>
-            </div>
-            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 flex">
-              <div style={{ width: "50%" }} className="flexNullCenter flexColumn">
-                <ContactImgBox>
-                  <img src={ContactImg1} alt="office" className="radius6" />
-                </ContactImgBox>
-                <ContactImgBox>
-                  <img src={ContactImg2} alt="office" className="radius6" />
-                </ContactImgBox>
+            <h1 className="mb-4">Book A Seat For Your Kid</h1>
+            <p>
+            Our school admits both international and local students throughout the year for preschool (ages 2 to 3), pre-kindergarten (age 4), kindergarten (age 5), and grades 1-12 (ages 6-18 YRS). Applications for the current year are accepted if there is available space. We welcome you to visit our friendly staff and administrators in our school building and also to make an appointment to meet our principal, Mrs. Lori A. Walsh, and or management.
+            </p>
+            <Link href="" className="join btn mt-4 py-2 px-4">Book Now</Link>
+          </div>
+          <div className="col-lg-5">
+            <div className="card border-0">
+              <div className="book-seat card-header text-center p-4">
+                <h1 className="text-white m-0">Book A Seat</h1>
               </div>
-              <div style={{ width: "50%" }}>
-                <div style={{ marginTop: "100px" }}>
-                  <img src={ContactImg3} alt="office" className="radius6" />
-                </div>
+              <div className="books card-body rounded-bottom p-5">
+                <form>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control border-0 p-4"
+                      placeholder="Your Name"
+                      required="required"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="email"
+                      className="form-control border-0 p-4"
+                      placeholder="Your Email"
+                      required="required"
+                    />
+                  </div>
+                  <div className="form-group">
+                    {/* <select
+                      className="custom-select border-0 px-4"
+                      style="height: 47px"
+                    >
+                      <option selected>Select A className</option>
+                      <option value="1">className 1</option>
+                      <option value="2">className 1</option>
+                      <option value="3">className 1</option>
+                    </select> */}
+                  </div>
+                  <div >
+                    <button
+                      className="book-now btn btn-block border-0 py-3"
+                      type="submit"
+                    >
+                      Book Now
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </Wrapper>
+    </div>
   );
 }
 

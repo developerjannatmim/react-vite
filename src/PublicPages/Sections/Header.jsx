@@ -6,6 +6,7 @@ import FullButton from "../Buttons/FullButton";
 import HeaderImage from "../../assets/img/img1.jpg";
 import QuotesIcon from "../../assets/svg/Quotes";
 import Dots from "../../assets/svg/Dots";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -19,7 +20,7 @@ export default function Header() {
 We offer programs for children from 16 months to 8th grade on a beautiful campus in Vista, North San Diego, CA. We welcome all families looking for a rich and hands-on education that builds both academic confidence and the capacities for creativity, resilience, innovative thinking, and social and emotional intelligence. 
           </HeaderP>
           <BtnWrapper>
-            <FullButton title="Get Started" />
+            <Link to="/login" className="header btn mt-4 py-2 px-4">Get Started</Link>
           </BtnWrapper>
         </div>
       </LeftSide>

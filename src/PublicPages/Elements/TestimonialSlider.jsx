@@ -48,8 +48,8 @@ export default function TestimonialSlider() {
                 height='60px'
               />
               <div className="pl-3">
-                <h5>Parent Name</h5>
-                <i>Profession</i>
+                <h5>Md. Rafiqul Islam Chowdhury</h5>
+                <i>Teacher</i>
               </div>
             </div>
         </LogoWrapper>
@@ -66,8 +66,8 @@ export default function TestimonialSlider() {
               alt="Image"
             />
             <div className="pl-3">
-              <h5>Parent Name</h5>
-              <i>Profession</i>
+              <h5>Mrs. Rakhi</h5>
+              <i>Lawer</i>
             </div>
           </div>
         </LogoWrapper>
@@ -84,8 +84,8 @@ export default function TestimonialSlider() {
               alt="Image"
             />
             <div className="pl-3">
-              <h5>Parent Name</h5>
-              <i>Profession</i>
+              <h5>Md. Ashraf Ali</h5>
+              <i>Business man</i>
             </div>
           </div>
         </LogoWrapper>

@@ -17,96 +17,6 @@ import teacherFour from '../../assets/img/teacher/team-4.jpg';
 
 export default function Blog() {
   return (
-    // <Wrapper id="blog">
-    //   <div classNameName="whiteBg">
-    //     <div classNameName="container">
-    //       <HeaderInfo>
-    //         <h1 classNameName="font40 extraBold">classNamees for Your Kids</h1>
-    //         <p classNameName="font13">
-    //           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-    //           <br />
-    //           labore et dolore magna aliquyam erat, sed diam voluptua.
-    //         </p>
-    //       </HeaderInfo>
-    //       <div classNameName="row textCenter">
-    //         <div classNameName="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    //           <BlogBox
-    //             title="Drawing className"
-    //             text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-    //             tag="company"
-    //             author="Luke Skywalker, 2 days ago"
-    //             action={() => alert("clicked")}
-    //           />
-    //         </div>
-    //         <div classNameName="h3 col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    //           <BlogBox
-    //             title="Language Learning"
-    //             text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-    //             tag="company"
-    //             author="Luke Skywalker, 2 days ago"
-    //             action={() => alert("clicked")}
-    //           />
-    //         </div>
-    //         <div classNameName="h3 col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    //           <BlogBox
-    //             title="Basic Science"
-    //             text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-    //             tag="company"
-    //             author="Luke Skywalker, 2 days ago"
-    //             action={() => alert("clicked")}
-    //           />
-    //         </div>
-    //       </div>
-    //       <div classNameName="row textCenter">
-    //         <div classNameName="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    //           <BlogBox
-    //             title="New Office!"
-    //             text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-    //             tag="company"
-    //             author="Luke Skywalker, 2 days ago"
-    //             action={() => alert("clicked")}
-    //           />
-    //         </div>
-    //         <div classNameName="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    //           <BlogBox
-    //             title="New Office!"
-    //             text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-    //             tag="company"
-    //             author="Luke Skywalker, 2 days ago"
-    //             action={() => alert("clicked")}
-    //           />
-    //         </div>
-    //         <div classNameName="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-    //           <BlogBox
-    //             title="New Office!"
-    //             text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-    //             tag="company"
-    //             author="Luke Skywalker, 2 days ago"
-    //             action={() => alert("clicked")}
-    //           />
-    //         </div>
-    //       </div>
-    //       <div classNameName="row flexCenter">
-    //         <div style={{ margin: "50px 0", width: "200px" }}>
-    //           <FullButton title="Load More" action={() => alert("clicked")} />
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <div classNameName="lightBg" style={{padding: '50px 0'}}>
-    //     <div classNameName="container">
-    //       <HeaderInfo>
-    //         <h1 classNameName="font40 extraBold">What They Say?</h1>
-    //         <p classNameName="font13">
-    //           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-    //           <br />
-    //           labore et dolore magna aliquyam erat, sed diam voluptua.
-    //         </p>
-    //       </HeaderInfo>
-    //       <TestimonialSlider />
-    //     </div>
-    //   </div>
-    // </Wrapper>
     <>
       {/* <!-- className Start --> */}
     <div id="blog" className="container-fluid pt-5">
@@ -154,7 +64,7 @@ export default function Blog() {
                   <div className="col-6 py-1">$290 / Month</div>
                 </div>
               </div>
-              <a href="" className="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
+              <Link href="/login" className="join btn px-4 mx-auto mb-4">Join Now</Link>
             </div>
           </div>
           <div className="col-lg-4 mb-5">
@@ -193,7 +103,7 @@ export default function Blog() {
                   <div className="col-6 py-1">$290 / Month</div>
                 </div>
               </div>
-              <a href="" className="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
+              <Link href="/login" className="join btn px-4 mx-auto mb-4">Join Now</Link>
             </div>
           </div>
           <div className="col-lg-4 mb-5">
@@ -232,7 +142,7 @@ export default function Blog() {
                   <div className="col-6 py-1">$290 / Month</div>
                 </div>
               </div>
-              <a href="" className="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
+              <Link href="/login" className="join btn px-4 mx-auto mb-4">Join Now</Link>
             </div>
           </div>
         </div>
@@ -257,26 +167,28 @@ export default function Blog() {
               <div
                 className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
-                <a
-                  className="btn btn-outline-light text-center mr-2 px-0"
-                  width='38px'
-                  height='38px'
-                  href="#"
-                  ><i className="fab fa-twitter"></i
-                ></a>
-                <a
+                <Link
+                  className="btn btn-outline-primary rounded-circle text-center"
+                  width="38px"
+                  height="38px"
+                  to="#"
+                  style={{ marginRight: "6px", backgroundColor: 'black' }}
+                >
+                  <i className="bi bi-twitter"></i>
+                </Link>
+                <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' 
                   height="38px"
                   href="#"
                   ><i className="fab fa-facebook-f"></i
-                ></a>
-                <a
+                ></Link>
+                <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px' height='38px'
                   href="#"
                   ><i className="fab fa-linkedin-in"></i
-                ></a>
+                ></Link>
               </div>
             </div>
             <h4>Julia Smith</h4>
@@ -291,24 +203,24 @@ export default function Blog() {
               <div
                 className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
-                <a
+                <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
                   ><i className="fab fa-twitter"></i
-                ></a>
-                <a
+                ></Link>
+                <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
                   ><i className="fab fa-facebook-f"></i
-                ></a>
-                <a
+                ></Link>
+                <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px' height='38px'
                   href="#"
                   ><i className="fab fa-linkedin-in"></i
-                ></a>
+                ></Link>
               </div>
             </div>
             <h4>Jhon Doe</h4>
@@ -393,26 +305,26 @@ export default function Blog() {
               <div
                 className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
-                <a
+                <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px'
                   height='38px'
                   href="#"
                   ><i className="fab fa-twitter"></i
-                ></a>
-                <a
+                ></Link>
+                <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' 
                   height="38px"
                   href="#"
                   ><i className="fab fa-facebook-f"></i
-                ></a>
-                <a
+                ></Link>
+                <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px' height='38px'
                   href="#"
                   ><i className="fab fa-linkedin-in"></i
-                ></a>
+                ></Link>
               </div>
             </div>
             <h4>Julia Smith</h4>
@@ -427,24 +339,24 @@ export default function Blog() {
               <div
                 className="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
-                <a
+                <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
                   ><i className="fab fa-twitter"></i
-                ></a>
-                <a
+                ></Link>
+                <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
                   ><i className="fab fa-facebook-f"></i
-                ></a>
-                <a
+                ></Link>
+                <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px' height='38px'
                   href="#"
                   ><i className="fab fa-linkedin-in"></i
-                ></a>
+                ></Link>
               </div>
             </div>
             <h4>Jhon Doe</h4>
@@ -522,7 +434,7 @@ export default function Blog() {
       </div>
     </div>
     {/* <!-- Teacher End --> */}
-    <div className="lightBg" style={{padding: '30px 0'}}>
+    <div className="lightBg" style={{padding: '30px 0', marginTop: '60px'}}>
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">What Parents Say!</h1>
