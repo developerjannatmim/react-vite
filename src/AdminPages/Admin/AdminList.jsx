@@ -157,16 +157,14 @@ const AdminList = () => {
                               <td>
                                 <img
                                   src={`http://127.0.0.1:8000/admin-images/${userInformation?.photo}`}
-                                  alt="parent-image"
+                                  alt="admin-image"
                                   width="40"
                                   height="40"
                                   style={{ borderRadius: "50px" }}
                                 />
                               </td>
                               <td>
-                                <Link to="admin/profile">
                                   <span>{adminData?.name}</span>
-                                </Link>
                               </td>
                               <td>
                                 <small class="d-block mt-2">

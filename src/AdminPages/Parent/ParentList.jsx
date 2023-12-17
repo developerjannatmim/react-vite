@@ -124,14 +124,10 @@ const ParentList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
+                      <th scope="col"></th>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
-                      <th scope="col">Address</th>
-                      <th scope="col">Phone</th>
-                      <th scope="col">Photo</th>
-                      <th scope="col">BirthDay</th>
-                      <th scope="col">Gender</th>
-                      <th scope="col">Blood Group</th>
+                      <th scope="col">User Info</th>
                       <th scope="col">Show</th>
                       <th scope="col">Edit</th>
                       <th scope="col">Delete</th>
@@ -148,35 +144,54 @@ const ParentList = () => {
                         /**/
                       }
                       return (
-                        <tr key={parentData?.id} className="mt-5">
+                        <tr scope="row" key={parentData?.id}>
                           <td>{parentData?.id}</td>
-                          <td>{parentData?.name}</td>
-                          <td>{parentData?.email}</td>
-                          <td>{userInformation?.address}</td>
-                          <td>{userInformation?.phone}</td>
-                          <td><img src={`http://127.0.0.1:8000/parent-images/${userInformation?.photo}`} alt="parent-image" width='40' height='40'/></td>
-                          <td>{userInformation?.birthday}</td>
-                          <td>{userInformation?.gender}</td>
-                          <td>{userInformation?.blood_group}</td>
+                          <td>
+                            <img
+                              src={`http://127.0.0.1:8000/parent-images/${userInformation?.photo}`}
+                              alt="parent-image"
+                              width="40"
+                              height="40"
+                              style={{ borderRadius: "50px" }}
+                            />
+                          </td>
+                          <td>
+                              <span>{parentData?.name}</span>
+                          </td>
+                          <td>
+                            <small class="d-block mt-2">
+                              {parentData?.email}
+                            </small>
+                          </td>
+                          <td>
+                            <small>
+                              <b>Phone: </b>088+{userInformation?.phone}
+                            </small>
+                            <br />
+                            <small>
+                              <b>Address: </b>
+                              {userInformation?.address}
+                            </small>
+                          </td>
                           <td>
                             <Link
-                              to={`/admin/parents/${parentData.id}/show`}
-                              className="btn btn-primary btn-sm"
+                              to={`/admin/parents/${parentData?.id}/show`}
+                              className="btn btn-primary "
                             >
                               Show
                             </Link>
                           </td>
                           <td>
                             <Link
-                              to={`/admin/parents/${parentData.id}/edit`}
-                              className="btn btn-success btn-sm"
+                              to={`/admin/parents/${parentData?.id}/edit`}
+                              className="btn btn-success"
                             >
                               Edit
                             </Link>
                           </td>
                           <td
                             type="button"
-                            onClick={(e) => deleteParentData(e, parentData.id)}
+                            onClick={(e) => deleteParentData(e, parentData?.id)}
                             className="btn btn-danger btn-sm mt-2"
                           >
                             Delete

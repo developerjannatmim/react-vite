@@ -124,14 +124,10 @@ const TeacherList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
+                      <th scope="col"></th>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
-                      <th scope="col">Address</th>
-                      <th scope="col">Phone</th>
-                      <th scope="col">Photo</th>
-                      <th scope="col">BirthDay</th>
-                      <th scope="col">Gender</th>
-                      <th scope="col">Blood Group</th>
+                      <th scope="col">User Info</th>
                       <th scope="col">Show</th>
                       <th scope="col">Edit</th>
                       <th scope="col">Delete</th>
@@ -148,28 +144,47 @@ const TeacherList = () => {
                         /**/
                       }
                       return (
-                        <tr key={teacherData?.id}>
+                        <tr scope="row" key={teacherData?.id}>
                           <td>{teacherData?.id}</td>
-                          <td>{teacherData?.name}</td>
-                          <td>{teacherData?.email}</td>
-                          <td>{userInformation?.address}</td>
-                          <td>{userInformation?.phone}</td>
-                          <td><img src={`http://127.0.0.1:8000/teacher-images/${userInformation?.photo}`} alt="teacher-image" width='40' height='40'/></td>
-                          <td>{userInformation?.birthday}</td>
-                          <td>{userInformation?.gender}</td>
-                          <td>{userInformation?.blood_group}</td>
+                          <td>
+                            <img
+                              src={`http://127.0.0.1:8000/teacher-images/${userInformation?.photo}`}
+                              alt="teacher-image"
+                              width="40"
+                              height="40"
+                              style={{ borderRadius: "50px" }}
+                            />
+                          </td>
+                          <td>
+                            <span>{teacherData?.name}</span>
+                          </td>
+                          <td>
+                            <small class="d-block mt-2">
+                              {teacherData?.email}
+                            </small>
+                          </td>
+                          <td>
+                            <small>
+                              <b>Phone: </b>088+{userInformation?.phone}
+                            </small>
+                            <br />
+                            <small>
+                              <b>Address: </b>
+                              {userInformation?.address}
+                            </small>
+                          </td>
                           <td>
                             <Link
-                              to={`/admin/teachers/${teacherData.id}/show`}
-                              className="btn btn-primary btn-sm"
+                              to={`/admin/teachers/${teacherData?.id}/show`}
+                              className="btn btn-primary "
                             >
                               Show
                             </Link>
                           </td>
                           <td>
                             <Link
-                              to={`/admin/teachers/${teacherData.id}/edit`}
-                              className="btn btn-success btn-sm"
+                              to={`/admin/teachers/${teacherData?.id}/edit`}
+                              className="btn btn-success"
                             >
                               Edit
                             </Link>
@@ -177,9 +192,9 @@ const TeacherList = () => {
                           <td
                             type="button"
                             onClick={(e) =>
-                              deleteTeacherData(e, teacherData.id)
+                              deleteTeacherData(e, teacherData?.id)
                             }
-                            className="btn btn-danger btn-sm"
+                            className="btn btn-danger btn-sm mt-2"
                           >
                             Delete
                           </td>
