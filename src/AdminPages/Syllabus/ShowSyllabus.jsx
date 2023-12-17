@@ -53,60 +53,57 @@ const ShowSyllabus = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
+                  <div>
+                    <ol className="alternating-colors">
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Id</label>
                       </div>
                       <div class="col-md-6">
                         <p>{syllabusItem?.id}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Syllabus</label>
                       </div>
                       <div class="col-md-6">
                         <p>{syllabusItem?.title}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Class</label>
                       </div>
                       <div class="col-md-6">
                         <p>{syllabusItem?.class?.name}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Subject</label>
                       </div>
                       <div class="col-md-6">
                         <p>{syllabusItem?.subject?.name}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Section</label>
                       </div>
                       <div class="col-md-6">
                         <p>{syllabusItem?.section?.name}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>File</label>
                       </div>
                       <div class="col-md-6">
                         <img src={`http://127.0.0.1:8000/syllabus-images/${syllabusItem?.file}`} width='40'/>
                       </div>
-                    </div>
+                    </li>
+                    </ol>
                   </div>
                 </div>
               </div>

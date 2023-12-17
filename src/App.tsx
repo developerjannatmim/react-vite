@@ -13,6 +13,21 @@ import ShowAdmin from "./AdminPages/Admin/ShowAdmin";
 import AddAdmin from "./AdminPages/Admin/AddAdmin";
 import UpdateAdmin from "./AdminPages/Admin/UpdateAdmin";
 
+import AccountantList from "./AdminPages/Accountant/AccountantList";
+import ShowAccountant from "./AdminPages/Accountant/ShowAccountant";
+import AddAccountant from "./AdminPages/Accountant/AddAccountant";
+import UpdateAccountant from "./AdminPages/Accountant/UpdateAccountant";
+
+import LibrarianList from "./AdminPages/Librarian/LibrarianList";
+import ShowLibrarian from "./AdminPages/Librarian/ShowLibrarian";
+import AddLibrarian from "./AdminPages/Librarian/AddLibrarian";
+import UpdateLibrarian from "./AdminPages/Librarian/UpdateLibrarian";
+
+import ExamCategoryList from "./AdminPages/ExamCategory/ExamCategoryList";
+import ShowExamCategory from "./AdminPages/ExamCategory/ShowExamCategory";
+import AddExamCategory from "./AdminPages/ExamCategory/AddExamCategory";
+import UpdateExamCategory from "./AdminPages/ExamCategory/UpdateExamCategory";
+
 import StudentList from "./AdminPages/Student/StudentList";
 import ShowStudent from "./AdminPages/Student/ShowStudent";
 import AddStudent from "./AdminPages/Student/AddStudent";
@@ -225,6 +240,21 @@ const App = () => {
           <Route path="admin/create" element={<AddAdmin />} />
           <Route path="admin/:id/show" element={<ShowAdmin />} />
           <Route path="admin/:id/edit" element={<UpdateAdmin />} />
+
+          <Route path="accountant" element={<AccountantList />} />
+          <Route path="accountant/create" element={<AddAccountant />} />
+          <Route path="accountant/:id/show" element={<ShowAccountant />} />
+          <Route path="accountant/:id/edit" element={<UpdateAccountant />} />
+
+          <Route path="librarian" element={<LibrarianList />} />
+          <Route path="librarian/create" element={<AddLibrarian />} />
+          <Route path="librarian/:id/show" element={<ShowLibrarian />} />
+          <Route path="librarian/:id/edit" element={<UpdateLibrarian />} />
+
+          <Route path="exam-category" element={<ExamCategoryList />} />
+          <Route path="exam-category/create" element={<AddExamCategory />} />
+          <Route path="exam-category/:id/show" element={<ShowExamCategory />} />
+          <Route path="exam-category/:id/edit" element={<UpdateExamCategory />} />
 
           <Route path="exams" element={<ExamList />} />
           <Route path="exams/create" element={<AddExam />} />

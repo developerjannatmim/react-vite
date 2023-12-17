@@ -10,6 +10,7 @@ import AdminHeader from '../../components/AdminHeader';
 const UpdateExam = () => {
   const navigate = useNavigate();
   const [examInput, setExamInput] = useState([]);
+  const [exam_category, setExamCategory] = useState();
   const [classes, setClasses] = useState();
   const [sections, setSections] = useState();
   const { id } = useParams();
@@ -62,6 +63,25 @@ const UpdateExam = () => {
         setExamInput(null);
       });
   }, [id]);
+
+  useEffect(() => {
+    console.log({ exam_category });
+    fetch(`http://127.0.0.1:8000/api/exam_category`, {
+      headers: {
+        Accept: 'application/json',
+      },
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.info(response);
+        setExamCategory(response.data?.exam_category);
+      })
+      .catch((error) => {
+        console.error(error);
+        setExamCategory(null);
+      });
+  }, []);
 
   useEffect(() => {
     console.log({ classes });
@@ -137,23 +157,24 @@ const UpdateExam = () => {
                         <div className="row">
                           <div className="col-md-6 form-group mb-3">
                             <label>Exam Name</label>
-                            <input
-                              type="text"
-                              name="name"
-                              onChange={handleChange}
-                              value={examInput?.name || ''}
+                            <select
+                              name="exam_category_id"
                               className="form-control"
-                            />
-                          </div>
-                          <div className="col-md-6 form-group mb-3">
-                            <label>Exam Type</label>
-                            <input
-                              type="text"
-                              name="exam_type"
                               onChange={handleChange}
-                              value={examInput?.exam_type || ''}
-                              className="form-control"
-                            />
+                              value={examInput?.exam_category_id || ''}
+                            >
+                              <option>select exam category</option>
+                              {exam_category?.map((examCategoryItem) => {
+                                return (
+                                  <option
+                                    key={examCategoryItem.id}
+                                    value={examCategoryItem.id}
+                                  >
+                                    {examCategoryItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
                           </div>
                           <div className="col-md-6 form-group mb-3">
                             <label>Starting Time</label>
@@ -182,16 +203,6 @@ const UpdateExam = () => {
                               name="total_marks"
                               onChange={handleChange}
                               value={examInput?.total_marks || ''}
-                              className="form-control"
-                            />
-                          </div>
-                          <div className="col-md-6 form-group mb-3">
-                            <label>Status</label>
-                            <input
-                              type="text"
-                              name="status"
-                              onChange={handleChange}
-                              value={examInput?.status || ''}
                               className="form-control"
                             />
                           </div>

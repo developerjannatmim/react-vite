@@ -13,6 +13,7 @@ const UpdateMark = () => {
   const [classes, setClasses] = useState();
   const [sections, setSections] = useState();
   const [exams, setExams] = useState();
+  const [exam_category, setExamCategory] = useState();
   const [subjects, setSubjects] = useState();
   const [users, setUsers] = useState();
   const { id } = useParams();
@@ -82,6 +83,25 @@ const UpdateMark = () => {
       .catch((error) => {
         console.error(error);
         setClasses(null);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log({ exam_category });
+    fetch(`http://127.0.0.1:8000/api/exam_category`, {
+      headers: {
+        Accept: 'application/json',
+      },
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.info(response);
+        setExamCategory(response.data?.exam_category);
+      })
+      .catch((error) => {
+        console.error(error);
+        setExamCategory(null);
       });
   }, []);
 
@@ -206,7 +226,7 @@ const UpdateMark = () => {
                             />
                           </div>
                           <div className="col-md-6 form-group mb-3">
-                            <label>grade_point</label>
+                            <label>Grade Point</label>
                             <input
                               type="text"
                               name="grade_point"
@@ -216,7 +236,7 @@ const UpdateMark = () => {
                             />
                           </div>
                           <div className="col-md-6 form-group mb-3">
-                            <label>comment</label>
+                            <label>Comment</label>
                             <input
                               type="text"
                               name="comment"
@@ -289,23 +309,23 @@ const UpdateMark = () => {
                             </select>
                           </div>
                           <div className="col-md-6 form-group mb-3">
-                            <label>Exam</label>
-                            <select
-                              name="exam_id"
-                              className="form-control"
-                              onChange={handleChange}
-                              value={markInput?.exam_id || ''}
-                            >
-                              <option>select exam</option>
-                              {exams?.map((examItem) => {
-                                return (
-                                  <option key={examItem.id} value={examItem.id}>
-                                    {examItem.name}
-                                  </option>
-                                );
-                              })}
-                            </select>
-                          </div>
+                          <label>Exam Name</label>
+                          <select
+                            name="exam_category_id"
+                            className="form-control"
+                            onChange={handleChange}
+                            value={markInput.exam_category_id}
+                          >
+                            <option>select exam category</option>
+                            {exam_category?.map((exam_categoryItem) => {
+                              return (
+                                <option key={exam_categoryItem.id} value={exam_categoryItem.id}>
+                                  {exam_categoryItem.name}
+                                </option>
+                              );
+                            })}
+                          </select>
+                        </div>
                           <div className="col-md-6 form-group mb-3">
                             <label>Student Name</label>
                             <select

@@ -99,7 +99,7 @@ const Sidebar = () => {
                   >
                     <Link
                       className="nav-link text-white"
-                      to="/admin/librarians"
+                      to="/admin/librarian"
                     >
                       <i className="bi bi-person-circle icon"></i>
                       <span className="d-none d-sm-inline">Librarians</span>

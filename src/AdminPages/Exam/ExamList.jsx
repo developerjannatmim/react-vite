@@ -123,14 +123,12 @@ const ExamList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">Exam</th>
+                      <th scope="col">Exam Name</th>
                       <th scope="col">Class</th>
                       <th scope="col">Section</th>
-                      <th scope="col">Exam Type</th>
                       <th scope="col">Starting Time</th>
                       <th scope="col">Ending Time</th>
                       <th scope="col">Total Marks</th>
-                      <th scope="col">Status</th>
                       <th scope="col">Show</th>
                       <th scope="col">Edit</th>
                       <th scope="col">Delete</th>
@@ -141,14 +139,12 @@ const ExamList = () => {
                       return (
                         <tr key={exam.id}>
                           <td>{exam.id}</td>
-                          <td>{exam.name}</td>
-                          <td>{exam.class?.name}</td>
-                          <td>{exam.section?.name}</td>
-                          <td>{exam.exam_type}</td>
-                          <td>{exam.starting_time}</td>
-                          <td>{exam.ending_time}</td>
-                          <td>{exam.total_marks}</td>
-                          <td>{exam.status}</td>
+                          <td>{exam?.exam_category?.name}</td>
+                          <td>{exam?.class?.name}</td>
+                          <td>{exam?.section?.name}</td>
+                          <td>{exam?.starting_time} AM</td>
+                          <td>{exam?.ending_time} PM</td>
+                          <td>{exam?.total_marks}</td>
                           <td>
                             <Link
                               to={`/admin/exams/${exam.id}/show`}

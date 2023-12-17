@@ -6,6 +6,8 @@ import Sidebar from "./../../components/Sidebar";
 import Footer from "./../../components/Footer";
 import AdminHeader from "../../components/AdminHeader";
 
+import "../../assets/css/new.css";
+
 const ShowGrade = () => {
   const [gradeItem, setGradeItem] = useState(null);
   const { id } = useParams();
@@ -52,53 +54,30 @@ const ShowGrade = () => {
                 </Link>
               </div>
               <div class="col-md-8 p-4">
-                <div class="tab-content profile-tab" id="myTabContent" >
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Grade Id</label>
-                      </div>
-                      <div class="col-md-6">
+                <div class="tab-content profile-tab" id="myTabContent">
+                  <div>
+                    <ol className="alternating-colors">
+                      <li className="element-list">
+                        <strong>Grade Id</strong>
                         <p>{gradeItem?.id}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Grade Name</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Grade Letter</strong>
                         <p>{gradeItem?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Grade Point</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Grade Point</strong>
                         <p>{gradeItem?.grade_point}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Mark From</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Mark From</strong>
                         <p>{gradeItem?.mark_from}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Mark Upto</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Mark Upto</strong>
                         <p>{gradeItem?.mark_upto}</p>
-                      </div>
-                    </div>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               </div>

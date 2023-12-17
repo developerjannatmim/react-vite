@@ -3,23 +3,23 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
+import Sidebar from "../../components/Sidebar";
+import Footer from "../../components/Footer";
 import AdminHeader from "../../components/AdminHeader";
 
-const MarkList = () => {
-  const [markList, setMarkList] = useState([]);
+const ExamCategoryList = () => {
+  const [exam_categoryList, setExamCategoryList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
-  const deleteMark = (e, id) => {
+  const deleteExamCategory = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
     Clicked.innerText = "deleting";
 
-    if (confirm(`Are you sure you want to delete mark id ${id}?`)) {
-      fetch(`http://127.0.0.1:8000/api/marks/${id}`, {
+    if (confirm(`Are you sure you want to delete exam_category id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/exam_category/${id}`, {
         headers: {
           Accept: "application/json",
         },
@@ -39,7 +39,7 @@ const MarkList = () => {
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/marks?", {
+    fetch("http://127.0.0.1:8000/api/exam_category?", {
       headers: {
         Accept: "application/json",
       },
@@ -48,19 +48,19 @@ const MarkList = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setMarkList(response.data?.marks);
+        setExamCategoryList(response.data?.exam_category);
       })
       .catch((error) => {
         console.error(error);
-        setMarkList(null);
+        setExamCategoryList(null);
         setLoading(false);
       });
   }, [loading]);
 
   const lastIndex = currentPage * dataPerPage;
   const firstIndex = lastIndex - dataPerPage;
-  const records = markList?.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(markList?.length / dataPerPage);
+  const records = exam_categoryList?.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(exam_categoryList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
@@ -76,12 +76,12 @@ const MarkList = () => {
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Mark List</h4>
+                <h4>Exam Category List</h4>
                 <Link
-                  to="/admin/marks/create"
+                  to="/admin/exam-category/create"
                   className="btn btn-primary btn-sm float-end"
                 >
-                  Add Mark
+                  Add Exam Category
                 </Link>
               </div>
               <div className="page-system mt-4">
@@ -123,35 +123,21 @@ const MarkList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">Mark</th>
-                      <th scope="col">Grade</th>
-                      <th scope="col">Class</th>
-                      <th scope="col">Student</th>
-                      <th scope="col">Exam</th>
-                      <th scope="col">Section</th>
-                      <th scope="col">Subject</th>
-                      <th scope="col">Comment</th>
+                      <th scope="col">Exam Category</th>
                       <th scope="col">Show</th>
                       <th scope="col">Edit</th>
                       <th scope="col">Delete</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {records?.map((mark) => {
+                    {records?.map((exam_category) => {
                       return (
-                        <tr key={mark?.id}>
-                          <td>{mark?.id}</td>
-                          <td>{mark?.marks}</td>
-                          <td>{mark?.grade_point}</td>
-                          <td>{mark?.class?.name}</td>
-                          <td>{mark?.user?.name}</td>
-                          <td>{mark?.exam_category?.name}</td>
-                          <td>{mark?.section?.name}</td>
-                          <td>{mark?.subject?.name}</td>
-                          <td>{mark?.comment}</td>
+                        <tr key={exam_category.id}>
+                          <td>{exam_category.id}</td>
+                          <td>{exam_category.name}</td>
                           <td>
                             <Link
-                              to={`/admin/marks/${mark?.id}/show`}
+                              to={`/admin/exam-category/${exam_category.id}/show`}
                               className="btn btn-primary btn-sm"
                             >
                               Show
@@ -159,7 +145,7 @@ const MarkList = () => {
                           </td>
                           <td>
                             <Link
-                              to={`/admin/marks/${mark?.id}/edit`}
+                              to={`/admin/exam-category/${exam_category.id}/edit`}
                               className="btn btn-success btn-sm"
                             >
                               Edit
@@ -167,7 +153,7 @@ const MarkList = () => {
                           </td>
                           <td
                             type="button"
-                            onClick={(e) => deleteMark(e, mark?.id)}
+                            onClick={(e) => deleteExamCategory(e, exam_category.id)}
                             className="btn btn-danger btn-sm"
                           >
                             Delete
@@ -207,4 +193,4 @@ const MarkList = () => {
   }
 };
 
-export default MarkList;
+export default ExamCategoryList;

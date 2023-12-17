@@ -39,7 +39,7 @@ const ShowMark = () => {
           <Sidebar />
         </div>
         <div className="col overflow-hidden">
-          <div className="container">
+          <div className="mt-5 container">
             <div className="card">
               <div className="card-header">
                 <h4>Mark Details</h4>
@@ -53,84 +53,45 @@ const ShowMark = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Mark Id</label>
-                      </div>
-                      <div class="col-md-6">
+                  <div>
+                    <ol className="alternating-colors">
+                      <li className="element-list">
+                        <strong>Mark Id</strong>
                         <p>{markItem?.id}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Mark</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Mark</strong>
                         <p>{markItem?.marks}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Grade Point</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Grade Point</strong>
                         <p>{markItem?.grade_point}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Class</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Class</strong>
                         <p>{markItem?.class?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Subject</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Subject</strong>
                         <p>{markItem?.subject?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
                         <label>Section</label>
-                      </div>
-                      <div class="col-md-6">
                         <p>{markItem?.section?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Student</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Student</strong>
                         <p>{markItem?.user?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Exam</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{markItem?.exam?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Comment</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Exam</strong>
+                        <p>{markItem?.exam_category?.name}</p>
+                      </li>
+                      <li className="element-list">
+                        <strong>Comment</strong>
                         <p>{markItem?.comment}</p>
-                      </div>
-                    </div>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               </div>

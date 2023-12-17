@@ -53,84 +53,81 @@ const ShowRoutine = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
+                  <div>
+                    <ol className="alternating-colors">
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Id</label>
                       </div>
                       <div class="col-md-6">
                         <p>{routineItem?.id}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Day</label>
                       </div>
                       <div class="col-md-6">
                         <p>{routineItem?.day}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Starting Time</label>
                       </div>
                       <div class="col-md-6">
                         <p>{`${routineItem?.starting_hour}:${routineItem?.starting_minute} AM`}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Ending Time</label>
                       </div>
                       <div class="col-md-6">
                         <p>{`${routineItem?.ending_hour}:${routineItem?.ending_minute} PM`}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Routine Creator</label>
                       </div>
                       <div class="col-md-6">
                         <p>{routineItem?.creator?.name}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Class</label>
                       </div>
                       <div class="col-md-6">
                         <p>{routineItem?.class?.name}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Section</label>
                       </div>
                       <div class="col-md-6">
                         <p>{routineItem?.section?.name}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Subject</label>
                       </div>
                       <div class="col-md-6">
                         <p>{routineItem?.subject?.name}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Class Room</label>
                       </div>
                       <div class="col-md-6">
                         <p>{routineItem?.room?.name}</p>
                       </div>
-                    </div>
+                    </li>
+                    </ol>
                   </div>
                 </div>
               </div>

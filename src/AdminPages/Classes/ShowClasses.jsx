@@ -53,36 +53,33 @@ const ShowClasses = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent" >
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
+                  <div>
+                    <ol className="alternating-colors">
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Class Id</label>
                       </div>
                       <div class="col-md-6">
                         <p>{classItem?.id}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Class Name</label>
                       </div>
                       <div class="col-md-6">
                         <p>{classItem?.name}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Section Name</label>
                       </div>
                       <div class="col-md-6">
                         <p>{classItem?.section?.name}</p>
                       </div>
-                    </div>
+                    </li>
+                    </ol>
                   </div>
                 </div>
               </div>

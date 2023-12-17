@@ -53,36 +53,33 @@ const ShowSubject = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
+                  <div>
+                    <ol className="alternating-colors">
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Id</label>
                       </div>
                       <div class="col-md-6">
                         <p>{subjectItem?.id}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Class</label>
                       </div>
                       <div class="col-md-6">
                         <p>{subjectItem?.name}</p>
                       </div>
-                    </div>
-                    <div class="row">
+                    </li>
+                    <li class="element-list">
                       <div class="col-md-6">
                         <label>Subject</label>
                       </div>
                       <div class="col-md-6">
                         <p>{subjectItem?.class?.name}</p>
                       </div>
-                    </div>
+                    </li>
+                    </ol>
                   </div>
                 </div>
               </div>
