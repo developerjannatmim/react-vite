@@ -73,7 +73,7 @@ const GradeList = () => {
           <Sidebar />
         </div>
         <div className="col overflow-hidden">
-          <div className="container px-4">
+          <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
                 <h4>Grade List</h4>

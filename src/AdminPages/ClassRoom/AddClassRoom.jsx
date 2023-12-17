@@ -58,7 +58,7 @@ const AddClassRoom = () => {
           <Sidebar />
         </div>
         <div className="mt-5 col overflow-hidden">
-          <div className="container-fluid px-3">
+          <div className="mt-5 container-fluid px-3">
             <form onSubmit={submitClassRoom} id="CLASSROOM_FORM">
               <div className="card mt-4">
                 <div className="card-header">

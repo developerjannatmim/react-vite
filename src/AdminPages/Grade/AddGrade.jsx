@@ -60,7 +60,7 @@ const AddGrade = () => {
           <Sidebar />
         </div>
         <div className="col overflow-hidden">
-          <div className="container-fluid px-3">
+          <div className="mt-5 container-fluid px-3">
             <form onSubmit={submitGrade} id="SUBJECT_FORM">
               <div className="card mt-4">
                 <div className="card-header">

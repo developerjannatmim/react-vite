@@ -74,7 +74,7 @@ const ParentList = () => {
           <Sidebar />
         </div>
         <div className="col overflow-hidden">
-          <div className="container px-4">
+          <div className="mt-5 container px-4">
             <div className="card mt-5">
               <div className="card-header">
                 <h4>Parent List</h4>

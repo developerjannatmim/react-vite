@@ -39,7 +39,7 @@ const ShowSyllabus = () => {
           <Sidebar />
         </div>
         <div className="col overflow-hidden">
-          <div className="container">
+          <div className="mt-5 container">
             <div className="card">
               <div className="card-header">
                 <h4>Syllabus Details</h4>

@@ -39,7 +39,7 @@ const ShowClassRoom = () => {
           <Sidebar />
         </div>
         <div className="mt-5 col overflow-hidden">
-          <div className="container">
+          <div className="mt-5 container">
             <div className="card">
               <div className="card-header">
                 <h4>Class Room Details</h4>

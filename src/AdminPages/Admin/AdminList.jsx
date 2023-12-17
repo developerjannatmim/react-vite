@@ -1,14 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
-import '../../assets/css/style.css';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+import "../../assets/css/style.css";
 
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
-import AdminHeader from '../../components/AdminHeader';
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
 const AdminList = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   const [admin, setAdmin] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,34 +23,34 @@ const AdminList = () => {
   const deleteAdminData = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
+    Clicked.innerText = "deleting";
 
-    if(confirm(`Are you sure you want to delete admin id ${id}?`)){
-    fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
-      headers: {
-        Accept: 'application/json',
-      },
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        Clicked.closest('tr').remove();
+    if (confirm(`Are you sure you want to delete admin id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
+        headers: {
+          Accept: "application/json",
+        },
+        method: "DELETE",
       })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire('Warning', response?.message, 'warning');
-      });
+        .then((response) => response.json())
+        .then((response) => {
+          console.info(response);
+          Swal.fire("Success", response?.message, "success");
+          Clicked.closest("tr").remove();
+        })
+        .catch((error) => {
+          console.error(error);
+          Swal.fire("Warning", response?.message, "warning");
+        });
     }
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/admin?', {
+    fetch("http://127.0.0.1:8000/api/admin?", {
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
-      method: 'GET',
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
@@ -74,7 +80,7 @@ const AdminList = () => {
           <Sidebar />
         </div>
         <div className="col overflow-hidden">
-          <div className="container px-4">
+          <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
                 <h4>Admin List</h4>
@@ -97,7 +103,7 @@ const AdminList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? 'active' : ''
+                            currentPage === n ? "active" : ""
                           }`}
                           key={i}
                         >
@@ -119,73 +125,138 @@ const AdminList = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="card-body">
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">ID</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Address</th>
-                      <th scope="col">Phone</th>
-                      <th scope="col">Photo</th>
-                      <th scope="col">BirthDay</th>
-                      <th scope="col">Gender</th>
-                      <th scope="col">Blood Group</th>
-                      <th scope="col">Show</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {records?.map((adminData) => {
-                      let userInformation;
-                      try {
-                        userInformation = JSON.parse(
-                          adminData?.user_information
-                        );
-                      } catch (error) {
-                        /**/
-                      }
-                      return (
-                        <tr key={adminData?.id}>
-                          <td>{adminData?.id}</td>
-                          <td>{adminData?.name}</td>
-                          <td>{adminData?.email}</td>
-                          <td>{userInformation?.address}</td>
-                          <td>{userInformation?.phone}</td>
-                          <td><img src={`http://127.0.0.1:8000/admin-images/${userInformation?.photo}`} width='40' height='40' alt="admin-image"/></td>
-                          <td>{userInformation?.birthday}</td>
-                          <td>{userInformation?.gender}</td>
-                          <td>{userInformation?.blood_group}</td>
-                              <td>
-                              <Link
-                                to={`/admin/admin/${adminData?.id}/show`}
-                                className="btn btn-primary btn-sm"
-                              >
-                                Show
-                              </Link>
-                            </td>
-                            <td>
-                              <Link
-                                to={`/admin/admin/${adminData?.id}/edit`}
-                                className="btn btn-success btn-sm"
-                              >
-                                Edit
-                              </Link>
-                            </td>
-                            <td
-                              type="button"
-                              onClick={(e) => deleteAdminData(e, adminData?.id)}
-                              className="btn btn-danger btn-sm"
-                            >
-                              Delete
-                            </td>
+              <div class="content">
+                <div class="container">
+                  <div class="table-responsive">
+                    <table class="table table-striped custom-table">
+                      <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col"></th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">User Info</th>
+                          <th scope="col">Show</th>
+                          <th scope="col">Edit</th>
+                          <th scope="col">Delete</th>
                         </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                      </thead>
+                      <tbody>
+                        {records?.map((adminData) => {
+                          let userInformation;
+                          try {
+                            userInformation = JSON.parse(
+                              adminData?.user_information
+                            );
+                          } catch (error) {
+                            /**/
+                          }
+                          return (
+                            <tr scope="row" key={adminData?.id}>
+                              <td>{adminData?.id}</td>
+                              <td>
+                                <img
+                                  src={`http://127.0.0.1:8000/admin-images/${userInformation?.photo}`}
+                                  alt="parent-image"
+                                  width="40"
+                                  height="40"
+                                  style={{ borderRadius: "50px" }}
+                                />
+                              </td>
+                              <td>
+                                <Link to="admin/profile">
+                                  <span>{adminData?.name}</span>
+                                </Link>
+                              </td>
+                              <td>
+                                <small class="d-block mt-2">
+                                  {adminData?.email}
+                                </small>
+                              </td>
+                              <td>
+                                <small>
+                                  <b>Phone: </b>088+{userInformation?.phone}
+                                </small>
+                                <br />
+                                <small>
+                                  <b>Address: </b>
+                                  {userInformation?.address}
+                                </small>
+                              </td>
+                              <td>
+                                <Link
+                                  to={`/admin/admin/${adminData?.id}/show`}
+                                  className="btn btn-primary "
+                                >
+                                  Show
+                                </Link>
+                              </td>
+                              <td>
+                                <Link
+                                  to={`/admin/admin/${adminData?.id}/edit`}
+                                  className="btn btn-success"
+                                >
+                                  Edit
+                                </Link>
+                              </td>
+                              <td
+                                type="button"
+                                onClick={(e) =>
+                                  deleteAdminData(e, adminData?.id)
+                                }
+                                className="btn btn-danger btn-sm mt-2"
+                              >
+                                Delete
+                              </td>
+
+                              {/* <td>
+                                  <div class="dropdown text-center">
+                                    <button
+                                      type="button"
+                                      class="btn btn-sm btn-icon btn-rounded btn-outline-secondary dropdown-btn dropdown-toggle arrow-none card-drop"
+                                      data-bs-toggle="dropdown"
+                                      aria-expanded="false"
+                                    >
+                                      Actions
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                      <ul>
+                                        <li>
+                                          <Link
+                                            to={`/admin/admin/${adminData?.id}/show`}
+                                            className="btn btn-sm"
+                                          >
+                                            Show
+                                          </Link>
+                                        </li>
+                                        <li>
+                                          <Link
+                                            to={`/admin/admin/${adminData?.id}/edit`}
+                                            className="btn btn-success btn-sm"
+                                          >
+                                            Edit
+                                          </Link>
+                                        </li>
+                                        <td
+                                          type="button"
+                                          onClick={(e) =>
+                                            deleteAdminData(e, adminData?.id)
+                                          }
+                                          className="btn btn-danger btn-sm"
+                                        >
+                                          Delete
+                                        </td>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </td> */}
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

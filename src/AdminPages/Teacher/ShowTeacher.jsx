@@ -39,7 +39,7 @@ const ShowTeacher = () => {
           <Sidebar />
         </div>
         <div className="col overflow-hidden">
-          <div className="container">
+          <div className="mt-5 container">
             <div className="card">
               <div className="card-header">
                 <h4>Teacher Information</h4>

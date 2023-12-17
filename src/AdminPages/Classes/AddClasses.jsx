@@ -82,7 +82,7 @@ const AddClasses = () => {
           <Sidebar />
         </div>
         <div className="col overflow-hidden mt-5">
-          <div className="container-fluid px-3">
+          <div className="mt-5 container-fluid px-3">
             <form onSubmit={submitClass}>
               <div className="card mt-4">
                 <div className="card-header">

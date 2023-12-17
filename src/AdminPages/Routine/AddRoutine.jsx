@@ -175,7 +175,7 @@ const AddRoutine = () => {
           <Sidebar />
         </div>
         <div className="col overflow-hidden">
-          <div className="container-fluid px-3">
+          <div className="mt-5 container-fluid px-3">
             <form onSubmit={submitRoutine} id="ROUTINE_FORM">
               <div className="card mt-4">
                 <div className="card-header">
