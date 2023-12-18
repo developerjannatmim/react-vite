@@ -374,7 +374,7 @@ const Sidebar = () => {
                     onClick={(e) => setActive(6)}
                   >
                     <Link
-                      to="/admin/vehicle"
+                      to="/admin/vehicles"
                       className="nav-link text-white text-center text-sm-start"
                       aria-current="page"
                     >
@@ -389,7 +389,7 @@ const Sidebar = () => {
                     onClick={(e) => setActive(10)}
                   >
                     <Link
-                      to="/admin/assign-student"
+                      to="/admin/assignStudents"
                       className="nav-link text-white text-center text-sm-start"
                       aria-current="page"
                     >

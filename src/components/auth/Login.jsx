@@ -34,13 +34,13 @@ const Login = () => {
         if (response?.status === 200) {
           const ObjData = {
             auth_name: response?.username,
-            email: response?.userEmail,
-            gender: response?.gender,
-            address: response?.address,
-            blood: response?.blood,
-            birthday: response?.birthday,
-            phone: response?.phone,
-            photo: response?.photo,
+            // email: response?.userEmail,
+            // gender: response?.gender,
+            // address: response?.address,
+            // blood: response?.blood,
+            // birthday: response?.birthday,
+            // phone: response?.phone,
+            //photo: response?.photo,
           };
           localStorage.setItem('auth_token', response?.token);
           localStorage.setItem('role', response?.role_id);
@@ -72,7 +72,7 @@ const Login = () => {
       <div id="layoutAuthentication">
         <div id="layoutAuthentication_content">
           <main>
-            <div className="container" style={{marginTop: '175px'}}>
+            <div className="container" style={{marginTop: '60px'}}>
               <div className="row justify-content-center">
                 <div className="col-lg-5">
                   <div className="card shadow-lg border-0 rounded-lg mt-5">

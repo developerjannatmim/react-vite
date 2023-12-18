@@ -8,19 +8,19 @@ import Sidebar from "./../../components/Sidebar";
 import Footer from "./../../components/Footer";
 import AdminHeader from "../../components/AdminHeader";
 
-const AdminList = () => {
-  const [admin, setAdmin] = useState([]);
+const DriverList = () => {
+  const [driver, setDriver] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
-  const deleteAdminData = (e, id) => {
+  const deleteDriverData = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
     Clicked.innerText = "deleting";
 
-    if (confirm(`Are you sure you want to delete admin id ${id}?`)) {
-      fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
+    if (confirm(`Are you sure you want to delete driver id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/driver/${id}`, {
         headers: {
           Accept: "application/json",
         },
@@ -40,7 +40,7 @@ const AdminList = () => {
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/admin?", {
+    fetch("http://127.0.0.1:8000/api/driver?", {
       headers: {
         Accept: "application/json",
       },
@@ -49,19 +49,19 @@ const AdminList = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setAdmin(response.data?.admin);
+        setDriver(response.data?.driver);
       })
       .catch((error) => {
         console.error(error);
-        setAdmin(null);
+        setDriver(null);
         setLoading(false);
       });
   }, [loading]);
 
   const lastIndex = currentPage * dataPerPage;
   const firstIndex = lastIndex - dataPerPage;
-  const records = admin?.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(admin?.length / dataPerPage);
+  const records = driver?.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(driver?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
@@ -77,12 +77,12 @@ const AdminList = () => {
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Admin List</h4>
+                <h4>Driver List</h4>
                 <Link
-                  to="/admin/admin/create"
+                  to="/admin/driver/create"
                   className="btn btn-primary btn-sm float-end"
                 >
-                  Add Admin
+                  Add Driver
                 </Link>
               </div>
               <div className="page-system mt-4">
@@ -136,33 +136,33 @@ const AdminList = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {records?.map((adminData) => {
+                        {records?.map((driverData) => {
                           let userInformation;
                           try {
                             userInformation = JSON.parse(
-                              adminData?.user_information
+                              driverData?.user_information
                             );
                           } catch (error) {
                             /**/
                           }
                           return (
-                            <tr scope="row" key={adminData?.id}>
-                              <td>{adminData?.id}</td>
+                            <tr scope="row" key={driverData?.id}>
+                              <td>{driverData?.id}</td>
                               <td>
                                 <img
-                                  src={`http://127.0.0.1:8000/admin-images/${userInformation?.photo}`}
-                                  alt="admin-image"
+                                  src={`http://127.0.0.1:8000/driver-images/${userInformation?.photo}`}
+                                  alt="driver-image"
                                   width="40"
                                   height="40"
                                   style={{ borderRadius: "50px" }}
                                 />
                               </td>
                               <td>
-                                  <span>{adminData?.name}</span>
+                                  <span>{driverData?.name}</span>
                               </td>
                               <td>
                                 <small class="d-block mt-2">
-                                  {adminData?.email}
+                                  {driverData?.email}
                                 </small>
                               </td>
                               <td>
@@ -177,7 +177,7 @@ const AdminList = () => {
                               </td>
                               <td>
                                 <Link
-                                  to={`/admin/admin/${adminData?.id}/show`}
+                                  to={`/admin/driver/${driverData?.id}/show`}
                                   className="btn btn-primary "
                                 >
                                   Show
@@ -185,7 +185,7 @@ const AdminList = () => {
                               </td>
                               <td>
                                 <Link
-                                  to={`/admin/admin/${adminData?.id}/edit`}
+                                  to={`/admin/driver/${driverData?.id}/edit`}
                                   className="btn btn-success"
                                 >
                                   Edit
@@ -194,7 +194,7 @@ const AdminList = () => {
                               <td
                                 type="button"
                                 onClick={(e) =>
-                                  deleteAdminData(e, adminData?.id)
+                                  deleteDriverData(e, driverData?.id)
                                 }
                                 className="btn btn-danger btn-sm mt-2"
                               >
@@ -215,7 +215,7 @@ const AdminList = () => {
                                       <ul>
                                         <li>
                                           <Link
-                                            to={`/admin/admin/${adminData?.id}/show`}
+                                            to={`/admin/driver/${driverData?.id}/show`}
                                             className="btn btn-sm"
                                           >
                                             Show
@@ -223,7 +223,7 @@ const AdminList = () => {
                                         </li>
                                         <li>
                                           <Link
-                                            to={`/admin/admin/${adminData?.id}/edit`}
+                                            to={`/admin/driver/${driverData?.id}/edit`}
                                             className="btn btn-success btn-sm"
                                           >
                                             Edit
@@ -232,7 +232,7 @@ const AdminList = () => {
                                         <td
                                           type="button"
                                           onClick={(e) =>
-                                            deleteAdminData(e, adminData?.id)
+                                            deletedriverData(e, driverData?.id)
                                           }
                                           className="btn btn-danger btn-sm"
                                         >
@@ -279,4 +279,4 @@ const AdminList = () => {
   }
 };
 
-export default AdminList;
+export default DriverList;

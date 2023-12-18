@@ -18,6 +18,21 @@ import ShowAccountant from "./AdminPages/Accountant/ShowAccountant";
 import AddAccountant from "./AdminPages/Accountant/AddAccountant";
 import UpdateAccountant from "./AdminPages/Accountant/UpdateAccountant";
 
+import DriverList from "./AdminPages/Driver/DriverList";
+import ShowDriver from "./AdminPages/Driver/ShowDriver";
+import AddDriver from "./AdminPages/Driver/AddDriver";
+import UpdateDriver from "./AdminPages/Driver/UpdateDriver";
+
+import AssignStudentList from "./AdminPages/AssignStudent/AssignStudentList";
+import ShowAssignStudent from "./AdminPages/AssignStudent/ShowAssignStudent";
+import AddAssignStudent from "./AdminPages/AssignStudent/AddAssignStudent";
+import UpdateAssignStudent from "./AdminPages/AssignStudent/UpdateAssignStudent";
+
+import VehicleList from "./AdminPages/Vehicle/VehicleList";
+import ShowVehicle from "./AdminPages/Vehicle/ShowVehicle";
+import AddVehicle from "./AdminPages/Vehicle/AddVehicle";
+import UpdateVehicle from "./AdminPages/Vehicle/UpdateVehicle";
+
 import LibrarianList from "./AdminPages/Librarian/LibrarianList";
 import ShowLibrarian from "./AdminPages/Librarian/ShowLibrarian";
 import AddLibrarian from "./AdminPages/Librarian/AddLibrarian";
@@ -245,6 +260,21 @@ const App = () => {
           <Route path="accountant/create" element={<AddAccountant />} />
           <Route path="accountant/:id/show" element={<ShowAccountant />} />
           <Route path="accountant/:id/edit" element={<UpdateAccountant />} />
+
+          <Route path="driver" element={<DriverList />} />
+          <Route path="driver/create" element={<AddDriver />} />
+          <Route path="driver/:id/show" element={<ShowDriver />} />
+          <Route path="driver/:id/edit" element={<UpdateDriver />} />
+
+          <Route path="assignStudents" element={<AssignStudentList />} />
+          <Route path="assignStudents/create" element={<AddAssignStudent />} />
+          <Route path="assignStudents/:id/show" element={<ShowAssignStudent />} />
+          <Route path="assignStudents/:id/edit" element={<UpdateAssignStudent />} />
+
+          <Route path="vehicles" element={<VehicleList />} />
+          <Route path="vehicles/create" element={<AddVehicle />} />
+          <Route path="vehicles/:id/show" element={<ShowVehicle />} />
+          <Route path="vehicles/:id/edit" element={<UpdateVehicle />} />
 
           <Route path="librarian" element={<LibrarianList />} />
           <Route path="librarian/create" element={<AddLibrarian />} />
