@@ -1,66 +1,66 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
-import Sidebar from './../../components/Sidebar';
-import Footer from './../../components/Footer';
-import AdminHeader from '../../components/AdminHeader';
+import Sidebar from "./../../components/Sidebar";
+import Footer from "./../../components/Footer";
+import AdminHeader from "../../components/AdminHeader";
 
-const BackOfficeList = () => {
-  const [backOfficeList, setBackOfficeList] = useState([]);
+const EventList = () => {
+  const [eventList, setEventList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
-  const deleteBackOffice = (e, id) => {
+  const deleteEvent = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
+    Clicked.innerText = "deleting";
 
-    if (confirm(`Are you sure you want to delete backOffice id ${id}?`)) {
-      fetch(`http://127.0.0.1:8000/api/backOffice/${id}`, {
+    if (confirm(`Are you sure you want to delete event id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/event/${id}`, {
         headers: {
-          Accept: 'application/json'
+          Accept: "application/json",
         },
-        method: 'DELETE'
+        method: "DELETE",
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire('Success', response?.message, 'success');
-          Clicked.closest('tr').remove();
+          Swal.fire("Success", response?.message, "success");
+          Clicked.closest("tr").remove();
         })
         .catch((error) => {
           console.error(error);
-          Swal.fire('Warning', response?.message, 'warning');
+          Swal.fire("Warning", response?.message, "warning");
         });
     }
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/backOffice?', {
+    fetch("http://127.0.0.1:8000/api/event?", {
       headers: {
-        Accept: 'application/json'
+        Accept: "application/json",
       },
-      method: 'GET'
+      method: "GET",
     })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setBackOfficeList(response.data?.backOffice);
+        setEventList(response.data?.event);
       })
       .catch((error) => {
         console.error(error);
-        setBackOfficeList(null);
+        setEventList(null);
         setLoading(false);
       });
   }, [loading]);
 
   const lastIndex = currentPage * dataPerPage;
   const firstIndex = lastIndex - dataPerPage;
-  const records = backOfficeList?.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(backOfficeList?.length / dataPerPage);
+  const records = eventList?.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(eventList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
   return (
@@ -76,12 +76,12 @@ const BackOfficeList = () => {
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Book List</h4>
+                <h4>Event List</h4>
                 <Link
-                  to="/admin/backOffice/create"
+                  to="/admin/event/create"
                   className="btn btn-primary btn-sm float-end"
                 >
-                  Add New Book
+                  Add Event
                 </Link>
               </div>
               <div className="page-system mt-4">
@@ -96,7 +96,7 @@ const BackOfficeList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? 'active' : ''
+                            currentPage === n ? "active" : ""
                           }`}
                           key={i}
                         >
@@ -123,27 +123,25 @@ const BackOfficeList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">Book Name</th>
-                      <th scope="col">Author</th>
-                      <th scope="col">Copies</th>
-                      <th scope="col">Available Copies</th>
+                      <th scope="col">Event Title</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Show</th>
                       <th scope="col">Edit</th>
                       <th scope="col">Delete</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {records?.map((backOffice) => {
+                    {records?.map((event) => {
                       return (
-                        <tr key={backOffice?.id}>
-                          <td>{backOffice?.id}</td>
-                          <td>{backOffice?.name}</td>
-                          <td>{backOffice?.author}</td>
-                          <td>{backOffice?.copies}</td>
-                          <td>{backOffice?.availble_copies}</td>
+                        <tr key={event?.id}>
+                          <td>{event?.id}</td>
+                          <td>{event?.title}</td>
+                          <td>{event?.date}</td>
+                          <td>{event?.status}</td>
                           <td>
                             <Link
-                              to={`/admin/backOffice/${backOffice.id}/show`}
+                              to={`/admin/event/${event?.id}/show`}
                               className="btn btn-primary btn-sm"
                             >
                               Show
@@ -151,7 +149,7 @@ const BackOfficeList = () => {
                           </td>
                           <td>
                             <Link
-                              to={`/admin/backOffice/${backOffice.id}/edit`}
+                              to={`/admin/event/${event?.id}/edit`}
                               className="btn btn-success btn-sm"
                             >
                               Edit
@@ -159,7 +157,7 @@ const BackOfficeList = () => {
                           </td>
                           <td
                             type="button"
-                            onClick={(e) => deleteBackOffice(e, backOffice.id)}
+                            onClick={(e) => deleteEvent(e, event?.id)}
                             className="btn btn-danger btn-sm"
                           >
                             Delete
@@ -199,4 +197,4 @@ const BackOfficeList = () => {
   }
 };
 
-export default BackOfficeList;
+export default EventList;

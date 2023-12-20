@@ -7,20 +7,20 @@ import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 
-const UpdateBackOffice = () => {
+const UpdateEvent = () => {
   const navigate = useNavigate();
-  const [backOfficeInput, setBackOfficeInput] = useState([]);
+  const [eventInput, setEventInput] = useState([]);
   const { id } = useParams();
 
   const handleChange = (e) => {
-    setBackOfficeInput((values) => ({ ...values, [e.target.name]: e.target.value }));
+    setEventInput((values) => ({ ...values, [e.target.name]: e.target.value }));
   };
 
-  const submitBackOffice = (e) => {
+  const submitEvent = (e) => {
     e.preventDefault();
-    const data = backOfficeInput;
-    console.log(backOfficeInput);
-    fetch(`http://127.0.0.1:8000/api/backOffice/${id}`, {
+    const data = eventInput;
+    console.log(eventInput);
+    fetch(`http://127.0.0.1:8000/api/event/${id}`, {
       body: JSON.stringify({
         ...data,
       }),
@@ -34,17 +34,17 @@ const UpdateBackOffice = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/backOffice');
+        navigate('/admin/grades');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('GRADE_FORM').reset();
+        document.getElementById('MARK_FORM').reset();
         Swal.fire('Warning', response?.message, 'warning');
       });
   };
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/backOffice/${id}`, {
+    fetch(`http://127.0.0.1:8000/api/event/${id}`, {
       headers: {
         Accept: 'application/json',
       },
@@ -53,11 +53,11 @@ const UpdateBackOffice = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setBackOfficeInput(response.data?.backOffice);
+        setEventInput(response.data?.event);
       })
       .catch((error) => {
         console.error(error);
-        setBackOfficeInput(null);
+        setEventInput(null);
       });
   }, [id]);
 
@@ -74,17 +74,17 @@ const UpdateBackOffice = () => {
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
-                <h4>Book Edit</h4>
+                <h4>Event Edit</h4>
                 <Link
-                  to="/admin/backOffice"
+                  to="/admin/event"
                   className="btn btn-primary btn-sm float-end"
                 >
-                  Book List
+                  Event List
                 </Link>
               </div>
             </div>
             <div className="card-body">
-              <form onSubmit={submitBackOffice} id="GRADE_FORM">
+              <form onSubmit={submitEvent} id="MARK_FORM">
                 <div className="card mt-4">
                   <div className="card-body">
                     <div className="tab-content" id="myTabContent">
@@ -96,42 +96,32 @@ const UpdateBackOffice = () => {
                       >
                         <div className="row">
                           <div className="col-md-6 form-group mb-3">
-                            <label>Book Name</label>
+                            <label>Event</label>
                             <input
                               type="text"
-                              name="name"
+                              name="title"
                               onChange={handleChange}
-                              value={backOfficeInput?.name || ''}
+                              value={eventInput?.title || ''}
                               className="form-control"
                             />
                           </div>
                           <div className="col-md-6 form-group mb-3">
-                            <label>Author</label>
+                            <label>Grade Point</label>
                             <input
                               type="text"
-                              name="author"
+                              name="date"
                               onChange={handleChange}
-                              value={backOfficeInput?.author || ''}
+                              value={eventInput?.date || ''}
                               className="form-control"
                             />
                           </div>
                           <div className="col-md-6 form-group mb-3">
-                            <label>Copies</label>
+                            <label>Status</label>
                             <input
                               type="text"
-                              name="copies"
+                              name="status"
                               onChange={handleChange}
-                              value={backOfficeInput?.copies || ''}
-                              className="form-control"
-                            />
-                          </div>
-                          <div className="col-md-6 form-group mb-3">
-                            <label>Available Copies</label>
-                            <input
-                              type="text"
-                              name="availble_copies"
-                              onChange={handleChange}
-                              value={backOfficeInput?.availble_copies || ''}
+                              value={eventInput?.status || ''}
                               className="form-control"
                             />
                           </div>
@@ -155,4 +145,4 @@ const UpdateBackOffice = () => {
   );
 };
 
-export default UpdateBackOffice;
+export default UpdateEvent;

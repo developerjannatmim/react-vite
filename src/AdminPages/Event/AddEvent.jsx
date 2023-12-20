@@ -1,34 +1,32 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 
-const AddBackOffice = () => {
+const AddEvent = () => {
   const navigate = useNavigate();
-  const [backOfficeInput, setBackOfficeInput] = useState({
-    name: '',
-    author: '',
-    copies: '',
-    availble_copies: '',
+  const [eventInput, setEventInput] = useState({
+    title: '',
+    date: '',
+    status: '',
   });
 
   const handleChange = (e) => {
-    setBackOfficeInput((values) => ({ ...values, [e.target.name]: e.target.value }));
+    setEventInput((values) => ({ ...values, [e.target.name]: e.target.value }));
   };
 
-  const submitBackOffice = (e) => {
+  const submitEvent = (e) => {
     e.preventDefault();
     const data = {
-      name: backOfficeInput.name,
-      author: backOfficeInput.author,
-      copies: backOfficeInput.copies,
-      availble_copies: backOfficeInput.availble_copies,
+      title: eventInput.title,
+      date: eventInput.date,
+      status: eventInput.status,
     };
-    fetch('http://127.0.0.1:8000/api/backOffice', {
+    fetch('http://127.0.0.1:8000/api/event', {
       body: JSON.stringify({
         ...data,
       }),
@@ -42,14 +40,15 @@ const AddBackOffice = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/backOffice');
+        navigate('/admin/event');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('SUBJECT_FORM').reset();
+        document.getElementById('MARK_FORM').reset();
         Swal.fire('Warning', response?.message, 'warning');
       });
   };
+
   return (
     <>
       <div>
@@ -61,16 +60,16 @@ const AddBackOffice = () => {
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container-fluid px-3">
-            <form onSubmit={submitBackOffice} id="SUBJECT_FORM">
+            <form onSubmit={submitEvent} id="MARK_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Book List
+                    Event List
                     <Link
-                      to="/admin/backOffice"
+                      to="/admin/event"
                       className="btn btn-primary btn-sm float-end"
                     >
-                      View Book
+                      View Event
                     </Link>
                   </h4>
                 </div>
@@ -84,42 +83,32 @@ const AddBackOffice = () => {
                     >
                       <div className="row">
                         <div className="col-md-6 form-group mb-3">
-                          <label>Book Name</label>
+                          <label>Event Title</label>
                           <input
                             type="text"
-                            name="name"
+                            name="title"
                             onChange={handleChange}
-                            value={backOfficeInput.name}
+                            value={eventInput.title}
                             className="form-control"
                           />
                         </div>
                         <div className="col-md-6 form-group mb-3">
-                          <label>Author</label>
+                          <label>Date</label>
                           <input
                             type="text"
-                            name="author"
+                            name="date"
                             onChange={handleChange}
-                            value={backOfficeInput.author}
+                            value={eventInput.date}
                             className="form-control"
                           />
                         </div>
                         <div className="col-md-6 form-group mb-3">
-                          <label>Copies</label>
+                          <label>Status</label>
                           <input
                             type="text"
-                            name="copies"
+                            name="status"
                             onChange={handleChange}
-                            value={backOfficeInput.copies}
-                            className="form-control"
-                          />
-                        </div>
-                        <div className="col-md-6 form-group mb-3">
-                          <label>Available Copies</label>
-                          <input
-                            type="text"
-                            name="availble_copies"
-                            onChange={handleChange}
-                            value={backOfficeInput.availble_copies}
+                            value={eventInput.status}
                             className="form-control"
                           />
                         </div>
@@ -142,4 +131,4 @@ const AddBackOffice = () => {
   );
 };
 
-export default AddBackOffice;
+export default AddEvent;

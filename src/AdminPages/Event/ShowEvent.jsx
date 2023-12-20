@@ -6,15 +6,13 @@ import Sidebar from "./../../components/Sidebar";
 import Footer from "./../../components/Footer";
 import AdminHeader from "../../components/AdminHeader";
 
-import "../../assets/css/new.css";
-
-const ShowBackOffice = () => {
-  const [backOfficeItem, setBackOfficeItem] = useState(null);
+const ShowEvent = () => {
+  const [eventItem, setEventItem] = useState(null);
   const { id } = useParams();
   console.log(id);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/backOffice/${id}`, {
+    fetch(`http://127.0.0.1:8000/api/event/${id}`, {
       headers: {
         Accept: "application/json",
       },
@@ -23,11 +21,11 @@ const ShowBackOffice = () => {
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setBackOfficeItem(response.data?.backOffice);
+        setEventItem(response.data?.event);
       })
       .catch((error) => {
         console.error(error);
-        setBackOfficeItem(null);
+        setEventItem(null);
       });
   }, [id]);
 
@@ -44,38 +42,34 @@ const ShowBackOffice = () => {
           <div className="mt-5 container">
             <div className="card">
               <div className="card-header">
-                <h4>Book Details</h4>
+                <h4>Event Details</h4>
                 <Link
-                  to="/admin/backOffice"
+                  to="/admin/event"
                   className="btn btn-primary btn-sm float-end"
                   style={{ marginTop: "-30px" }}
                 >
-                  Book List
+                  Event List
                 </Link>
               </div>
-              <div className="col-md-8 p-4">
-                <div className="tab-content profile-tab" id="myTabContent">
+              <div class="col-md-8 p-4">
+                <div class="tab-content profile-tab" id="myTabContent">
                   <div>
                     <ol className="alternating-colors">
                       <li className="element-list">
-                        <strong>Id</strong>
-                        <p>{backOfficeItem?.id}</p>
+                        <strong>Event Id</strong>
+                        <p>{eventItem?.id}</p>
                       </li>
                       <li className="element-list">
-                        <strong>Book Name</strong>
-                        <p>{backOfficeItem?.name}</p>
+                        <strong>Event Title</strong>
+                        <p>{eventItem?.title}</p>
                       </li>
                       <li className="element-list">
-                        <strong>Author</strong>
-                        <p>{backOfficeItem?.author}</p>
+                        <strong>Date</strong>
+                        <p>{eventItem?.date}</p>
                       </li>
                       <li className="element-list">
-                        <strong>Copies</strong>
-                        <p>{backOfficeItem?.copies}</p>
-                      </li>
-                      <li className="element-list">
-                        <strong>Available Copies</strong>
-                        <p>{backOfficeItem?.availble_copies}</p>
+                        <strong>Status</strong>
+                        <p>{eventItem?.status}</p>
                       </li>
                     </ol>
                   </div>
@@ -92,4 +86,4 @@ const ShowBackOffice = () => {
   );
 };
 
-export default ShowBackOffice;
+export default ShowEvent;

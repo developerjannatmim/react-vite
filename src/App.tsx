@@ -23,6 +23,11 @@ import ShowDriver from "./AdminPages/Driver/ShowDriver";
 import AddDriver from "./AdminPages/Driver/AddDriver";
 import UpdateDriver from "./AdminPages/Driver/UpdateDriver";
 
+import EventList from "./AdminPages/Event/EventList";
+import ShowEvent from "./AdminPages/Event/ShowEvent";
+import AddEvent from "./AdminPages/Event/AddEvent";
+import UpdateEvent from "./AdminPages/Event/UpdateEvent";
+
 import AssignStudentList from "./AdminPages/AssignStudent/AssignStudentList";
 import ShowAssignStudent from "./AdminPages/AssignStudent/ShowAssignStudent";
 import AddAssignStudent from "./AdminPages/AssignStudent/AddAssignStudent";
@@ -270,6 +275,11 @@ const App = () => {
           <Route path="driver/create" element={<AddDriver />} />
           <Route path="driver/:id/show" element={<ShowDriver />} />
           <Route path="driver/:id/edit" element={<UpdateDriver />} />
+
+          <Route path="event" element={<EventList />} />
+          <Route path="event/create" element={<AddEvent />} />
+          <Route path="event/:id/show" element={<ShowEvent />} />
+          <Route path="event/:id/edit" element={<UpdateEvent />} />
 
           <Route path="assignStudents" element={<AssignStudentList />} />
           <Route path="assignStudents/create" element={<AddAssignStudent />} />
