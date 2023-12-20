@@ -509,7 +509,7 @@ const Sidebar = () => {
                   >
                     <Link
                       className="nav-link text-white"
-                      to="/admin/book-list-man"
+                      to="/admin/backOffice"
                     >
                       <i className="bi bi-person-circle icon"></i>
                       <span className="d-none d-sm-inline">Book List Manager</span>

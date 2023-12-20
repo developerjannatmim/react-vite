@@ -33,6 +33,11 @@ import ShowVehicle from "./AdminPages/Vehicle/ShowVehicle";
 import AddVehicle from "./AdminPages/Vehicle/AddVehicle";
 import UpdateVehicle from "./AdminPages/Vehicle/UpdateVehicle";
 
+import BackOfficeList from "./AdminPages/BackOffice/BackOfficeList";
+import ShowBackOffice from "./AdminPages/BackOffice/ShowBackOffice";
+import AddBackOffice from "./AdminPages/BackOffice/AddBackOffice";
+import UpdateBackOffice from "./AdminPages/BackOffice/UpdateBackOffice";
+
 import LibrarianList from "./AdminPages/Librarian/LibrarianList";
 import ShowLibrarian from "./AdminPages/Librarian/ShowLibrarian";
 import AddLibrarian from "./AdminPages/Librarian/AddLibrarian";
@@ -275,6 +280,11 @@ const App = () => {
           <Route path="vehicles/create" element={<AddVehicle />} />
           <Route path="vehicles/:id/show" element={<ShowVehicle />} />
           <Route path="vehicles/:id/edit" element={<UpdateVehicle />} />
+
+          <Route path="backOffice" element={<BackOfficeList />} />
+          <Route path="backOffice/create" element={<AddBackOffice />} />
+          <Route path="backOffice/:id/show" element={<ShowBackOffice />} />
+          <Route path="backOffice/:id/edit" element={<UpdateBackOffice />} />
 
           <Route path="librarian" element={<LibrarianList />} />
           <Route path="librarian/create" element={<AddLibrarian />} />
