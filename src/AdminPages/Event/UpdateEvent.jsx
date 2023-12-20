@@ -22,13 +22,13 @@ const UpdateEvent = () => {
     console.log(eventInput);
     fetch(`http://127.0.0.1:8000/api/event/${id}`, {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'PUT',
+      method: 'PUT'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -46,9 +46,9 @@ const UpdateEvent = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/event/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -105,25 +105,28 @@ const UpdateEvent = () => {
                               className="form-control"
                             />
                           </div>
-                          <div className="col-md-6 form-group mb-3">
-                            <label>Grade Point</label>
+                          <div className="form-group mb-3">
+                            <label>Date</label>
                             <input
-                              type="text"
-                              name="date"
+                              type="date"
                               onChange={handleChange}
-                              value={eventInput?.date || ''}
+                              value={eventInput.date || ''}
+                              name="date"
                               className="form-control"
                             />
                           </div>
-                          <div className="col-md-6 form-group mb-3">
+                          <div className="form-group mb-3">
                             <label>Status</label>
-                            <input
-                              type="text"
-                              name="status"
+                            <select
                               onChange={handleChange}
-                              value={eventInput?.status || ''}
+                              value={eventInput.status || ''}
+                              name="status"
                               className="form-control"
-                            />
+                            >
+                              <option value="">Select status</option>
+                              <option value="1">Active</option>
+                              <option value="0">Inactive</option>
+                            </select>
                           </div>
                         </div>
                         <button type="submit" className="btn btn-primary px-4">

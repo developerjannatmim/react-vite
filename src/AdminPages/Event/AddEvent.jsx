@@ -7,12 +7,20 @@ import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 
+// const defaultOption = { label: 'None', value: '' };
+
+// const statusOptions = [
+//   { ...defaultOption },
+//   { label: 'Active', value: '1' },
+//   { label: 'Inactive', value: '0' },
+// ];
+
 const AddEvent = () => {
   const navigate = useNavigate();
   const [eventInput, setEventInput] = useState({
     title: '',
     date: '',
-    status: '',
+    status: ''
   });
 
   const handleChange = (e) => {
@@ -24,17 +32,17 @@ const AddEvent = () => {
     const data = {
       title: eventInput.title,
       date: eventInput.date,
-      status: eventInput.status,
+      status: eventInput.status
     };
     fetch('http://127.0.0.1:8000/api/event', {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -92,26 +100,29 @@ const AddEvent = () => {
                             className="form-control"
                           />
                         </div>
-                        <div className="col-md-6 form-group mb-3">
+                        <div className="form-group mb-3">
                           <label>Date</label>
                           <input
-                            type="text"
+                            type="date"
+                            onChange={handleChange}
+                            value={eventInput.date || ''}
                             name="date"
-                            onChange={handleChange}
-                            value={eventInput.date}
                             className="form-control"
                           />
                         </div>
-                        <div className="col-md-6 form-group mb-3">
-                          <label>Status</label>
-                          <input
-                            type="text"
-                            name="status"
-                            onChange={handleChange}
-                            value={eventInput.status}
-                            className="form-control"
-                          />
-                        </div>
+                        <div className="form-group mb-3">
+                        <label>Status</label>
+                        <select
+                          onChange={handleChange}
+                          value={eventInput.status || ''}
+                          name="status"
+                          className="form-control"
+                        >
+                          <option value="">Select status</option>
+                          <option value="1">Active</option>
+                          <option value="0">Inactive</option>
+                        </select>
+                      </div>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">
                         Submit

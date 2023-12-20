@@ -138,7 +138,15 @@ const EventList = () => {
                           <td>{event?.id}</td>
                           <td>{event?.title}</td>
                           <td>{event?.date}</td>
-                          <td>{event?.status}</td>
+                          {event.status === 1 &&
+                            <td><button style={{ backgroundColor: '#65B741', color: 'white', border: 'none', borderRadius: '14px'  }}>active</button></td>
+
+                          }
+                          {event.status === 0 &&
+                            <td><button style={{ backgroundColor: '#EF4040', color: 'white', border: 'none', borderRadius: '14px'  }}>inactive</button></td>
+
+                          }
+                          {/* <td className="status"><button style={{ backgroundColor: '#FF9800', color: 'white', border: 'none', borderRadius: '14px'  }} className="active">{event?.status === 1 ? "active" : "inactive"}</button></td> */}
                           <td>
                             <Link
                               to={`/admin/event/${event?.id}/show`}
@@ -150,7 +158,7 @@ const EventList = () => {
                           <td>
                             <Link
                               to={`/admin/event/${event?.id}/edit`}
-                              className="btn btn-success btn-sm"
+                              className="btn btn-warning btn-sm"
                             >
                               Edit
                             </Link>
