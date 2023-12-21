@@ -85,7 +85,7 @@ const StudentList = () => {
                   Add Student
                 </Link>
               </div>
-              <div className="page-system mt-4">
+              <div className="page-system mt-4 mb-3" style={{ marginLeft: '690px' }}>
                 <nav>
                   <ul className="pagination">
                     <li className="page-item">

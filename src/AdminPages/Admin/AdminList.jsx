@@ -85,7 +85,7 @@ const AdminList = () => {
                   Add Admin
                 </Link>
               </div>
-              <div className="page-system mt-4">
+              <div className="page-system mt-3 mb-3" style={{ marginLeft: '690px' }}>
                 <nav>
                   <ul className="pagination">
                     <li className="page-item">
