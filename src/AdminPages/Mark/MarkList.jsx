@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const MarkList = () => {
   const [markList, setMarkList] = useState([]);
@@ -16,34 +16,34 @@ const MarkList = () => {
   const deleteMark = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
+    Clicked.innerText = 'deleting';
 
     if (confirm(`Are you sure you want to delete mark id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/marks/${id}`, {
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json'
         },
-        method: "DELETE",
+        method: 'DELETE'
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
         })
         .catch((error) => {
           console.error(error);
-          Swal.fire("Warning", response?.message, "warning");
+          Swal.fire('Warning', response?.message, 'warning');
         });
     }
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/marks?", {
+    fetch('http://127.0.0.1:8000/api/marks?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -96,7 +96,7 @@ const MarkList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >
@@ -131,9 +131,7 @@ const MarkList = () => {
                       <th scope="col">Section</th>
                       <th scope="col">Subject</th>
                       <th scope="col">Comment</th>
-                      <th scope="col">Show</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -150,27 +148,46 @@ const MarkList = () => {
                           <td>{mark?.subject?.name}</td>
                           <td>{mark?.comment}</td>
                           <td>
-                            <Link
-                              to={`/admin/marks/${mark?.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              to={`/admin/marks/${mark?.id}/edit`}
-                              className="btn btn-success btn-sm"
-                            >
-                              Edit
-                            </Link>
-                          </td>
-                          <td
-                            type="button"
-                            onClick={(e) => deleteMark(e, mark?.id)}
-                            className="btn btn-danger btn-sm"
-                          >
-                            Delete
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/marks/${mark?.id}/show`}
+                                  >
+                                    Show
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/marks/${mark?.id}/edit`}
+                                  >
+                                    Edit
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    onClick={(e) => deleteMark(e, mark?.id)}
+                                  >
+                                    Delete
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );

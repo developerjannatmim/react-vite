@@ -164,6 +164,50 @@ const BackOfficeList = () => {
                           >
                             Delete
                           </td>
+                          <td>
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/users/${userData?.id}/show`}
+                                  >
+                                    Show Admin
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/users/${userData?.id}/edit`}
+                                  >
+                                    Edit Admin
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    onClick={(e) =>
+                                      deleteUserData(e, userData?.id)
+                                    }
+                                  >
+                                    Delete Admin
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
                         </tr>
                       );
                     })}

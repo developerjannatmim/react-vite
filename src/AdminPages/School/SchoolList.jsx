@@ -81,8 +81,7 @@ const SchoolList = () => {
                       <th scope="col">School Address</th>
                       <th scope="col">School Information</th>
                       <th scope="col">Status</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -104,19 +103,38 @@ const SchoolList = () => {
 
                           }
                           <td>
-                            <Link
-                              to={`/admin/settings/school-info/${schoolItem?.id}/edit`}
-                              className="btn btn-warning btn-sm"
-                            >
-                              Edit
-                            </Link>
-                          </td>
-                          <td
-                            type="button"
-                            onClick={(e) => deleteSchool(e, schoolItem?.id)}
-                            className="btn btn-danger btn-sm"
-                          >
-                            Delete
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/settings/school-info/${schoolItem?.id}/edit`}
+                                  >
+                                    Edit
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    onClick={(e) => deleteSchool(e, schoolItem?.id)}
+                                  >
+                                    Delete
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );

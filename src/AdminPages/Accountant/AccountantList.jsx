@@ -1,12 +1,12 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
-import "../../assets/css/style.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import '../../assets/css/style.css';
 
-import Sidebar from "../../components/Sidebar";
-import Footer from "../../components/Footer";
-import AccountantHeader from "../../components/AccountantHeader";
+import Sidebar from '../../components/Sidebar';
+import Footer from '../../components/Footer';
+import AccountantHeader from '../../components/AccountantHeader';
 
 const AccountantList = () => {
   const [accountant, setAccountant] = useState([]);
@@ -17,34 +17,34 @@ const AccountantList = () => {
   const deleteAccountantData = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
+    Clicked.innerText = 'deleting';
 
     if (confirm(`Are you sure you want to delete accountant id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/accountant/${id}`, {
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json'
         },
-        method: "DELETE",
+        method: 'DELETE'
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
         })
         .catch((error) => {
           console.error(error);
-          Swal.fire("Warning", response?.message, "warning");
+          Swal.fire('Warning', response?.message, 'warning');
         });
     }
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/accountant?", {
+    fetch('http://127.0.0.1:8000/api/accountant?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -97,7 +97,7 @@ const AccountantList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >
@@ -154,7 +154,7 @@ const AccountantList = () => {
                                   alt="accountant-image"
                                   width="40"
                                   height="40"
-                                  style={{ borderRadius: "50px" }}
+                                  style={{ borderRadius: '50px' }}
                                 />
                               </td>
                               <td>
@@ -200,48 +200,50 @@ const AccountantList = () => {
                               >
                                 Delete
                               </td>
-
-                              {/* <td>
-                                  <div class="dropdown text-center">
-                                    <button
-                                      type="button"
-                                      class="btn btn-sm btn-icon btn-rounded btn-outline-secondary dropdown-btn dropdown-toggle arrow-none card-drop"
-                                      data-bs-toggle="dropdown"
-                                      aria-expanded="false"
-                                    >
-                                      Actions
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                      <ul>
-                                        <li>
-                                          <Link
-                                            to={`/accountant/accountant/${accountantData?.id}/show`}
-                                            className="btn btn-sm"
-                                          >
-                                            Show
-                                          </Link>
-                                        </li>
-                                        <li>
-                                          <Link
-                                            to={`/accountant/accountant/${accountantData?.id}/edit`}
-                                            className="btn btn-success btn-sm"
-                                          >
-                                            Edit
-                                          </Link>
-                                        </li>
-                                        <td
-                                          type="button"
-                                          onClick={(e) =>
-                                            deleteaccountantData(e, accountantData?.id)
-                                          }
-                                          className="btn btn-danger btn-sm"
-                                        >
-                                          Delete
-                                        </td>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </td> */}
+                              <td>
+                                <div className="dropdown">
+                                  <button
+                                    className="btn btn-warning dropdown-toggle"
+                                    type="button"
+                                    id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                  >
+                                    Actions
+                                  </button>
+                                  <ul
+                                    className="dropdown-menu"
+                                    aria-labelledby="dropdownMenuButton1"
+                                  >
+                                    <li>
+                                      <Link
+                                        className="dropdown-item"
+                                        to={`/admin/users/${userData?.id}/show`}
+                                      >
+                                        Show Admin
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        className="dropdown-item"
+                                        to={`/admin/users/${userData?.id}/edit`}
+                                      >
+                                        Edit Admin
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        className="dropdown-item"
+                                        onClick={(e) =>
+                                          deleteUserData(e, userData?.id)
+                                        }
+                                      >
+                                        Delete Admin
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </td>
                             </tr>
                           );
                         })}

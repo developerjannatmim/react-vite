@@ -126,9 +126,7 @@ const EventList = () => {
                       <th scope="col">Event Title</th>
                       <th scope="col">Date</th>
                       <th scope="col">Status</th>
-                      <th scope="col">Show</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -146,29 +144,47 @@ const EventList = () => {
                             <td><button style={{ backgroundColor: '#EF4040', color: 'white', border: 'none', borderRadius: '14px'  }}>inactive</button></td>
 
                           }
-                          {/* <td className="status"><button style={{ backgroundColor: '#FF9800', color: 'white', border: 'none', borderRadius: '14px'  }} className="active">{event?.status === 1 ? "active" : "inactive"}</button></td> */}
                           <td>
-                            <Link
-                              to={`/admin/event/${event?.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              to={`/admin/event/${event?.id}/edit`}
-                              className="btn btn-warning btn-sm"
-                            >
-                              Edit
-                            </Link>
-                          </td>
-                          <td
-                            type="button"
-                            onClick={(e) => deleteEvent(e, event?.id)}
-                            className="btn btn-danger btn-sm"
-                          >
-                            Delete
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/event/${event?.id}/show`}
+                                  >
+                                    Show
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/event/${event?.id}/edit`}
+                                  >
+                                    Edit
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    onClick={(e) => deleteEvent(e, event?.id)}
+                                  >
+                                    Delete
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );

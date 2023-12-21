@@ -1,12 +1,12 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
-import "../../assets/css/style.css";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import '../../assets/css/style.css';
 
-import Sidebar from "../../components/Sidebar";
-import Footer from "../../components/Footer";
-import LibrarianHeader from "../../components/LibrarianHeader";
+import Sidebar from '../../components/Sidebar';
+import Footer from '../../components/Footer';
+import LibrarianHeader from '../../components/LibrarianHeader';
 
 const LibrarianList = () => {
   const [librarian, setLibrarian] = useState([]);
@@ -17,34 +17,34 @@ const LibrarianList = () => {
   const deleteLibrarianData = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
+    Clicked.innerText = 'deleting';
 
     if (confirm(`Are you sure you want to delete librarian id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/librarian/${id}`, {
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json'
         },
-        method: "DELETE",
+        method: 'DELETE'
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
         })
         .catch((error) => {
           console.error(error);
-          Swal.fire("Warning", response?.message, "warning");
+          Swal.fire('Warning', response?.message, 'warning');
         });
     }
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/librarian?", {
+    fetch('http://127.0.0.1:8000/api/librarian?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -97,7 +97,7 @@ const LibrarianList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >
@@ -130,9 +130,7 @@ const LibrarianList = () => {
                           <th scope="col">Name</th>
                           <th scope="col">Email</th>
                           <th scope="col">User Info</th>
-                          <th scope="col">Show</th>
-                          <th scope="col">Edit</th>
-                          <th scope="col">Delete</th>
+                          <th scope="col">Options</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -154,7 +152,7 @@ const LibrarianList = () => {
                                   alt="librarian-image"
                                   width="40"
                                   height="40"
-                                  style={{ borderRadius: "50px" }}
+                                  style={{ borderRadius: '50px' }}
                                 />
                               </td>
                               <td>
@@ -176,29 +174,51 @@ const LibrarianList = () => {
                                 </small>
                               </td>
                               <td>
-                                <Link
-                                  to={`/admin/librarian/${librarianData?.id}/show`}
-                                  className="btn btn-primary "
-                                >
-                                  Show
-                                </Link>
-                              </td>
-                              <td>
-                                <Link
-                                  to={`/admin/librarian/${librarianData?.id}/edit`}
-                                  className="btn btn-success"
-                                >
-                                  Edit
-                                </Link>
-                              </td>
-                              <td
-                                type="button"
-                                onClick={(e) =>
-                                  deleteLibrarianData(e, librarianData?.id)
-                                }
-                                className="btn btn-danger btn-sm mt-2"
-                              >
-                                Delete
+                                <div className="dropdown">
+                                  <button
+                                    className="btn btn-warning dropdown-toggle"
+                                    type="button"
+                                    id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                  >
+                                    Actions
+                                  </button>
+                                  <ul
+                                    className="dropdown-menu"
+                                    aria-labelledby="dropdownMenuButton1"
+                                  >
+                                    <li>
+                                      <Link
+                                        className="dropdown-item"
+                                        to={`/admin/librarian/${librarianData?.id}/show`}
+                                      >
+                                        Show
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        className="dropdown-item"
+                                        to={`/admin/librarian/${librarianData?.id}/edit`}
+                                      >
+                                        Edit
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        className="dropdown-item"
+                                        onClick={(e) =>
+                                          deleteLibrarianData(
+                                            e,
+                                            librarianData?.id
+                                          )
+                                        }
+                                      >
+                                        Delete
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
                               </td>
                             </tr>
                           );

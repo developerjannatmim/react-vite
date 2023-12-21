@@ -38,6 +38,11 @@ import ShowVehicle from "./AdminPages/Vehicle/ShowVehicle";
 import AddVehicle from "./AdminPages/Vehicle/AddVehicle";
 import UpdateVehicle from "./AdminPages/Vehicle/UpdateVehicle";
 
+import UserList from "./AdminPages/User/UserList";
+import ShowUser from "./AdminPages/User/ShowUser";
+import AddUser from "./AdminPages/User/AddUser";
+import UpdateUser from "./AdminPages/User/UpdateUser";
+
 import UserRoleList from "./AdminPages/UserRole/UserRoleList";
 import ShowUserRole from "./AdminPages/UserRole/ShowUserRole";
 import AddUserRole from "./AdminPages/UserRole/AddUserRole";
@@ -285,6 +290,11 @@ const App = () => {
           <Route path="event/create" element={<AddEvent />} />
           <Route path="event/:id/show" element={<ShowEvent />} />
           <Route path="event/:id/edit" element={<UpdateEvent />} />
+
+          <Route path="users" element={<UserList />} />
+          <Route path="users/create" element={<AddUser />} />
+          <Route path="users/:id/show" element={<ShowUser />} />
+          <Route path="users/:id/edit" element={<UpdateUser />} />
 
           <Route path="assignStudents" element={<AssignStudentList />} />
           <Route path="assignStudents/create" element={<AddAssignStudent />} />

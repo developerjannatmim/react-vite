@@ -589,7 +589,7 @@ const Sidebar = () => {
                     onClick={(e) => setActive(6)}
                   >
                     <Link
-                      to="/admin/user-list"
+                      to="/admin/users"
                       className="nav-link text-white text-center text-sm-start"
                       aria-current="page"
                     >

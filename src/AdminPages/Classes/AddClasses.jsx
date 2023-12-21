@@ -117,7 +117,7 @@ const AddClasses = () => {
                           <small className="text-danger">{errors.name}</small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
-                          <label>Class Name</label>
+                          <label>Section Name</label>
                           <select
                             name="section_id"
                             className="form-control"

@@ -117,10 +117,10 @@ const AddSyllabus = () => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
         navigate('/admin/syllabuses');
-        setErrors({});
       }else{
         Swal.fire('Warning', response?.message, 'warning');
-        setErrors(response?.errors);
+        //setErrors(response?.errors);
+        setErrors({});
       }
     })
   };

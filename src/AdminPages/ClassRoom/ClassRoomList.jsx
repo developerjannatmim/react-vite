@@ -124,9 +124,7 @@ const ClassRoomList = () => {
                     <tr>
                       <th scope="col">ID</th>
                       <th scope="col">Class Room No.</th>
-                      <th scope="col">Show</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -136,27 +134,46 @@ const ClassRoomList = () => {
                           <td>{classRoom.id}</td>
                           <td>{classRoom.name}</td>
                           <td>
-                            <Link
-                              to={`/admin/classroom/${classRoom.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              to={`/admin/classroom/${classRoom.id}/edit`}
-                              className="btn btn-success btn-sm"
-                            >
-                              Edit
-                            </Link>
-                          </td>
-                          <td
-                            type="button"
-                            onClick={(e) => deleteClassRoom(e, classRoom.id)}
-                            className="btn btn-danger btn-sm"
-                          >
-                            Delete
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/classroom/${classRoom.id}/show`}
+                                  >
+                                    Show
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/classroom/${classRoom.id}/edit`}
+                                  >
+                                    Edit
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    onClick={(e) => deleteClassRoom(e, classRoom.id)}
+                                  >
+                                    Delete
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );

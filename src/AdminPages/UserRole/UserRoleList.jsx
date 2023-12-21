@@ -124,9 +124,7 @@ const UserRoleList = () => {
                     <tr>
                       <th scope="col">ID</th>
                       <th scope="col">User Role</th>
-                      <th scope="col">Show</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -136,27 +134,46 @@ const UserRoleList = () => {
                           <td>{userRole.id}</td>
                           <td>{userRole.name}</td>
                           <td>
-                            <Link
-                              to={`/admin/userRoles/${userRole.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              to={`/admin/userRoles/${userRole.id}/edit`}
-                              className="btn btn-success btn-sm"
-                            >
-                              Edit
-                            </Link>
-                          </td>
-                          <td
-                            type="button"
-                            onClick={(e) => deleteUserRole(e, userRole.id)}
-                            className="btn btn-danger btn-sm"
-                          >
-                            Delete
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/userRoles/${userRole.id}/show`}
+                                  >
+                                    Show
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/admin/userRoles/${userRole.id}/edit`}
+                                  >
+                                    Edit
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    onClick={(e) => deleteUserRole(e, userRole.id)}
+                                  >
+                                    Delete
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );
