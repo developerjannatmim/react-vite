@@ -1,50 +1,46 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 
-const AddEvent = () => {
+const AddUserRole = () => {
   const navigate = useNavigate();
-  const [eventInput, setEventInput] = useState({
-    title: '',
-    date: '',
-    status: ''
+  const [userRoleInput, setUserRoleInput] = useState({
+    name: '',
   });
 
   const handleChange = (e) => {
-    setEventInput((values) => ({ ...values, [e.target.name]: e.target.value }));
+    setUserRoleInput((values) => ({ ...values, [e.target.name]: e.target.value }));
   };
 
-  const submitEvent = (e) => {
+  const submitUserRole = (e) => {
     e.preventDefault();
     const data = {
-      title: eventInput.title,
-      date: eventInput.date,
-      status: eventInput.status
+      name: userRoleInput.name,
     };
-    fetch('http://127.0.0.1:8000/api/event', {
+    fetch('http://127.0.0.1:8000/api/userRoles', {
       body: JSON.stringify({
-        ...data
+        ...data,
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      method: 'POST'
+      method: 'POST',
     })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/event');
+        navigate('/admin/userRoles');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('MARK_FORM').reset();
+        document.getElementById('SUBJECT_FORM').reset();
         Swal.fire('Warning', response?.message, 'warning');
       });
   };
@@ -60,16 +56,16 @@ const AddEvent = () => {
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container-fluid px-3">
-            <form onSubmit={submitEvent} id="MARK_FORM">
+            <form onSubmit={submitUserRole} id="SUBJECT_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Event List
+                    User Role List
                     <Link
-                      to="/admin/event"
+                      to="/admin/userRoles"
                       className="btn btn-primary btn-sm float-end"
                     >
-                      View Event
+                      View User Role
                     </Link>
                   </h4>
                 </div>
@@ -83,38 +79,15 @@ const AddEvent = () => {
                     >
                       <div className="row">
                         <div className="col-md-6 form-group mb-3">
-                          <label>Event Title</label>
+                          <label>User Role Name</label>
                           <input
                             type="text"
-                            name="title"
+                            name="name"
                             onChange={handleChange}
-                            value={eventInput.title}
+                            value={userRoleInput.name}
                             className="form-control"
                           />
                         </div>
-                        <div className="form-group mb-3">
-                          <label>Date</label>
-                          <input
-                            type="date"
-                            onChange={handleChange}
-                            value={eventInput.date || ''}
-                            name="date"
-                            className="form-control"
-                          />
-                        </div>
-                        <div className="form-group mb-3">
-                        <label>Status</label>
-                        <select
-                          onChange={handleChange}
-                          value={eventInput.status || ''}
-                          name="status"
-                          className="form-control"
-                        >
-                          <option value="">Select status</option>
-                          <option value="1">Active</option>
-                          <option value="0">Inactive</option>
-                        </select>
-                      </div>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">
                         Submit
@@ -134,4 +107,4 @@ const AddEvent = () => {
   );
 };
 
-export default AddEvent;
+export default AddUserRole;

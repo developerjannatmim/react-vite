@@ -577,7 +577,7 @@ const Sidebar = () => {
                     }
                     onClick={(e) => setActive(4)}
                   >
-                    <Link className="nav-link text-white" to="/admin/user-role">
+                    <Link className="nav-link text-white" to="/admin/userRoles">
                       <i className="bi bi-person-circle icon"></i>
                       <span className="d-none d-sm-inline">User Roles</span>
                     </Link>

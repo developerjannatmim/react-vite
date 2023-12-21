@@ -38,6 +38,11 @@ import ShowVehicle from "./AdminPages/Vehicle/ShowVehicle";
 import AddVehicle from "./AdminPages/Vehicle/AddVehicle";
 import UpdateVehicle from "./AdminPages/Vehicle/UpdateVehicle";
 
+import UserRoleList from "./AdminPages/UserRole/UserRoleList";
+import ShowUserRole from "./AdminPages/UserRole/ShowUserRole";
+import AddUserRole from "./AdminPages/UserRole/AddUserRole";
+import UpdateUserRole from "./AdminPages/UserRole/UpdateUserRole";
+
 import BackOfficeList from "./AdminPages/BackOffice/BackOfficeList";
 import ShowBackOffice from "./AdminPages/BackOffice/ShowBackOffice";
 import AddBackOffice from "./AdminPages/BackOffice/AddBackOffice";
@@ -290,6 +295,11 @@ const App = () => {
           <Route path="vehicles/create" element={<AddVehicle />} />
           <Route path="vehicles/:id/show" element={<ShowVehicle />} />
           <Route path="vehicles/:id/edit" element={<UpdateVehicle />} />
+
+          <Route path="userRoles" element={<UserRoleList />} />
+          <Route path="userRoles/create" element={<AddUserRole />} />
+          <Route path="userRoles/:id/show" element={<ShowUserRole />} />
+          <Route path="userRoles/:id/edit" element={<UpdateUserRole />} />
 
           <Route path="backOffice" element={<BackOfficeList />} />
           <Route path="backOffice/create" element={<AddBackOffice />} />
