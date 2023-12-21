@@ -95,11 +95,18 @@ const SchoolList = () => {
                           <td>{schoolItem?.phone}</td>
                           <td>{schoolItem?.address}</td>
                           <td>{schoolItem?.school_info}</td>
-                          <td>{schoolItem?.status}</td>
+                          {schoolItem?.status === 1 &&
+                            <td><button style={{ backgroundColor: '#65B741', color: 'white', border: 'none', borderRadius: '14px'  }}>active</button></td>
+
+                          }
+                          {schoolItem?.status === 0 &&
+                            <td><button style={{ backgroundColor: '#EF4040', color: 'white', border: 'none', borderRadius: '14px'  }}>inactive</button></td>
+
+                          }
                           <td>
                             <Link
                               to={`/admin/settings/school-info/${schoolItem?.id}/edit`}
-                              className="btn btn-success btn-sm"
+                              className="btn btn-warning btn-sm"
                             >
                               Edit
                             </Link>

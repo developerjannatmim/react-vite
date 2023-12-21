@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../assets/css/Sidebar.css";
 import { Link } from "react-router-dom";
+import { Image } from 'react-bootstrap';
+import logo from './../assets/images/image.jpg';
 
 const Sidebar = () => {
   const [active, setActive] = useState(1);
@@ -11,6 +13,7 @@ const Sidebar = () => {
       <>
         <div className="sidebar py-5 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
           <div>
+          <Image style={{ marginTop: '-40px' }} src={logo} width="60px" height="60px"/>
             <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
               <span className="sidenav-menu-heading">CORE</span>
               <li>
