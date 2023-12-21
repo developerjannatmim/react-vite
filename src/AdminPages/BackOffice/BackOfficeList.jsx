@@ -127,9 +127,7 @@ const BackOfficeList = () => {
                       <th scope="col">Author</th>
                       <th scope="col">Copies</th>
                       <th scope="col">Available Copies</th>
-                      <th scope="col">Show</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -141,29 +139,6 @@ const BackOfficeList = () => {
                           <td>{backOffice?.author}</td>
                           <td>{backOffice?.copies}</td>
                           <td>{backOffice?.availble_copies}</td>
-                          <td>
-                            <Link
-                              to={`/admin/backOffice/${backOffice.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              to={`/admin/backOffice/${backOffice.id}/edit`}
-                              className="btn btn-success btn-sm"
-                            >
-                              Edit
-                            </Link>
-                          </td>
-                          <td
-                            type="button"
-                            onClick={(e) => deleteBackOffice(e, backOffice.id)}
-                            className="btn btn-danger btn-sm"
-                          >
-                            Delete
-                          </td>
                           <td>
                             <div className="dropdown">
                               <button
@@ -182,27 +157,25 @@ const BackOfficeList = () => {
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    to={`/admin/users/${userData?.id}/show`}
+                                    to={`/admin/backOffice/${backOffice.id}/show`}
                                   >
-                                    Show Admin
+                                    Show
                                   </Link>
                                 </li>
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    to={`/admin/users/${userData?.id}/edit`}
+                                    to={`/admin/backOffice/${backOffice.id}/edit`}
                                   >
-                                    Edit Admin
+                                    Edit
                                   </Link>
                                 </li>
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    onClick={(e) =>
-                                      deleteUserData(e, userData?.id)
-                                    }
+                                    onClick={(e) => deleteBackOffice(e, backOffice.id)}
                                   >
-                                    Delete Admin
+                                    Delete
                                   </Link>
                                 </li>
                               </ul>

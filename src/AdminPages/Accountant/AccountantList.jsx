@@ -130,9 +130,7 @@ const AccountantList = () => {
                           <th scope="col">Name</th>
                           <th scope="col">Email</th>
                           <th scope="col">User Info</th>
-                          <th scope="col">Show</th>
-                          <th scope="col">Edit</th>
-                          <th scope="col">Delete</th>
+                          <th scope="col">Options</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -167,38 +165,13 @@ const AccountantList = () => {
                               </td>
                               <td>
                                 <small>
-                                  <b>Phone: </b>088+{userInformation?.phone}
+                                  <b>Phone: </b>+{userInformation?.phone}
                                 </small>
                                 <br />
                                 <small>
                                   <b>Address: </b>
                                   {userInformation?.address}
                                 </small>
-                              </td>
-                              <td>
-                                <Link
-                                  to={`/admin/accountant/${accountantData?.id}/show`}
-                                  className="btn btn-primary "
-                                >
-                                  Show
-                                </Link>
-                              </td>
-                              <td>
-                                <Link
-                                  to={`/admin/accountant/${accountantData?.id}/edit`}
-                                  className="btn btn-success"
-                                >
-                                  Edit
-                                </Link>
-                              </td>
-                              <td
-                                type="button"
-                                onClick={(e) =>
-                                  deleteAccountantData(e, accountantData?.id)
-                                }
-                                className="btn btn-danger btn-sm mt-2"
-                              >
-                                Delete
                               </td>
                               <td>
                                 <div className="dropdown">
@@ -218,24 +191,27 @@ const AccountantList = () => {
                                     <li>
                                       <Link
                                         className="dropdown-item"
-                                        to={`/admin/users/${userData?.id}/show`}
+                                        to={`/admin/accountant/${accountantData?.id}/show`}
                                       >
-                                        Show Admin
+                                        Show
                                       </Link>
                                     </li>
                                     <li>
                                       <Link
                                         className="dropdown-item"
-                                        to={`/admin/users/${userData?.id}/edit`}
+                                        to={`/admin/accountant/${accountantData?.id}/edit`}
                                       >
-                                        Edit Admin
+                                        Edit
                                       </Link>
                                     </li>
                                     <li>
                                       <Link
                                         className="dropdown-item"
                                         onClick={(e) =>
-                                          deleteUserData(e, userData?.id)
+                                          deleteAccountantData(
+                                            e,
+                                            accountantData?.id
+                                          )
                                         }
                                       >
                                         Delete Admin

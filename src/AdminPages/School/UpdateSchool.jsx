@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
@@ -12,13 +13,13 @@ import AdminHeader from '../../components/AdminHeader';
 const UpdateSchool = () => {
   const navigate = useNavigate();
   const [schoolInput, setSchoolInput] = useState([]);
-  const [classes, setClasses] = useState();
-  const [checked, setChecked] = useState(true);
+  //const [classes, setClasses] = useState();
+  //const [checked, setChecked] = useState(true);
   const { id } = useParams();
 
-  const handleChecked = () => {
-    setChecked(checked);
-  };
+  // const handleChecked = () => {
+  //   setChecked(checked);
+  // };
 
   const handleChange = (e) => {
     setSchoolInput((values) => ({
@@ -154,13 +155,26 @@ const UpdateSchool = () => {
                               className="form-control"
                             />
                           </div>
-                          <label>Status</label>
+                          <div className="form-group mb-3">
+                            <label>Status</label>
+                            <select
+                              onChange={handleChange}
+                              value={schoolInput.status || ''}
+                              name="status"
+                              className="form-control"
+                            >
+                              <option value="">Select status</option>
+                              <option value="1">Active</option>
+                              <option value="0">Inactive</option>
+                            </select>
+                          </div>
+                          {/* <label>Status</label>
                           <div className="col-md-6 form-group mb-3">
                             <Switch
                               onChange={handleChecked}
                               checked={checked}
                             />
-                          </div>
+                          </div> */}
                         </div>
                         <button type="submit" className="btn btn-primary px-4">
                           Update Info

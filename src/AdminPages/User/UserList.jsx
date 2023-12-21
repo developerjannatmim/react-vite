@@ -169,7 +169,7 @@ const UserList = () => {
                           </td>
                           <td>
                             <small>
-                              <b>Phone: </b>088+{userInformation?.phone}
+                              <b>Phone: </b>+{userInformation?.phone}
                             </small>
                             <br />
                             <small>

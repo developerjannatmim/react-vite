@@ -182,7 +182,7 @@ const AssignStudentList = () => {
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    to={`/admin/users/${userData?.id}/show`}
+                                    to={`/admin/assignStudents/${assignStudent.id}/show`}
                                   >
                                     Show Admin
                                   </Link>
@@ -190,19 +190,17 @@ const AssignStudentList = () => {
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    to={`/admin/users/${userData?.id}/edit`}
+                                    to={`/admin/assignStudents/${assignStudent.id}/edit`}
                                   >
-                                    Edit Admin
+                                    Edit
                                   </Link>
                                 </li>
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    onClick={(e) =>
-                                      deleteUserData(e, userData?.id)
-                                    }
+                                    onClick={(e) => deleteAssignStudent(e, assignStudent.id)}
                                   >
-                                    Delete Admin
+                                    Delete
                                   </Link>
                                 </li>
                               </ul>
