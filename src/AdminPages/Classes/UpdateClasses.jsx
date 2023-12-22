@@ -78,6 +78,7 @@ const UpdateClasses = () => {
         setSections(null);
       });
   }, []);
+
   return (
     <>
       <div>
@@ -130,7 +131,7 @@ const UpdateClasses = () => {
                               onChange={handleChange}
                               value={classInput?.section_id || ''}
                             >
-                              <option>select class</option>
+                              <option>select section</option>
                               {sections?.map((sectionItem) => {
                                 return (
                                   <option

@@ -23,6 +23,11 @@ import ShowDriver from "./AdminPages/Driver/ShowDriver";
 import AddDriver from "./AdminPages/Driver/AddDriver";
 import UpdateDriver from "./AdminPages/Driver/UpdateDriver";
 
+import AdmissionList from "./AdminPages/Admission/AdmissionList";
+import ShowAdmission from "./AdminPages/Admission/ShowAdmission";
+import AddAdmission from "./AdminPages/Admission/AddAdmission";
+import UpdateAdmission from "./AdminPages/Admission/UpdateAdmission";
+
 import EventList from "./AdminPages/Event/EventList";
 import ShowEvent from "./AdminPages/Event/ShowEvent";
 import AddEvent from "./AdminPages/Event/AddEvent";
@@ -255,6 +260,8 @@ import ParentRoute from "./components/ParentRoute";
 import ParentProfile from "./ParentPages/ParentProfile/ParentProfile";
 
 import HomePage from "./PublicPages/HomePage/HomePage.jsx";
+import { Switch } from 'react-switch';
+import StudentSidebar from './components/StudentSidebar';
 
 const App = () => {
   return (
@@ -285,6 +292,11 @@ const App = () => {
           <Route path="driver/create" element={<AddDriver />} />
           <Route path="driver/:id/show" element={<ShowDriver />} />
           <Route path="driver/:id/edit" element={<UpdateDriver />} />
+
+          <Route path="admission" element={<AdmissionList />} />
+          <Route path="admission/create" element={<AddAdmission />} />
+          <Route path="admission/:id/show" element={<ShowAdmission />} />
+          <Route path="admission/:id/edit" element={<UpdateAdmission />} />
 
           <Route path="event" element={<EventList />} />
           <Route path="event/create" element={<AddEvent />} />

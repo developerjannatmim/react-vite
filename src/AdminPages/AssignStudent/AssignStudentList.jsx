@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const AssignStudentList = () => {
   const [assignStudentList, setAssignStudentList] = useState([]);
@@ -16,34 +16,34 @@ const AssignStudentList = () => {
   const deleteAssignStudent = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
+    Clicked.innerText = 'deleting';
 
     if (confirm(`Are you sure you want to delete assignStudent id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/assignStudents/${id}`, {
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json'
         },
-        method: "DELETE",
+        method: 'DELETE'
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
         })
         .catch((error) => {
           console.error(error);
-          Swal.fire("Warning", response?.message, "warning");
+          Swal.fire('Warning', response?.message, 'warning');
         });
     }
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/assignStudents?", {
+    fetch('http://127.0.0.1:8000/api/assignStudents?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -96,7 +96,7 @@ const AssignStudentList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >
@@ -125,45 +125,45 @@ const AssignStudentList = () => {
                       <th scope="col">ID</th>
                       <th scope="col">Vehicle Model</th>
                       <th scope="col">Driver Name</th>
-                      <th scope="col">Student Name</th>
+                      <th scope="col">Student Info</th>
                       <th scope="col">Class</th>
-                      <th scope="col">Show</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
                     {records?.map((assignStudent) => {
+                      let userInformation;
+                      //let driverInformation;
+                      try {
+                        userInformation = JSON.parse(
+                          assignStudent?.student?.user_information);
+                        {/*
+                          driverInformation = JSON.parse(
+                          assignStudent?.driver?.user_information); */}
+                      } catch (error) {
+                        /**/
+                      }
                       return (
                         <tr key={assignStudent.id}>
                           <td>{assignStudent.id}</td>
                           <td>{assignStudent?.vehicle?.vehicle_model}</td>
                           <td>{assignStudent?.driver?.name}</td>
-                          <td>{assignStudent?.student?.name}</td>
+                          <td className="d-flex align-items-center">
+                            <div>
+                              <img
+                                src={`http://127.0.0.1:8000/student-images/${userInformation?.photo}`}
+                                alt="student-image"
+                                width="40"
+                                height="40"
+                                style={{ borderRadius: '50px' }}
+                              />
+                            </div>
+                            <div className="pl-3">
+                              <small><b>ID:</b> {assignStudent?.student?.id}</small><br/>
+                              <small><b>Name:</b> {assignStudent?.student?.name}</small>
+                            </div>
+                          </td>
                           <td>{assignStudent?.class?.name}</td>
-                          <td>
-                            <Link
-                              to={`/admin/assignStudents/${assignStudent.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              to={`/admin/assignStudents/${assignStudent.id}/edit`}
-                              className="btn btn-success btn-sm"
-                            >
-                              Edit
-                            </Link>
-                          </td>
-                          <td
-                            type="button"
-                            onClick={(e) => deleteAssignStudent(e, assignStudent.id)}
-                            className="btn btn-danger btn-sm"
-                          >
-                            Delete
-                          </td>
                           <td>
                             <div className="dropdown">
                               <button
@@ -184,7 +184,7 @@ const AssignStudentList = () => {
                                     className="dropdown-item"
                                     to={`/admin/assignStudents/${assignStudent.id}/show`}
                                   >
-                                    Show Admin
+                                    Show
                                   </Link>
                                 </li>
                                 <li>
@@ -198,7 +198,9 @@ const AssignStudentList = () => {
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    onClick={(e) => deleteAssignStudent(e, assignStudent.id)}
+                                    onClick={(e) =>
+                                      deleteAssignStudent(e, assignStudent.id)
+                                    }
                                   >
                                     Delete
                                   </Link>

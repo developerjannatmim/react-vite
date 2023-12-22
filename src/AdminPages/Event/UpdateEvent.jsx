@@ -34,12 +34,10 @@ const UpdateEvent = () => {
       .then((response) => {
         console.info(response);
         Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/grades');
+        navigate('/admin/event');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById('MARK_FORM').reset();
-        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 

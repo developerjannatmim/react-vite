@@ -11,7 +11,7 @@ const Sidebar = () => {
   if (role === "1") {
     return (
       <>
-        <div className="sidebar py-5 ps-3 pe-5 bg-dark d-flex flex-column justify-content-between min-vh-100">
+        <div className="sidebar py-5 ps-4 pe-6 bg-dark d-flex flex-column justify-content-between min-vh-100">
           <div>
           <Image style={{ marginTop: '-40px' }} src={logo} width="60px" height="60px"/>
             <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
@@ -131,7 +131,7 @@ const Sidebar = () => {
                 onClick={(e) => setActive(6)}
               >
                 <Link
-                  to="/admin/admissions"
+                  to="/admin/admission"
                   className="nav-link text-white text-center text-sm-start"
                   aria-current="page"
                 >
@@ -185,7 +185,7 @@ const Sidebar = () => {
                     >
                       <i className="bi bi-newspaper"></i>
                       <span className="ms-2 d-none d-sm-inline">
-                        Offilne Exam
+                        Offline Exam
                       </span>
                     </Link>
                   </li>
@@ -595,23 +595,6 @@ const Sidebar = () => {
                     >
                       <i className="bi bi-newspaper"></i>
                       <span className="ms-2 d-none d-sm-inline">User List</span>
-                    </Link>
-                  </li>
-                  <li
-                    className={
-                      active === 10 ? "active nav-item p-2" : "nav-item p-2"
-                    }
-                    onClick={(e) => setActive(10)}
-                  >
-                    <Link
-                      to="/admin/take-attendance"
-                      className="nav-link text-white text-center text-sm-start"
-                      aria-current="page"
-                    >
-                      <i className="bi bi-file-earmark-medical-fill"></i>
-                      <span className="ms-2 d-none d-sm-inline">
-                        Take Attendance
-                      </span>
                     </Link>
                   </li>
                 </ul>
