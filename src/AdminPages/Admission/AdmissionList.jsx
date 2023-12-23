@@ -8,7 +8,7 @@ import '../../assets/css/style.css';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
-import StudentSidebar from './../../components/StudentSidebar';
+// import StudentSidebar from './../../components/StudentSidebar';
 
 const AdmissionList = () => {
   const [admission, setAdmission] = useState([]);
@@ -76,8 +76,8 @@ const AdmissionList = () => {
           <AdminSidebar />
           {/* <StudentSidebar/> */}
         </div>
-        <div className="col d-flex align-items-center">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Admission List</h4>
@@ -88,7 +88,7 @@ const AdmissionList = () => {
                   Add Admission
                 </Link>
               </div>
-              <div className="page-system mt-4">
+              <div className="page-system mt-3 mb-3" style={{ marginLeft: '660px' }}>
                 <nav>
                   <ul className="pagination">
                     <li className="page-item">
@@ -104,20 +104,20 @@ const AdmissionList = () => {
                           }`}
                           key={i}
                         >
-                          <a
-                            href="#"
+                          <Link
+                            to="#"
                             className="page-link"
                             onClick={() => changeCurrentPage(n)}
                           >
                             {n}
-                          </a>
+                          </Link>
                         </li>
                       );
                     })}
                     <li className="page-item">
-                      <a href="#" className="page-link" onClick={nextPage}>
+                      <Link to="#" className="page-link" onClick={nextPage}>
                         Next
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </nav>
@@ -145,7 +145,7 @@ const AdmissionList = () => {
                               <td>{admissionData?.id}</td>
                               <td>
                                 <img
-                                  src={`http://127.0.0.1:8000/admission-images/${admissionData?.photo}`}
+                                  src={`http://127.0.0.1:8000/admission-images/${admissionData?.image}`}
                                   alt="admission-image"
                                   width="40"
                                   height="40"

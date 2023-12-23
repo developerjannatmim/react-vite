@@ -1,61 +1,94 @@
-import React, { useState } from 'react';
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-
-//import icons from react icons
-import { FaList, FaRegHeart } from 'react-icons/fa';
+import "./../assets/css/sidedar.css";
+import React, { useState } from "react";
 import {
-  FiHome,
-  FiLogOut,
-  FiArrowLeftCircle,
-  FiArrowRightCircle
-} from 'react-icons/fi';
-import { RiPencilLine } from 'react-icons/ri';
-import { BiCog } from 'react-icons/bi';
-import * as AiIcons from 'react-icons/ai';
-
-//import 'react-pro-sidebar/dist/css/styles.css';
-import './../assets/css/sidedar.css';
+  RiHome4Line,
+  RiTeamLine,
+  RiCalendar2Line,
+  RiFolder2Line,
+  RiUserFollowLine,
+  RiPlantLine,
+  RiStackLine,
+  RiUserUnfollowLine
+} from "react-icons/ri";
+import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi/";
+import {
+  Sidebar,
+  SubMenu,
+  Menu,
+  MenuItem
+  //useProSidebar
+} from "react-pro-sidebar";
 import { Link } from 'react-router-dom';
 
 const AdminSidebar = () => {
-  //create initial menuCollapse state using useState hook
-  const [menuCollapse, setMenuCollapse] = useState(false);
+  //const { collapseSidebar } = useProSidebar();
+  const [collapsed, setCollapsed] = useState(false);
 
-  //create a custom function that will change menucollapse state from false to true and true to false
-  const menuIconClick = () => {
-    //condition checking to change state from true to false and vice versa
-    menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
+  const [toggled, setToggled] = useState(false);
+
+  const handleCollapsedChange = () => {
+    setCollapsed(!collapsed);
+  };
+  const handleToggleSidebar = (value) => {
+    setToggled(value);
   };
 
   return (
-    <>
-      <div className="header pe-6 d-flex min-vh-100">
-        {/* collapsed props to change menu size using menucollapse state */}
-        <Sidebar collapsed={menuCollapse}>
-          <div className="logotext">
-            {/* small and big change using menucollapse state */}
-            <p>{menuCollapse ? 'Logo' : 'Big Logo'}</p>
-          </div>
-          <div className="closemenu" onClick={menuIconClick}>
-            {/* changing menu collapse icon on click */}
-            {menuCollapse ? <FiArrowRightCircle /> : <FiArrowLeftCircle />}
-          </div>
-          <Menu iconShape="square">
-            <MenuItem active={true} icon={<FiHome />}>
-              Home
-            </MenuItem>
-            <MenuItem icon={<FaList/>}>Users</MenuItem>
-            <MenuItem icon={<FaRegHeart />}>Favorite</MenuItem>
-            <MenuItem icon={<RiPencilLine />}>Author</MenuItem>
-            <MenuItem icon={<BiCog />}>Settings</MenuItem>
+    <div className="pe-6 d-flex min-vh-100">
+      <Sidebar
+        // className={`app ${toggled ? "toggled" : ""}`}
+        style={{ height: "100%", position: "absolute" }}
+        collapsed={collapsed}
+        toggled={toggled}
+        handleToggleSidebar={handleToggleSidebar}
+        handleCollapsedChange={handleCollapsedChange}
+      >
+        <main>
+          <Menu>
+            {collapsed ? (
+              <MenuItem
+                icon={<FiChevronsRight />}
+                onClick={handleCollapsedChange}
+              ></MenuItem>
+            ) : (
+              <MenuItem
+                suffix={<FiChevronsLeft />}
+                onClick={handleCollapsedChange}
+              >
+                <div
+                  style={{
+                    padding: "9px",
+                    //textTransform: "uppercase",
+                    fontWeight: "bold",
+                    fontSize: 14,
+                    letterSpacing: "1px"
+                  }}
+                >
+                  YOUR LOGO!..
+                </div>
+              </MenuItem>
+            )}
+            <hr />
           </Menu>
-          <Menu iconShape="square">
-            <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
-          </Menu>
-        </Sidebar>
-      </div>
-    </>
-  );
-};
 
+          <Menu>
+            <MenuItem icon={<RiHome4Line />}>Dashboard</MenuItem>
+            <SubMenu defaultOpen label={"Users"} icon={<RiTeamLine />}>
+              <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/admin">Admin</Link></MenuItem>
+              <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/teachers">Teacher</Link></MenuItem>
+              <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/students">Student</Link></MenuItem>
+              <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/parents">Parent</Link></MenuItem>
+              <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/accountant">Accountant</Link></MenuItem>
+              <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/librarian">Librarian</Link></MenuItem>
+            </SubMenu>
+            <SubMenu defaultOpen label={"Records"} icon={<RiFolder2Line />}>
+              <MenuItem icon={<RiStackLine />}>Senior Students</MenuItem>
+              <MenuItem icon={<RiPlantLine />}>Junior Students</MenuItem>
+            </SubMenu>
+          </Menu>
+        </main>
+      </Sidebar>
+    </div>
+  );
+}
 export default AdminSidebar;
