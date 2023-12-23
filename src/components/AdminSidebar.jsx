@@ -81,9 +81,9 @@ const AdminSidebar = () => {
               <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/accountant">Accountant</Link></MenuItem>
               <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/librarian">Librarian</Link></MenuItem>
             </SubMenu>
-            <SubMenu defaultOpen label={"Records"} icon={<RiFolder2Line />}>
-              <MenuItem icon={<RiStackLine />}>Senior Students</MenuItem>
-              <MenuItem icon={<RiPlantLine />}>Junior Students</MenuItem>
+            <SubMenu defaultOpen label={"Examinations"} icon={<RiFolder2Line />}>
+              <MenuItem icon={<RiStackLine />}><Link to="/admin/exam-category">Exam Category</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/admin">Junior Students</Link></MenuItem>
             </SubMenu>
           </Menu>
         </main>
