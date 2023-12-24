@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
-import "./../../assets/css/userdetail.css";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
+import './../../assets/css/userdetail.css';
+import AdminSidebar from './../../components/AdminSidebar';
 
 const ShowAdmission = () => {
   const [admissionItem, setAdmissionItem] = useState(null);
@@ -14,9 +14,9 @@ const ShowAdmission = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/admission/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -36,7 +36,7 @@ const ShowAdmission = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container">
@@ -46,7 +46,7 @@ const ShowAdmission = () => {
                 <Link
                   to="/admin/admission"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Admission List
                 </Link>
@@ -55,12 +55,14 @@ const ShowAdmission = () => {
                 <div className="container">
                   <div
                     className="row align-items-center flex-row-reverse"
-                    style={{ marginTop: "-60px" }}
+                    style={{ marginTop: '-60px' }}
                   >
                     <div className="col-lg-8">
                       <div className="about-text go-to">
                         <h3 className="dark-color">Admission Details</h3>
-                        <h6 className="theme-color lead">{admissionItem?.name}</h6>
+                        <h6 className="theme-color lead">
+                          {admissionItem?.name}
+                        </h6>
                         <div className="row about-list">
                           <div className="col-md-6">
                             <div className="media">
@@ -78,7 +80,7 @@ const ShowAdmission = () => {
                           </div>
                           <div
                             className="col-md-6"
-                            style={{ marginRight: "600px" }}
+                            style={{ marginRight: '600px' }}
                           >
                             <div className="media">
                               <label>E-mail</label>
@@ -110,7 +112,7 @@ const ShowAdmission = () => {
                           src={`http://127.0.0.1:8000/admission-images/${admissionItem?.photo}`}
                           width="200"
                           height="200"
-                          style={{ marginLeft: "30px", borderRadius: "100px" }}
+                          style={{ marginLeft: '30px', borderRadius: '100px' }}
                           alt=""
                         />
                       </div>

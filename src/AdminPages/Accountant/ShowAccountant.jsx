@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
 import AccountantHeader from "../../components/AccountantHeader";
 import "./../../assets/css/userdetail.css";
+import AdminSidebar from './../../components/AdminSidebar';
 
 const ShowAccountant = () => {
   const [accountantItem, setAccountantItem] = useState(null);
@@ -36,7 +37,7 @@ const ShowAccountant = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container">

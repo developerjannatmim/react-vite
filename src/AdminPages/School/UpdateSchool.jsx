@@ -5,7 +5,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Switch from 'react-switch';
 
-import Sidebar from './../../components/Sidebar';
+import AdminSidebar from './../../components/AdminSidebar';
 import Footer from './../../components/Footer';
 import './../../assets/css/style.css';
 import AdminHeader from '../../components/AdminHeader';
@@ -78,7 +78,7 @@ const UpdateSchool = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container px-4">

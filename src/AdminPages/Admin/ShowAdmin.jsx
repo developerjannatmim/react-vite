@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
-import "./../../assets/css/userdetail.css";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
+import './../../assets/css/userdetail.css';
+import AdminSidebar from './../../components/AdminSidebar';
 
 const ShowAdmin = () => {
   const [adminItem, setAdminItem] = useState(null);
@@ -14,9 +14,9 @@ const ShowAdmin = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/admin/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -36,7 +36,7 @@ const ShowAdmin = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container">
@@ -46,7 +46,7 @@ const ShowAdmin = () => {
                 <Link
                   to="/admin/admin"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Admin List
                 </Link>
@@ -55,7 +55,7 @@ const ShowAdmin = () => {
                 <div className="container">
                   <div
                     className="row align-items-center flex-row-reverse"
-                    style={{ marginTop: "-60px" }}
+                    style={{ marginTop: '-60px' }}
                   >
                     <div className="col-lg-8">
                       <div className="about-text go-to">
@@ -78,7 +78,7 @@ const ShowAdmin = () => {
                           </div>
                           <div
                             className="col-md-6"
-                            style={{ marginRight: "600px" }}
+                            style={{ marginRight: '600px' }}
                           >
                             <div className="media">
                               <label>E-mail</label>
@@ -102,7 +102,7 @@ const ShowAdmin = () => {
                           src={`http://127.0.0.1:8000/admin-images/${adminItem?.user_information?.photo}`}
                           width="200"
                           height="200"
-                          style={{ marginLeft: "30px", borderRadius: "100px" }}
+                          style={{ marginLeft: '30px', borderRadius: '100px' }}
                           alt=""
                         />
                       </div>

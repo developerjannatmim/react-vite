@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 
-import Sidebar from "./../../components/Sidebar";
+import AdminSidebar from "./../../components/AdminSidebar";
 import Footer from "./../../components/Footer";
 import AdminHeader from "../../components/AdminHeader";
 
@@ -70,7 +70,7 @@ const UserRoleList = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container px-4">

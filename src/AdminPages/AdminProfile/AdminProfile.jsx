@@ -1,11 +1,11 @@
-import React from "react";
-import "./../../assets/css/profile.css";
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import React from 'react';
+import './../../assets/css/profile.css';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
+import AdminSidebar from './../../components/AdminSidebar';
 
 const AdminProfile = () => {
-  const authUserInfo = JSON.parse(localStorage.getItem("auth_info"));
+  const authUserInfo = JSON.parse(localStorage.getItem('auth_info'));
 
   return (
     <>
@@ -14,7 +14,7 @@ const AdminProfile = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden mt-5">
           <div className="mt-5 container">
@@ -29,7 +29,7 @@ const AdminProfile = () => {
                             src={`http://127.0.0.1:8000/admin-images/${authUserInfo.photo}`}
                             width="200"
                             height="200"
-                            style={{ borderRadius: "100px" }}
+                            style={{ borderRadius: '100px' }}
                             alt="admin-image"
                           />
                         </div>

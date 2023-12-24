@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
+import AdminSidebar from './../../components/AdminSidebar';
 
 const UpdateGrade = () => {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ const UpdateGrade = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container px-4">

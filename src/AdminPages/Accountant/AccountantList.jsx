@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import '../../assets/css/style.css';
 
-import Sidebar from '../../components/Sidebar';
 import Footer from '../../components/Footer';
 import AccountantHeader from '../../components/AccountantHeader';
+import AdminSidebar from './../../components/AdminSidebar';
 
 const AccountantList = () => {
   const [accountant, setAccountant] = useState([]);
@@ -71,10 +71,10 @@ const AccountantList = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Accountant List</h4>
@@ -85,7 +85,10 @@ const AccountantList = () => {
                   Add Accountant
                 </Link>
               </div>
-              <div className="page-system mt-4 mb-3" style={{ marginLeft: '690px' }}>
+              <div
+                className="page-system mt-4 mb-3"
+                style={{ marginLeft: '690px' }}
+              >
                 <nav>
                   <ul className="pagination">
                     <li className="page-item">

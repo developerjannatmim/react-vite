@@ -1,12 +1,12 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
-import "../../assets/css/new.css";
+import '../../assets/css/new.css';
+import AdminSidebar from './../../components/AdminSidebar';
 
 const ShowBackOffice = () => {
   const [backOfficeItem, setBackOfficeItem] = useState(null);
@@ -16,9 +16,9 @@ const ShowBackOffice = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/backOffice/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -38,7 +38,7 @@ const ShowBackOffice = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container">
@@ -48,7 +48,7 @@ const ShowBackOffice = () => {
                 <Link
                   to="/admin/backOffice"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Book List
                 </Link>

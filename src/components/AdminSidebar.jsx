@@ -83,7 +83,41 @@ const AdminSidebar = () => {
             </SubMenu>
             <SubMenu defaultOpen label={"Examinations"} icon={<RiFolder2Line />}>
               <MenuItem icon={<RiStackLine />}><Link to="/admin/exam-category">Exam Category</Link></MenuItem>
-              <MenuItem icon={<RiPlantLine />}><Link to="/admin/admin">Junior Students</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/exams">Offline Exams</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/marks">Marks</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/grades">Grades</Link></MenuItem>
+            </SubMenu>
+            <SubMenu defaultOpen label={"Academic"} icon={<RiFolder2Line />}>
+              <MenuItem icon={<RiStackLine />}><Link to="/admin/classes">Class List</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/routines">Class Routine</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/classroom">Class Room</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/subject/view">Subjects</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/sections">Sections</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/syllabuses">Syllabus</Link></MenuItem>
+            </SubMenu>
+            <SubMenu defaultOpen label={"Transport"} icon={<RiFolder2Line />}>
+              <MenuItem icon={<RiStackLine />}><Link to="/admin/driver">Driver</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/vehicles">Vehicle</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/assignStudents">Assign Students</Link></MenuItem>
+            </SubMenu>
+            <SubMenu defaultOpen label={"Alumni"} icon={<RiFolder2Line />}>
+              <MenuItem icon={<RiStackLine />}><Link to="/admin/manage-alumni">Manage Alumni</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/gallery">Gallery</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/event">Events</Link></MenuItem>
+            </SubMenu>
+            <MenuItem icon={<RiHome4Line />}><Link to="/admin/assignments">Assignments</Link></MenuItem>
+            <SubMenu defaultOpen label={"Back Office"} icon={<RiFolder2Line />}>
+              <MenuItem icon={<RiStackLine />}><Link to="/admin/backOffice">Book List Manager</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/noticeboard">Noticeboard</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/event">Events</Link></MenuItem>
+            </SubMenu>
+            <SubMenu defaultOpen label={"Human Resource"} icon={<RiFolder2Line />}>
+              <MenuItem icon={<RiStackLine />}><Link to="/admin/userRoles">User Role</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/users">User List</Link></MenuItem>
+            </SubMenu>
+            <SubMenu defaultOpen label={"Settings"} icon={<RiFolder2Line />}>
+              <MenuItem icon={<RiStackLine />}><Link to="/admin/settings/school-info">School Settings</Link></MenuItem>
+              <MenuItem icon={<RiPlantLine />}><Link to="/admin/profile">My Account</Link></MenuItem>
             </SubMenu>
           </Menu>
         </main>

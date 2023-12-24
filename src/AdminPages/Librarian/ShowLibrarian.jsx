@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
 import LibrarianHeader from "../../components/LibrarianHeader";
 import "./../../assets/css/userdetail.css";
+import AdminSidebar from './../../components/AdminSidebar';
 
 const ShowLibrarian = () => {
   const [librarianItem, setLibrarianItem] = useState(null);
@@ -36,7 +37,7 @@ const ShowLibrarian = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container">

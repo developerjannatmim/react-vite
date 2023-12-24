@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import "../../assets/css/style.css";
 
-import Sidebar from "./../../components/Sidebar";
+import TeacherSidebar from "./../../components/TeacherSidebar";
 import Footer from "./../../components/Footer";
 import TeacherHeader from "../../components/TeacherHeader";
 
@@ -46,7 +46,7 @@ const StudentList = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <TeacherSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="container px-4">

@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import Sidebar from "./../../components/Sidebar";
+import AdminSidebar from "./../../components/AdminSidebar";
 import Footer from "./../../components/Footer";
 import AdminHeader from "../../components/AdminHeader";
 import './../../assets/css/exam.css';
@@ -37,7 +37,7 @@ const ShowVehicle = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container">

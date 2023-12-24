@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
+import AdminSidebar from './../../components/AdminSidebar';
 
 const ShowEvent = () => {
   const [eventItem, setEventItem] = useState(null);
@@ -14,9 +14,9 @@ const ShowEvent = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/event/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -36,7 +36,7 @@ const ShowEvent = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container">
@@ -46,7 +46,7 @@ const ShowEvent = () => {
                 <Link
                   to="/admin/event"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Event List
                 </Link>

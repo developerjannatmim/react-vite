@@ -1,6 +1,6 @@
 import React from "react";
 import "./../../assets/css/profile.css";
-import Sidebar from "./../../components/Sidebar";
+import TeacherSidebar from "./../../components/TeacherSidebar";
 import Footer from "./../../components/Footer";
 import TeacherHeader from "../../components/TeacherHeader";
 
@@ -14,7 +14,7 @@ const TeacherProfile = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <TeacherSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="container">

@@ -7,6 +7,7 @@ import '../../assets/css/style.css';
 import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
+import AdminSidebar from './../../components/AdminSidebar';
 
 const AdminList = () => {
   const [admin, setAdmin] = useState([]);
@@ -71,7 +72,7 @@ const AdminList = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container px-4">

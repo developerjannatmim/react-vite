@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import StudentHeader from "../../components/StudentHeader";
-import Sidebar from './../../components/Sidebar';
+import StudentSidebar from './../../components/StudentSidebar';
 import Footer from './../../components/Footer';
 
 const ShowStudent = () => {
@@ -35,7 +35,7 @@ const ShowStudent = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <StudentSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="container">

@@ -2,9 +2,10 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import Sidebar from '../../components/Sidebar';
+
 import Footer from '../../components/Footer';
 import LibrarianHeader from '../../components/LibrarianHeader';
+import AdminSidebar from './../../components/AdminSidebar';
 
 const AddLibrarian = () => {
   const navigate = useNavigate();
@@ -19,15 +20,21 @@ const AddLibrarian = () => {
     birthday: '',
     gender: '',
     blood_group: '',
-    photo: '',
+    photo: ''
   });
 
   const handleChange = (e) => {
-    setLibrarianInput(values => ({ ...values, [e.target.name]: e.target.value }));
+    setLibrarianInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.value
+    }));
   };
 
   const handleImage = (e) => {
-    setLibrarianInput(values => ({...values,  [e.target.name]: e.target.files[0] }));
+    setLibrarianInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.files[0]
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -54,33 +61,30 @@ const AddLibrarian = () => {
       birthday: '',
       gender: '',
       blood_group: '',
-      photo: '',
+      photo: ''
     });
 
     console.log({ formData });
 
-    fetch(
-      'http://127.0.0.1:8000/api/librarian',
-      {
-        body: formData,
-        headers: {
-          Accept: 'application/json',
-        },
-        method: 'POST',
-      }
-    )
-    .then((response) => response.json())
-    .then((response) => {
-      if(response?.status === 200){
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/librarian');
-        setErrors({});
-      }else{
-        Swal.fire('Warning', response?.message, 'warning');
-        setErrors(response?.errors);
-      }
+    fetch('http://127.0.0.1:8000/api/librarian', {
+      body: formData,
+      headers: {
+        Accept: 'application/json'
+      },
+      method: 'POST'
     })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response?.status === 200) {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          navigate('/admin/librarian');
+          setErrors({});
+        } else {
+          Swal.fire('Warning', response?.message, 'warning');
+          setErrors(response?.errors);
+        }
+      });
   };
 
   return (
@@ -90,11 +94,11 @@ const AddLibrarian = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container-fluid px-4">
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit}>
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
@@ -157,7 +161,7 @@ const AddLibrarian = () => {
                           name="address"
                           className="form-control"
                         />
-                         <small className="text-danger">{errors.address}</small>
+                        <small className="text-danger">{errors.address}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Phone</label>
@@ -168,7 +172,7 @@ const AddLibrarian = () => {
                           name="phone"
                           className="form-control"
                         />
-                         <small className="text-danger">{errors.phone}</small>
+                        <small className="text-danger">{errors.phone}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>BirthDay</label>
@@ -179,7 +183,7 @@ const AddLibrarian = () => {
                           name="birthday"
                           className="form-control"
                         />
-                         <small className="text-danger">{errors.birthday}</small>
+                        <small className="text-danger">{errors.birthday}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Photo</label>
@@ -189,7 +193,7 @@ const AddLibrarian = () => {
                           name="photo"
                           className="form-control"
                         />
-                         <small className="text-danger">{errors.photo}</small>
+                        <small className="text-danger">{errors.photo}</small>
                       </div>
                       <div className="form-group mb-3">
                         <label>Gender</label>
@@ -224,7 +228,9 @@ const AddLibrarian = () => {
                           <option value="o+">O+</option>
                           <option value="o-">O-</option>
                         </select>
-                        <small className="text-danger">{errors.blood_group}</small>
+                        <small className="text-danger">
+                          {errors.blood_group}
+                        </small>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">
                         Submit

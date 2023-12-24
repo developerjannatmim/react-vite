@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import Sidebar from "../../components/Sidebar";
 import Footer from "../../components/Footer";
 import AccountantHeader from "../../components/AccountantHeader";
+import AdminSidebar from './../../components/AdminSidebar';
 
 const UpdateAccountant = () => {
   const navigate = useNavigate();
@@ -100,7 +101,7 @@ const UpdateAccountant = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <AdminSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="mt-5 container px-4">

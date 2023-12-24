@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 import Swal from "sweetalert2";
 
-import Sidebar from "./../../components/Sidebar";
+import TeacherSidebar from "./../../components/TeacherSidebar";
 import Footer from "./../../components/Footer";
 import TeacherHeader from "../../components/TeacherHeader";
 
@@ -103,7 +103,7 @@ const SyllabusList = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <TeacherSidebar />
         </div>
         <div className="col overflow-hidden">
           <div className="container px-4">

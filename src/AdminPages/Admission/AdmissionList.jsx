@@ -4,11 +4,9 @@ import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import '../../assets/css/style.css';
 
-//import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
-// import StudentSidebar from './../../components/StudentSidebar';
 
 const AdmissionList = () => {
   const [admission, setAdmission] = useState([]);
