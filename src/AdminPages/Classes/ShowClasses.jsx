@@ -38,7 +38,7 @@ const ShowClasses = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="mt-5 col overflow-hidden">
+        <div className="mt-5 d-flex align-items-center">
           <div className="mt-5 container">
             <div className="card">
               <div className="card-header">

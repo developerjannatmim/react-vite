@@ -14,7 +14,7 @@ const AddGrade = () => {
     name: '',
     grade_point: '',
     mark_from: '',
-    mark_upto: '',
+    mark_upto: ''
   });
 
   const handleChange = (e) => {
@@ -27,17 +27,17 @@ const AddGrade = () => {
       name: gradeInput.name,
       grade_point: gradeInput.grade_point,
       mark_from: gradeInput.mark_from,
-      mark_upto: gradeInput.mark_upto,
+      mark_upto: gradeInput.mark_upto
     };
     fetch('http://127.0.0.1:8000/api/grades', {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -57,19 +57,20 @@ const AddGrade = () => {
         <AdminHeader />
       </div>
       <div className="d-flex">
-        <div className="w-auto position-sticky">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center mt-2">
+          <div className="mt-5 container" style={{ marginLeft: '290px' }}>
             <form onSubmit={submitGrade} id="SUBJECT_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Grade List
+                  Add Grade
                     <Link
                       to="/admin/grades"
                       className="btn btn-primary btn-sm float-end"
+                      style={{ marginLeft: '420px' }}
                     >
                       View Grade
                     </Link>

@@ -5,7 +5,6 @@ import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
 import Footer from './../../components/Footer';
 
-
 const ShowStudent = () => {
   const [studentItem, setStudentItem] = useState(null);
   const { id } = useParams();
@@ -14,9 +13,9 @@ const ShowStudent = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/students/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -38,15 +37,15 @@ const ShowStudent = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container" style={{ marginLeft: '280px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Student Information</h4>
                 <Link
                   to="/admin/students"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Student List
                 </Link>
@@ -55,12 +54,14 @@ const ShowStudent = () => {
                 <div className="container">
                   <div
                     className="row align-items-center flex-row-reverse"
-                    style={{ marginTop: "-60px" }}
+                    style={{ marginTop: '-60px' }}
                   >
                     <div className="col-lg-8">
                       <div className="about-text go-to">
                         <h3 className="dark-color">Student Details</h3>
-                        <h6 className="theme-color lead">{studentItem?.name}</h6>
+                        <h6 className="theme-color lead">
+                          {studentItem?.name}
+                        </h6>
                         <div className="row about-list">
                           <div className="col-md-6">
                             <div className="media">
@@ -78,7 +79,7 @@ const ShowStudent = () => {
                           </div>
                           <div
                             className="col-md-6"
-                            style={{ marginRight: "600px" }}
+                            style={{ marginRight: '600px' }}
                           >
                             <div className="media">
                               <label>E-mail</label>
@@ -104,7 +105,7 @@ const ShowStudent = () => {
                           src={`http://127.0.0.1:8000/student-images/${studentItem?.user_information?.photo}`}
                           width="200"
                           height="200"
-                          style={{ marginLeft: "30px", borderRadius: "100px" }}
+                          style={{ marginLeft: '30px', borderRadius: '100px' }}
                           alt=""
                         />
                       </div>

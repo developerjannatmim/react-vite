@@ -24,7 +24,7 @@ const AddMark = () => {
     exam_category_id: '',
     section_id: '',
     subject_id: '',
-    user_id: '',
+    user_id: ''
   });
 
   const handleChange = (e) => {
@@ -35,9 +35,9 @@ const AddMark = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -54,9 +54,9 @@ const AddMark = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -73,9 +73,9 @@ const AddMark = () => {
     console.log({ subjects });
     fetch(`http://127.0.0.1:8000/api/subjects`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -92,9 +92,9 @@ const AddMark = () => {
     console.log({ users });
     fetch(`http://127.0.0.1:8000/api/students`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -111,9 +111,9 @@ const AddMark = () => {
     console.log({ exam_category });
     fetch(`http://127.0.0.1:8000/api/exam_category`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -130,9 +130,9 @@ const AddMark = () => {
     console.log({ exams });
     fetch(`http://127.0.0.1:8000/api/exams`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -149,17 +149,17 @@ const AddMark = () => {
     e.preventDefault();
     const data = {
       name: markInput.name,
-      class_id: markInput.class_id,
+      class_id: markInput.class_id
     };
     fetch('http://127.0.0.1:8000/api/marks', {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -179,17 +179,17 @@ const AddMark = () => {
       <div>
         <AdminHeader />
       </div>
-      <div className="d-flex">
-        <div className="w-auto position-sticky">
+      <div className="col">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center" style={{ marginTop: '-570px' }}>
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={submitMark} id="MARK_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Mark List
+                  Add Mark
                     <Link
                       to="/admin/marks"
                       className="btn btn-primary btn-sm float-end"
@@ -316,7 +316,10 @@ const AddMark = () => {
                             <option>select exam category</option>
                             {exam_category?.map((exam_categoryItem) => {
                               return (
-                                <option key={exam_categoryItem.id} value={exam_categoryItem.id}>
+                                <option
+                                  key={exam_categoryItem.id}
+                                  value={exam_categoryItem.id}
+                                >
                                   {exam_categoryItem.name}
                                 </option>
                               );

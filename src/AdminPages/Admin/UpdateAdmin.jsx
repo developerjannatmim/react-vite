@@ -103,8 +103,8 @@ const UpdateAdmin = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container" style={{ marginLeft: '290px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Admin Edit</h4>

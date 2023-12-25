@@ -15,7 +15,7 @@ const UpdateParent = () => {
   const handleChange = (e) => {
     setParentInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -24,8 +24,8 @@ const UpdateParent = () => {
       ...values,
       user_information: {
         ...values.user_information,
-        [e.target.name]: e.target.value,
-      },
+        [e.target.name]: e.target.value
+      }
     }));
   };
 
@@ -34,8 +34,8 @@ const UpdateParent = () => {
       ...values,
       user_information: {
         ...values.user_information,
-        [e.target.name]: e.target.files[0],
-      },
+        [e.target.name]: e.target.files[0]
+      }
     }));
   };
 
@@ -59,9 +59,9 @@ const UpdateParent = () => {
     fetch(`http://127.0.0.1:8000/api/parents/${id}`, {
       body: formData,
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -79,9 +79,9 @@ const UpdateParent = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/parents/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -103,8 +103,8 @@ const UpdateParent = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Parent Edit</h4>

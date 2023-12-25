@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import ParentHeader from "../../components/ParentHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import ParentHeader from '../../components/ParentHeader';
 
 const SectionList = () => {
   const [sectionList, setSectionList] = useState([]);
@@ -14,11 +14,11 @@ const SectionList = () => {
   const dataPerPage = 5;
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/sections?", {
+    fetch('http://127.0.0.1:8000/api/sections?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -47,7 +47,7 @@ const SectionList = () => {
         <div className="w-auto position-sticky">
           <Sidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
@@ -65,7 +65,7 @@ const SectionList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >

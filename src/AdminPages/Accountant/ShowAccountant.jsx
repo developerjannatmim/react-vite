@@ -39,8 +39,8 @@ const ShowAccountant = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container" style={{ marginLeft: '290px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Accountant Information</h4>

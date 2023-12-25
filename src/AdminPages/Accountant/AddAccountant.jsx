@@ -92,17 +92,17 @@ const AddAccountant = () => {
       <div>
         <AccountantHeader />
       </div>
-      <div className="d-flex">
-        <div className="w-auto position-sticky">
+      <div className="col">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center" style={{ marginTop: '-550px' }}>
           <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={handleSubmit}>
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Accountant List
+                  Add Accountant
                     <Link
                       to="/admin/accountant"
                       className="btn btn-primary btn-sm float-end"

@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import AdminSidebar from "./../../components/AdminSidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import AdminSidebar from './../../components/AdminSidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const ShowParent = () => {
   const [parentItem, setParentItem] = useState(null);
@@ -14,9 +14,9 @@ const ShowParent = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/parents/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -38,15 +38,15 @@ const ShowParent = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Parent Information</h4>
                 <Link
                   to="/admin/parents"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Parent List
                 </Link>
@@ -55,7 +55,7 @@ const ShowParent = () => {
                 <div className="container">
                   <div
                     className="row align-items-center flex-row-reverse"
-                    style={{ marginTop: "-60px" }}
+                    style={{ marginTop: '-60px' }}
                   >
                     <div className="col-lg-8">
                       <div className="about-text go-to">
@@ -78,7 +78,7 @@ const ShowParent = () => {
                           </div>
                           <div
                             className="col-md-6"
-                            style={{ marginRight: "600px" }}
+                            style={{ marginRight: '600px' }}
                           >
                             <div className="media">
                               <label>E-mail</label>
@@ -102,7 +102,7 @@ const ShowParent = () => {
                           src={`http://127.0.0.1:8000/parent-images/${parentItem?.user_information?.photo}`}
                           width="200"
                           height="200"
-                          style={{ marginLeft: "30px", borderRadius: "100px" }}
+                          style={{ marginLeft: '30px', borderRadius: '100px' }}
                           alt=""
                         />
                       </div>

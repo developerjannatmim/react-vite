@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import ParentHeader from "../../components/ParentHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import ParentHeader from '../../components/ParentHeader';
 
 const ShowRoutine = () => {
   const [routineItem, setRoutineItem] = useState(null);
@@ -14,9 +14,9 @@ const ShowRoutine = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/routines/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -38,7 +38,7 @@ const ShowRoutine = () => {
         <div className="w-auto position-sticky">
           <Sidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container">
             <div className="card">
               <div className="card-header">
@@ -46,7 +46,7 @@ const ShowRoutine = () => {
                 <Link
                   to="/parent/routines"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Routine List
                 </Link>

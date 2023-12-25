@@ -15,9 +15,9 @@ const ParentList = () => {
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/parents?', {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -46,7 +46,7 @@ const ParentList = () => {
         <div className="w-auto position-sticky">
           <TeacherSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
@@ -119,7 +119,14 @@ const ParentList = () => {
                           <td>{parentData?.email}</td>
                           <td>{userInformation?.address}</td>
                           <td>{userInformation?.phone}</td>
-                          <td><img src={`http://127.0.0.1:8000/parent-images/${userInformation?.photo}`} width='40' height='40' alt="parent-image"/></td>
+                          <td>
+                            <img
+                              src={`http://127.0.0.1:8000/parent-images/${userInformation?.photo}`}
+                              width="40"
+                              height="40"
+                              alt="parent-image"
+                            />
+                          </td>
                           <td>{userInformation?.birthday}</td>
                           <td>{userInformation?.gender}</td>
                           <td>{userInformation?.blood_group}</td>

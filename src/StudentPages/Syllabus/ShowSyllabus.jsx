@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import StudentSidebar from "./../../components/StudentSidebar";
-import Footer from "./../../components/Footer";
-import StudentHeader from "../../components/StudentHeader";
+import StudentSidebar from './../../components/StudentSidebar';
+import Footer from './../../components/Footer';
+import StudentHeader from '../../components/StudentHeader';
 
 const ShowSyllabus = () => {
   const [syllabusItem, setSyllabusItem] = useState(null);
@@ -14,9 +14,9 @@ const ShowSyllabus = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/syllabuses/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -38,7 +38,7 @@ const ShowSyllabus = () => {
         <div className="w-auto position-sticky">
           <StudentSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container">
             <div className="card">
               <div className="card-header">
@@ -46,7 +46,7 @@ const ShowSyllabus = () => {
                 <Link
                   to="/student/syllabuses"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Syllabus List
                 </Link>
@@ -104,7 +104,10 @@ const ShowSyllabus = () => {
                         <label>File</label>
                       </div>
                       <div class="col-md-6">
-                        <img src={`http://127.0.0.1:8000/syllabus-images/${syllabusItem?.file}`} width='40'/>
+                        <img
+                          src={`http://127.0.0.1:8000/syllabus-images/${syllabusItem?.file}`}
+                          width="40"
+                        />
                       </div>
                     </div>
                   </div>

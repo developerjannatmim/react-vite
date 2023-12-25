@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import TeacherSidebar from "./../../components/TeacherSidebar";
-import Footer from "./../../components/Footer";
-import TeacherHeader from "../../components/TeacherHeader";
+import TeacherSidebar from './../../components/TeacherSidebar';
+import Footer from './../../components/Footer';
+import TeacherHeader from '../../components/TeacherHeader';
 
 const ShowMark = () => {
   const [markItem, setMarkItem] = useState(null);
@@ -14,9 +14,9 @@ const ShowMark = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/marks/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -38,7 +38,7 @@ const ShowMark = () => {
         <div className="w-auto position-sticky">
           <TeacherSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container">
             <div className="card">
               <div className="card-header">
@@ -46,7 +46,7 @@ const ShowMark = () => {
                 <Link
                   to="/teacher/marks"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Mark List
                 </Link>

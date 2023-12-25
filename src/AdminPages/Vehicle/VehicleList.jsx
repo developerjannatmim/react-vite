@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-import AdminSidebar from "./../../components/AdminSidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import AdminSidebar from './../../components/AdminSidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const VehicleList = () => {
   const [vehicle, setVehicle] = useState([]);
@@ -16,34 +16,34 @@ const VehicleList = () => {
   const deleteVehicle = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
+    Clicked.innerText = 'deleting';
 
     if (confirm(`Are you sure you want to delete vehicle id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/vehicles/${id}`, {
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json'
         },
-        method: "DELETE",
+        method: 'DELETE'
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
         })
         .catch((error) => {
           console.error(error);
-          Swal.fire("Warning", response?.message, "warning");
+          Swal.fire('Warning', response?.message, 'warning');
         });
     }
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/vehicles?", {
+    fetch('http://127.0.0.1:8000/api/vehicles?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -72,7 +72,7 @@ const VehicleList = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
@@ -96,7 +96,7 @@ const VehicleList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >
@@ -138,11 +138,21 @@ const VehicleList = () => {
                           <td>{vehicle.id}</td>
                           <td>{vehicle?.vehicle_model}</td>
                           <td>
-                            <small><b>Vh No: </b>{vehicle?.vehicle_info}</small>
+                            <small>
+                              <b>Vh No: </b>
+                              {vehicle?.vehicle_info}
+                            </small>
                           </td>
                           <td>
-                          <small><b>Name:</b>{vehicle?.driver?.name}</small><br/>
-                          <small><b>Email:</b>{vehicle?.driver?.email}</small>
+                            <small>
+                              <b>Name:</b>
+                              {vehicle?.driver?.name}
+                            </small>
+                            <br />
+                            <small>
+                              <b>Email:</b>
+                              {vehicle?.driver?.email}
+                            </small>
                           </td>
                           <td>{vehicle?.capacity}</td>
                           <td>{vehicle?.route}</td>
@@ -180,7 +190,9 @@ const VehicleList = () => {
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    onClick={(e) => deleteVehicle(e, vehicle.id)}
+                                    onClick={(e) =>
+                                      deleteVehicle(e, vehicle.id)
+                                    }
                                   >
                                     Delete
                                   </Link>

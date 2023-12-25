@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Sidebar from "../../components/Sidebar";
-import Footer from "../../components/Footer";
-import LibrarianHeader from "../../components/LibrarianHeader";
-import "./../../assets/css/userdetail.css";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Sidebar from '../../components/Sidebar';
+import Footer from '../../components/Footer';
+import LibrarianHeader from '../../components/LibrarianHeader';
+import './../../assets/css/userdetail.css';
 import AdminSidebar from './../../components/AdminSidebar';
 
 const ShowLibrarian = () => {
@@ -15,9 +15,9 @@ const ShowLibrarian = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/librarian/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -39,15 +39,15 @@ const ShowLibrarian = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container" style={{ marginLeft: '260px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Librarian Information</h4>
                 <Link
                   to="/admin/librarian"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Librarian List
                 </Link>
@@ -56,12 +56,14 @@ const ShowLibrarian = () => {
                 <div className="container">
                   <div
                     className="row align-items-center flex-row-reverse"
-                    style={{ marginTop: "-60px" }}
+                    style={{ marginTop: '-60px' }}
                   >
                     <div className="col-lg-8">
                       <div className="about-text go-to">
                         <h3 className="dark-color">Librarian Details</h3>
-                        <h6 className="theme-color lead">{librarianItem?.name}</h6>
+                        <h6 className="theme-color lead">
+                          {librarianItem?.name}
+                        </h6>
                         <div className="row about-list">
                           <div className="col-md-6">
                             <div className="media">
@@ -79,7 +81,7 @@ const ShowLibrarian = () => {
                           </div>
                           <div
                             className="col-md-6"
-                            style={{ marginRight: "600px" }}
+                            style={{ marginRight: '600px' }}
                           >
                             <div className="media">
                               <label>E-mail</label>
@@ -91,7 +93,9 @@ const ShowLibrarian = () => {
                             </div>
                             <div className="media">
                               <label>Blood Group</label>
-                              <p>{librarianItem?.user_information?.blood_group}</p>
+                              <p>
+                                {librarianItem?.user_information?.blood_group}
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -103,7 +107,7 @@ const ShowLibrarian = () => {
                           src={`http://127.0.0.1:8000/librarian-images/${librarianItem?.user_information?.photo}`}
                           width="200"
                           height="200"
-                          style={{ marginLeft: "30px", borderRadius: "100px" }}
+                          style={{ marginLeft: '30px', borderRadius: '100px' }}
                           alt=""
                         />
                       </div>

@@ -19,20 +19,20 @@ const AddTeacher = () => {
     photo: '',
     birthday: '',
     gender: '',
-    blood_group: '',
+    blood_group: ''
   });
 
   const handleChange = (e) => {
     setTeacherInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
   const handleImage = (e) => {
     setTeacherInput((values) => ({
       ...values,
-      [e.target.name]: e.target.files[0],
+      [e.target.name]: e.target.files[0]
     }));
   };
 
@@ -55,9 +55,9 @@ const AddTeacher = () => {
     fetch('http://127.0.0.1:8000/api/teachers', {
       body: formData,
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -78,12 +78,12 @@ const AddTeacher = () => {
       <div>
         <AdminHeader />
       </div>
-      <div className="d-flex">
-        <div className="w-auto position-sticky">
+      <div className="col">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-4">
+        <div className="d-flex align-items-center" style={{ marginTop: '-550px' }}>
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={handleSubmit}>
               <div className="card mt-4">
                 <div className="card-header">
@@ -113,7 +113,6 @@ const AddTeacher = () => {
                           value={teacherInput.name || ''}
                           name="name"
                           className="form-control"
-
                         />
                         <small className="text-danger">{errors.name}</small>
                       </div>
@@ -125,7 +124,6 @@ const AddTeacher = () => {
                           value={teacherInput.email || ''}
                           name="email"
                           className="form-control"
-
                         />
                         <small className="text-danger">{errors.email}</small>
                       </div>
@@ -137,7 +135,6 @@ const AddTeacher = () => {
                           value={teacherInput.password || ''}
                           name="password"
                           className="form-control"
-
                         />
                         <small className="text-danger">{errors.password}</small>
                       </div>
@@ -149,7 +146,6 @@ const AddTeacher = () => {
                           value={teacherInput.address || ''}
                           name="address"
                           className="form-control"
-
                         />
                         <small className="text-danger">{errors.address}</small>
                       </div>
@@ -161,7 +157,6 @@ const AddTeacher = () => {
                           value={teacherInput.phone || ''}
                           name="phone"
                           className="form-control"
-
                         />
                         <small className="text-danger">{errors.phone}</small>
                       </div>
@@ -173,7 +168,6 @@ const AddTeacher = () => {
                           value={teacherInput.birthday || ''}
                           name="birthday"
                           className="form-control"
-
                         />
                         <small className="text-danger">{errors.birthday}</small>
                       </div>
@@ -185,7 +179,6 @@ const AddTeacher = () => {
                           //value={teacherInput.photo || ''}
                           name="photo"
                           className="form-control"
-
                         />
                         <small className="text-danger">{errors.photo}</small>
                       </div>
@@ -196,7 +189,6 @@ const AddTeacher = () => {
                           value={teacherInput.gender || ''}
                           name="gender"
                           className="form-control"
-
                         >
                           <option value="">Select gender</option>
                           <option value="Male">Male</option>
@@ -212,7 +204,6 @@ const AddTeacher = () => {
                           value={teacherInput.blood_group || ''}
                           name="blood_group"
                           className="form-control"
-
                         >
                           <option value="">Select a blood group</option>
                           <option value="a+">A+</option>

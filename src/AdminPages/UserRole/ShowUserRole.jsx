@@ -1,12 +1,12 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import AdminSidebar from "./../../components/AdminSidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import AdminSidebar from './../../components/AdminSidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
-import "../../assets/css/new.css";
+import '../../assets/css/new.css';
 
 const ShowUserRole = () => {
   const [userRoleItem, setUserRoleItem] = useState(null);
@@ -16,9 +16,9 @@ const ShowUserRole = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/userRoles/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -40,7 +40,7 @@ const ShowUserRole = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container">
             <div className="card">
               <div className="card-header">
@@ -48,7 +48,7 @@ const ShowUserRole = () => {
                 <Link
                   to="/admin/userRoles"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   User Role List
                 </Link>

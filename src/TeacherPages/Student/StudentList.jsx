@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
-import "../../assets/css/style.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import '../../assets/css/style.css';
 
-import TeacherSidebar from "./../../components/TeacherSidebar";
-import Footer from "./../../components/Footer";
-import TeacherHeader from "../../components/TeacherHeader";
+import TeacherSidebar from './../../components/TeacherSidebar';
+import Footer from './../../components/Footer';
+import TeacherHeader from '../../components/TeacherHeader';
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
@@ -15,11 +15,11 @@ const StudentList = () => {
   const dataPerPage = 5;
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/students?", {
+    fetch('http://127.0.0.1:8000/api/students?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -48,7 +48,7 @@ const StudentList = () => {
         <div className="w-auto position-sticky">
           <TeacherSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
@@ -66,7 +66,7 @@ const StudentList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >
@@ -121,7 +121,14 @@ const StudentList = () => {
                           <td>{studentData?.email}</td>
                           <td>{userInformation?.address}</td>
                           <td>{userInformation?.phone}</td>
-                          <td><img src={`http://127.0.0.1:8000/student-images/${userInformation?.photo}`} width='40' height='40' alt="student-image"/></td>
+                          <td>
+                            <img
+                              src={`http://127.0.0.1:8000/student-images/${userInformation?.photo}`}
+                              width="40"
+                              height="40"
+                              alt="student-image"
+                            />
+                          </td>
                           <td>{userInformation?.birthday}</td>
                           <td>{userInformation?.gender}</td>
                           <td>{userInformation?.blood_group}</td>

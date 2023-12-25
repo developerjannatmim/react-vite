@@ -1,12 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import {
+  PDFDownloadLink,
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet
+} from '@react-pdf/renderer';
+import Swal from 'sweetalert2';
 
-import AdminSidebar from "./../../components/AdminSidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import AdminSidebar from './../../components/AdminSidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const RoutineList = () => {
   const [routineList, setRoutineList] = useState([]);
@@ -17,34 +24,34 @@ const RoutineList = () => {
   const deleteRoutine = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
+    Clicked.innerText = 'deleting';
 
     if (confirm(`Are you sure you want to delete routine id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/routines/${id}`, {
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json'
         },
-        method: "DELETE",
+        method: 'DELETE'
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
         })
         .catch((error) => {
           console.error(error);
-          Swal.fire("Warning", response?.message, "warning");
+          Swal.fire('Warning', response?.message, 'warning');
         });
     }
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/routines?", {
+    fetch('http://127.0.0.1:8000/api/routines?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -64,7 +71,6 @@ const RoutineList = () => {
   const npage = Math.ceil(routineList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
-
   const styles = StyleSheet.create({
     page: {
       flexDirection: 'row',
@@ -76,12 +82,12 @@ const RoutineList = () => {
       flexGrow: 1
     }
   });
-  
+
   const MyDoc = () => (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
-        <Text>Section #1</Text>
+          <Text>Section #1</Text>
         </View>
       </Page>
       <Page size="A4" style={styles.page}>
@@ -106,8 +112,8 @@ const RoutineList = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Routine List</h4>
@@ -130,7 +136,7 @@ const RoutineList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >
@@ -184,8 +190,13 @@ const RoutineList = () => {
                           <td>{routineItem.room?.name}</td>
                           <td>
                             <div className="App">
-                              <PDFDownloadLink document={<MyDoc />} fileName='routine.pdf'>
-                              {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download!')}
+                              <PDFDownloadLink
+                                document={<MyDoc />}
+                                fileName="routine.pdf"
+                              >
+                                {({ blob, url, loading, error }) =>
+                                  loading ? 'Loading document...' : 'Download!'
+                                }
                               </PDFDownloadLink>
                             </div>
                           </td>
@@ -223,7 +234,9 @@ const RoutineList = () => {
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    onClick={(e) => deleteRoutine(e, routineItem.id)}
+                                    onClick={(e) =>
+                                      deleteRoutine(e, routineItem.id)
+                                    }
                                   >
                                     Delete
                                   </Link>

@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
-import ParentHeader from "../../components/ParentHeader";
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
+import ParentHeader from '../../components/ParentHeader';
 
 const ClassRoomList = () => {
   const [classRoomList, setClassRoomList] = useState([]);
@@ -13,11 +13,11 @@ const ClassRoomList = () => {
   const dataPerPage = 5;
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/classRooms?", {
+    fetch('http://127.0.0.1:8000/api/classRooms?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -46,7 +46,7 @@ const ClassRoomList = () => {
         <div className="w-auto position-sticky">
           <Sidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
@@ -64,7 +64,7 @@ const ClassRoomList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >

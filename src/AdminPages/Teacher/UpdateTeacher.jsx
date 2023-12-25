@@ -15,7 +15,7 @@ const UpdateTeacher = () => {
   const handleChange = (e) => {
     setTeacherInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -24,8 +24,8 @@ const UpdateTeacher = () => {
       ...values,
       user_information: {
         ...values.user_information,
-        [e.target.name]: e.target.value,
-      },
+        [e.target.name]: e.target.value
+      }
     }));
   };
 
@@ -34,8 +34,8 @@ const UpdateTeacher = () => {
       ...values,
       user_information: {
         ...values.user_information,
-        [e.target.name]: e.target.files[0],
-      },
+        [e.target.name]: e.target.files[0]
+      }
     }));
   };
 
@@ -58,9 +58,9 @@ const UpdateTeacher = () => {
     fetch(`http://127.0.0.1:8000/api/teachers/${id}`, {
       body: formData,
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -78,9 +78,9 @@ const UpdateTeacher = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/teachers/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -102,8 +102,8 @@ const UpdateTeacher = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container px-4" style={{ marginLeft: '320px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Teacher Edit</h4>

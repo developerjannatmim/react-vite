@@ -23,13 +23,13 @@ const UpdateGrade = () => {
     console.log(gradeInput);
     fetch(`http://127.0.0.1:8000/api/grades/${id}`, {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'PUT',
+      method: 'PUT'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -47,9 +47,9 @@ const UpdateGrade = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/grades/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -71,7 +71,7 @@ const UpdateGrade = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">

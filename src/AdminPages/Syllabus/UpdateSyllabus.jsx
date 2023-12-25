@@ -18,14 +18,14 @@ const UpdateSyllabus = () => {
   const handleChange = (e) => {
     setSyllabusInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
   const handleImage = (e) => {
     setSyllabusInput((values) => ({
       ...values,
-      [e.target.name]: e.target.files[0],
+      [e.target.name]: e.target.files[0]
     }));
   };
 
@@ -44,47 +44,47 @@ const UpdateSyllabus = () => {
     fetch(`http://127.0.0.1:8000/api/syllabuses/${id}`, {
       body: formData,
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
-    .then((response) => response.json())
-    .then((response) => {
-      if(response?.status === 200){
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/syllabuses');
-      }else{
-        Swal.fire('Warning', response?.message, 'warning');
-      }
-    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response?.status === 200) {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          navigate('/admin/syllabuses');
+        } else {
+          Swal.fire('Warning', response?.message, 'warning');
+        }
+      });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/syllabuses/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
-    .then((response) => response.json())
-    .then((response) => {
-      console.info(response);
-      setSyllabusInput(response.data?.syllabus);
-    })
-    .catch((error) => {
-      console.error(error);
-      setSyllabusInput(null);
-    });
+      .then((response) => response.json())
+      .then((response) => {
+        console.info(response);
+        setSyllabusInput(response.data?.syllabus);
+      })
+      .catch((error) => {
+        console.error(error);
+        setSyllabusInput(null);
+      });
   }, [id]);
 
   useEffect(() => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -101,9 +101,9 @@ const UpdateSyllabus = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -120,9 +120,9 @@ const UpdateSyllabus = () => {
     console.log({ subjects });
     fetch(`http://127.0.0.1:8000/api/subjects`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -144,7 +144,7 @@ const UpdateSyllabus = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">

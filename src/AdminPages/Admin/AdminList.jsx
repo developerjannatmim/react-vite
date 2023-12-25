@@ -74,8 +74,8 @@ const AdminList = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container px-4" style={{ marginLeft: '290px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Admin List</h4>
@@ -86,7 +86,7 @@ const AdminList = () => {
                   Add Admin
                 </Link>
               </div>
-              <div className="page-system mt-3 mb-3" style={{ marginLeft: '690px' }}>
+              <div className="page-system mt-3 mb-3">
                 <nav>
                   <ul className="pagination">
                     <li className="page-item">

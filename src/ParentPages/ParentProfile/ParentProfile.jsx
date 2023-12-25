@@ -1,8 +1,8 @@
-import React from "react";
-import "./../../assets/css/profile.css";
-import Header from "../../components/TeacherHeader";
-import Sidebar from "./../../components/Sidebar";
-import Footer from "./../../components/Footer";
+import React from 'react';
+import './../../assets/css/profile.css';
+import Header from '../../components/TeacherHeader';
+import Sidebar from './../../components/Sidebar';
+import Footer from './../../components/Footer';
 
 const ParentProfile = () => {
   const authUserInfo = JSON.parse(localStorage.getItem('auth_info'));
@@ -16,7 +16,7 @@ const ParentProfile = () => {
         <div className="w-auto position-sticky">
           <Sidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container">
             <div className="row gutters">
               <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -29,7 +29,7 @@ const ParentProfile = () => {
                             src={`http://127.0.0.1:8000/parent-images/${authUserInfo.photo}`}
                             width="200"
                             height="200"
-                            style={{ borderRadius: "100px" }}
+                            style={{ borderRadius: '100px' }}
                             alt="parent-image"
                           />
                         </div>

@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import AdminSidebar from "./../../components/AdminSidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import AdminSidebar from './../../components/AdminSidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 import './../../assets/css/exam.css';
 
 const ShowVehicle = () => {
@@ -15,9 +15,9 @@ const ShowVehicle = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/vehicles/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -39,7 +39,7 @@ const ShowVehicle = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container">
             <div className="card">
               <div className="card-header">
@@ -47,64 +47,70 @@ const ShowVehicle = () => {
                 <Link
                   to="/admin/vehicles"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Vehicle List
                 </Link>
               </div>
               <div class="col-md-8 p-4">
-                <div class="tab-content profile-tab" id="myTabContent" >
+                <div class="tab-content profile-tab" id="myTabContent">
                   <div>
                     <ol className="alternating-colors">
-                    <li class="element-list">
-                      <div class="col-md-6">
-                        <label>Vehicle Id</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{vehicleItem?.id}</p>
-                      </div>
-                    </li>
-                    <li class="element-list">
-                      <div class="col-md-6">
-                        <label>Vehicle Model</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{vehicleItem?.vehicle_model}</p>
-                      </div>
-                    </li>
-                    <li class="element-list">
-                      <div class="col-md-6">
-                        <label>Vehicle Info</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{vehicleItem?.vehicle_info}</p>
-                      </div>
-                    </li>
-                    <li class="element-list">
-                      <div class="col-md-6">
-                        <label>Driver Info</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p><span style={{ color: 'gray' }}>Name: </span>{vehicleItem?.driver?.name}</p>
-                        <p><span style={{ color: 'gray' }}>Email: </span>{vehicleItem?.driver?.email}</p>
-                      </div>
-                    </li>
-                    <li class="element-list">
-                      <div class="col-md-6">
-                        <label>Capacity</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{vehicleItem?.capacity}</p>
-                      </div>
-                    </li>
-                    <li class="element-list">
-                      <div class="col-md-6">
-                        <label>Route</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{vehicleItem?.route}</p>
-                      </div>
-                    </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Vehicle Id</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{vehicleItem?.id}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Vehicle Model</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{vehicleItem?.vehicle_model}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Vehicle Info</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{vehicleItem?.vehicle_info}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Driver Info</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>
+                            <span style={{ color: 'gray' }}>Name: </span>
+                            {vehicleItem?.driver?.name}
+                          </p>
+                          <p>
+                            <span style={{ color: 'gray' }}>Email: </span>
+                            {vehicleItem?.driver?.email}
+                          </p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Capacity</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{vehicleItem?.capacity}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Route</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{vehicleItem?.route}</p>
+                        </div>
+                      </li>
                     </ol>
                   </div>
                 </div>

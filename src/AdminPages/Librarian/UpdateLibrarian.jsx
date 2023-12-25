@@ -1,10 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import Sidebar from "../../components/Sidebar";
-import Footer from "../../components/Footer";
-import LibrarianHeader from "../../components/LibrarianHeader";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import Sidebar from '../../components/Sidebar';
+import Footer from '../../components/Footer';
+import LibrarianHeader from '../../components/LibrarianHeader';
 import AdminSidebar from './../../components/AdminSidebar';
 
 const UpdateLibrarian = () => {
@@ -15,7 +15,7 @@ const UpdateLibrarian = () => {
   const handleChange = (e) => {
     setLibrarianInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -24,8 +24,8 @@ const UpdateLibrarian = () => {
       ...values,
       user_information: {
         ...values.user_information,
-        [e.target.name]: e.target.value,
-      },
+        [e.target.name]: e.target.value
+      }
     }));
   };
 
@@ -34,8 +34,8 @@ const UpdateLibrarian = () => {
       ...values,
       user_information: {
         ...values.user_information,
-        [e.target.name]: e.target.files[0],
-      },
+        [e.target.name]: e.target.files[0]
+      }
     }));
   };
 
@@ -43,15 +43,15 @@ const UpdateLibrarian = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("_method", "PUT");
-    formData.append("name", librarianInput.name);
-    formData.append("email", librarianInput.email);
-    formData.append("photo", librarianInput.user_information.photo);
-    formData.append("address", librarianInput.user_information.address);
-    formData.append("phone", librarianInput.user_information.phone);
-    formData.append("birthday", librarianInput.user_information.birthday);
-    formData.append("gender", librarianInput.user_information.gender);
-    formData.append("blood_group", librarianInput.user_information.blood_group);
+    formData.append('_method', 'PUT');
+    formData.append('name', librarianInput.name);
+    formData.append('email', librarianInput.email);
+    formData.append('photo', librarianInput.user_information.photo);
+    formData.append('address', librarianInput.user_information.address);
+    formData.append('phone', librarianInput.user_information.phone);
+    formData.append('birthday', librarianInput.user_information.birthday);
+    formData.append('gender', librarianInput.user_information.gender);
+    formData.append('blood_group', librarianInput.user_information.blood_group);
 
     console.log(librarianInput);
     console.log(formData);
@@ -59,18 +59,18 @@ const UpdateLibrarian = () => {
     fetch(`http://127.0.0.1:8000/api/librarian/${id}`, {
       body: formData,
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "POST",
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
         if (response?.status === 200) {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          navigate("/admin/librarian");
+          Swal.fire('Success', response?.message, 'success');
+          navigate('/admin/librarian');
         } else {
-          Swal.fire("Warning", response?.message, "warning");
+          Swal.fire('Warning', response?.message, 'warning');
           navigate(`/admin/librarian/${id}/edit`);
         }
       });
@@ -79,9 +79,9 @@ const UpdateLibrarian = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/librarian/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -103,8 +103,8 @@ const UpdateLibrarian = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container px-4" style={{ marginLeft: '290px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Librarian Edit</h4>
@@ -134,7 +134,7 @@ const UpdateLibrarian = () => {
                               type="text"
                               name="name"
                               onChange={handleChange}
-                              value={librarianInput?.name || ""}
+                              value={librarianInput?.name || ''}
                               className="form-control"
                             />
                           </div>
@@ -144,7 +144,7 @@ const UpdateLibrarian = () => {
                               type="email"
                               name="email"
                               onChange={handleChange}
-                              value={librarianInput?.email || ""}
+                              value={librarianInput?.email || ''}
                               className="form-control"
                             />
                           </div>
@@ -155,7 +155,7 @@ const UpdateLibrarian = () => {
                               name="address"
                               onChange={handleUserInformationChange}
                               value={
-                                librarianInput?.user_information?.address || ""
+                                librarianInput?.user_information?.address || ''
                               }
                               className="form-control"
                             />
@@ -166,7 +166,9 @@ const UpdateLibrarian = () => {
                               type="text"
                               name="phone"
                               onChange={handleUserInformationChange}
-                              value={librarianInput?.user_information?.phone || ""}
+                              value={
+                                librarianInput?.user_information?.phone || ''
+                              }
                               className="form-control"
                             />
                           </div>
@@ -177,7 +179,7 @@ const UpdateLibrarian = () => {
                               name="birthday"
                               onChange={handleUserInformationChange}
                               value={
-                                librarianInput?.user_information?.birthday || ""
+                                librarianInput?.user_information?.birthday || ''
                               }
                               className="form-control"
                             />
@@ -196,7 +198,9 @@ const UpdateLibrarian = () => {
                             <select
                               name="gender"
                               onChange={handleUserInformationChange}
-                              value={librarianInput?.user_information?.gender || ""}
+                              value={
+                                librarianInput?.user_information?.gender || ''
+                              }
                               className="form-control"
                             >
                               <option value="">Select gender</option>
@@ -211,7 +215,8 @@ const UpdateLibrarian = () => {
                               name="blood_group"
                               onChange={handleUserInformationChange}
                               value={
-                                librarianInput?.user_information?.blood_group || ""
+                                librarianInput?.user_information?.blood_group ||
+                                ''
                               }
                               className="form-control"
                             >

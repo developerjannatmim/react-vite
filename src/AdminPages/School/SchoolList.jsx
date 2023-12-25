@@ -1,11 +1,11 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-import AdminSidebar from "./../../components/AdminSidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import AdminSidebar from './../../components/AdminSidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const SchoolList = () => {
   const navigate = useNavigate();
@@ -15,20 +15,20 @@ const SchoolList = () => {
   const deleteSchool = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
+    Clicked.innerText = 'deleting';
 
     if (confirm(`Are you sure you want to delete school id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/schools/${id}`, {
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json'
         },
-        method: "DELETE",
+        method: 'DELETE'
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
         })
         .catch((error) => {
           console.error(error);
@@ -37,11 +37,11 @@ const SchoolList = () => {
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/schools?", {
+    fetch('http://127.0.0.1:8000/api/schools?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -64,7 +64,7 @@ const SchoolList = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
@@ -94,14 +94,34 @@ const SchoolList = () => {
                           <td>{schoolItem?.phone}</td>
                           <td>{schoolItem?.address}</td>
                           <td>{schoolItem?.school_info}</td>
-                          {schoolItem?.status === 1 &&
-                            <td><button style={{ backgroundColor: '#65B741', color: 'white', border: 'none', borderRadius: '14px'  }}>active</button></td>
-
-                          }
-                          {schoolItem?.status === 0 &&
-                            <td><button style={{ backgroundColor: '#EF4040', color: 'white', border: 'none', borderRadius: '14px'  }}>inactive</button></td>
-
-                          }
+                          {schoolItem?.status === 1 && (
+                            <td>
+                              <button
+                                style={{
+                                  backgroundColor: '#65B741',
+                                  color: 'white',
+                                  border: 'none',
+                                  borderRadius: '14px'
+                                }}
+                              >
+                                active
+                              </button>
+                            </td>
+                          )}
+                          {schoolItem?.status === 0 && (
+                            <td>
+                              <button
+                                style={{
+                                  backgroundColor: '#EF4040',
+                                  color: 'white',
+                                  border: 'none',
+                                  borderRadius: '14px'
+                                }}
+                              >
+                                inactive
+                              </button>
+                            </td>
+                          )}
                           <td>
                             <div className="dropdown">
                               <button
@@ -128,7 +148,9 @@ const SchoolList = () => {
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    onClick={(e) => deleteSchool(e, schoolItem?.id)}
+                                    onClick={(e) =>
+                                      deleteSchool(e, schoolItem?.id)
+                                    }
                                   >
                                     Delete
                                   </Link>

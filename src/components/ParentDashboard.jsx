@@ -1,11 +1,11 @@
-import React from "react";
-import Sidebar from "./Sidebar";
-import Footer from "./Footer";
-import "./../assets/css/style.css";
-import ParentHeader from "./ParentHeader";
+import React from 'react';
+import Sidebar from './Sidebar';
+import Footer from './Footer';
+import './../assets/css/style.css';
+import ParentHeader from './ParentHeader';
 
 const ParentDashboard = () => {
-  const authUserInfo = JSON.parse(localStorage.getItem("auth_info"));
+  const authUserInfo = JSON.parse(localStorage.getItem('auth_info'));
   const userName = authUserInfo.auth_name;
 
   return (
@@ -17,12 +17,14 @@ const ParentDashboard = () => {
         <div className="w-auto position-sticky">
           <Sidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div>
             <div className="container-fluid px-4">
               <h1 className="mt-4">Dashboard</h1>
               <ol className="breadcrumb mb-4">
-                <li className="breadcrumb-item active">Welcome to Parent Dashboard</li>
+                <li className="breadcrumb-item active">
+                  Welcome to Parent Dashboard
+                </li>
               </ol>
               <span className="user_role">
                 <b>Parent</b>

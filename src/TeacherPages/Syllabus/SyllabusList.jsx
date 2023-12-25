@@ -1,12 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { PDFDownloadLink, Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
-import Swal from "sweetalert2";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import {
+  PDFDownloadLink,
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet
+} from '@react-pdf/renderer';
+import Swal from 'sweetalert2';
 
-import TeacherSidebar from "./../../components/TeacherSidebar";
-import Footer from "./../../components/Footer";
-import TeacherHeader from "../../components/TeacherHeader";
+import TeacherSidebar from './../../components/TeacherSidebar';
+import Footer from './../../components/Footer';
+import TeacherHeader from '../../components/TeacherHeader';
 
 const SyllabusList = () => {
   const [syllabusList, setSyllabusList] = useState([]);
@@ -17,34 +24,34 @@ const SyllabusList = () => {
   const deleteSyllabus = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
+    Clicked.innerText = 'deleting';
 
     if (confirm(`Are you sure you want to delete syllabus id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/syllabuses/${id}`, {
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json'
         },
-        method: "DELETE",
+        method: 'DELETE'
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
         })
         .catch((error) => {
           console.error(error);
-          Swal.fire("Warning", response?.message, "warning");
+          Swal.fire('Warning', response?.message, 'warning');
         });
     }
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/syllabuses?", {
+    fetch('http://127.0.0.1:8000/api/syllabuses?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -75,12 +82,12 @@ const SyllabusList = () => {
       flexGrow: 1
     }
   });
-  
+
   const MyDoc = () => (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
-        <Text>Section #1</Text>
+          <Text>Section #1</Text>
         </View>
       </Page>
       <Page size="A4" style={styles.page}>
@@ -105,7 +112,7 @@ const SyllabusList = () => {
         <div className="w-auto position-sticky">
           <TeacherSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
@@ -123,7 +130,7 @@ const SyllabusList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >
@@ -169,9 +176,14 @@ const SyllabusList = () => {
                           <td>{syllabus.subject?.name}</td>
                           {/* <td><img src={`http://127.0.0.1:8000/syllabus-images/${syllabus?.file}`} width='40'/></td> */}
                           <td>
-                          <div className="App">
-                              <PDFDownloadLink document={<MyDoc />} fileName='syllabus.pdf'>
-                              {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download!')}
+                            <div className="App">
+                              <PDFDownloadLink
+                                document={<MyDoc />}
+                                fileName="syllabus.pdf"
+                              >
+                                {({ blob, url, loading, error }) =>
+                                  loading ? 'Loading document...' : 'Download!'
+                                }
                               </PDFDownloadLink>
                             </div>
                           </td>

@@ -55,19 +55,20 @@ const AddClassRoom = () => {
         <AdminHeader />
       </div>
       <div className="d-flex">
-        <div className="w-auto position-sticky">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="mt-5 col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center mt-2">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <form onSubmit={submitClassRoom} id="CLASSROOM_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Class Room List
+                  Add Class Room
                     <Link
                       to="/admin/classroom"
                       className="btn btn-primary btn-sm float-end"
+                      style={{ marginLeft: '620px' }}
                     >
                       View Class Room
                     </Link>

@@ -10,30 +10,30 @@ import AdminHeader from '../../components/AdminHeader';
 const AddSection = () => {
   const navigate = useNavigate();
   const [sectionInput, setSectionInput] = useState({
-    name: '',
+    name: ''
   });
 
   const handleChange = (e) => {
     setSectionInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
   const submitSection = (e) => {
     e.preventDefault();
     const data = {
-      name: sectionInput.name,
+      name: sectionInput.name
     };
     fetch('http://127.0.0.1:8000/api/sections', {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -53,19 +53,20 @@ const AddSection = () => {
         <AdminHeader />
       </div>
       <div className="d-flex">
-        <div className="w-auto position-sticky">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center mt-2">
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={submitSection} id="SECTION_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Section List
+                    Add Section 
                     <Link
                       to="/admin/sections"
                       className="btn btn-primary btn-sm float-end"
+                      style={{ marginLeft: '620px' }}
                     >
                       View Section
                     </Link>

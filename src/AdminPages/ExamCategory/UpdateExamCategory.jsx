@@ -1,11 +1,11 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-import Sidebar from "../../components/Sidebar";
-import Footer from "../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from '../../components/Sidebar';
+import Footer from '../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
 
 const UpdateExamCategory = () => {
@@ -14,7 +14,10 @@ const UpdateExamCategory = () => {
   const { id } = useParams();
 
   const handleChange = (e) => {
-    setExamCategoryInput((values) => ({ ...values, [e.target.name]: e.target.value }));
+    setExamCategoryInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.value
+    }));
   };
 
   const submitExamCategory = (e) => {
@@ -23,33 +26,33 @@ const UpdateExamCategory = () => {
     console.log(exam_categoryInput);
     fetch(`http://127.0.0.1:8000/api/exam_category/${id}`, {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: "PUT",
+      method: 'PUT'
     })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        Swal.fire("Success", response?.message, "success");
-        navigate("/admin/exam-category");
+        Swal.fire('Success', response?.message, 'success');
+        navigate('/admin/exam-category');
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById("exam_category_FORM").reset();
-        Swal.fire("Warning", response?.message, "warning");
+        document.getElementById('exam_category_FORM').reset();
+        Swal.fire('Warning', response?.message, 'warning');
       });
   };
 
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/exam_category/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -71,7 +74,7 @@ const UpdateExamCategory = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
@@ -102,7 +105,7 @@ const UpdateExamCategory = () => {
                               type="text"
                               name="name"
                               onChange={handleChange}
-                              value={exam_categoryInput?.name || ""}
+                              value={exam_categoryInput?.name || ''}
                               className="form-control"
                             />
                           </div>

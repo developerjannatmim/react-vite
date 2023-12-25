@@ -20,20 +20,20 @@ const AddParent = () => {
     photo: '',
     birthday: '',
     gender: '',
-    blood_group: '',
+    blood_group: ''
   });
 
   const handleChange = (e) => {
     setParentInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
   const handleImage = (e) => {
     setParentInput((values) => ({
       ...values,
-      [e.target.name]: e.target.files[0],
+      [e.target.name]: e.target.files[0]
     }));
   };
 
@@ -56,9 +56,9 @@ const AddParent = () => {
     fetch('http://127.0.0.1:8000/api/parents', {
       body: formData,
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -79,17 +79,17 @@ const AddParent = () => {
       <div>
         <AdminHeader />
       </div>
-      <div className="d-flex">
-        <div className="w-auto position-sticky">
+      <div className="col">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-4">
+        <div className="d-flex align-items-center" style={{ marginTop: '-550px' }}>
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={handleSubmit}>
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Parent List
+                    Add Parent
                     <Link
                       to="/admin/parents"
                       className="btn btn-primary btn-sm float-end"

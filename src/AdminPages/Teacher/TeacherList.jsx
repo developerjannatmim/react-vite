@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
-import "../../assets/css/style.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import '../../assets/css/style.css';
 
-import AdminSidebar from "./../../components/AdminSidebar";
-import Footer from "./../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import AdminSidebar from './../../components/AdminSidebar';
+import Footer from './../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 
 const TeacherList = () => {
   const [teachers, setTeachers] = useState([]);
@@ -17,34 +17,34 @@ const TeacherList = () => {
   const deleteTeacherData = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = "deleting";
+    Clicked.innerText = 'deleting';
 
     if (confirm(`Are you sure you want to delete teacher id ${id}?`)) {
       fetch(`http://127.0.0.1:8000/api/teachers/${id}`, {
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json'
         },
-        method: "DELETE",
+        method: 'DELETE'
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
-          Swal.fire("Success", response?.message, "success");
-          Clicked.closest("tr").remove();
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
         })
         .catch((error) => {
           console.error(error);
-          Swal.fire("Warning", response?.message, "warning");
+          Swal.fire('Warning', response?.message, 'warning');
         });
     }
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/teachers?", {
+    fetch('http://127.0.0.1:8000/api/teachers?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -73,8 +73,8 @@ const TeacherList = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container px-4" style={{ marginLeft: '320px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Teacher List</h4>
@@ -85,7 +85,10 @@ const TeacherList = () => {
                   Add Teacher
                 </Link>
               </div>
-              <div className="page-system mt-4 mb-3" style={{ marginLeft: '690px' }}>
+              <div
+                className="page-system mt-4 mb-3"
+                style={{ marginLeft: '690px' }}
+              >
                 <nav>
                   <ul className="pagination">
                     <li className="page-item">
@@ -97,7 +100,7 @@ const TeacherList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >
@@ -150,7 +153,7 @@ const TeacherList = () => {
                               alt="teacher-image"
                               width="40"
                               height="40"
-                              style={{ borderRadius: "50px" }}
+                              style={{ borderRadius: '50px' }}
                             />
                           </td>
                           <td>
@@ -199,7 +202,7 @@ const TeacherList = () => {
                                     className="dropdown-item"
                                     to={`/admin/teachers/${teacherData?.id}/edit`}
                                   >
-                                    Edit 
+                                    Edit
                                   </Link>
                                 </li>
                                 <li>
@@ -209,7 +212,7 @@ const TeacherList = () => {
                                       deleteTeacherData(e, teacherData?.id)
                                     }
                                   >
-                                    Delete 
+                                    Delete
                                   </Link>
                                 </li>
                               </ul>

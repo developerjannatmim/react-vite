@@ -74,7 +74,7 @@ const AccountantList = () => {
           <AdminSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Accountant List</h4>
@@ -87,10 +87,9 @@ const AccountantList = () => {
               </div>
               <div
                 className="page-system mt-4 mb-3"
-                style={{ marginLeft: '690px' }}
               >
                 <nav>
-                  <ul className="pagination">
+                  <ul className="pagination" >
                     <li className="page-item">
                       <a href="#" className="page-link" onClick={prePage}>
                         Prev
@@ -217,7 +216,7 @@ const AccountantList = () => {
                                           )
                                         }
                                       >
-                                        Delete Admin
+                                        Delete
                                       </Link>
                                     </li>
                                   </ul>

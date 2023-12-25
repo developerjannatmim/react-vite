@@ -69,7 +69,8 @@ const SyllabusList = () => {
   };
 
   const onDownloadButtonClick = () => {
-    const pdfUrl = 'http://localhost:5173/src/assets/pdf/Secondary-Physics-Book.pdf';
+    const pdfUrl =
+      'http://localhost:5173/src/assets/pdf/Secondary-Physics-Book.pdf';
     const link = document.createElement('a');
     link.href = pdfUrl;
     link.download = 'Book.pdf'; // specify the filename
@@ -87,7 +88,7 @@ const SyllabusList = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
@@ -158,13 +159,13 @@ const SyllabusList = () => {
                           <td>
                             <div className="App">
                               <button
-                                className='btn btn-info btn-sm'
+                                className="btn btn-info btn-sm"
                                 onClick={onButtonClick}
                               >
                                 View
                               </button>
                               <button
-                                className='btn btn-primary btn-sm'
+                                className="btn btn-primary btn-sm"
                                 onClick={onDownloadButtonClick}
                                 style={{ marginLeft: '5px' }}
                               >

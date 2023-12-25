@@ -12,13 +12,13 @@ const AddSubject = () => {
   const [classes, setClasses] = useState();
   const [subjectInput, setSubjectInput] = useState({
     name: '',
-    class_id: '',
+    class_id: ''
   });
 
   const handleChange = (e) => {
     setSubjectInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -26,9 +26,9 @@ const AddSubject = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -45,17 +45,17 @@ const AddSubject = () => {
     e.preventDefault();
     const data = {
       name: subjectInput.name,
-      class_id: subjectInput.class_id,
+      class_id: subjectInput.class_id
     };
     fetch('http://127.0.0.1:8000/api/subjects', {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -76,19 +76,20 @@ const AddSubject = () => {
         <AdminHeader />
       </div>
       <div className="d-flex">
-        <div className="w-auto position-sticky">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center mt-2">
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={submitSubject} id="SUBJECT_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Subject List
+                    Add Subject
                     <Link
                       to="/admin/subject/view"
                       className="btn btn-primary btn-sm float-end"
+                      style={{ marginLeft: '620px' }}
                     >
                       View Subject
                     </Link>

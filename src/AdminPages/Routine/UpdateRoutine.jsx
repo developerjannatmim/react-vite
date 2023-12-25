@@ -20,7 +20,7 @@ const UpdateRoutine = () => {
   const handleChange = (e) => {
     setRoutineInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -30,13 +30,13 @@ const UpdateRoutine = () => {
     const data = routineInput;
     fetch(`http://127.0.0.1:8000/api/routines/${id}`, {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'PUT',
+      method: 'PUT'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -54,9 +54,9 @@ const UpdateRoutine = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/routines/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -73,9 +73,9 @@ const UpdateRoutine = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -92,9 +92,9 @@ const UpdateRoutine = () => {
     console.log({ rooms });
     fetch(`http://127.0.0.1:8000/api/classRooms`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -111,9 +111,9 @@ const UpdateRoutine = () => {
     console.log({ routineCreator });
     fetch(`http://127.0.0.1:8000/api/teachers`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -130,9 +130,9 @@ const UpdateRoutine = () => {
     console.log({ subjects });
     fetch(`http://127.0.0.1:8000/api/subjects`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -149,9 +149,9 @@ const UpdateRoutine = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -173,8 +173,8 @@ const UpdateRoutine = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Routine Edit</h4>

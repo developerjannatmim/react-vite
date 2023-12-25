@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import TeacherSidebar from "./../../components/TeacherSidebar";
-import Footer from "./../../components/Footer";
-import TeacherHeader from "../../components/TeacherHeader";
+import TeacherSidebar from './../../components/TeacherSidebar';
+import Footer from './../../components/Footer';
+import TeacherHeader from '../../components/TeacherHeader';
 
 const ShowStudent = () => {
   const [studentItem, setStudentItem] = useState(null);
@@ -14,9 +14,9 @@ const ShowStudent = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/students/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -38,7 +38,7 @@ const ShowStudent = () => {
         <div className="w-auto position-sticky">
           <TeacherSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container">
             <div className="card">
               <div className="card-header">
@@ -46,7 +46,7 @@ const ShowStudent = () => {
                 <Link
                   to="/teacher/students"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Student List
                 </Link>
@@ -55,7 +55,7 @@ const ShowStudent = () => {
                 <div className="container">
                   <div
                     className="row align-items-center flex-row-reverse"
-                    style={{ marginTop: "-60px" }}
+                    style={{ marginTop: '-60px' }}
                   >
                     <div className="col-lg-8">
                       <div className="about-text go-to">
@@ -80,7 +80,7 @@ const ShowStudent = () => {
                           </div>
                           <div
                             className="col-md-6"
-                            style={{ marginRight: "600px" }}
+                            style={{ marginRight: '600px' }}
                           >
                             <div className="media">
                               <label>E-mail</label>
@@ -106,7 +106,7 @@ const ShowStudent = () => {
                           src={`http://127.0.0.1:8000/student-images/${studentItem?.user_information?.photo}`}
                           width="200"
                           height="200"
-                          style={{ marginLeft: "30px", borderRadius: "100px" }}
+                          style={{ marginLeft: '30px', borderRadius: '100px' }}
                           alt=""
                         />
                       </div>

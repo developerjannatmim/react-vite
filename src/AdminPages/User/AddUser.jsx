@@ -102,17 +102,17 @@ const AddUser = () => {
       <div>
         <AdminHeader />
       </div>
-      <div className="d-flex">
-        <div className="w-auto position-sticky">
+      <div className="col">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-4">
+        <div className="d-flex align-items-center" style={{ marginTop: '-550px' }}>
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={handleSubmit}>
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    User List
+                    Add User
                     <Link
                       to="/admin/users"
                       className="btn btn-primary btn-sm float-end"
@@ -262,9 +262,7 @@ const AddUser = () => {
                             );
                           })}
                         </select>
-                        <small className="text-danger">
-                          {errors.role_id}
-                        </small>
+                        <small className="text-danger">{errors.role_id}</small>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">
                         Submit

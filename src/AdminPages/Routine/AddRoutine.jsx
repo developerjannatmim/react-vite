@@ -24,13 +24,13 @@ const AddRoutine = () => {
     class_id: '',
     section_id: '',
     subject_id: '',
-    room_id: '',
+    room_id: ''
   });
 
   const handleChange = (e) => {
     setRoutineInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -38,9 +38,9 @@ const AddRoutine = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -57,9 +57,9 @@ const AddRoutine = () => {
     console.log({ rooms });
     fetch(`http://127.0.0.1:8000/api/classRooms`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -76,9 +76,9 @@ const AddRoutine = () => {
     console.log({ routineCreator });
     fetch(`http://127.0.0.1:8000/api/teachers`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -95,9 +95,9 @@ const AddRoutine = () => {
     console.log({ subjects });
     fetch(`http://127.0.0.1:8000/api/subjects`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -114,9 +114,9 @@ const AddRoutine = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -141,17 +141,17 @@ const AddRoutine = () => {
       class_id: routineInput.class_id,
       section_id: routineInput.section_id,
       subject_id: routineInput.subject_id,
-      room_id: routineInput.room_id,
+      room_id: routineInput.room_id
     };
     fetch('http://127.0.0.1:8000/api/routines', {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -170,12 +170,12 @@ const AddRoutine = () => {
       <div>
         <AdminHeader />
       </div>
-      <div className="d-flex">
-        <div className="w-auto position-sticky">
+      <div className="col">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center" style={{ marginTop: '-550px' }}>
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={submitRoutine} id="ROUTINE_FORM">
               <div className="card mt-4">
                 <div className="card-header">

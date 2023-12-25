@@ -1,11 +1,11 @@
-import React from "react";
-import "./../../assets/css/profile.css";
-import TeacherSidebar from "./../../components/TeacherSidebar";
-import Footer from "./../../components/Footer";
-import TeacherHeader from "../../components/TeacherHeader";
+import React from 'react';
+import './../../assets/css/profile.css';
+import TeacherSidebar from './../../components/TeacherSidebar';
+import Footer from './../../components/Footer';
+import TeacherHeader from '../../components/TeacherHeader';
 
 const TeacherProfile = () => {
-  const authUserInfo = JSON.parse(localStorage.getItem("auth_info"));
+  const authUserInfo = JSON.parse(localStorage.getItem('auth_info'));
 
   return (
     <>
@@ -16,7 +16,7 @@ const TeacherProfile = () => {
         <div className="w-auto position-sticky">
           <TeacherSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container">
             <div className="row gutters">
               <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -29,7 +29,7 @@ const TeacherProfile = () => {
                             src={`http://127.0.0.1:8000/teacher-images/${authUserInfo.photo}`}
                             width="200"
                             height="200"
-                            style={{ borderRadius: "100px" }}
+                            style={{ borderRadius: '100px' }}
                             alt="teacher-image"
                           />
                         </div>

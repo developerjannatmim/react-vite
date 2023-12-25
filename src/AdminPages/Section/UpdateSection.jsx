@@ -15,7 +15,7 @@ const UpdateSection = () => {
   const handleChange = (e) => {
     setSectionInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -25,13 +25,13 @@ const UpdateSection = () => {
     console.log(sectionInput);
     fetch(`http://127.0.0.1:8000/api/sections/${id}`, {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'PUT',
+      method: 'PUT'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -49,9 +49,9 @@ const UpdateSection = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/sections/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -73,7 +73,7 @@ const UpdateSection = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">

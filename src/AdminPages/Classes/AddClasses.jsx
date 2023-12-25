@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
-import Sidebar from './../../components/Sidebar';
+
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
@@ -63,13 +63,12 @@ const AddClasses = () => {
       console.info(response);
       Swal.fire('Success', response?.message, 'success');
       navigate('/admin/classes');
-      setErrors({});
+      
     })
     .catch((error) => {
       console.error(error);
       Swal.fire('Warning', response?.message, 'warning');
-      navigate('/admin/classes/create');
-      setErrors(response?.errors);
+      setErrors({});
     });
   };
 
@@ -79,19 +78,20 @@ const AddClasses = () => {
         <AdminHeader />
       </div>
       <div className="d-flex">
-        <div className="w-auto position-sticky">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden mt-5">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center mt-2">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <form onSubmit={submitClass}>
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Class List
+                  Add Class
                     <Link
                       to="/admin/classes"
                       className="btn btn-primary btn-sm float-end"
+                      style={{ marginLeft: '620px' }}
                     >
                       View Class
                     </Link>

@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 
-import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
@@ -56,17 +55,17 @@ const AddBackOffice = () => {
       <div>
         <AdminHeader />
       </div>
-      <div className="d-flex">
-        <div className="w-auto position-sticky">
+      <div className="col">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center" style={{ marginTop: '-550px' }}>
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={submitBackOffice} id="SUBJECT_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Book List
+                  Add Book 
                     <Link
                       to="/admin/backOffice"
                       className="btn btn-primary btn-sm float-end"

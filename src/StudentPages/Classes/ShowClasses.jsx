@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import StudentSidebar from "./../../components/StudentSidebar";
-import Footer from "./../../components/Footer";
-import StudentHeader from "../../components/StudentHeader";
+import StudentSidebar from './../../components/StudentSidebar';
+import Footer from './../../components/Footer';
+import StudentHeader from '../../components/StudentHeader';
 
 const ShowClasses = () => {
   const [classItem, setClassItem] = useState(null);
@@ -14,9 +14,9 @@ const ShowClasses = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/classes/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -38,7 +38,7 @@ const ShowClasses = () => {
         <div className="w-auto position-sticky">
           <StudentSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container">
             <div className="card">
               <div className="card-header">
@@ -46,7 +46,7 @@ const ShowClasses = () => {
                 <Link
                   to="/student/classes"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Class List
                 </Link>

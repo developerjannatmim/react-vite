@@ -28,13 +28,13 @@ const UpdateMark = () => {
     console.log(markInput);
     fetch(`http://127.0.0.1:8000/api/marks/${id}`, {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'PUT',
+      method: 'PUT'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -52,9 +52,9 @@ const UpdateMark = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/marks/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -71,9 +71,9 @@ const UpdateMark = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -90,9 +90,9 @@ const UpdateMark = () => {
     console.log({ exam_category });
     fetch(`http://127.0.0.1:8000/api/exam_category`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -109,9 +109,9 @@ const UpdateMark = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -128,9 +128,9 @@ const UpdateMark = () => {
     console.log({ subjects });
     fetch(`http://127.0.0.1:8000/api/subjects`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -147,9 +147,9 @@ const UpdateMark = () => {
     console.log({ users });
     fetch(`http://127.0.0.1:8000/api/students`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -166,9 +166,9 @@ const UpdateMark = () => {
     console.log({ exams });
     fetch(`http://127.0.0.1:8000/api/exams`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -190,7 +190,7 @@ const UpdateMark = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">
@@ -309,23 +309,26 @@ const UpdateMark = () => {
                             </select>
                           </div>
                           <div className="col-md-6 form-group mb-3">
-                          <label>Exam Name</label>
-                          <select
-                            name="exam_category_id"
-                            className="form-control"
-                            onChange={handleChange}
-                            value={markInput.exam_category_id}
-                          >
-                            <option>select exam category</option>
-                            {exam_category?.map((exam_categoryItem) => {
-                              return (
-                                <option key={exam_categoryItem.id} value={exam_categoryItem.id}>
-                                  {exam_categoryItem.name}
-                                </option>
-                              );
-                            })}
-                          </select>
-                        </div>
+                            <label>Exam Name</label>
+                            <select
+                              name="exam_category_id"
+                              className="form-control"
+                              onChange={handleChange}
+                              value={markInput.exam_category_id}
+                            >
+                              <option>select exam category</option>
+                              {exam_category?.map((exam_categoryItem) => {
+                                return (
+                                  <option
+                                    key={exam_categoryItem.id}
+                                    value={exam_categoryItem.id}
+                                  >
+                                    {exam_categoryItem.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </div>
                           <div className="col-md-6 form-group mb-3">
                             <label>Student Name</label>
                             <select

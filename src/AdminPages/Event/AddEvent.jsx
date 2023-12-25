@@ -56,19 +56,20 @@ const AddEvent = () => {
         <AdminHeader />
       </div>
       <div className="d-flex">
-        <div className="w-auto position-sticky">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center mt-2">
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={submitEvent} id="MARK_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Event List
+                  Add Event 
                     <Link
                       to="/admin/event"
                       className="btn btn-primary btn-sm float-end"
+                      style={{ marginLeft: '620px' }}
                     >
                       View Event
                     </Link>

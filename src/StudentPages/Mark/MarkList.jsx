@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import StudentSidebar from "./../../components/StudentSidebar";
-import Footer from "./../../components/Footer";
-import StudentHeader from "../../components/StudentHeader";
+import StudentSidebar from './../../components/StudentSidebar';
+import Footer from './../../components/Footer';
+import StudentHeader from '../../components/StudentHeader';
 
 const MarkList = () => {
   const [markList, setMarkList] = useState([]);
@@ -13,11 +13,11 @@ const MarkList = () => {
   const dataPerPage = 5;
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/marks?", {
+    fetch('http://127.0.0.1:8000/api/marks?', {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -46,7 +46,7 @@ const MarkList = () => {
         <div className="w-auto position-sticky">
           <StudentSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="container px-4">
             <div className="card">
               <div className="card-header">
@@ -64,7 +64,7 @@ const MarkList = () => {
                       return (
                         <li
                           className={`page-item ${
-                            currentPage === n ? "active" : ""
+                            currentPage === n ? 'active' : ''
                           }`}
                           key={i}
                         >

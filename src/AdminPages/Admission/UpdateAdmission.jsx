@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
@@ -15,7 +14,7 @@ const UpdateAdmission = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/classes/${id}`, {
+    fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
         Accept: 'application/json',
       },
@@ -30,7 +29,7 @@ const UpdateAdmission = () => {
         console.error(error);
         setClasses(null);
       });
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     console.log({ sections });
@@ -58,16 +57,6 @@ const UpdateAdmission = () => {
     }));
   };
 
-  // const handleChange = (e) => {
-  //   setAdmissionInput((values) => ({
-  //     ...values,
-  //     user_information: {
-  //       ...values.user_information,
-  //       [e.target.name]: e.target.value,
-  //     },
-  //   }));
-  // };
-
   const handleImage = (e) => {
     setAdmissionInput((values) => ({
       ...values,
@@ -80,9 +69,10 @@ const UpdateAdmission = () => {
 
     const formData = new FormData();
     formData.append('_method', 'PUT');
+    formData.append('image', admissionInput.image);
     formData.append('name', admissionInput.name);
     formData.append('email', admissionInput.email);
-    formData.append('image', admissionInput.image);
+    formData.append('password', admissionInput.password);
     formData.append('address', admissionInput.address);
     formData.append('phone', admissionInput.phone);
     formData.append('dob', admissionInput.dob);
@@ -141,8 +131,8 @@ const UpdateAdmission = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container px-4">
+        <div className="d-flex align-items-center">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>admission Edit</h4>
@@ -193,6 +183,16 @@ const UpdateAdmission = () => {
                               name="address"
                               onChange={handleChange}
                               value={admissionInput?.address || ''}
+                              className="form-control"
+                            />
+                          </div>
+                          <div className="col-md-6 form-group mb-3">
+                            <label>Password</label>
+                            <input
+                              type="password"
+                              name="password"
+                              onChange={handleChange}
+                              value={admissionInput?.password || ''}
                               className="form-control"
                             />
                           </div>
@@ -291,10 +291,10 @@ const UpdateAdmission = () => {
                               {classes?.map((classItem) => {
                                 return (
                                   <option
-                                    key={classItem.id}
-                                    value={classItem.id}
+                                    key={classItem?.id}
+                                    value={classItem?.id}
                                   >
-                                    {classItem.name}
+                                    {classItem?.name}
                                   </option>
                                 );
                               })}

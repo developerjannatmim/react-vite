@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import Sidebar from "../../components/Sidebar";
-import Footer from "../../components/Footer";
-import AdminHeader from "../../components/AdminHeader";
+import Sidebar from '../../components/Sidebar';
+import Footer from '../../components/Footer';
+import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
 
 const ShowExamCategory = () => {
@@ -15,9 +15,9 @@ const ShowExamCategory = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/exam_category/${id}`, {
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json'
       },
-      method: "GET",
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -39,7 +39,7 @@ const ShowExamCategory = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div className="mt-5 container">
             <div className="card">
               <div className="card-header">
@@ -47,14 +47,14 @@ const ShowExamCategory = () => {
                 <Link
                   to="/admin/exam-category"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: "-30px" }}
+                  style={{ marginTop: '-30px' }}
                 >
                   Exam Category List
                 </Link>
               </div>
               <div class="col-md-8 p-4">
-                <div class="tab-content profile-tab" id="myTabContent" >
-                  <div >
+                <div class="tab-content profile-tab" id="myTabContent">
+                  <div>
                     <ol className="alternating-colors">
                       <li className="element-list">
                         <strong>Id</strong>

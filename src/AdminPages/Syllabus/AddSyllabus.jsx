@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
-import Sidebar from './../../components/Sidebar';
+import AdminSidebar from './../../components/AdminSidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 
@@ -18,20 +18,20 @@ const AddSyllabus = () => {
     class_id: '',
     subject_id: '',
     section_id: '',
-    file: '',
+    file: ''
   });
 
   const handleChange = (e) => {
     setSyllabusInput((values) => ({
       ...values,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
   const handleImage = (e) => {
     setSyllabusInput((values) => ({
       ...values,
-      [e.target.name]: e.target.files[0],
+      [e.target.name]: e.target.files[0]
     }));
   };
 
@@ -39,9 +39,9 @@ const AddSyllabus = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -58,9 +58,9 @@ const AddSyllabus = () => {
     console.log({ sections });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -77,9 +77,9 @@ const AddSyllabus = () => {
     console.log({ subjects });
     fetch(`http://127.0.0.1:8000/api/subjects`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -107,22 +107,22 @@ const AddSyllabus = () => {
     fetch('http://127.0.0.1:8000/api/syllabuses', {
       body: formData,
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
-    .then((response) => response.json())
-    .then((response) => {
-      if(response?.status === 200){
-        console.info(response);
-        Swal.fire('Success', response?.message, 'success');
-        navigate('/admin/syllabuses');
-      }else{
-        Swal.fire('Warning', response?.message, 'warning');
-        //setErrors(response?.errors);
-        setErrors({});
-      }
-    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response?.status === 200) {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          navigate('/admin/syllabuses');
+        } else {
+          Swal.fire('Warning', response?.message, 'warning');
+          //setErrors(response?.errors);
+          setErrors({});
+        }
+      });
   };
 
   return (
@@ -131,19 +131,20 @@ const AddSyllabus = () => {
         <AdminHeader />
       </div>
       <div className="d-flex">
-        <div className="w-auto position-sticky">
-          <Sidebar />
+        <div className="w-auto">
+          <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center mt-2">
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={submitSyllabus} id="SYLLABUS_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    Syllabus List
+                    Add Syllabus
                     <Link
                       to="/admin/syllabuses"
                       className="btn btn-primary btn-sm float-end"
+                      style={{ marginLeft: '620px' }}
                     >
                       View Syllabus
                     </Link>
@@ -167,7 +168,7 @@ const AddSyllabus = () => {
                             value={syllabusInput.title}
                             className="form-control"
                           />
-                           <small className="text-danger">{errors.title}</small>
+                          <small className="text-danger">{errors.title}</small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
                           <label>Class Name</label>
@@ -186,7 +187,9 @@ const AddSyllabus = () => {
                               );
                             })}
                           </select>
-                          <small className="text-danger">{errors.class_id}</small>
+                          <small className="text-danger">
+                            {errors.class_id}
+                          </small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
                           <label>Section Name</label>
@@ -208,7 +211,9 @@ const AddSyllabus = () => {
                               );
                             })}
                           </select>
-                          <small className="text-danger">{errors.section_id}</small>
+                          <small className="text-danger">
+                            {errors.section_id}
+                          </small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
                           <label>Subject Name</label>
@@ -230,7 +235,9 @@ const AddSyllabus = () => {
                               );
                             })}
                           </select>
-                          <small className="text-danger">{errors.subject_id}</small>
+                          <small className="text-danger">
+                            {errors.subject_id}
+                          </small>
                         </div>
                         <div className="col-md-6 form-group mb-3">
                           <label>File Name</label>
@@ -240,7 +247,7 @@ const AddSyllabus = () => {
                             onChange={handleImage}
                             className="form-control"
                           />
-                           <small className="text-danger">{errors.file}</small>
+                          <small className="text-danger">{errors.file}</small>
                         </div>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">

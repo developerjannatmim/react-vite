@@ -121,17 +121,17 @@ return (
     <div>
       <AdminHeader />
     </div>
-    <div className="d-flex">
-      <div className="w-auto position-sticky">
+    <div className="col">
+      <div className="w-auto">
         <AdminSidebar />
       </div>
-      <div className="col overflow-hidden">
-        <div className="mt-5 container-fluid px-3">
+      <div className="d-flex align-items-center" style={{ marginTop: '-550px' }}>
+        <div className="mt-5 container" style={{ marginLeft: '320px' }}>
           <form onSubmit={submitExam} id="EXAM_FORM">
             <div className="card mt-4">
               <div className="card-header">
                 <h4>
-                  Exam List
+                Add Exam 
                   <Link
                     to="/admin/exams"
                     className="btn btn-primary btn-sm float-end"

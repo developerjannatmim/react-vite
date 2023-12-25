@@ -10,27 +10,30 @@ import AdminHeader from '../../components/AdminHeader';
 const AddUserRole = () => {
   const navigate = useNavigate();
   const [userRoleInput, setUserRoleInput] = useState({
-    name: '',
+    name: ''
   });
 
   const handleChange = (e) => {
-    setUserRoleInput((values) => ({ ...values, [e.target.name]: e.target.value }));
+    setUserRoleInput((values) => ({
+      ...values,
+      [e.target.name]: e.target.value
+    }));
   };
 
   const submitUserRole = (e) => {
     e.preventDefault();
     const data = {
-      name: userRoleInput.name,
+      name: userRoleInput.name
     };
     fetch('http://127.0.0.1:8000/api/userRoles', {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'POST',
+      method: 'POST'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -51,19 +54,20 @@ const AddUserRole = () => {
         <AdminHeader />
       </div>
       <div className="d-flex">
-        <div className="w-auto position-sticky">
+        <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="col overflow-hidden">
-          <div className="mt-5 container-fluid px-3">
+        <div className="d-flex align-items-center mt-2">
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={submitUserRole} id="SUBJECT_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                    User Role List
+                  Add User Role 
                     <Link
                       to="/admin/userRoles"
                       className="btn btn-primary btn-sm float-end"
+                      style={{ marginLeft: '620px' }}
                     >
                       View User Role
                     </Link>

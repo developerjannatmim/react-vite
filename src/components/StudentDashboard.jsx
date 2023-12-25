@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+import StudentSidebar from "./StudentSidebar";
 import Footer from "./Footer";
 import "./../assets/css/style.css";
 import StudentHeader from "./StudentHeader";
@@ -15,11 +15,11 @@ const StudentDashboard = () => {
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <Sidebar />
+          <StudentSidebar />
         </div>
-        <div className="col overflow-hidden">
+        <div className="d-flex align-items-center">
           <div>
-            <div className="container-fluid px-4">
+            <div className="mt-5 container" style={{ marginLeft: '260px' }}>
               <h1 className="mt-4">Dashboard</h1>
               <ol className="breadcrumb mb-4">
                 <li className="breadcrumb-item active">Welcome to Student Dashboard</li>
