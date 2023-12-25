@@ -55,17 +55,17 @@ const AddBackOffice = () => {
       <div>
         <AdminHeader />
       </div>
-      <div className="col">
+      <div className="d-flex">
         <div className="w-auto">
           <AdminSidebar />
         </div>
-        <div className="d-flex align-items-center" style={{ marginTop: '-550px' }}>
+        <div className="d-flex align-items-center">
           <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <form onSubmit={submitBackOffice} id="SUBJECT_FORM">
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                  Add Book 
+                  Add Book
                     <Link
                       to="/admin/backOffice"
                       className="btn btn-primary btn-sm float-end"

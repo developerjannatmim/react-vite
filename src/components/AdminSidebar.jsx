@@ -72,7 +72,7 @@ const AdminSidebar = () => {
           </Menu>
 
           <Menu>
-            <MenuItem icon={<RiHome4Line />}>Dashboard</MenuItem>
+            <MenuItem icon={<RiHome4Line />}><Link to="/admin/dashboard">Dashboard</Link></MenuItem>
             <SubMenu defaultOpen label={"Users"} icon={<RiTeamLine />}>
               <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/admin">Admin</Link></MenuItem>
               <MenuItem icon={<RiUserFollowLine />}><Link to="/admin/teachers">Teacher</Link></MenuItem>

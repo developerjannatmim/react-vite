@@ -46,7 +46,7 @@ const ShowRoutine = () => {
                 <Link
                   to="/parent/routines"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Routine List
                 </Link>

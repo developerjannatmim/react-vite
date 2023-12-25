@@ -39,14 +39,14 @@ const ShowSubject = () => {
           <AdminSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="mt-5 container">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Subject Details</h4>
                 <Link
                   to="/admin/subject/view"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Subject List
                 </Link>

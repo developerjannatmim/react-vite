@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
-import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
@@ -13,7 +12,7 @@ const AddMark = () => {
   const [classes, setClasses] = useState();
   const [sections, setSections] = useState();
   const [exam_category, setExamCategory] = useState();
-  const [exams, setExams] = useState();
+  // const [exams, setExams] = useState();
   const [subjects, setSubjects] = useState();
   const [users, setUsers] = useState();
   const [markInput, setMarkInput] = useState({
@@ -24,7 +23,7 @@ const AddMark = () => {
     exam_category_id: '',
     section_id: '',
     subject_id: '',
-    user_id: ''
+    user_id: '',
   });
 
   const handleChange = (e) => {
@@ -126,30 +125,36 @@ const AddMark = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log({ exams });
-    fetch(`http://127.0.0.1:8000/api/exams`, {
-      headers: {
-        Accept: 'application/json'
-      },
-      method: 'GET'
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.info(response);
-        setExams(response.data?.exams);
-      })
-      .catch((error) => {
-        console.error(error);
-        setExams(null);
-      });
-  }, []);
+  // useEffect(() => {
+  //   console.log({ exams });
+  //   fetch(`http://127.0.0.1:8000/api/exams`, {
+  //     headers: {
+  //       Accept: 'application/json'
+  //     },
+  //     method: 'GET'
+  //   })
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       console.info(response);
+  //       setExams(response.data?.exams);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //       setExams(null);
+  //     });
+  // }, []);
 
   const submitMark = (e) => {
     e.preventDefault();
     const data = {
-      name: markInput.name,
-      class_id: markInput.class_id
+      marks: markInput.marks,
+      grade_point: markInput.grade_point,
+      comment: markInput.comment,
+      exam_category_id: markInput.exam_category_id,
+      section_id: markInput.section_id,
+      subject_id: markInput.subject_id,
+      user_id: markInput.user_id,
+      class_id: markInput.class_id,
     };
     fetch('http://127.0.0.1:8000/api/marks', {
       body: JSON.stringify({
@@ -313,7 +318,7 @@ const AddMark = () => {
                             onChange={handleChange}
                             value={markInput.exam_category_id}
                           >
-                            <option>select exam category</option>
+                            <option>select exam</option>
                             {exam_category?.map((exam_categoryItem) => {
                               return (
                                 <option

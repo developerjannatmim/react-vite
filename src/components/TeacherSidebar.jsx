@@ -72,7 +72,7 @@ const TeacherSidebar = () => {
           </Menu>
 
           <Menu>
-            <MenuItem icon={<RiHome4Line />}>Dashboard</MenuItem>
+            <MenuItem icon={<RiHome4Line />}><Link to="/teacher/dashboard">Dashboard</Link></MenuItem>
             <SubMenu defaultOpen label={"Users"} icon={<RiTeamLine />}>
               <MenuItem icon={<RiUserFollowLine />}><Link to="/teacher/teachers">Teachers</Link></MenuItem>
               <MenuItem icon={<RiUserFollowLine />}><Link to="/teacher/students">Students</Link></MenuItem>

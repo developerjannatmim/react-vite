@@ -73,7 +73,7 @@ const MarkList = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center" style={{ marginLeft: '300px' }}>
           <div className="mt-5 container px-4">
             <div className="card">
               <div className="card-header">

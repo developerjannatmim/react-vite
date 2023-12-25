@@ -46,7 +46,7 @@ const ShowAdmission = () => {
                 <Link
                   to="/admin/admission"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Admission List
                 </Link>
@@ -67,7 +67,7 @@ const ShowAdmission = () => {
                           <div className="col-md-6">
                             <div className="media">
                               <label>Birthday</label>
-                              <p>{admissionItem?.birthday}</p>
+                              <p>{admissionItem?.dob}</p>
                             </div>
                             <div className="media">
                               <label>Gender</label>
@@ -109,7 +109,7 @@ const ShowAdmission = () => {
                     <div className="col-lg-4">
                       <div className="about-avatar">
                         <img
-                          src={`http://127.0.0.1:8000/admission-images/${admissionItem?.photo}`}
+                          src={`http://127.0.0.1:8000/admission-images/${admissionItem?.image}`}
                           width="200"
                           height="200"
                           style={{ marginLeft: '30px', borderRadius: '100px' }}

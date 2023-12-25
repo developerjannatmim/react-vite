@@ -230,7 +230,7 @@ const UpdateAdmission = () => {
                             <select
                               name="gender"
                               onChange={handleChange}
-                              value={admissionInput?.user_information?.gender || ''}
+                              value={admissionInput?.gender || ''}
                               className="form-control"
                             >
                               <option value="">Select gender</option>
@@ -244,7 +244,7 @@ const UpdateAdmission = () => {
                             <select
                               name="blood_group"
                               onChange={handleChange}
-                              value={admissionInput?.user_information?.blood_group || ''}
+                              value={admissionInput?.blood_group || ''}
                               className="form-control"
                             >
                               <option value="">Select a blood group</option>

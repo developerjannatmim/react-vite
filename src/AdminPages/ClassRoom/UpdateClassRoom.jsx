@@ -74,13 +74,14 @@ const UpdateClassRoom = () => {
           <AdminSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="mt-5 container px-4">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Class Room Edit</h4>
                 <Link
                   to="/admin/classroom"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Class Room List
                 </Link>

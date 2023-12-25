@@ -38,7 +38,7 @@ const ShowMark = () => {
         <div className="w-auto position-sticky">
           <AdminSidebar />
         </div>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center" style={{ marginLeft: '300px' }}>
           <div className="mt-5 container">
             <div className="card">
               <div className="card-header">
@@ -46,7 +46,7 @@ const ShowMark = () => {
                 <Link
                   to="/admin/marks"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Mark List
                 </Link>

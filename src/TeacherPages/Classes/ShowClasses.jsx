@@ -46,7 +46,7 @@ const ShowClasses = () => {
                 <Link
                   to="/teacher/classes"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Class List
                 </Link>

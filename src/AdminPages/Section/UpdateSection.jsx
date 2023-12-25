@@ -74,13 +74,14 @@ const UpdateSection = () => {
           <AdminSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="mt-5 container px-4">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Section Edit</h4>
                 <Link
                   to="/admin/sections"
                   className="btn btn-primary btn-sm float-end"
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Section List
                 </Link>

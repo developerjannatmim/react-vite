@@ -72,7 +72,7 @@ const StudentSidebar = () => {
           </Menu>
 
           <Menu>
-            <MenuItem icon={<RiHome4Line />}>Dashboard</MenuItem>
+            <MenuItem icon={<RiHome4Line />}><Link to="/student/dashboard">Dashboard</Link></MenuItem>
             <MenuItem icon={<RiUserFollowLine />}><Link to="/student/teachers">Teachers</Link></MenuItem>
             <SubMenu defaultOpen label={"Examinations"} icon={<RiFolder2Line />}>
               <MenuItem icon={<RiPlantLine />}><Link to="/student/exams">Offline Exams</Link></MenuItem>

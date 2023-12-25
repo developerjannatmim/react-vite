@@ -46,7 +46,7 @@ const ShowSubject = () => {
                 <Link
                   to="/student/subject/view"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Subject List
                 </Link>

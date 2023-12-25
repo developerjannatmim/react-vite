@@ -73,7 +73,7 @@ const ClassRoomList = () => {
           <AdminSidebar />
         </div>
         <div className="mt-5 d-flex align-items-center">
-          <div className="mt-5 container px-4">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Class Room List</h4>

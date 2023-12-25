@@ -74,7 +74,7 @@ const UserList = () => {
           <AdminSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="mt-5 container px-4">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>User List</h4>
@@ -197,7 +197,7 @@ const UserList = () => {
                                     className="dropdown-item"
                                     to={`/admin/users/${userData?.id}/show`}
                                   >
-                                    Show Admin
+                                    Show
                                   </Link>
                                 </li>
                                 <li>
@@ -205,7 +205,7 @@ const UserList = () => {
                                     className="dropdown-item"
                                     to={`/admin/users/${userData?.id}/edit`}
                                   >
-                                    Edit Admin
+                                    Edit
                                   </Link>
                                 </li>
                                 <li>
@@ -215,7 +215,7 @@ const UserList = () => {
                                       deleteUserData(e, userData?.id)
                                     }
                                   >
-                                    Delete Admin
+                                    Delete
                                   </Link>
                                 </li>
                               </ul>

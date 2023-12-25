@@ -39,14 +39,14 @@ const ShowClassRoom = () => {
           <AdminSidebar />
         </div>
         <div className="mt-5 d-flex align-items-center">
-          <div className="mt-5 container">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Class Room Details</h4>
                 <Link
                   to="/admin/classroom"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Class Room List
                 </Link>

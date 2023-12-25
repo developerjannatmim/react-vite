@@ -41,14 +41,14 @@ const ShowBackOffice = () => {
           <AdminSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="mt-5 container">
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Book Details</h4>
                 <Link
                   to="/admin/backOffice"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Book List
                 </Link>

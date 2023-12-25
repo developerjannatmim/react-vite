@@ -46,7 +46,7 @@ const ShowAdmin = () => {
                 <Link
                   to="/admin/admin"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Admin List
                 </Link>

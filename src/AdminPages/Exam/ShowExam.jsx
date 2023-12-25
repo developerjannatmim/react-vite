@@ -40,14 +40,14 @@ const ShowExam = () => {
           <AdminSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="mt-5 container">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Exam Details</h4>
                 <Link
                   to="/admin/exams"
                   className="btn btn-primary btn-sm float-end"
-                  style={{ marginTop: '-30px' }}
+                  style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >
                   Exam List
                 </Link>
