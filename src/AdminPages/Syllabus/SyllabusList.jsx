@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import AdminSidebar from './../../components/AdminSidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
-import pdf from './../../assets/pdf/Secondary-Physics-Book.pdf';
+import pdf from './../../assets/pdf/syllabus.pdf';
 
 const SyllabusList = () => {
   const [syllabusList, setSyllabusList] = useState([]);

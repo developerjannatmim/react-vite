@@ -34,11 +34,11 @@ export default function Contact() {
                 style={{ fontSize: "20px", lineHeight: "20px" }}
               >
                 <span className="canto text-white">
-                  Cantoment Primary School
+                  Cantoment Public School
                 </span>
               </Link>
               <p style={{ color: "white", fontSize: "13px" }}>
-              At Cantoment Primary School, we believe in fostering a lifelong love of learning in each child. We recognize each individual as a unique expression of body, soul and spirit, and we seek to engage the whole child through a developmentally appropriate curriculum that addresses the physical, emotional, and intellectual aspects of a child. 
+              At Cantonment Public School, we believe in fostering a lifelong love of learning in each child. We recognize each individual as a unique expression of body, soul and spirit, and we seek to engage the whole child through a developmentally appropriate curriculum that addresses the physical, emotional, and intellectual aspects of a child. 
               </p>
               <div className="d-flex justify-content-start mt-4">
                 <Link

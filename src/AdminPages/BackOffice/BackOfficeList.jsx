@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
+import pdf from './../../assets/pdf/Secondary-Physics-Book.pdf';
 
 const BackOfficeList = () => {
   const [backOfficeList, setBackOfficeList] = useState([]);
@@ -62,6 +63,21 @@ const BackOfficeList = () => {
   const records = backOfficeList?.slice(firstIndex, lastIndex);
   const npage = Math.ceil(backOfficeList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
+
+  const onButtonClick = () => {
+    window.open(pdf);
+  };
+
+  const onDownloadButtonClick = () => {
+    const pdfUrl =
+      'http://localhost:5173/src/assets/pdf/Secondary-Physics-Book.pdf';
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'Book.pdf'; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -126,6 +142,7 @@ const BackOfficeList = () => {
                       <th scope="col">Book Name</th>
                       <th scope="col">Author</th>
                       <th scope="col">Copies</th>
+                      <th scope="col">PDF</th>
                       <th scope="col">Available Copies</th>
                       <th scope="col">Options</th>
                     </tr>
@@ -138,6 +155,24 @@ const BackOfficeList = () => {
                           <td>{backOffice?.name}</td>
                           <td>{backOffice?.author}</td>
                           <td>{backOffice?.copies}</td>
+                          <td>
+                            <div className="App">
+                              <button
+                                className="btn btn-info btn-sm"
+                                onClick={onButtonClick}
+                                style={{ marginLeft: '5px', marginTop: '5px' }}
+                              >
+                                View
+                              </button>
+                              <button
+                                className="btn btn-primary btn-sm"
+                                onClick={onDownloadButtonClick}
+                                style={{ marginLeft: '5px', marginTop: '5px' }}
+                              >
+                                Download
+                              </button>
+                            </div>
+                          </td>
                           <td>{backOffice?.availble_copies}</td>
                           <td>
                             <div className="dropdown">

@@ -32,7 +32,7 @@ export default function TopNavbar() {
             {/* <LogoIcon /> */}
               <Image src={Logo} alt="office" width='50px' height='50px'/>
             <h1 style={{ marginLeft: "15px" }} className="font20 extraBold">
-              Cantoment Primary School
+              Cantonment Public School
             </h1>
           </Link>
           <BurderWrapper className="pointer" onClick={() => toggleSidebar(!sidebarOpen)}>

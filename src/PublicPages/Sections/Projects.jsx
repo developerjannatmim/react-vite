@@ -36,12 +36,9 @@ export default function Projects() {
             <p className="section-title pr-5">
               <span className="pr-2">Learn About Us</span>
             </p>
-            <h1 className="mb-4">Best School For Your Kids</h1>
-            <p>
-              Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo
-              dolor lorem ipsum ut sed eos, ipsum et dolor kasd sit ea justo.
-              Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-              dolor
+            <h1 className="mb-3">Best School For Your Kids</h1>
+            <p className="mb-3">
+            Cantonment Public School Jessore is the first school established by the Directorate of Military Lands and Cantonments under the Ministry of Defence. The journey of the college started in two small rooms of Daud Public School with a total of 5 students including 3 Bengalis on 17 July 1969 as 'Cantonment College Jessore' within Jessore Cantonment.
             </p>
             <div className="row pt-2 pb-4">
               <div className="col-6 col-md-4">

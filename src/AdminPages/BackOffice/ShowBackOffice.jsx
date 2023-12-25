@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
+import pdf from './../../assets/pdf/syllabus.pdf';
 
 import '../../assets/css/new.css';
 import AdminSidebar from './../../components/AdminSidebar';
@@ -30,6 +31,21 @@ const ShowBackOffice = () => {
         setBackOfficeItem(null);
       });
   }, [id]);
+
+  const onButtonClick = () => {
+    window.open(pdf);
+  };
+
+  const onDownloadButtonClick = () => {
+    const pdfUrl =
+      'http://localhost:5173/src/assets/pdf/Secondary-Physics-Book.pdf';
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'Book.pdf'; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -76,6 +92,27 @@ const ShowBackOffice = () => {
                       <li className="element-list">
                         <strong>Available Copies</strong>
                         <p>{backOfficeItem?.availble_copies}</p>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>PDF</label>
+                        </div>
+                        <div className="App">
+                          <button
+                            className="btn btn-info btn-sm"
+                            onClick={onButtonClick}
+                            style={{ marginLeft: '5px' }}
+                          >
+                            View
+                          </button>
+                          <button
+                            className="btn btn-primary btn-sm"
+                            onClick={onDownloadButtonClick}
+                            style={{ marginLeft: '5px' }}
+                          >
+                            Download
+                          </button>
+                        </div>
                       </li>
                     </ol>
                   </div>

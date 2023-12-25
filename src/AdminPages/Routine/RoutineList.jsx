@@ -1,16 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import {
-  PDFDownloadLink,
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet
-} from '@react-pdf/renderer';
 import Swal from 'sweetalert2';
 
+import pdf from './../../assets/pdf/routine.pdf';
 import AdminSidebar from './../../components/AdminSidebar';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
@@ -71,37 +64,40 @@ const RoutineList = () => {
   const npage = Math.ceil(routineList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
 
-  const styles = StyleSheet.create({
-    page: {
-      flexDirection: 'row',
-      backgroundColor: '#E4E4E4'
-    },
-    section: {
-      margin: 10,
-      padding: 10,
-      flexGrow: 1
-    }
-  });
+  const onButtonClick = () => {
+    window.open(pdf);
+  };
 
-  const MyDoc = () => (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <Text>Section #1</Text>
-        </View>
-      </Page>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <Text>Section #2</Text>
-        </View>
-      </Page>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <Text>Section #3</Text>
-        </View>
-      </Page>
-    </Document>
-  );
+  const onDownloadButtonClick = () => {
+    const pdfUrl =
+      'http://localhost:5173/src/assets/pdf/Secondary-Physics-Book.pdf';
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'Book.pdf'; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // const MyDoc = () => (
+  //   <Document>
+  //     <Page size="A4" style={styles.page}>
+  //       <View style={styles.section}>
+  //         <Text>Section #1</Text>
+  //       </View>
+  //     </Page>
+  //     <Page size="A4" style={styles.page}>
+  //       <View style={styles.section}>
+  //         <Text>Section #2</Text>
+  //       </View>
+  //     </Page>
+  //     <Page size="A4" style={styles.page}>
+  //       <View style={styles.section}>
+  //         <Text>Section #3</Text>
+  //       </View>
+  //     </Page>
+  //   </Document>
+  // );
 
   return (
     <>
@@ -189,16 +185,23 @@ const RoutineList = () => {
                           <td>{routineItem.subject?.name}</td>
                           <td>{routineItem.room?.name}</td>
                           <td>
+                          <td>
                             <div className="App">
-                              <PDFDownloadLink
-                                document={<MyDoc />}
-                                fileName="routine.pdf"
+                              <button
+                                className="btn btn-info btn-sm"
+                                onClick={onButtonClick}
                               >
-                                {({ blob, url, loading, error }) =>
-                                  loading ? 'Loading document...' : 'Download!'
-                                }
-                              </PDFDownloadLink>
+                                View
+                              </button>
+                              <button
+                                className="btn btn-primary btn-sm"
+                                onClick={onDownloadButtonClick}
+                                style={{ marginTop: '5px' }}
+                              >
+                                Download
+                              </button>
                             </div>
+                          </td>
                           </td>
                           <td>
                             <div className="dropdown">

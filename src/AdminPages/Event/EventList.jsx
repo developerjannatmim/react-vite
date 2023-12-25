@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
+import pdf from './../../assets/pdf/School_Events.pdf';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
@@ -62,6 +63,21 @@ const EventList = () => {
   const records = eventList?.slice(firstIndex, lastIndex);
   const npage = Math.ceil(eventList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
+
+  const onButtonClick = () => {
+    window.open(pdf);
+  };
+
+  const onDownloadButtonClick = () => {
+    const pdfUrl =
+      'http://localhost:5173/src/assets/pdf/Secondary-Physics-Book.pdf';
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'Book.pdf'; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -125,6 +141,7 @@ const EventList = () => {
                       <th scope="col">ID</th>
                       <th scope="col">Event Title</th>
                       <th scope="col">Date</th>
+                      <th scope="col">PDF</th>
                       <th scope="col">Status</th>
                       <th scope="col">Options</th>
                     </tr>
@@ -136,6 +153,23 @@ const EventList = () => {
                           <td>{event?.id}</td>
                           <td>{event?.title}</td>
                           <td>{event?.date}</td>
+                          <td>
+                            <div className="App">
+                              <button
+                                className="btn btn-info btn-sm"
+                                onClick={onButtonClick}
+                              >
+                                View
+                              </button>
+                              <button
+                                className="btn btn-primary btn-sm"
+                                onClick={onDownloadButtonClick}
+                                style={{ marginLeft: '5px' }}
+                              >
+                                Download
+                              </button>
+                            </div>
+                          </td>
                           {event.status === 1 && (
                             <td>
                               <button

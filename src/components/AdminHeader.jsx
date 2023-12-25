@@ -13,7 +13,7 @@ const AdminHeader = () => {
     <div>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a className="navbar-brand ps-3" href="index.html">
-          Cantoment Primary School
+          Cantonment Public School
         </a>
         <a className="navbar-brand d-block d-md-none">
           <i className="bi bi-justify"></i>

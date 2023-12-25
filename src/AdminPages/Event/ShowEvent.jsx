@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Footer from './../../components/Footer';
 import AdminHeader from '../../components/AdminHeader';
 import AdminSidebar from './../../components/AdminSidebar';
+import pdf from './../../assets/pdf/School_Events.pdf';
 
 const ShowEvent = () => {
   const [eventItem, setEventItem] = useState(null);
@@ -28,6 +29,21 @@ const ShowEvent = () => {
         setEventItem(null);
       });
   }, [id]);
+
+  const onButtonClick = () => {
+    window.open(pdf);
+  };
+
+  const onDownloadButtonClick = () => {
+    const pdfUrl =
+      'http://localhost:5173/src/assets/pdf/Secondary-Physics-Book.pdf';
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'Book.pdf'; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -70,6 +86,26 @@ const ShowEvent = () => {
                       <li className="element-list">
                         <strong>Status</strong>
                         <p>{eventItem?.status}</p>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6 mb-2">
+                          <label>Events PDF</label>
+                        </div>
+                        <div className="App">
+                          <button
+                            className="btn btn-info btn-sm"
+                            onClick={onButtonClick}
+                          >
+                            View
+                          </button>
+                          <button
+                            className="btn btn-primary btn-sm"
+                            onClick={onDownloadButtonClick}
+                            style={{ marginLeft: '5px' }}
+                          >
+                            Download
+                          </button>
+                        </div>
                       </li>
                     </ol>
                   </div>
