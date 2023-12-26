@@ -39,7 +39,7 @@ const ShowSubject = () => {
           <TeacherSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Subject Details</h4>
@@ -53,36 +53,33 @@ const ShowSubject = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Id</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{subjectItem?.id}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Class</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{subjectItem?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Subject</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{subjectItem?.class?.name}</p>
-                      </div>
-                    </div>
+                  <div>
+                    <ol className="alternating-colors">
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Id</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{subjectItem?.id}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Class</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{subjectItem?.name}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Subject</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{subjectItem?.class?.name}</p>
+                        </div>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               </div>

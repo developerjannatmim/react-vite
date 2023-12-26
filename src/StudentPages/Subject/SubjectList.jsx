@@ -77,12 +77,6 @@ const SubjectList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Subject List</h4>
-                <Link
-                  to="/student/subject/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Subject
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>

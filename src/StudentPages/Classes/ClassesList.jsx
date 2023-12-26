@@ -1,36 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
-import TeacherSidebar from './../../components/TeacherSidebar';
+import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
-import TeacherHeader from '../../components/TeacherHeader';
-import pdf from './../../assets/pdf/syllabus.pdf';
+import StudentHeader from '../../components/StudentHeader';
+import StudentSidebar from './../../components/StudentSidebar';
 
-const SyllabusList = () => {
-  const [syllabusList, setSyllabusList] = useState([]);
+const ClassesList = () => {
+  const [classList, setClassList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
-  const deleteSyllabus = (e, id) => {
+  const deleteClass = (e, id) => {
     e.preventDefault();
     const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
+    Clicked.innerText = "deleting";
 
-    if (confirm(`Are you sure you want to delete syllabus id ${id}?`)) {
-      fetch(`http://127.0.0.1:8000/api/syllabuses/${id}`, {
+    if (confirm(`Are you sure you want to delete class id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/classes/${id}`, {
         headers: {
-          Accept: 'application/json'
+          Accept: 'application/json',
         },
-        method: 'DELETE'
+        method: 'DELETE',
       })
         .then((response) => response.json())
         .then((response) => {
           console.info(response);
           Swal.fire('Success', response?.message, 'success');
-          Clicked.closest('tr').remove();
+          Clicked.closest("tr").remove();
         })
         .catch((error) => {
           console.error(error);
@@ -40,59 +40,44 @@ const SyllabusList = () => {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/syllabuses?', {
+    fetch('http://127.0.0.1:8000/api/classes?', {
       headers: {
-        Accept: 'application/json'
+        Accept: 'application/json',
       },
-      method: 'GET'
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
         console.info(response);
-        setSyllabusList(response.data?.syllabuses);
+        setClassList(response.data?.classes);
       })
       .catch((error) => {
         console.error(error);
-        setSyllabusList(null);
+        setClassList(null);
         setLoading(false);
       });
   }, [loading]);
 
   const lastIndex = currentPage * dataPerPage;
   const firstIndex = lastIndex - dataPerPage;
-  const records = syllabusList?.slice(firstIndex, lastIndex);
-  const npage = Math.ceil(syllabusList?.length / dataPerPage);
+  const records = classList?.slice(firstIndex, lastIndex);
+  const npage = Math.ceil(classList?.length / dataPerPage);
   const numbers = [...Array(npage + 1).keys()].slice(1);
-
-  const onButtonClick = () => {
-    window.open(pdf);
-  };
-
-  const onDownloadButtonClick = () => {
-    const pdfUrl =
-      'http://localhost:5173/src/assets/pdf/Secondary-Physics-Book.pdf';
-    const link = document.createElement('a');
-    link.href = pdfUrl;
-    link.download = 'Book.pdf'; // specify the filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <>
       <div>
-        <TeacherHeader />
+        <StudentHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <TeacherSidebar />
+          <StudentSidebar />
         </div>
-        <div className="d-flex align-items-center">
+        <div className="mt-5 d-flex align-items-center">
           <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
-                <h4>Syllabus List</h4>
+                <h4>Class List</h4>
               </div>
               <div className="page-system mt-4">
                 <nav>
@@ -133,40 +118,18 @@ const SyllabusList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">Syllabus Title</th>
-                      <th scope="col">Class</th>
-                      <th scope="col">Section</th>
-                      <th scope="col">Subject</th>
-                      <th scope="col">PDF</th>
+                      <th scope="col">Class Name</th>
+                      <th scope="col">Section Name</th>
                       <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {records?.map((syllabus) => {
+                    {records?.map((classItem) => {
                       return (
-                        <tr key={syllabus?.id}>
-                          <td>{syllabus?.id}</td>
-                          <td>{syllabus?.title}</td>
-                          <td>{syllabus.class?.name}</td>
-                          <td>{syllabus.section?.name}</td>
-                          <td>{syllabus.subject?.name}</td>
-                          <td>
-                            <div className="App">
-                              <button
-                                className="btn btn-info btn-sm"
-                                onClick={onButtonClick}
-                              >
-                                View
-                              </button>
-                              <button
-                                className="btn btn-primary btn-sm"
-                                onClick={onDownloadButtonClick}
-                                style={{ marginLeft: '5px' }}
-                              >
-                                Download
-                              </button>
-                            </div>
-                          </td>
+                        <tr key={classItem.id}>
+                          <td>{classItem.id}</td>
+                          <td>{classItem.name}</td>
+                          <td>{classItem.section?.name}</td>
                           <td>
                             <div className="dropdown">
                               <button
@@ -185,7 +148,7 @@ const SyllabusList = () => {
                                 <li>
                                   <Link
                                     className="dropdown-item"
-                                    to={`/teacher/syllabuses/${syllabus.id}/show`}
+                                    to={`/student/classes/${classItem.id}/show`}
                                   >
                                     Show
                                   </Link>
@@ -228,4 +191,4 @@ const SyllabusList = () => {
   }
 };
 
-export default SyllabusList;
+export default ClassesList;

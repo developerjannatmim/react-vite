@@ -14,31 +14,6 @@ const TeacherList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
-  const deleteTeacherData = (e, id) => {
-    e.preventDefault();
-    const Clicked = e.currentTarget;
-    Clicked.innerText = 'deleting';
-
-    if (confirm(`Are you sure you want to delete teacher id ${id}?`)) {
-      fetch(`http://127.0.0.1:8000/api/teachers/${id}`, {
-        headers: {
-          Accept: 'application/json'
-        },
-        method: 'DELETE'
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          console.info(response);
-          Swal.fire('Success', response?.message, 'success');
-          Clicked.closest('tr').remove();
-        })
-        .catch((error) => {
-          console.error(error);
-          Swal.fire('Warning', response?.message, 'warning');
-        });
-    }
-  };
-
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/teachers?', {
       headers: {
@@ -78,12 +53,6 @@ const TeacherList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Teacher List</h4>
-                <Link
-                  to="/student/teachers/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Teacher
-                </Link>
               </div>
               <div
                 className="page-system mt-4 mb-3"

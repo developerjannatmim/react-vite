@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import TeacherSidebar from './../../components/TeacherSidebar';
 import Footer from './../../components/Footer';
 import TeacherHeader from '../../components/TeacherHeader';
+import pdf from './../../assets/pdf/routine.pdf';
 
 const ShowRoutine = () => {
   const [routineItem, setRoutineItem] = useState(null);
@@ -29,6 +30,21 @@ const ShowRoutine = () => {
       });
   }, [id]);
 
+  const onButtonClick = () => {
+    window.open(pdf);
+  };
+
+  const onDownloadButtonClick = () => {
+    const pdfUrl =
+      'http://localhost:5173/src/assets/pdf/Secondary-Physics-Book.pdf';
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'Book.pdf'; // specify the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <div>
@@ -39,7 +55,7 @@ const ShowRoutine = () => {
           <TeacherSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Routine Details</h4>
@@ -53,100 +69,102 @@ const ShowRoutine = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Id</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.id}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Day</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.day}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Starting Hour</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.starting_hour}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Starting Minute</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.starting_minute}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Ending Hour</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.ending_hour}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Ending Minute</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.ending_minute}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Routine Creator</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.creator?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Class</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.class?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Section</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.section?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Subject</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.subject?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Class Room</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{routineItem?.room?.name}</p>
-                      </div>
-                    </div>
+                  <div>
+                    <ol className="alternating-colors">
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Id</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{routineItem?.id}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Day</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{routineItem?.day}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Starting Time</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{`${routineItem?.starting_hour}:${routineItem?.starting_minute} AM`}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Ending Time</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{`${routineItem?.ending_hour}:${routineItem?.ending_minute} PM`}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Routine Creator</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{routineItem?.creator?.name}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Class</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{routineItem?.class?.name}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Section</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{routineItem?.section?.name}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Subject</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{routineItem?.subject?.name}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Class Room</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{routineItem?.room?.name}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Routine PDF</label>
+                        </div>
+                        <div className="App">
+                          <button
+                            className="btn btn-info btn-sm"
+                            onClick={onButtonClick}
+                            style={{ marginLeft: '5px' }}
+                          >
+                            View
+                          </button>
+                          <button
+                            className="btn btn-primary btn-sm"
+                            onClick={onDownloadButtonClick}
+                            style={{ marginLeft: '5px' }}
+                          >
+                            Download
+                          </button>
+                        </div>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               </div>

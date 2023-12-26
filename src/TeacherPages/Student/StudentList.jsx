@@ -14,6 +14,31 @@ const StudentList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
+  const deleteStudentData = (e, id) => {
+    e.preventDefault();
+    const Clicked = e.currentTarget;
+    Clicked.innerText = 'deleting';
+
+    if (confirm(`Are you sure you want to delete student id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/students/${id}`, {
+        headers: {
+          Accept: 'application/json'
+        },
+        method: 'DELETE'
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
+        })
+        .catch((error) => {
+          console.error(error);
+          Swal.fire('Warning', response?.message, 'warning');
+        });
+    }
+  };
+
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/students?', {
       headers: {
@@ -49,12 +74,15 @@ const StudentList = () => {
           <TeacherSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container px-4">
+          <div className="mt-5 container px-4" style={{ marginLeft: '320px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Student List</h4>
               </div>
-              <div className="page-system mt-4">
+              <div
+                className="page-system mt-4 mb-3"
+                style={{ marginLeft: '690px' }}
+              >
                 <nav>
                   <ul className="pagination">
                     <li className="page-item">
@@ -93,15 +121,11 @@ const StudentList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
+                      <th scope="col"></th>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
-                      <th scope="col">Address</th>
-                      <th scope="col">Phone</th>
-                      <th scope="col">Photo</th>
-                      <th scope="col">BirthDay</th>
-                      <th scope="col">Gender</th>
-                      <th scope="col">Blood Group</th>
-                      <th scope="col">Show</th>
+                      <th scope="col">User Info</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -115,30 +139,60 @@ const StudentList = () => {
                         /**/
                       }
                       return (
-                        <tr key={studentData?.id}>
+                        <tr scope="row" key={studentData?.id}>
                           <td>{studentData?.id}</td>
-                          <td>{studentData?.name}</td>
-                          <td>{studentData?.email}</td>
-                          <td>{userInformation?.address}</td>
-                          <td>{userInformation?.phone}</td>
                           <td>
                             <img
                               src={`http://127.0.0.1:8000/student-images/${userInformation?.photo}`}
+                              alt="student-image"
                               width="40"
                               height="40"
-                              alt="student-image"
+                              style={{ borderRadius: '50px' }}
                             />
                           </td>
-                          <td>{userInformation?.birthday}</td>
-                          <td>{userInformation?.gender}</td>
-                          <td>{userInformation?.blood_group}</td>
                           <td>
-                            <Link
-                              to={`/teacher/students/${studentData.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
+                            <span>{studentData?.name}</span>
+                          </td>
+                          <td>
+                            <small class="d-block mt-2">
+                              {studentData?.email}
+                            </small>
+                          </td>
+                          <td>
+                            <small>
+                              <b>Phone: </b>+{userInformation?.phone}
+                            </small>
+                            <br />
+                            <small>
+                              <b>Address: </b>
+                              {userInformation?.address}
+                            </small>
+                          </td>
+                          <td>
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/teacher/students/${studentData?.id}/show`}
+                                  >
+                                    Show
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );

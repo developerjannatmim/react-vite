@@ -93,12 +93,6 @@ const SyllabusList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Syllabus List</h4>
-                <Link
-                  to="/student/syllabuses/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Syllabus
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>

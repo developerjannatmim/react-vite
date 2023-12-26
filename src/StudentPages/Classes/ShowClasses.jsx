@@ -3,8 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import Footer from './../../components/Footer';
-import TeacherHeader from '../../components/TeacherHeader';
-import TeacherSidebar from './../../components/TeacherSidebar';
+import StudentHeader from '../../components/StudentHeader';
+import StudentSidebar from './../../components/StudentSidebar';
 
 const ShowClasses = () => {
   const [classItem, setClassItem] = useState(null);
@@ -32,11 +32,11 @@ const ShowClasses = () => {
   return (
     <>
       <div>
-        <TeacherHeader />
+        <StudentHeader />
       </div>
       <div className="d-flex">
         <div className="w-auto position-sticky">
-          <TeacherSidebar />
+          <StudentSidebar />
         </div>
         <div className="mt-5 d-flex align-items-center">
           <div className="mt-5 container" style={{ marginLeft: '300px' }}>
@@ -44,7 +44,7 @@ const ShowClasses = () => {
               <div className="card-header">
                 <h4>Class Details</h4>
                 <Link
-                  to="/teacher/classes"
+                  to="/student/classes"
                   className="btn btn-primary btn-sm float-end"
                   style={{ marginTop: '-30px', marginLeft: '720px' }}
                 >

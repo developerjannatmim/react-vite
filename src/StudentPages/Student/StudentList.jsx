@@ -78,12 +78,6 @@ const StudentList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Student List</h4>
-                <Link
-                  to="/student/students/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Student
-                </Link>
               </div>
               <div
                 className="page-system mt-4 mb-3"

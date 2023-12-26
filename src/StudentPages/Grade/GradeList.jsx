@@ -77,12 +77,6 @@ const GradeList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Grade List</h4>
-                <Link
-                  to="/student/grades/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Grade
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>

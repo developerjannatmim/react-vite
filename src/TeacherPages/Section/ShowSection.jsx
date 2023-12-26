@@ -39,7 +39,7 @@ const ShowSection = () => {
           <TeacherSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Section Details</h4>
@@ -53,28 +53,25 @@ const ShowSection = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Id</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{sectionItem?.id}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Section</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{sectionItem?.name}</p>
-                      </div>
-                    </div>
+                  <div>
+                    <ol className="alternating-colors">
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Id</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{sectionItem?.id}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Section</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{sectionItem?.name}</p>
+                        </div>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               </div>
