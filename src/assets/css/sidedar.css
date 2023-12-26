@@ -7,8 +7,8 @@
 }
 
 a:hover {
-  /* color: #0000ff; #0ab4ff */
-  font-size: 1.1rem;
+  color: #0000ff; /* #0ab4ff */
+  /* font-size: 1.1rem; */
 }
 .menu-anchor:hover {
   /* background-color: #0cce67 !important; */
@@ -25,10 +25,15 @@ button {
 hr {
   margin-top: 0px;
   margin-bottom: 0px;
-  opacity: 0.05;
+  /* opacity: 0.01; */
 }
 a,
 .sidebar {
   /* background-color: #e6eae8 !important; */
   /* background-color: #e6eae8; */
+}
+
+.c {
+  /* background-color: #e6eae8 !important; */
+  background-color: #69a487;
 }

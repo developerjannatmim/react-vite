@@ -154,13 +154,13 @@ const UpdateSchool = () => {
                               className="form-control"
                             />
                           </div>
-                          <div className="form-group mb-3">
+                          <div className="col-md-6 form-group mb-3">
                             <label>Status</label>
                             <select
                               onChange={handleChange}
                               value={schoolInput.status || ''}
                               name="status"
-                              className="form-control"
+                              className="form-control" 
                             >
                               <option value="">Select status</option>
                               <option value="1">Active</option>

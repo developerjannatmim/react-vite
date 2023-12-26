@@ -2,9 +2,11 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import StudentSidebar from './../../components/StudentSidebar';
 import Footer from './../../components/Footer';
 import StudentHeader from '../../components/StudentHeader';
+
+import '../../assets/css/new.css';
+import StudentSidebar from './../../components/StudentSidebar';
 
 const ShowGrade = () => {
   const [gradeItem, setGradeItem] = useState(null);
@@ -39,7 +41,7 @@ const ShowGrade = () => {
           <StudentSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Grade Details</h4>
@@ -53,52 +55,29 @@ const ShowGrade = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Grade Id</label>
-                      </div>
-                      <div class="col-md-6">
+                  <div>
+                    <ol className="alternating-colors">
+                      <li className="element-list">
+                        <strong>Grade Id</strong>
                         <p>{gradeItem?.id}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Grade Name</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Grade Letter</strong>
                         <p>{gradeItem?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Grade Point</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Grade Point</strong>
                         <p>{gradeItem?.grade_point}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Mark From</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Mark From</strong>
                         <p>{gradeItem?.mark_from}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Mark Upto</label>
-                      </div>
-                      <div class="col-md-6">
+                      </li>
+                      <li className="element-list">
+                        <strong>Mark Upto</strong>
                         <p>{gradeItem?.mark_upto}</p>
-                      </div>
-                    </div>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               </div>
