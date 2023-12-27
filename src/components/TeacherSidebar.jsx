@@ -3,12 +3,9 @@ import React, { useState } from "react";
 import {
   RiHome4Line,
   RiTeamLine,
-  RiCalendar2Line,
   RiFolder2Line,
   RiUserFollowLine,
-  RiPlantLine,
   RiStackLine,
-  RiUserUnfollowLine
 } from "react-icons/ri";
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi/";
 import {

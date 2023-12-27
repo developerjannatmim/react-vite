@@ -8,6 +8,8 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 
 //Admin components start
+import Gallery from "./AdminPages/Gallery/Gallery";
+
 import AdminList from "./AdminPages/Admin/AdminList";
 import ShowAdmin from "./AdminPages/Admin/ShowAdmin";
 import AddAdmin from "./AdminPages/Admin/AddAdmin";
@@ -277,6 +279,8 @@ const App = () => {
         <Route path="/admin" element={<AdminRoute />}>
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="profile" element={<AdminProfile />} />
+
+          <Route path="gallery" element={<Gallery />} />
 
           <Route path="admin" element={<AdminList />} />
           <Route path="admin/create" element={<AddAdmin />} />

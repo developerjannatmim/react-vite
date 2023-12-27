@@ -89,7 +89,7 @@ const AdminDashboard = () => {
                         className="small text-white stretched-link"
                         to="/admin/teachers"
                       >
-                        <FaUserLarge /> Total 80 Teachers
+                        <FaUserLarge /> Total 280 Teachers
                       </Link>
                       <div className="small text-white">
                         <i className="fas fa-angle-right"></i>
