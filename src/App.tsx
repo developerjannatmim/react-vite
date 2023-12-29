@@ -139,6 +139,23 @@ import UpdateSchool from "./AdminPages/School/UpdateSchool";
 //Admin components end
 
 //Teacher components start
+import TExamCategoryList from "./TeacherPages/ExamCategory/ExamCategoryList";
+import TShowExamCategory from "./TeacherPages/ExamCategory/ShowExamCategory";
+import TAddExamCategory from "./TeacherPages/ExamCategory/AddExamCategory";
+import TUpdateExamCategory from "./TeacherPages/ExamCategory/UpdateExamCategory";
+
+import TDriverList from "./TeacherPages/Driver/DriverList";
+import TShowDriver from "./TeacherPages/Driver/ShowDriver";
+
+import TVehicleList from "./TeacherPages/Vehicle/VehicleList";
+import TShowVehicle from "./TeacherPages/Vehicle/ShowVehicle";
+
+import TEventList from "./TeacherPages/Event/EventList";
+import TShowEvent from "./TeacherPages/Event/ShowEvent";
+
+import TBackOfficeList from "./TeacherPages/BackOffice/BackOfficeList";
+import TShowBackOffice from "./TeacherPages/BackOffice/ShowBackOffice";
+
 import TNoticeList from "./TeacherPages/Notice/NoticeList";
 import TShowNotice from "./TeacherPages/Notice/ShowNotice";
 
@@ -182,6 +199,18 @@ import TShowClassRoom from "./TeacherPages/ClassRoom/ShowClassRoom";
 //Teacher components end
 
 //Student components start
+import SDriverList from "./StudentPages/Driver/DriverList";
+import SShowDriver from "./StudentPages/Driver/ShowDriver";
+
+import SVehicleList from "./StudentPages/Vehicle/VehicleList";
+import SShowVehicle from "./StudentPages/Vehicle/ShowVehicle";
+
+import SEventList from "./StudentPages/Event/EventList";
+import SShowEvent from "./StudentPages/Event/ShowEvent";
+
+import SBackOfficeList from "./StudentPages/BackOffice/BackOfficeList";
+import SShowBackOffice from "./StudentPages/BackOffice/ShowBackOffice";
+
 import SNoticeList from "./StudentPages/Notice/NoticeList";
 import SShowNotice from "./StudentPages/Notice/ShowNotice";
 
@@ -429,6 +458,23 @@ const App = () => {
         </Route>
 
         <Route path="/teacher" element={<TeacherRoute />}>
+          <Route path="exam-category" element={<TExamCategoryList />} />
+          <Route path="exam-category/create" element={<TAddExamCategory />} />
+          <Route path="exam-category/:id/show" element={<TShowExamCategory />} />
+          <Route path="exam-category/:id/edit" element={<TUpdateExamCategory />} />
+
+          <Route path="driver" element={<TDriverList />} />
+          <Route path="driver/:id/show" element={<TShowDriver />} />
+
+          <Route path="vehicles" element={<TVehicleList />} />
+          <Route path="vehicles/:id/show" element={<TShowVehicle />} />
+
+          <Route path="backOffice" element={<TBackOfficeList />} />
+          <Route path="backOffice/:id/show" element={<TShowBackOffice />} />
+
+          <Route path="event" element={<TEventList />} />
+          <Route path="event/:id/show" element={<TShowEvent />} />
+
           <Route path="notice" element={<TNoticeList />} />
           <Route path="notice/:id/show" element={<TShowNotice />} />
 
@@ -475,6 +521,18 @@ const App = () => {
         </Route>
 
         <Route path="/student" element={<StudentRoute />}>
+          <Route path="driver" element={<SDriverList />} />
+          <Route path="driver/:id/show" element={<SShowDriver />} />
+
+          <Route path="vehicles" element={<SVehicleList />} />
+          <Route path="vehicles/:id/show" element={<SShowVehicle />} />
+
+          <Route path="backOffice" element={<SBackOfficeList />} />
+          <Route path="backOffice/:id/show" element={<SShowBackOffice />} />
+
+          <Route path="event" element={<SEventList />} />
+          <Route path="event/:id/show" element={<SShowEvent />} />
+
           <Route path="gallery" element={<SGallery />} />
 
           <Route path="notice" element={<SNoticeList />} />

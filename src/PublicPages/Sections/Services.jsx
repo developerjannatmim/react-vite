@@ -25,11 +25,11 @@ export default function Services() {
             <Advertising className="flexSpaceCenter">
               <AddLeft>
                 <h4 className="font15 semiBold">
-                  A few words about Cantonment Public School
+                  A few words about Cantonment High School
                 </h4>
                 <h1 className="font40 extraBold">ABOUT US</h1>
                 <p className="font12">
-                Cantonment Public School Jessore is the first school established by the Directorate of Military Lands and Cantonments under the Ministry of Defence. The journey of the college started in two small rooms of Daud Public School with a total of 5 students including 3 Bengalis on 17 July 1969 as 'Cantonment School Jessore' within Jessore Cantonment.
+                Cantonment High School Jessore is the first school established by the Directorate of Military Lands and Cantonments under the Ministry of Defence. The journey of the college started in two small rooms of Daud High School with a total of 5 students including 3 Bengalis on 17 July 1969 as 'Cantonment School Jessore' within Jessore Cantonment.
                 </p>
                 <ButtonsRow
                   className="flexNullCenter"

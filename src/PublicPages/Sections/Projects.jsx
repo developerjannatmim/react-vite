@@ -38,7 +38,7 @@ export default function Projects() {
             </p>
             <h1 className="mb-3">Best School For Your Kids</h1>
             <p className="mb-3">
-            Cantonment Public School Jessore is the first school established by the Directorate of Military Lands and Cantonments under the Ministry of Defence. The journey of the college started in two small rooms of Daud Public School with a total of 5 students including 3 Bengalis on 17 July 1969 as 'Cantonment College Jessore' within Jessore Cantonment.
+            Cantonment High School Jessore is the first school established by the Directorate of Military Lands and Cantonments under the Ministry of Defence. The journey of the college started in two small rooms of Daud High School with a total of 5 students including 3 Bengalis on 17 July 1969 as 'Cantonment College Jessore' within Jessore Cantonment.
             </p>
             <div className="row pt-2 pb-4">
               <div className="col-6 col-md-4">
@@ -97,7 +97,7 @@ export default function Projects() {
                 img={ProjectImg1}
                 title="Pohela Boishakh
                 "
-                text="The Bengali New Year is observed as a public holiday in Bangladesh. The day is marked with singing, processions, and fairs. Traditionally, businesses start this day with a new ledger, clearing out the old."
+                text="The Bengali New Year is observed as a High holiday in Bangladesh. The day is marked with singing, processions, and fairs. Traditionally, businesses start this day with a new ledger, clearing out the old."
                 action={() => alert("clicked")}
               />
             </div>

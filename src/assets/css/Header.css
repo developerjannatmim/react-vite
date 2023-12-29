@@ -4,6 +4,7 @@ background-color: rgb(187, 187, 187);
 
 .dropdown-menu button:hover  {
   background-color: rgb(187, 187, 187);
+  /* background-color: #0b093b; */
   }
 
 .bi-people {
@@ -20,4 +21,8 @@ background-color: rgb(187, 187, 187);
 
 .dropdown-list{
   margin-left: 15px;
+}
+
+.navbar {
+  background-color: #0b093b;
 }

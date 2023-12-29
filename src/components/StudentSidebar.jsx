@@ -103,7 +103,6 @@ const StudentSidebar = () => {
             <SubMenu defaultOpen label={"Transport"} icon={<FaBusAlt />}>
               <MenuItem icon={<FaUserFriends />}><Link to="/student/driver">Driver</Link></MenuItem>
               <MenuItem icon={<IoBus />}><Link to="/student/vehicles">Vehicle</Link></MenuItem>
-              <MenuItem icon={<FaPlus />}><Link to="/student/assignStudents">Assign Students</Link></MenuItem>
             </SubMenu>
             <MenuItem icon={<IoMdImages />}><Link to="/student/gallery">Gallery</Link></MenuItem>
             <MenuItem icon={<MdEventNote />}><Link to="/student/event">Events</Link></MenuItem>

@@ -15,7 +15,7 @@ export default function Header() {
         <div>
           <h1 className="extraBold font60">New Approach to Kids Education</h1>
           <HeaderP className="font13 semiBold">
-          At Cantonment Public School, we believe in fostering a lifelong love of learning in each child. We recognize each individual as a unique expression of body, soul and spirit, and we seek to engage the whole child through a developmentally appropriate curriculum that addresses the physical, emotional, and intellectual aspects of a child. 
+          At Cantonment High School, we believe in fostering a lifelong love of learning in each child. We recognize each individual as a unique expression of body, soul and spirit, and we seek to engage the whole child through a developmentally appropriate curriculum that addresses the physical, emotional, and intellectual aspects of a child. 
 
 We offer programs for children from 16 months to 8th grade on a beautiful campus in Vista, North San Diego, CA. We welcome all families looking for a rich and hands-on education that builds both academic confidence and the capacities for creativity, resilience, innovative thinking, and social and emotional intelligence. 
           </HeaderP>

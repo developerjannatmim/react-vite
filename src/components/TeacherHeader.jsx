@@ -11,8 +11,8 @@ const TeacherHeader = () => {
 
   return (
     <div>
-      <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a className="navbar-brand ps-3" href="index.html">
+      <nav className="sb-topnav navbar navbar-expand">
+        <a className="navbar-brand ps-3 text-white" href="index.html">
         Cantonment Public School
         </a>
         <a className="navbar-brand d-block d-md-none">
@@ -56,7 +56,7 @@ const TeacherHeader = () => {
               aria-controls="navbarDropdown"
               href="#"
             >
-              <i className="bi bi-people"></i>
+              <i className="bi bi-people text-white"></i>
             </a>
             <ul
               className="dropdown-menu dropdown-menu-end"
@@ -64,7 +64,7 @@ const TeacherHeader = () => {
               aria-labelledby="navbarDropdown"
             >
               <li className="dropdown-list">
-                <Link className="dropdown-item" href="/teacher/profile">
+                <Link className="dropdown-item" to="/teacher/profile">
                   Account
                 </Link>
               </li>

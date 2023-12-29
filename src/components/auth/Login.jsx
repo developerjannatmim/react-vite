@@ -34,13 +34,13 @@ const Login = () => {
         if (response?.status === 200) {
           const ObjData = {
             auth_name: response?.username,
-            // email: response?.userEmail,
-            // gender: response?.gender,
-            // address: response?.address,
-            // blood: response?.blood,
-            // birthday: response?.birthday,
-            // phone: response?.phone,
-            //photo: response?.photo,
+            email: response?.userEmail,
+            gender: response?.gender,
+            address: response?.address,
+            blood: response?.blood,
+            birthday: response?.birthday,
+            phone: response?.phone,
+            photo: response?.photo,
           };
           localStorage.setItem('auth_token', response?.token);
           localStorage.setItem('role', response?.role_id);
