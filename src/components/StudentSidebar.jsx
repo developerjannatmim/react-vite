@@ -105,16 +105,10 @@ const StudentSidebar = () => {
               <MenuItem icon={<IoBus />}><Link to="/student/vehicles">Vehicle</Link></MenuItem>
               <MenuItem icon={<FaPlus />}><Link to="/student/assignStudents">Assign Students</Link></MenuItem>
             </SubMenu>
-            <SubMenu defaultOpen label={"Alumni"} icon={<RiFolder2Line />}>
-              <MenuItem icon={<IoMdImages />}><Link to="/student/gallery">Gallery</Link></MenuItem>
-              <MenuItem icon={<MdEventNote />}><Link to="/student/event">Events</Link></MenuItem>
-            </SubMenu>
-            <MenuItem icon={<MdOutlineAssignmentInd />}><Link to="/student/assignments">My Assignments</Link></MenuItem>
-            <SubMenu defaultOpen label={"Back Office"} icon={<RiFolder2Line />}>
-              <MenuItem icon={<FaBook />}><Link to="/student/backOffice">List of Books</Link></MenuItem>
-              <MenuItem icon={<FaChalkboardTeacher />}><Link to="/student/noticeboard">Noticeboard</Link></MenuItem>
-              <MenuItem icon={<MdEventNote />}><Link to="/student/event">Events</Link></MenuItem>
-            </SubMenu>
+            <MenuItem icon={<IoMdImages />}><Link to="/student/gallery">Gallery</Link></MenuItem>
+            <MenuItem icon={<MdEventNote />}><Link to="/student/event">Events</Link></MenuItem>
+            <MenuItem icon={<FaBook />}><Link to="/student/backOffice">List of Books</Link></MenuItem>
+            <MenuItem icon={<FaChalkboardTeacher />}><Link to="/student/notice">Notices</Link></MenuItem>
             <SubMenu defaultOpen label={"Settings"} icon={<IoIosSettings />}>
               <MenuItem icon={<MdManageAccounts />}><Link to="/student/profile">My Account</Link></MenuItem>
             </SubMenu>

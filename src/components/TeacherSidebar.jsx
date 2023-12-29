@@ -112,19 +112,11 @@ const TeacherSidebar = () => {
             <SubMenu defaultOpen label={"Transport"} icon={<FaBusAlt />}>
               <MenuItem icon={<FaUserFriends />}><Link to="/teacher/driver">Driver</Link></MenuItem>
               <MenuItem icon={<IoBus />}><Link to="/teacher/vehicles">Vehicle</Link></MenuItem>
-              <MenuItem icon={<FaPlus />}><Link to="/teacher/assignStudents">Assign Students</Link></MenuItem>
             </SubMenu>
-            <SubMenu defaultOpen label={"Alumni"} icon={<RiFolder2Line />}>
-              <MenuItem icon={<RiStackLine />}><Link to="/teacher/manage-alumni">Manage Alumni</Link></MenuItem>
               <MenuItem icon={<IoMdImages />}><Link to="/teacher/gallery">Gallery</Link></MenuItem>
               <MenuItem icon={<MdEventNote />}><Link to="/teacher/event">Events</Link></MenuItem>
-            </SubMenu>
-            <MenuItem icon={<MdOutlineAssignmentInd />}><Link to="/teacher/assignments">Assignments</Link></MenuItem>
-            <SubMenu defaultOpen label={"Back Office"} icon={<ImBackward />}>
               <MenuItem icon={<FaBook />}><Link to="/teacher/backOffice">List of Books</Link></MenuItem>
-              <MenuItem icon={<FaChalkboardTeacher />}><Link to="/teacher/noticeboard">Noticeboard</Link></MenuItem>
-              <MenuItem icon={<MdEventNote />}><Link to="/teacher/event">Events</Link></MenuItem>
-            </SubMenu>
+              <MenuItem icon={<FaChalkboardTeacher />}><Link to="/teacher/notice">Notices</Link></MenuItem>
             <SubMenu defaultOpen label={"Human Resource"} icon={<GrResources />}>
               <MenuItem icon={<FaUserEdit />}><Link to="/teacher/userRoles">User Role</Link></MenuItem>
               <MenuItem icon={<FaUsers />}><Link to="/teacher/users">User List</Link></MenuItem>

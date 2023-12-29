@@ -119,15 +119,13 @@ const AdminSidebar = () => {
               <MenuItem icon={<IoBus />}><Link to="/admin/vehicles">Vehicle</Link></MenuItem>
               <MenuItem icon={<FaPlus />}><Link to="/admin/assignStudents">Assign Students</Link></MenuItem>
             </SubMenu>
-            <SubMenu defaultOpen label={"Alumni"} icon={<RiFolder2Line />}>
-              <MenuItem icon={<FaUserFriends />}><Link to="/admin/manage-alumni">Manage Alumni</Link></MenuItem>
+            <SubMenu defaultOpen label={"Information"} icon={<RiFolder2Line />}>
               <MenuItem icon={<IoMdImages />}><Link to="/admin/gallery">Gallery</Link></MenuItem>
               <MenuItem icon={<MdEventNote />}><Link to="/admin/event">Events</Link></MenuItem>
             </SubMenu>
-            <MenuItem icon={<MdOutlineAssignmentInd />}><Link to="/admin/assignments">Assignments</Link></MenuItem>
             <SubMenu defaultOpen label={"Back Office"} icon={<ImBackward />}>
               <MenuItem icon={<FaBook />}><Link to="/admin/backOffice">Book List Manager</Link></MenuItem>
-              <MenuItem icon={<FaChalkboardTeacher />}><Link to="/admin/noticeboard">Noticeboard</Link></MenuItem>
+              <MenuItem icon={<FaChalkboardTeacher />}><Link to="/admin/notice">Notices</Link></MenuItem>
               <MenuItem icon={<MdEventNote />}><Link to="/admin/event">Events</Link></MenuItem>
             </SubMenu>
             <SubMenu defaultOpen label={"Human Resource"} icon={<GrResources />}>

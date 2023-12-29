@@ -15,6 +15,11 @@ import ShowAdmin from "./AdminPages/Admin/ShowAdmin";
 import AddAdmin from "./AdminPages/Admin/AddAdmin";
 import UpdateAdmin from "./AdminPages/Admin/UpdateAdmin";
 
+import NoticeList from "./AdminPages/Notice/NoticeList";
+import ShowNotice from "./AdminPages/Notice/ShowNotice";
+import AddNotice from "./AdminPages/Notice/AddNotice";
+import UpdateNotice from "./AdminPages/Notice/UpdateNotice";
+
 import AccountantList from "./AdminPages/Accountant/AccountantList";
 import ShowAccountant from "./AdminPages/Accountant/ShowAccountant";
 import AddAccountant from "./AdminPages/Accountant/AddAccountant";
@@ -134,6 +139,11 @@ import UpdateSchool from "./AdminPages/School/UpdateSchool";
 //Admin components end
 
 //Teacher components start
+import TNoticeList from "./TeacherPages/Notice/NoticeList";
+import TShowNotice from "./TeacherPages/Notice/ShowNotice";
+
+import TGallery from "./TeacherPages/Gallery/Gallery";
+
 import TStudentList from "./TeacherPages/Student/StudentList";
 import TShowStudent from "./TeacherPages/Student/ShowStudent";
 
@@ -172,6 +182,11 @@ import TShowClassRoom from "./TeacherPages/ClassRoom/ShowClassRoom";
 //Teacher components end
 
 //Student components start
+import SNoticeList from "./StudentPages/Notice/NoticeList";
+import SShowNotice from "./StudentPages/Notice/ShowNotice";
+
+import SGallery from "./StudentPages/Gallery/Gallery";
+
 import SStudentList from "./StudentPages/Student/StudentList";
 import SShowStudent from "./StudentPages/Student/ShowStudent";
 
@@ -273,7 +288,6 @@ const App = () => {
         <Route path="/register" element={<Register />}></Route>
         <Route path="*" element={<Publicroute />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
-        
 
         {/* Private Routes start */}
         <Route path="/admin" element={<AdminRoute />}>
@@ -286,6 +300,11 @@ const App = () => {
           <Route path="admin/create" element={<AddAdmin />} />
           <Route path="admin/:id/show" element={<ShowAdmin />} />
           <Route path="admin/:id/edit" element={<UpdateAdmin />} />
+
+          <Route path="notice" element={<NoticeList />} />
+          <Route path="notice/create" element={<AddNotice />} />
+          <Route path="notice/:id/show" element={<ShowNotice />} />
+          <Route path="notice/:id/edit" element={<UpdateNotice />} />
 
           <Route path="accountant" element={<AccountantList />} />
           <Route path="accountant/create" element={<AddAccountant />} />
@@ -410,6 +429,11 @@ const App = () => {
         </Route>
 
         <Route path="/teacher" element={<TeacherRoute />}>
+          <Route path="notice" element={<TNoticeList />} />
+          <Route path="notice/:id/show" element={<TShowNotice />} />
+
+          <Route path="gallery" element={<TGallery />} />
+
           <Route path="dashboard" element={<TeacherDashboard />} />
           <Route path="profile" element={<TeacherProfile />} />
 
@@ -451,6 +475,11 @@ const App = () => {
         </Route>
 
         <Route path="/student" element={<StudentRoute />}>
+          <Route path="gallery" element={<SGallery />} />
+
+          <Route path="notice" element={<SNoticeList />} />
+          <Route path="notice/:id/show" element={<SShowNotice />} />
+
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="profile" element={<StudentProfile />} />
 
