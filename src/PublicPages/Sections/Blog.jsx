@@ -6,17 +6,17 @@ import BlogBox from "../Elements/BlogBox";
 import FullButton from "../Buttons/FullButton";
 import TestimonialSlider from "../Elements/TestimonialSlider";
 //Assets
-import ClassOne from '../../assets/img/class/class-1.jpg';
-import ClassTwo from '../../assets/img/class/class-2.jpg';
-import ClassThree from '../../assets/img/class/class-3.jpg';
+import ClassOne from '../../assets/images/class.jpg';
+import ClassTwo from '../../assets/images/front3.jpg';
+import ClassThree from '../../assets/images/class1.jpg';
 
-import teacherOne from '../../assets/img/teacher/team-1.jpg';
-import teacherTwo from '../../assets/img/teacher/team-2.jpg';
-import teacherThree from '../../assets/img/teacher/team-3.jpg';
-import teacherFour from '../../assets/img/teacher/team-4.jpg';
+import teacherOne from '../../assets/teacher/teacher.jpg';
+import teacherTwo from '../../assets/teacher/teacher004.jpg';
+import teacherThree from '../../assets/teacher/teacher007.jpg';
+import teacherFour from '../../assets/teacher/teacher1.webp';
 
-import teacherFive from '../../assets/img/teacher/p-1.jpg';
-import teacherSix from '../../assets/img/teacher/p-2.jpg';
+import teacherFive from '../../assets/teacher/teacher3.jpg';
+import teacherSix from '../../assets/teacher/teacher4.jpg';
 import teacherSeven from '../../assets/img/teacher/p-3.jpg';
 import teacherEight from '../../assets/img/teacher/p-4.jpg';
 
@@ -168,17 +168,15 @@ export default function Blog() {
                   width='38px' 
                   height="38px"
                   href="#"
-                  ><i className="fab fa-facebook-f"></i
-                ></Link>
+                  ><i className="fab fa-facebook-f"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-linkedin-in"></i
-                ></Link>
+                  ><i className="fab fa-linkedin-in"></i></Link>
               </div>
             </div>
-            <h4>Rukaiya</h4>
+            <h4>Raktim</h4>
             <i>Music Teacher</i>
           </div>
           <div className="col-md-6 col-lg-3 text-center team mb-5">
@@ -194,23 +192,20 @@ export default function Blog() {
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-twitter"></i
-                ></Link>
+                  ><i className="fab fa-twitter"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-facebook-f"></i
-                ></Link>
+                  ><i className="fab fa-facebook-f"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-linkedin-in"></i
-                ></Link>
+                  ><i className="fab fa-linkedin-in"></i></Link>
               </div>
             </div>
-            <h4>Ashraf</h4>
+            <h4>Ayesha</h4>
             <i>Language Teacher</i>
           </div>
           <div className="col-md-6 col-lg-3 text-center team mb-5">
@@ -227,22 +222,19 @@ export default function Blog() {
                   width='38px'
                   height='38px'
                   href="#"
-                  ><i className="fab fa-twitter"></i
-                ></Link>
+                  ><i className="fab fa-twitter"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' 
                   height='38px'
                   href="#"
-                  ><i className="fab fa-facebook-f"></i
-                ></Link>
+                  ><i className="fab fa-facebook-f"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px'
                   height='38px'
                   href="#"
-                  ><i className="fab fa-linkedin-in"></i
-                ></Link>
+                  ><i className="fab fa-linkedin-in"></i></Link>
               </div>
             </div>
             <h4>Mollie</h4>
@@ -261,21 +253,18 @@ export default function Blog() {
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-twitter"></i
-                ></Link>
+                  ><i className="fab fa-twitter"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-facebook-f"></i
-                ></Link>
+                  ><i className="fab fa-facebook-f"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px'
                   height="38px"
                   href="#"
-                  ><i className="fab fa-linkedin-in"></i
-                ></Link>
+                  ><i className="fab fa-linkedin-in"></i></Link>
               </div>
             </div>
             <h4>Oshim Das</h4>
@@ -297,21 +286,18 @@ export default function Blog() {
                   width='38px'
                   height='38px'
                   href="#"
-                  ><i className="fab fa-twitter"></i
-                ></Link>
+                  ><i className="fab fa-twitter"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' 
                   height="38px"
                   href="#"
-                  ><i className="fab fa-facebook-f"></i
-                ></Link>
+                  ><i className="fab fa-facebook-f"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-linkedin-in"></i
-                ></Link>
+                  ><i className="fab fa-linkedin-in"></i></Link>
               </div>
             </div>
             <h4>Romana Khan</h4>
@@ -330,23 +316,20 @@ export default function Blog() {
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-twitter"></i
-                ></Link>
+                  ><i className="fab fa-twitter"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-facebook-f"></i
-                ></Link>
+                  ><i className="fab fa-facebook-f"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px' height='38px'
                   href="#"
-                  ><i className="fab fa-linkedin-in"></i
-                ></Link>
+                  ><i className="fab fa-linkedin-in"></i></Link>
               </div>
             </div>
-            <h4>Nabila</h4>
+            <h4>Nabil</h4>
             <i>Bangla Teacher</i>
           </div>
           <div className="col-md-6 col-lg-3 text-center team mb-5">
@@ -363,22 +346,19 @@ export default function Blog() {
                   width='38px'
                   height='38px'
                   href="#"
-                  ><i className="fab fa-twitter"></i
-                ></Link>
+                  ><i className="fab fa-twitter"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center mr-2 px-0"
                   width='38px' 
                   height='38px'
                   href="#"
-                  ><i className="fab fa-facebook-f"></i
-                ></Link>
+                  ><i className="fab fa-facebook-f"></i></Link>
                 <Link
                   className="btn btn-outline-light text-center px-0"
                   width='38px'
                   height='38px'
                   href="#"
-                  ><i className="fab fa-linkedin-in"></i
-                ></Link>
+                  ><i className="fab fa-linkedin-in"></i></Link>
               </div>
             </div>
             <h4>Mahmud</h4>

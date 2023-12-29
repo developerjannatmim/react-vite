@@ -5,10 +5,10 @@ import ClientSlider from "../Elements/ClientSlider";
 import ServiceBox from "../Elements/ServiceBox";
 import FullButton from "../Buttons/FullButton";
 // Assets
-import AddImage1 from "../../assets/img/about/img-003.jpg";
-import AddImage2 from "../../assets/img/about/img-002.jpg";
-import AddImage3 from "../../assets/img/about/img-001.jpg";
-import AddImage4 from "../../assets/img/about/img-004.jpg";
+import AddImage1 from "../../assets/front/front1.jpg";
+import AddImage2 from "../../assets/front/front2.jpg";
+import AddImage3 from "../../assets/front/front3.jpg";
+import AddImage4 from "../../assets/front/front4.jpg";
 import { Link } from "react-router-dom";
 
 export default function Services() {
@@ -71,43 +71,6 @@ export default function Services() {
             </Advertising>
           </div>
         </div>
-        {/* <div className="container">
-          <HeaderInfo>
-            <h1 className="font40 extraBold">Service</h1>
-            <h3 className="mb-4">Best School For Your Kids</h3>
-            <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
-            </p>
-          </HeaderInfo>
-          <ServiceBoxRow className="flex">
-            <ServiceBoxWrapper>
-              <ServiceBox
-                icon="roller"
-                title="Graphic Design"
-                subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
-              />
-            </ServiceBoxWrapper>
-            <ServiceBoxWrapper>
-              <ServiceBox
-                icon="monitor"
-                title="Web Design"
-                subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
-              />
-            </ServiceBoxWrapper>
-            <ServiceBoxWrapper>
-              <ServiceBox
-                icon="browser"
-                title="Development"
-                subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
-              />
-            </ServiceBoxWrapper>
-            <ServiceBoxWrapper>
-              <ServiceBox icon="printer" title="Print" subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." />
-            </ServiceBoxWrapper>
-          </ServiceBoxRow>
-        </div> */}
       </div>
     </Wrapper>
   );

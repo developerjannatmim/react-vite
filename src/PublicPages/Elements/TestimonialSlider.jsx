@@ -4,9 +4,9 @@ import styled from "styled-components";
 // Components
 import TestimonialBox from "./TestimonialBox";
 //Assets
-import ParentOne from '../../assets/img/parents/parent-1.jpg';
-import ParentTwo from '../../assets/img/parents/parent-2.jpg';
-import ParentThree from '../../assets/img/parents/parent-3.jpg';
+import ParentOne from '../../assets/teacher/parent4.jpg';
+import ParentTwo from '../../assets/teacher/parent2.jfif';
+import ParentThree from '../../assets/teacher/teacher3.jfif';
 
 export default function TestimonialSlider() {
   const settings = {

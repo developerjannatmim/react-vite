@@ -4,16 +4,16 @@ import styled from "styled-components";
 import ProjectBox from "../Elements/ProjectBox";
 import FullButton from "../Buttons/FullButton";
 // Assets
-import ProjectImg1 from "../../assets/img/events/img-01.jpg";
-import ProjectImg2 from "../../assets/img/events/img-02.jpeg";
-import ProjectImg3 from "../../assets/img/events/img-03.jpg";
-import ProjectImg4 from "../../assets/img/events/img-04.jpeg";
-import ProjectImg5 from "../../assets/img/events/img-05.jpeg";
-import ProjectImg6 from "../../assets/img/events/img-07.png";
+import ProjectImg1 from "../../assets/activities/pohela.jpg";
+import ProjectImg2 from "../../assets/activities/sciencefari.jpg";
+import ProjectImg3 from "../../assets/activities/sports.jpg";
+import ProjectImg4 from "../../assets/activities/arts.jpg";
+import ProjectImg5 from "../../assets/activities/picnic.jpg";
+import ProjectImg6 from "../../assets/activities/cultural.jpg";
 import AddImage2 from "../../assets/img/add/add2.png";
 import { Link } from "react-scroll";
-import About1 from '../../assets/img/about/about-1.jpg';
-import About2 from '../../assets/img/about/about-2.jpg';
+import About1 from "../../assets/front/best1.jpg";
+import About2 from "../../assets/front/best2.jpg";
 import { useNavigate } from "react-router";
 
 export default function Projects() {
