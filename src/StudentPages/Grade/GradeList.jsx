@@ -156,22 +156,6 @@ const GradeList = () => {
                                     Show
                                   </Link>
                                 </li>
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    to={`/student/grades/${grade.id}/edit`}
-                                  >
-                                    Edit
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    onClick={(e) => deleteGrade(e, grade.id)}
-                                  >
-                                    Delete
-                                  </Link>
-                                </li>
                               </ul>
                             </div>
                           </td>

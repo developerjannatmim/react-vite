@@ -13,7 +13,7 @@ export default function Header() {
     <Wrapper id="home" className="container flexSpaceCenter">
       <LeftSide className="flexCenter">
         <div>
-          <h1 className="extraBold font60">New Approach to Kids Education</h1>
+          <h1 className="extraBold font60">Cantonment High School</h1>
           <HeaderP className="font13 semiBold">
           At Cantonment High School, we believe in fostering a lifelong love of learning in each child. We recognize each individual as a unique expression of body, soul and spirit, and we seek to engage the whole child through a developmentally appropriate curriculum that addresses the physical, emotional, and intellectual aspects of a child. 
 

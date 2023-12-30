@@ -113,12 +113,6 @@ const RoutineList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Routine List</h4>
-                <Link
-                  to="/teacher/routines/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Routine
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>
@@ -224,24 +218,6 @@ const RoutineList = () => {
                                     to={`/teacher/routines/${routineItem.id}/show`}
                                   >
                                     Show
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    to={`/teacher/routines/${routineItem.id}/edit`}
-                                  >
-                                    Edit
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    onClick={(e) =>
-                                      deleteRoutine(e, routineItem.id)
-                                    }
-                                  >
-                                    Delete
                                   </Link>
                                 </li>
                               </ul>

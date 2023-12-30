@@ -34,7 +34,7 @@ const Gallery = () => {
                       style={{ marginLeft: '200px' }}
                       onClick={() => getItem('stuff')}
                     >
-                      Stuffs
+                      Stuff
                     </button>
                     <button
                       className="btn btn-secondary ml-2"

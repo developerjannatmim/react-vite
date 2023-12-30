@@ -123,6 +123,7 @@ const ExamList = () => {
                       <th scope="col">Starting Time</th>
                       <th scope="col">Ending Time</th>
                       <th scope="col">Total Marks</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Options</th>
                     </tr>
                   </thead>
@@ -137,6 +138,34 @@ const ExamList = () => {
                           <td>{exam?.starting_time} AM</td>
                           <td>{exam?.ending_time} PM</td>
                           <td>{exam?.total_marks}</td>
+                          {exam.status === 1 && (
+                            <td>
+                              <button
+                                style={{
+                                  backgroundColor: '#65B741',
+                                  color: 'white',
+                                  border: 'none',
+                                  borderRadius: '14px'
+                                }}
+                              >
+                                active
+                              </button>
+                            </td>
+                          )}
+                          {exam.status === 0 && (
+                            <td>
+                              <button
+                                style={{
+                                  backgroundColor: '#EF4040',
+                                  color: 'white',
+                                  border: 'none',
+                                  borderRadius: '14px'
+                                }}
+                              >
+                                expired
+                              </button>
+                            </td>
+                          )}
                           <td>
                             <div className="dropdown">
                               <button

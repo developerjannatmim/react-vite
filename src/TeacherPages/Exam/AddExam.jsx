@@ -20,6 +20,7 @@ const AddExam = () => {
     total_marks: '',
     class_id: '',
     section_id: '',
+    status: '',
   });
 
   const handleChange = (e) => {
@@ -92,6 +93,7 @@ const submitExam = (e) => {
     total_marks: examInput.total_marks,
     class_id: examInput.class_id,
     section_id: examInput.section_id,
+    status: examInput.status,
   };
   fetch('http://127.0.0.1:8000/api/exams', {
     body: JSON.stringify({
@@ -234,6 +236,19 @@ return (
                               </option>
                             );
                           })}
+                        </select>
+                      </div>
+                      <div className="form-group mb-3">
+                        <label>Status</label>
+                        <select
+                          onChange={handleChange}
+                          value={examInput.status || ''}
+                          name="status"
+                          className="form-control"
+                        >
+                          <option value="">Select status</option>
+                          <option value="1">Active</option>
+                          <option value="0">Expired</option>
                         </select>
                       </div>
                     </div>

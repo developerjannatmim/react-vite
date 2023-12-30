@@ -191,24 +191,6 @@ const TeacherList = () => {
                                     Show
                                   </Link>
                                 </li>
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    to={`/teacher/teachers/${teacherData?.id}/edit`}
-                                  >
-                                    Edit
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    onClick={(e) =>
-                                      deleteTeacherData(e, teacherData?.id)
-                                    }
-                                  >
-                                    Delete
-                                  </Link>
-                                </li>
                               </ul>
                             </div>
                           </td>

@@ -79,12 +79,6 @@ const DriverList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Driver List</h4>
-                <Link
-                  to="/teacher/driver/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Driver
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>

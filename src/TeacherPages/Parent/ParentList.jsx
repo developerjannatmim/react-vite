@@ -78,12 +78,6 @@ const ParentList = () => {
             <div className="card mt-5">
               <div className="card-header">
                 <h4>Parent List</h4>
-                <Link
-                  to="/teacher/parents/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Parent
-                </Link>
               </div>
               <div
                 className="page-system mt-4 mb-3"

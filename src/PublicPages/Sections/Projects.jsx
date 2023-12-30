@@ -36,7 +36,7 @@ export default function Projects() {
             <p className="section-title pr-5">
               <span className="pr-2">Learn About Us</span>
             </p>
-            <h1 className="mb-3">Best School For Your Kids</h1>
+            <h1 className="mb-3">Best School For Your Children</h1>
             <p className="mb-3">
             Cantonment High School Jessore is the first school established by the Directorate of Military Lands and Cantonments under the Ministry of Defence. The journey of the college started in two small rooms of Daud High School with a total of 5 students including 3 Bengalis on 17 July 1969 as 'Cantonment College Jessore' within Jessore Cantonment.
             </p>

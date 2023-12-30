@@ -93,12 +93,6 @@ const BackOfficeList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Book List</h4>
-                <Link
-                  to="/teacher/backOffice/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add New Book
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>

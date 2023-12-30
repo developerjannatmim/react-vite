@@ -93,12 +93,6 @@ const EventList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Event List</h4>
-                <Link
-                  to="/student/event/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Event
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>

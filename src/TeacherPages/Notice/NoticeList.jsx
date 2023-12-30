@@ -93,12 +93,6 @@ const NoticeList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>All Notices</h4>
-                <Link
-                  to="/admin/notice/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add New Notice
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>
@@ -191,22 +185,6 @@ const NoticeList = () => {
                                     to={`/admin/notice/${notice.id}/show`}
                                   >
                                     Show
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    to={`/admin/notice/${notice.id}/edit`}
-                                  >
-                                    Edit
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    className="dropdown-item"
-                                    onClick={(e) => deleteNotice(e, notice.id)}
-                                  >
-                                    Delete
                                   </Link>
                                 </li>
                               </ul>

@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import TeacherHeader from '../../components/TeacherHeader';
 import TeacherSidebar from './../../components/TeacherSidebar';
@@ -26,13 +25,13 @@ const UpdateExam = () => {
     const data = examInput;
     fetch(`http://127.0.0.1:8000/api/exams/${id}`, {
       body: JSON.stringify({
-        ...data,
+        ...data
       }),
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      method: 'PUT',
+      method: 'PUT'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -50,9 +49,9 @@ const UpdateExam = () => {
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/exams/${id}`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -69,9 +68,9 @@ const UpdateExam = () => {
     console.log({ exam_category });
     fetch(`http://127.0.0.1:8000/api/exam_category`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -88,9 +87,9 @@ const UpdateExam = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/classes`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -107,9 +106,9 @@ const UpdateExam = () => {
     console.log({ classes });
     fetch(`http://127.0.0.1:8000/api/sections`, {
       headers: {
-        Accept: 'application/json',
+        Accept: 'application/json'
       },
-      method: 'GET',
+      method: 'GET'
     })
       .then((response) => response.json())
       .then((response) => {
@@ -248,6 +247,19 @@ const UpdateExam = () => {
                                   </option>
                                 );
                               })}
+                            </select>
+                          </div>
+                          <div className="form-group mb-3">
+                            <label>Status</label>
+                            <select
+                              onChange={handleChange}
+                              value={examInput.status || ''}
+                              name="status"
+                              className="form-control"
+                            >
+                              <option value="">Select status</option>
+                              <option value="1">Active</option>
+                              <option value="0">Expired</option>
                             </select>
                           </div>
                         </div>

@@ -30,7 +30,7 @@ export default function Blog() {
           <p className="section-title px-5">
             <span className="px-2">Popular className</span>
           </p>
-          <h1 className="mb-4">className for Your Kids</h1>
+          <h1 className="mb-4">Class Name</h1>
         </div>
         <div className="row">
           <div className="col-lg-4 mb-5">
@@ -44,12 +44,12 @@ export default function Blog() {
                 </p>
               </div>
               <div className="card-footer bg-transparent py-4 px-5">
-                <div className="row border-bottom">
+                {/* <div className="row border-bottom">
                   <div className="col-6 py-1 text-right border-right">
                     <strong>Age of Kids</strong>
                   </div>
                   <div className="col-6 py-1">3 - 6 Years</div>
-                </div>
+                </div> */}
                 <div className="row border-bottom">
                   <div className="col-6 py-1 text-right border-right">
                     <strong>Total Seats</strong>
@@ -77,12 +77,12 @@ export default function Blog() {
                 </p>
               </div>
               <div className="card-footer bg-transparent py-4 px-5">
-                <div className="row border-bottom">
+                {/* <div className="row border-bottom">
                   <div className="col-6 py-1 text-right border-right">
                     <strong>Age of Kids</strong>
                   </div>
                   <div className="col-6 py-1">3 - 6 Years</div>
-                </div>
+                </div> */}
                 <div className="row border-bottom">
                   <div className="col-6 py-1 text-right border-right">
                     <strong>Total Seats</strong>
@@ -110,12 +110,12 @@ export default function Blog() {
                 </p>
               </div>
               <div className="card-footer bg-transparent py-4 px-5">
-                <div className="row border-bottom">
+                {/* <div className="row border-bottom">
                   <div className="col-6 py-1 text-right border-right">
                     <strong>Age of Kids</strong>
                   </div>
                   <div className="col-6 py-1">3 - 6 Years</div>
-                </div>
+                </div> */}
                 <div className="row border-bottom">
                   <div className="col-6 py-1 text-right border-right">
                     <strong>Total Seats</strong>

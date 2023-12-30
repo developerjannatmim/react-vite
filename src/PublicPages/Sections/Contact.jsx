@@ -11,7 +11,7 @@ export default function Contact() {
             <p className="section-title pr-5">
               <span className="pr-2">Book A Seat</span>
             </p>
-            <h1 className="mb-4">Book A Seat For Your Kid</h1>
+            <h1 className="mb-4">Book A Seat For Your Children</h1>
             <p>
             Our school admits both international and local students throughout the year for preschool (ages 2 to 3), pre-kindergarten (age 4), kindergarten (age 5), and grades 1-12 (ages 6-18 YRS). Applications for the current year are accepted if there is available space. We welcome you to visit our friendly staff and administrators in our school building and also to make an appointment to meet our principal, Mrs. Lori A. Walsh, and or management.
             </p>

@@ -65,7 +65,7 @@ const AddEvent = () => {
               <div className="card mt-4">
                 <div className="card-header">
                   <h4>
-                  Add Event 
+                    Add Event
                     <Link
                       to="/admin/event"
                       className="btn btn-primary btn-sm float-end"
@@ -105,18 +105,18 @@ const AddEvent = () => {
                           />
                         </div>
                         <div className="form-group mb-3">
-                        <label>Status</label>
-                        <select
-                          onChange={handleChange}
-                          value={eventInput.status || ''}
-                          name="status"
-                          className="form-control"
-                        >
-                          <option value="">Select status</option>
-                          <option value="1">Active</option>
-                          <option value="0">Inactive</option>
-                        </select>
-                      </div>
+                          <label>Status</label>
+                          <select
+                            onChange={handleChange}
+                            value={eventInput.status || ''}
+                            name="status"
+                            className="form-control"
+                          >
+                            <option value="">Select status</option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                          </select>
+                        </div>
                       </div>
                       <button type="submit" className="btn btn-primary px-4">
                         Submit

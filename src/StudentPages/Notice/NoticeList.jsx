@@ -93,12 +93,6 @@ const NoticeList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>All Notices</h4>
-                <Link
-                  to="/admin/notice/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add New Notice
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>

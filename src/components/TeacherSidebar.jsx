@@ -53,6 +53,7 @@ const TeacherSidebar = () => {
   return (
     <div className="pe-6 d-flex min-vh-100">
       <Sidebar
+      style={{ backgroundColor: '#0b093b', color: 'white' }}
         // className={`app ${toggled ? "toggled" : ""}`}
         style={{ height: "100%", position: "absolute" }}
         collapsed={collapsed}
@@ -60,20 +61,24 @@ const TeacherSidebar = () => {
         handleToggleSidebar={handleToggleSidebar}
         handleCollapsedChange={handleCollapsedChange}
       >
-        <main>
+        <main style={{ backgroundColor: '#0b093b', color: 'white' }}>
           <Menu>
             {collapsed ? (
               <MenuItem
+              style={{ backgroundColor: '#0b093b', color: 'white' }}
                 icon={<FiChevronsRight />}
                 onClick={handleCollapsedChange}
               ></MenuItem>
             ) : (
               <MenuItem
+              style={{ backgroundColor: '#0b093b', color: 'white' }}
                 suffix={<FiChevronsLeft />}
                 onClick={handleCollapsedChange}
               >
                 <div
                   style={{
+                    backgroundColor: '#0b093b',
+                    color: 'white',
                     padding: "9px",
                     //textTransform: "uppercase",
                     fontWeight: "bold",
@@ -89,40 +94,36 @@ const TeacherSidebar = () => {
           </Menu>
 
           <Menu>
-            <MenuItem icon={<RiHome4Line />}><Link to="/teacher/dashboard">Dashboard</Link></MenuItem>
-            <SubMenu defaultOpen label={"Users"} icon={<RiTeamLine />}>
-              <MenuItem icon={<RiUserFollowLine />}><Link to="/teacher/teachers">Teachers</Link></MenuItem>
-              <MenuItem icon={<RiUserFollowLine />}><Link to="/teacher/students">Students</Link></MenuItem>
-              <MenuItem icon={<RiUserFollowLine />}><Link to="/teacher/parents">Parents</Link></MenuItem>
+            <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<RiHome4Line />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/dashboard">Dashboard</Link></MenuItem>
+            <SubMenu defaultOpen label={"Users"} style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<RiTeamLine />}>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<RiUserFollowLine />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/teachers">Teachers</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<RiUserFollowLine />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/students">Students</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<RiUserFollowLine />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/parents">Parents</Link></MenuItem>
             </SubMenu>
-            <SubMenu defaultOpen label={"Examinations"} icon={<FaFileInvoice />}>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/exam-category">Exam Category</Link></MenuItem>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/exams">Offline Exams</Link></MenuItem>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/marks">Marks</Link></MenuItem>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/grades">Grades</Link></MenuItem>
+            <SubMenu defaultOpen label={"Examinations"} style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<FaFileInvoice />}>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/exam-category">Exam Category</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/exams">Offline Exams</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/marks">Marks</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/grades">Grades</Link></MenuItem>
             </SubMenu>
-            <SubMenu defaultOpen label={"Academic"} icon={<FaBookReader />}>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/classes">Class List</Link></MenuItem>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/routines">Class Routine</Link></MenuItem>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/classroom">Class Room</Link></MenuItem>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/subject/view">Subjects</Link></MenuItem>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/sections">Sections</Link></MenuItem>
-              <MenuItem icon={<VscDebugBreakpointConditional />}><Link to="/teacher/syllabuses">Syllabus</Link></MenuItem>
+            <SubMenu defaultOpen label={"Academic"} style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<FaBookReader />}>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/classes">Class List</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/routines">Class Routine</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/classroom">Class Room</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/subject/view">Subjects</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/sections">Sections</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<VscDebugBreakpointConditional />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/syllabuses">Syllabus</Link></MenuItem>
             </SubMenu>
-            <SubMenu defaultOpen label={"Transport"} icon={<FaBusAlt />}>
-              <MenuItem icon={<FaUserFriends />}><Link to="/teacher/driver">Driver</Link></MenuItem>
-              <MenuItem icon={<IoBus />}><Link to="/teacher/vehicles">Vehicle</Link></MenuItem>
+            <SubMenu defaultOpen label={"Transport"} style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<FaBusAlt />}>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<FaUserFriends />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/driver">Driver</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<IoBus />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/vehicles">Vehicle</Link></MenuItem>
             </SubMenu>
-              <MenuItem icon={<IoMdImages />}><Link to="/teacher/gallery">Gallery</Link></MenuItem>
-              <MenuItem icon={<MdEventNote />}><Link to="/teacher/event">Events</Link></MenuItem>
-              <MenuItem icon={<FaBook />}><Link to="/teacher/backOffice">List of Books</Link></MenuItem>
-              <MenuItem icon={<FaChalkboardTeacher />}><Link to="/teacher/notice">Notices</Link></MenuItem>
-            <SubMenu defaultOpen label={"Human Resource"} icon={<GrResources />}>
-              <MenuItem icon={<FaUserEdit />}><Link to="/teacher/userRoles">User Role</Link></MenuItem>
-              <MenuItem icon={<FaUsers />}><Link to="/teacher/users">User List</Link></MenuItem>
-            </SubMenu>
-            <SubMenu defaultOpen label={"Settings"} icon={<IoIosSettings />}>
-              <MenuItem icon={<MdManageAccounts />}><Link to="/teacher/profile">My Account</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<IoMdImages />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/gallery">Gallery</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<MdEventNote />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/event">Events</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<FaBook />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/backOffice">List of Books</Link></MenuItem>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<FaChalkboardTeacher />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/notice">Notices</Link></MenuItem>
+            <SubMenu defaultOpen label={"Settings"} style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<IoIosSettings />}>
+              <MenuItem style={{ backgroundColor: '#0b093b', color: 'white' }} icon={<MdManageAccounts />}><Link style={{ backgroundColor: '#0b093b', color: 'white' }} to="/teacher/profile">My Account</Link></MenuItem>
             </SubMenu>
           </Menu>
         </main>

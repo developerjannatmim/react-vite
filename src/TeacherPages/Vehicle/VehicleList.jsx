@@ -77,12 +77,6 @@ const VehicleList = () => {
             <div className="card">
               <div className="card-header">
                 <h4>Vehicle List</h4>
-                <Link
-                  to="/teacher/vehicles/create"
-                  className="btn btn-primary btn-sm float-end"
-                >
-                  Add Vehicle
-                </Link>
               </div>
               <div className="page-system mt-4">
                 <nav>
