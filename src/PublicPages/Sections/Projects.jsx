@@ -4,16 +4,16 @@ import styled from "styled-components";
 import ProjectBox from "../Elements/ProjectBox";
 import FullButton from "../Buttons/FullButton";
 // Assets
-import ProjectImg1 from "../../assets/img/events/img-01.jpg";
-import ProjectImg2 from "../../assets/img/events/img-02.jpeg";
-import ProjectImg3 from "../../assets/img/events/img-03.jpg";
-import ProjectImg4 from "../../assets/img/events/img-04.jpeg";
-import ProjectImg5 from "../../assets/img/events/img-05.jpeg";
-import ProjectImg6 from "../../assets/img/events/img-07.png";
+import ProjectImg1 from "../../assets/activities/pohela.jpg";
+import ProjectImg2 from "../../assets/activities/sciencefari.jpg";
+import ProjectImg3 from "../../assets/activities/sports.jpg";
+import ProjectImg4 from "../../assets/activities/arts.jpg";
+import ProjectImg5 from "../../assets/activities/picnic.jpg";
+import ProjectImg6 from "../../assets/activities/cultural.jpg";
 import AddImage2 from "../../assets/img/add/add2.png";
 import { Link } from "react-scroll";
-import About1 from '../../assets/img/about/about-1.jpg';
-import About2 from '../../assets/img/about/about-2.jpg';
+import About1 from "../../assets/front/best1.jpg";
+import About2 from "../../assets/front/best2.jpg";
 import { useNavigate } from "react-router";
 
 export default function Projects() {
@@ -38,7 +38,7 @@ export default function Projects() {
             </p>
             <h1 className="mb-3">Best School For Your Kids</h1>
             <p className="mb-3">
-            Cantonment Public School Jessore is the first school established by the Directorate of Military Lands and Cantonments under the Ministry of Defence. The journey of the college started in two small rooms of Daud Public School with a total of 5 students including 3 Bengalis on 17 July 1969 as 'Cantonment College Jessore' within Jessore Cantonment.
+            Cantonment High School Jessore is the first school established by the Directorate of Military Lands and Cantonments under the Ministry of Defence. The journey of the college started in two small rooms of Daud High School with a total of 5 students including 3 Bengalis on 17 July 1969 as 'Cantonment College Jessore' within Jessore Cantonment.
             </p>
             <div className="row pt-2 pb-4">
               <div className="col-6 col-md-4">
@@ -97,7 +97,7 @@ export default function Projects() {
                 img={ProjectImg1}
                 title="Pohela Boishakh
                 "
-                text="The Bengali New Year is observed as a public holiday in Bangladesh. The day is marked with singing, processions, and fairs. Traditionally, businesses start this day with a new ledger, clearing out the old."
+                text="The Bengali New Year is observed as a High holiday in Bangladesh. The day is marked with singing, processions, and fairs. Traditionally, businesses start this day with a new ledger, clearing out the old."
                 action={() => alert("clicked")}
               />
             </div>

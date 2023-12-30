@@ -3,15 +3,40 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
-import StudentSidebar from './../../components/StudentSidebar';
 import Footer from './../../components/Footer';
 import StudentHeader from '../../components/StudentHeader';
+import StudentSidebar from './../../components/StudentSidebar';
 
 const ExamList = () => {
   const [examList, setExamList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
+
+  const deleteExam = (e, id) => {
+    e.preventDefault();
+    const Clicked = e.currentTarget;
+    Clicked.innerText = 'deleting';
+
+    if (confirm(`Are you sure you want to delete exam id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/exams/${id}`, {
+        headers: {
+          Accept: 'application/json'
+        },
+        method: 'DELETE'
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
+        })
+        .catch((error) => {
+          console.error(error);
+          Swal.fire('Warning', response?.message, 'warning');
+        });
+    }
+  };
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/exams?', {
@@ -48,7 +73,7 @@ const ExamList = () => {
           <StudentSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container px-4">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Exam List</h4>
@@ -93,14 +118,12 @@ const ExamList = () => {
                     <tr>
                       <th scope="col">ID</th>
                       <th scope="col">Exam Name</th>
-                      <th scope="col">Class Name</th>
-                      <th scope="col">Section Name</th>
-                      <th scope="col">Exam Type</th>
+                      <th scope="col">Class</th>
+                      <th scope="col">Section</th>
                       <th scope="col">Starting Time</th>
                       <th scope="col">Ending Time</th>
                       <th scope="col">Total Marks</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Show</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -108,21 +131,37 @@ const ExamList = () => {
                       return (
                         <tr key={exam.id}>
                           <td>{exam.id}</td>
-                          <td>{exam.name}</td>
-                          <td>{exam.exam_type}</td>
-                          <td>{exam.starting_time}</td>
-                          <td>{exam.ending_time}</td>
-                          <td>{exam.total_marks}</td>
-                          <td>{exam.status}</td>
-                          <td>{exam.section?.name}</td>
-                          <td>{exam.class?.name}</td>
+                          <td>{exam?.exam_category?.name}</td>
+                          <td>{exam?.class?.name}</td>
+                          <td>{exam?.section?.name}</td>
+                          <td>{exam?.starting_time} AM</td>
+                          <td>{exam?.ending_time} PM</td>
+                          <td>{exam?.total_marks}</td>
                           <td>
-                            <Link
-                              to={`/student/exams/${exam.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/student/exams/${exam.id}/show`}
+                                  >
+                                    Show
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );

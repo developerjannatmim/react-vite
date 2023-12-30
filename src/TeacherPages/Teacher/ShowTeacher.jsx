@@ -39,7 +39,7 @@ const ShowTeacher = () => {
           <TeacherSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container">
+          <div className="mt-5 container" style={{ marginLeft: '320px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Teacher Information</h4>

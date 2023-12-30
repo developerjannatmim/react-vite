@@ -89,7 +89,7 @@ const AdminDashboard = () => {
                         className="small text-white stretched-link"
                         to="/admin/teachers"
                       >
-                        <FaUserLarge /> Total 80 Teachers
+                        <FaUserLarge /> Total 280 Teachers
                       </Link>
                       <div className="small text-white">
                         <i className="fas fa-angle-right"></i>
@@ -151,18 +151,8 @@ const AdminDashboard = () => {
                 {/* google map */}
                 <div className="col-xl-6 dash_map">
                 <div className="mb-2"><FaMapMarkedAlt /> <b>Google Map</b></div>
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.9331509937015!2d89.
-                      20040797411622!3d23.172639810713665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
-                      1!3m3!1m2!1s0x39ff112a602d68ff%3A0xb3b85ec88687eb53!2z4KaG4Kas4KeN4Kam4KeB4Kay
-                      IOCml-Cmq-CngeCmsCDgpo_gppXgpr7gpqHgp4fgpq7gp4Ag4Kau4Ka-4Kan4KeN4Kav4Kau4Ka_4KaVIOCmrOCmv-CmpuCnjeCmr-CmvuCms
-                      uCmr-CmvA!5e0!3m2!1sen!2sbd!4v1701937958811!5m2!1sen!2sbd"
-                    width="470"
-                    height="350"
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
+                <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d98686.74226621154!2d89.05814480082303!3d23.18960909464772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ff10a851858de5%3A0x445f821ed3e307a0!2sCantonment%20High%20School%2C%20Jashore!5e0!3m2!1sen!2sbd!4v1703869555210!5m2!1sen!2sbd" width="500" height="280" style={{ border: '0', }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div className="col-xl-6">
                   <div style={{ marginLeft: '-50px' }}>

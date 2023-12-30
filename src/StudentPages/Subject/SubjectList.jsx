@@ -13,6 +13,31 @@ const SubjectList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
+  const deleteSubject = (e, id) => {
+    e.preventDefault();
+    const Clicked = e.currentTarget;
+    Clicked.innerText = 'deleting';
+
+    if (confirm(`Are you sure you want to delete subject id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/subjects/${id}`, {
+        headers: {
+          Accept: 'application/json'
+        },
+        method: 'DELETE'
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
+        })
+        .catch((error) => {
+          console.error(error);
+          Swal.fire('Warning', response?.message, 'warning');
+        });
+    }
+  };
+
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/subjects?', {
       headers: {
@@ -48,7 +73,7 @@ const SubjectList = () => {
           <StudentSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container px-4">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Subject List</h4>
@@ -94,7 +119,7 @@ const SubjectList = () => {
                       <th scope="col">ID</th>
                       <th scope="col">Subject Name</th>
                       <th scope="col">Class Name</th>
-                      <th scope="col">Show</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -105,12 +130,30 @@ const SubjectList = () => {
                           <td>{subject.name}</td>
                           <td>{subject.class?.name}</td>
                           <td>
-                            <Link
-                              to={`/student/subjects/${subject.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/student/subjects/${subject.id}/show`}
+                                  >
+                                    Show
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );

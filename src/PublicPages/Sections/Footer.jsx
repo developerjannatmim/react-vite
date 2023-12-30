@@ -10,6 +10,14 @@ import whatsup from "../../assets/images/whats.png";
 import instagram from "../../assets/images/insta.png";
 import "../../assets/css/Footer.css";
 
+import gal1 from "../../assets/teacher/parent2.jfif";
+import gal2 from "../../assets/teacher/parent4.jpg";
+import gal3 from "../../assets/teacher/teacher.jpg";
+import gal4 from "../../assets/teacher/teacher.jpg";
+import gal5 from "../../assets/teacher/teacher004.jpg";
+import gal6 from "../../assets/teacher/teacher007.jpg";
+import gal7 from "../../assets/teacher/teacher1.webp";
+
 export default function Contact() {
   const getCurrentYear = () => {
     return new Date().getFullYear();
@@ -34,11 +42,11 @@ export default function Contact() {
                 style={{ fontSize: "20px", lineHeight: "20px" }}
               >
                 <span className="canto text-white">
-                  Cantoment Public School
+                  Cantoment High School
                 </span>
               </Link>
               <p style={{ color: "white", fontSize: "13px" }}>
-              At Cantonment Public School, we believe in fostering a lifelong love of learning in each child. We recognize each individual as a unique expression of body, soul and spirit, and we seek to engage the whole child through a developmentally appropriate curriculum that addresses the physical, emotional, and intellectual aspects of a child. 
+              At Cantonment High School, we believe in fostering a lifelong love of learning in each child. We recognize each individual as a unique expression of body, soul and spirit, and we seek to engage the whole child through a developmentally appropriate curriculum that addresses the physical, emotional, and intellectual aspects of a child. 
               </p>
               <div className="d-flex justify-content-start mt-4">
                 <Link
@@ -82,14 +90,14 @@ export default function Contact() {
                 <i className="bi bi-geo-alt"></i>
                 <div className="pl-3">
                   <h6 className="text-white">Address</h6>
-                  <p>123 Street, New York, USA</p>
+                  <p>Airport Road, Jessore, Bangladesh</p>
                 </div>
               </div>
               <div className="d-flex mb-2">
                 <i className="bi bi-envelope"></i>
                 <div className="pl-3">
                   <h6 className="text-white">Email</h6>
-                  <p>info@example.com</p>
+                  <p>info@school.com</p>
                 </div>
               </div>
               <div className="d-flex">
@@ -129,8 +137,38 @@ export default function Contact() {
             </div>
             </div>
             <div className="sb__footer-links_div">
-              <strong class="footer-news mb-3">Newsletter</strong>
-              <form action="">
+              <strong class="footer-news mb-3">Gallery</strong>
+                <div className="row">
+                  <div className="col-4"><img src={gal1} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal2} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal3} width="40px" height="20px"/></div>
+                  <div className="col-4"><img src={gal4} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal5} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal6} width="40px" height="20px"/></div>
+                  <div className="col-4"><img src={gal7} width="40px" height="20px"/></div>
+                  
+                  <div className="col-4 px-1"><img src={gal1} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal2} width="40px" height="20px"/></div>
+                  <div className="col-4"><img src={gal3} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal4} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal5} width="40px" height="20px"/></div>
+                  <div className="col-4"><img src={gal6} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal7} width="40px" height="20px"/></div>
+                  
+                  <div className="col-4 px-1"><img src={gal1} width="40px" height="20px"/></div>
+                  <div className="col-4"><img src={gal2} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal3} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal4} width="40px" height="20px"/></div>
+                  <div className="col-4"><img src={gal5} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal6} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal7} width="40px" height="20px"/></div>
+                  
+                  <div className="col-4"><img src={gal1} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal2} width="40px" height="20px"/></div>
+                  <div className="col-4 px-1"><img src={gal3} width="40px" height="20px"/></div>
+                  
+                </div>
+              {/* <form action="">
                 <div class="form-group">
                   <input
                     type="text"
@@ -155,13 +193,13 @@ export default function Contact() {
                     Submit Now
                   </button>
                 </div>
-              </form>
+              </form> */}
             </div>
           </div>
           <hr></hr>
           <StyleP className="whiteColor font13">
             © {getCurrentYear()} -{" "}
-            <span className="purpleColor font13">Cantoment Primary School</span>{" "}
+            <span className="purpleColor font13">Cantonment High School</span>{" "}
             All Right Reserved
           </StyleP>
         </div>

@@ -38,7 +38,7 @@ const ShowStudent = () => {
           <StudentSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container">
+          <div className="mt-5 container" style={{ marginLeft: '280px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Student Information</h4>

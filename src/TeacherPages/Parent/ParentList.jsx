@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import '../../assets/css/style.css';
+
 import TeacherSidebar from './../../components/TeacherSidebar';
 import Footer from './../../components/Footer';
 import TeacherHeader from '../../components/TeacherHeader';
@@ -11,6 +13,31 @@ const ParentList = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
+
+  const deleteParentData = (e, id) => {
+    e.preventDefault();
+    const Clicked = e.currentTarget;
+    Clicked.innerText = 'deleting';
+
+    if (confirm(`Are you sure you want to delete parent id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/parents/${id}`, {
+        headers: {
+          Accept: 'application/json'
+        },
+        method: 'DELETE'
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest('tr').remove();
+        })
+        .catch((error) => {
+          console.error(error);
+          Swal.fire('Warning', response?.message, 'warning');
+        });
+    }
+  };
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/parents?', {
@@ -47,12 +74,21 @@ const ParentList = () => {
           <TeacherSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container px-4">
-            <div className="card">
+          <div className="mt-5 container px-4" style={{ marginLeft: '320px' }}>
+            <div className="card mt-5">
               <div className="card-header">
                 <h4>Parent List</h4>
+                <Link
+                  to="/teacher/parents/create"
+                  className="btn btn-primary btn-sm float-end"
+                >
+                  Add Parent
+                </Link>
               </div>
-              <div className="page-system mt-4">
+              <div
+                className="page-system mt-4 mb-3"
+                style={{ marginLeft: '690px' }}
+              >
                 <nav>
                   <ul className="pagination">
                     <li className="page-item">
@@ -91,15 +127,11 @@ const ParentList = () => {
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
+                      <th scope="col"></th>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
-                      <th scope="col">Address</th>
-                      <th scope="col">Phone</th>
-                      <th scope="col">Photo</th>
-                      <th scope="col">BirthDay</th>
-                      <th scope="col">Gender</th>
-                      <th scope="col">Blood Group</th>
-                      <th scope="col">Show</th>
+                      <th scope="col">User Info</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -113,30 +145,60 @@ const ParentList = () => {
                         /**/
                       }
                       return (
-                        <tr key={parentData?.id}>
+                        <tr scope="row" key={parentData?.id}>
                           <td>{parentData?.id}</td>
-                          <td>{parentData?.name}</td>
-                          <td>{parentData?.email}</td>
-                          <td>{userInformation?.address}</td>
-                          <td>{userInformation?.phone}</td>
                           <td>
                             <img
                               src={`http://127.0.0.1:8000/parent-images/${userInformation?.photo}`}
+                              alt="parent-image"
                               width="40"
                               height="40"
-                              alt="parent-image"
+                              style={{ borderRadius: '50px' }}
                             />
                           </td>
-                          <td>{userInformation?.birthday}</td>
-                          <td>{userInformation?.gender}</td>
-                          <td>{userInformation?.blood_group}</td>
                           <td>
-                            <Link
-                              to={`/teacher/parents/${parentData.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
+                            <span>{parentData?.name}</span>
+                          </td>
+                          <td>
+                            <small class="d-block mt-2">
+                              {parentData?.email}
+                            </small>
+                          </td>
+                          <td>
+                            <small>
+                              <b>Phone: </b>088+{userInformation?.phone}
+                            </small>
+                            <br />
+                            <small>
+                              <b>Address: </b>
+                              {userInformation?.address}
+                            </small>
+                          </td>
+                          <td>
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/teacher/parents/${parentData?.id}/show`}
+                                  >
+                                    Show
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );

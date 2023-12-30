@@ -2,9 +2,9 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import TeacherSidebar from './../../components/TeacherSidebar';
 import Footer from './../../components/Footer';
 import TeacherHeader from '../../components/TeacherHeader';
+import TeacherSidebar from './../../components/TeacherSidebar';
 
 const ShowClassRoom = () => {
   const [classRoomItem, setClassRoomItem] = useState(null);
@@ -38,8 +38,8 @@ const ShowClassRoom = () => {
         <div className="w-auto position-sticky">
           <TeacherSidebar />
         </div>
-        <div className="d-flex align-items-center">
-          <div className="container">
+        <div className="mt-5 d-flex align-items-center">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Class Room Details</h4>
@@ -51,30 +51,27 @@ const ShowClassRoom = () => {
                   Class Room List
                 </Link>
               </div>
-              <div class="col-md-8 p-4">
-                <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Class Room Id</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{classRoomItem?.id}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Class Room No.</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{classRoomItem?.name}</p>
-                      </div>
-                    </div>
+              <div className="col-md-8 p-4">
+                <div className="tab-content profile-tab" id="myTabContent">
+                  <div>
+                    <ol className="alternating-colors">
+                      <li className="element-list">
+                        <div className="col-md-6">
+                          <label>Class Room Id</label>
+                        </div>
+                        <div className="col-md-6">
+                          <p>{classRoomItem?.id}</p>
+                        </div>
+                      </li>
+                      <li className="element-list">
+                        <div className="col-md-6">
+                          <label>Class Room No.</label>
+                        </div>
+                        <div className="col-md-6">
+                          <p>{classRoomItem?.name}</p>
+                        </div>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               </div>

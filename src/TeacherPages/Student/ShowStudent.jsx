@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+import TeacherHeader from '../../components/TeacherHeader';
 import TeacherSidebar from './../../components/TeacherSidebar';
 import Footer from './../../components/Footer';
-import TeacherHeader from '../../components/TeacherHeader';
 
 const ShowStudent = () => {
   const [studentItem, setStudentItem] = useState(null);
@@ -39,7 +38,7 @@ const ShowStudent = () => {
           <TeacherSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container">
+          <div className="mt-5 container" style={{ marginLeft: '280px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Student Information</h4>

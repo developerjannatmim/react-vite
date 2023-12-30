@@ -2,9 +2,10 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import StudentSidebar from './../../components/StudentSidebar';
 import Footer from './../../components/Footer';
 import StudentHeader from '../../components/StudentHeader';
+import './../../assets/css/exam.css';
+import StudentSidebar from './../../components/StudentSidebar';
 
 const ShowExam = () => {
   const [examItem, setExamItem] = useState(null);
@@ -39,7 +40,7 @@ const ShowExam = () => {
           <StudentSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Exam Details</h4>
@@ -53,84 +54,65 @@ const ShowExam = () => {
               </div>
               <div class="col-md-8 p-4">
                 <div class="tab-content profile-tab" id="myTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="home"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                  >
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Exam Id</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{examItem?.id}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Exam Name</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{examItem?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Exam Type</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{examItem?.exam_type}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Starting Time</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{examItem?.starting_time}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Ending Time</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{examItem?.ending_time}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Total Marks</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{examItem?.total_marks}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Status</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{examItem?.status}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Class Name</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{examItem?.class?.name}</p>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Section No.</label>
-                      </div>
-                      <div class="col-md-6">
-                        <p>{examItem?.section?.name}</p>
-                      </div>
-                    </div>
+                  <div>
+                    <ol className="alternating-colors">
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Exam Id</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{examItem?.id}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Exam Name</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{examItem?.exam_category?.name}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Starting Time</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{examItem?.starting_time}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Ending Time</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{examItem?.ending_time}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Total Marks</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{examItem?.total_marks}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Class Name</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{examItem?.class?.name}</p>
+                        </div>
+                      </li>
+                      <li class="element-list">
+                        <div class="col-md-6">
+                          <label>Section No.</label>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{examItem?.section?.name}</p>
+                        </div>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               </div>

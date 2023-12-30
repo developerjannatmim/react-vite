@@ -8,10 +8,17 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 
 //Admin components start
+import Gallery from "./AdminPages/Gallery/Gallery";
+
 import AdminList from "./AdminPages/Admin/AdminList";
 import ShowAdmin from "./AdminPages/Admin/ShowAdmin";
 import AddAdmin from "./AdminPages/Admin/AddAdmin";
 import UpdateAdmin from "./AdminPages/Admin/UpdateAdmin";
+
+import NoticeList from "./AdminPages/Notice/NoticeList";
+import ShowNotice from "./AdminPages/Notice/ShowNotice";
+import AddNotice from "./AdminPages/Notice/AddNotice";
+import UpdateNotice from "./AdminPages/Notice/UpdateNotice";
 
 import AccountantList from "./AdminPages/Accountant/AccountantList";
 import ShowAccountant from "./AdminPages/Accountant/ShowAccountant";
@@ -132,6 +139,28 @@ import UpdateSchool from "./AdminPages/School/UpdateSchool";
 //Admin components end
 
 //Teacher components start
+import TExamCategoryList from "./TeacherPages/ExamCategory/ExamCategoryList";
+import TShowExamCategory from "./TeacherPages/ExamCategory/ShowExamCategory";
+import TAddExamCategory from "./TeacherPages/ExamCategory/AddExamCategory";
+import TUpdateExamCategory from "./TeacherPages/ExamCategory/UpdateExamCategory";
+
+import TDriverList from "./TeacherPages/Driver/DriverList";
+import TShowDriver from "./TeacherPages/Driver/ShowDriver";
+
+import TVehicleList from "./TeacherPages/Vehicle/VehicleList";
+import TShowVehicle from "./TeacherPages/Vehicle/ShowVehicle";
+
+import TEventList from "./TeacherPages/Event/EventList";
+import TShowEvent from "./TeacherPages/Event/ShowEvent";
+
+import TBackOfficeList from "./TeacherPages/BackOffice/BackOfficeList";
+import TShowBackOffice from "./TeacherPages/BackOffice/ShowBackOffice";
+
+import TNoticeList from "./TeacherPages/Notice/NoticeList";
+import TShowNotice from "./TeacherPages/Notice/ShowNotice";
+
+import TGallery from "./TeacherPages/Gallery/Gallery";
+
 import TStudentList from "./TeacherPages/Student/StudentList";
 import TShowStudent from "./TeacherPages/Student/ShowStudent";
 
@@ -170,6 +199,23 @@ import TShowClassRoom from "./TeacherPages/ClassRoom/ShowClassRoom";
 //Teacher components end
 
 //Student components start
+import SDriverList from "./StudentPages/Driver/DriverList";
+import SShowDriver from "./StudentPages/Driver/ShowDriver";
+
+import SVehicleList from "./StudentPages/Vehicle/VehicleList";
+import SShowVehicle from "./StudentPages/Vehicle/ShowVehicle";
+
+import SEventList from "./StudentPages/Event/EventList";
+import SShowEvent from "./StudentPages/Event/ShowEvent";
+
+import SBackOfficeList from "./StudentPages/BackOffice/BackOfficeList";
+import SShowBackOffice from "./StudentPages/BackOffice/ShowBackOffice";
+
+import SNoticeList from "./StudentPages/Notice/NoticeList";
+import SShowNotice from "./StudentPages/Notice/ShowNotice";
+
+import SGallery from "./StudentPages/Gallery/Gallery";
+
 import SStudentList from "./StudentPages/Student/StudentList";
 import SShowStudent from "./StudentPages/Student/ShowStudent";
 
@@ -271,17 +317,23 @@ const App = () => {
         <Route path="/register" element={<Register />}></Route>
         <Route path="*" element={<Publicroute />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
-        
 
         {/* Private Routes start */}
         <Route path="/admin" element={<AdminRoute />}>
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="profile" element={<AdminProfile />} />
 
+          <Route path="gallery" element={<Gallery />} />
+
           <Route path="admin" element={<AdminList />} />
           <Route path="admin/create" element={<AddAdmin />} />
           <Route path="admin/:id/show" element={<ShowAdmin />} />
           <Route path="admin/:id/edit" element={<UpdateAdmin />} />
+
+          <Route path="notice" element={<NoticeList />} />
+          <Route path="notice/create" element={<AddNotice />} />
+          <Route path="notice/:id/show" element={<ShowNotice />} />
+          <Route path="notice/:id/edit" element={<UpdateNotice />} />
 
           <Route path="accountant" element={<AccountantList />} />
           <Route path="accountant/create" element={<AddAccountant />} />
@@ -406,6 +458,28 @@ const App = () => {
         </Route>
 
         <Route path="/teacher" element={<TeacherRoute />}>
+          <Route path="exam-category" element={<TExamCategoryList />} />
+          <Route path="exam-category/create" element={<TAddExamCategory />} />
+          <Route path="exam-category/:id/show" element={<TShowExamCategory />} />
+          <Route path="exam-category/:id/edit" element={<TUpdateExamCategory />} />
+
+          <Route path="driver" element={<TDriverList />} />
+          <Route path="driver/:id/show" element={<TShowDriver />} />
+
+          <Route path="vehicles" element={<TVehicleList />} />
+          <Route path="vehicles/:id/show" element={<TShowVehicle />} />
+
+          <Route path="backOffice" element={<TBackOfficeList />} />
+          <Route path="backOffice/:id/show" element={<TShowBackOffice />} />
+
+          <Route path="event" element={<TEventList />} />
+          <Route path="event/:id/show" element={<TShowEvent />} />
+
+          <Route path="notice" element={<TNoticeList />} />
+          <Route path="notice/:id/show" element={<TShowNotice />} />
+
+          <Route path="gallery" element={<TGallery />} />
+
           <Route path="dashboard" element={<TeacherDashboard />} />
           <Route path="profile" element={<TeacherProfile />} />
 
@@ -447,6 +521,23 @@ const App = () => {
         </Route>
 
         <Route path="/student" element={<StudentRoute />}>
+          <Route path="driver" element={<SDriverList />} />
+          <Route path="driver/:id/show" element={<SShowDriver />} />
+
+          <Route path="vehicles" element={<SVehicleList />} />
+          <Route path="vehicles/:id/show" element={<SShowVehicle />} />
+
+          <Route path="backOffice" element={<SBackOfficeList />} />
+          <Route path="backOffice/:id/show" element={<SShowBackOffice />} />
+
+          <Route path="event" element={<SEventList />} />
+          <Route path="event/:id/show" element={<SShowEvent />} />
+
+          <Route path="gallery" element={<SGallery />} />
+
+          <Route path="notice" element={<SNoticeList />} />
+          <Route path="notice/:id/show" element={<SShowNotice />} />
+
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="profile" element={<StudentProfile />} />
 

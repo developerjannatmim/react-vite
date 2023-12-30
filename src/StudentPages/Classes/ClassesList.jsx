@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Swal from "sweetalert2";
 
-import StudentSidebar from './../../components/StudentSidebar';
+import Sidebar from './../../components/Sidebar';
 import Footer from './../../components/Footer';
 import StudentHeader from '../../components/StudentHeader';
+import StudentSidebar from './../../components/StudentSidebar';
 
 const ClassesList = () => {
   const [classList, setClassList] = useState([]);
@@ -12,12 +14,37 @@ const ClassesList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dataPerPage = 5;
 
+  const deleteClass = (e, id) => {
+    e.preventDefault();
+    const Clicked = e.currentTarget;
+    Clicked.innerText = "deleting";
+
+    if (confirm(`Are you sure you want to delete class id ${id}?`)) {
+      fetch(`http://127.0.0.1:8000/api/classes/${id}`, {
+        headers: {
+          Accept: 'application/json',
+        },
+        method: 'DELETE',
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.info(response);
+          Swal.fire('Success', response?.message, 'success');
+          Clicked.closest("tr").remove();
+        })
+        .catch((error) => {
+          console.error(error);
+          Swal.fire('Warning', response?.message, 'warning');
+        });
+    }
+  };
+
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/classes?', {
       headers: {
-        Accept: 'application/json'
+        Accept: 'application/json',
       },
-      method: 'GET'
+      method: 'GET',
     })
       .then((response) => response.json())
       .then((response) => {
@@ -46,8 +73,8 @@ const ClassesList = () => {
         <div className="w-auto position-sticky">
           <StudentSidebar />
         </div>
-        <div className="d-flex align-items-center">
-          <div className="container px-4">
+        <div className="mt-5 d-flex align-items-center">
+          <div className="mt-5 container px-4" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Class List</h4>
@@ -93,7 +120,7 @@ const ClassesList = () => {
                       <th scope="col">ID</th>
                       <th scope="col">Class Name</th>
                       <th scope="col">Section Name</th>
-                      <th scope="col">Show</th>
+                      <th scope="col">Options</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -104,12 +131,30 @@ const ClassesList = () => {
                           <td>{classItem.name}</td>
                           <td>{classItem.section?.name}</td>
                           <td>
-                            <Link
-                              to={`/student/classes/${classItem.id}/show`}
-                              className="btn btn-primary btn-sm"
-                            >
-                              Show
-                            </Link>
+                            <div className="dropdown">
+                              <button
+                                className="btn btn-warning dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                className="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <Link
+                                    className="dropdown-item"
+                                    to={`/student/classes/${classItem.id}/show`}
+                                  >
+                                    Show
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
                           </td>
                         </tr>
                       );

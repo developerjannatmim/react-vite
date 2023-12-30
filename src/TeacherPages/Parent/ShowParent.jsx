@@ -39,7 +39,7 @@ const ShowParent = () => {
           <TeacherSidebar />
         </div>
         <div className="d-flex align-items-center">
-          <div className="container">
+          <div className="mt-5 container" style={{ marginLeft: '300px' }}>
             <div className="card">
               <div className="card-header">
                 <h4>Parent Information</h4>
